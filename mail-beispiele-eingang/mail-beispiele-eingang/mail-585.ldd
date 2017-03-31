@@ -1,0 +1,85 @@
+(absender (""=?WINDOWS-1252?q?=22Prof._Dr._Karl_Hans_Bl=E4sius=22?=" <blaesius@hochschule-trier.de>"))
+(EmpfaengerNamen ("blaesius@hochschule-trier.de" ))
+(Betreff (" [Stud.IP - Hochschule Trier] [Programmierparadigmen]"))
+(datum ("Sat, 16 Apr 2016 00:44:42 +0200"))
+(anzahlAnhaenge 0)
+(Termin nil)
+
+
+"blaesius-h_-Stud-IP_-_1.erg"
+
+
+(ORG-BELEG
+ "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\blaesius-h_-Stud-IP_-_1.txt")
+
+(DATUM "16.04.2016")
+
+(DATUM-SORT "20160416004442")
+
+(ORIGINAL-DATEINAME "blaesius-h_-Stud-IP_-_1.txt")
+
+(BELEG-TYP E-MAIL)
+
+(ANHAENGE NIL)
+
+(ABSENDER "Prof._Dr._Karl_Hans_Bläsius")
+
+(ABSENDER-MAIL-ADRESSE "blaesius@hochschule-trier.de")
+
+(EMPFAENGER ("Prof._Dr._Karl_Hans_Bläsius"))
+
+(EMPFAENGER-MAIL-ADRESSEN ("blaesius@hochschule-trier.de"))
+
+(BETREFF "[Stud.IP - Hochschule Trier] [Programmierparadigmen]")
+
+(EMAIL-TYP "inbox")
+
+(QUELLART "KHB-FH")
+
+(QUELLBOXART "INBOX-S")
+
+
+
+"blaesius-h_-Stud-IP_-_1.txt"
+
+; Header-Informationen
+(EMAIL-INFOS 
+:INDEXIERDATUM           "0000-00-00"
+:INDEXIERWOERTER         NIL
+:VON                     "Prof._Dr._Karl_Hans_Bläsius"
+:VON-EMAIL-ADRESSE       "blaesius@hochschule-trier.de"
+:AN                      ("Prof._Dr._Karl_Hans_Bläsius")
+:AN-EMAIL-ADRESSEN       ("blaesius@hochschule-trier.de")
+:BETREFF                 "[Stud.IP - Hochschule Trier] [Programmierparadigmen]"
+:DATUM                   "2016-04-16 00:44:42"
+:DATEINAME               "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\blaesius-h_-Stud-IP_-_1.txt"
+:EMAIL-TYP               "inbox"
+:QUELLDATEI              "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\mail-585.mxt"
+:QUELLART                "KHB-FH"
+:QUELLBOXART             "INBOX-S"
+:QUELLZEITRAUM           " "
+:QUELLINFO               " "
+)
+
+;Ende Header-Informationen
+
+
+
+Hallo, 
+
+das bereitgestellte Übungsblatt enthielt noch einen Fehler bzgl. Zeitpunkt der Behandlung. 
+Die Aufgaben sollen in der kommenden Woche in den Übungen bearbeitet werden. 
+Jetzt gibt es in studip eine neue korrigierte Version. 
+
+Viele Grüße
+Karl Hans Bläsius
+
+--
+Diese E-Mail ist eine Kopie einer systeminternen Nachricht, die in Stud.IP an Prof. Dr. Karl Hans Bläsius versendet wurde.
+Sie erreichen Stud.IP unter https://studip.hochschule-trier.de/
+
+
+
+
+;Original-Header angefŸgt:
+(MH "From - Sat Apr 16 00:45:25 2016" "X-Account-Key: account3" "X-UIDL: 0000501c466460f7" "X-Mozilla-Status: 0001" "X-Mozilla-Status2: 00000000" "X-Mozilla-Keys:                                                                                 " "Return-Path: <blaesius@hochschule-trier.de>" "Received: from gateway-a.fh-trier.de (gateway-a.fh-trier.de [143.93.54.181])" "	by hochschule-trier.de (8.13.1/8.13.1) with ESMTP id u3FMjFWj213122" "	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)" "	for <blaesius@hochschule-trier.de>; Sat, 16 Apr 2016 00:45:15 +0200" "X-Virus-Scanned: by Amavisd-new + McAfee uvscan + ClamAV [Rechenzentrum" "	Hochschule Trier]" "X-Spam-Flag: NO" "X-Spam-Score: -5.3" "X-Spam-Level: " "X-Spam-Status: No, score=-5.3 tagged_above=-200 required=6" "	tests=[ALL_TRUSTED=-1, BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1," "	DKIM_VALID_AU=-0.1, LOCAL_RCVD_FHT=-5] autolearn=disabled" "Authentication-Results: gateway.hochschule-trier.de (amavisd-new); dkim=pass" "	header.i=@hochschule-trier.de" "Received: from hochschule-trier.de (studip.fh-trier.de [143.93.54.106])" "	by gateway-a.fh-trier.de (Postfix) with ESMTP id E8DEA1797A7B" "	for <blaesius@hochschule-trier.de>; Sat, 16 Apr 2016 00:44:42 +0200 (CEST)" "DKIM-Signature: v=1; a=rsa-sha1; c=simple/simple; d=hochschule-trier.de;" "	s=default; t=1460760282; bh=3SN8Da41ILVDtbLXi5e2RLd3vjo=;" "	h=From:To:Subject:MIME-Version:Content-Type:" "	 Content-Transfer-Encoding:Date:Message-ID;" "	b=AEKT6cXdoKdqOwq9HW0f3miaxzjEPxHUfO7B87GkK8cyHPWcNT0KJTUqj1ehsp5cw" "	 odzR0rW/no2bu7wACCAyglfF/xRQbThGS15S6kZIHuHjE6Hvwl3Ae3vTeK+Sa7TVau" "	 VyBEu4jjfiiVddgGStVcGhPoT29E1Kri43081svU=" "From: \"\"Prof._Dr._Karl_Hans_Bläsius\"\" <blaesius@hochschule-trier.de>" "To: \"\"Prof._Dr._Karl_Hans_Bläsius\"\" <blaesius@hochschule-trier.de>" "Subject: [Stud.IP - Hochschule Trier] [Programmierparadigmen]" "MIME-Version: 1.0" "Content-Type: text/plain; charset=WINDOWS-1252" "Date: Sat, 16 Apr 2016 00:44:42 +0200" "Message-ID: <20160416004442.9523.blaesius@hochschule-trier.de>" "Content-Transfer-Encoding: 8bit" "X-MIME-Autoconverted: from quoted-printable to 8bit by hochschule-trier.de id u3FMjFWj213122" "X-MS-Exchange-Organization-SCL: 0")

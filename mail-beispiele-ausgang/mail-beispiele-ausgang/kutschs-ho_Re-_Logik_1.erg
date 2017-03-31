@@ -1,0 +1,28 @@
+
+(ORG-BELEG "K:\\mail-archiv\\E-Mail-2014\\E-Mail-201403151257-SENT-KHB-FH\\kutschs-ho_Re-_Logik_1.txt") 
+
+(DATUM "13.03.2014") 
+
+(DATUM-SORT "20140313205027") 
+
+(ORIGINAL-DATEINAME "kutschs-ho_Re-_Logik_1.txt") 
+
+(BELEG-TYP E-MAIL) 
+
+(ANHAENGE NIL) 
+
+(ABSENDER "Karl_Hans_Bläsius") 
+
+(ABSENDER-MAIL-ADRESSE "Blaesius@hochschule-trier.de") 
+
+(EMPFAENGER ("Steven Kutsch")) 
+
+(EMPFAENGER-MAIL-ADRESSEN ("kutschs@hochschule-trier.de")) 
+
+(BETREFF "Re: Logik") 
+
+(EMAIL-TYP "sent") 
+
+(QUELLART "KHB-FH") 
+
+(QUELLBOXART "SENT") 

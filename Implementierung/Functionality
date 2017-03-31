@@ -1,0 +1,43 @@
+(defvar *keyword-dict* (make-hash-table))
+
+
+
+(defun datei-lesen-in-einen-string (dateiname &key (max-anz nil))
+; input: ein dateiname (vollstŠngiger Pfad)
+; value: ein String.
+  (if (probe-file dateiname)
+      (do* ((streamin (open dateiname)) (n 0 (+ n 1))
+            (expr (read-char streamin nil 'eof) (read-char streamin nil 'eof))
+            (exprs nil))
+           ((or (equal expr 'eof) (and max-anz (> n max-anz)))
+            (close streamin) (if exprs (map 'string 'identity (nreverse exprs)) " "))
+        (setq exprs (cons (if (member (char-code expr) '(10 13)) #\space expr) exprs)))
+    " "))
+
+
+
+
+;;;Functionality
+
+
+
+(defun make-string-list (datei-string)
+  (do ((index 0 (+ 1 index))(string-liste '()));init vars
+      ((>= index (length datei-string)) string-liste) ;condition + return 
+       (cond ((equal (char datei-string index) '#\( )
+              (setq new-string "")
+              (setq index (+ 1 index))
+              (loop while (upper-case-p (char datei-string index)) do
+                   (setq new-string (concatenate 'string  new-string (string (char datei-string index))))
+                   (setq index (+ 1 index))) 
+              (cond (( > (length new-string) 0)
+              (setq string-liste (append string-liste (list new-string))) ;add string to item-list
+              (setf (gethash (intern new-string) *keyword-dict*) nil)))))))  ;add keyword to dictionary
+      
+
+
+
+
+(defun create-keywords (datei-string)
+
+  (make-string-list datei-string))

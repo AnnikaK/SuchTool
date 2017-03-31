@@ -1,0 +1,20 @@
+;;;Functionality
+
+
+
+
+
+
+
+(defun make-keyword-list (datei-string)
+  (do ((index 0 (+ 1 index))(keyword-list (make-hash-table)));init vars
+      ((= index (length datei-string)) keyword-list) ;condition + return 
+       (cond ((equal (char datei-string index) '#\( )
+              (setq new-string "")
+              (setq index (+ 1 index))
+              (loop while (and (< index (length datei-string))(upper-case-p (char datei-string index))) do
+                   (setq new-string (concatenate 'string  new-string (string (char datei-string index))))
+                   (setq index (+ 1 index))) 
+              (cond (( > (length new-string) 0)
+                     (setf (get-hash (intern new-string) 'keyword-list) nil)))))))
+              ;(setq string-liste (append string-liste (list new-string)))))))))
