@@ -1,0 +1,23 @@
+;;;; Hilfsfunktionen
+
+
+;;;;Mergesort
+(defun mergesort (a)
+  (setq m (length a))
+  (if (equals m 1) (return a)
+   (progn 
+     (let* ((half (/ m 2))
+           (aLeft (mergesort (subseq  a 0 (half))))
+           (aRight (mergesort (subseq a half m))))
+       (merge aLeft aRight)))))
+
+
+(defun merge (aLeft aRight)
+  (let* ((size (+ (length aLeft) (length aRight)))
+         (b (make-array size)))
+    (loop for x from 0 to size do
+  
+
+     
+    
+;;;;--------------------------------------------------------------
