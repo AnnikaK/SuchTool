@@ -75,7 +75,7 @@
 
  (make-instance 'capi:row-layout :gap 20 :description 
                 (list 
-                 (make-instance 
+                 (setq swgui==searchField (make-instance 
                   'capi:text-input-pane 
  
                   :text "search for..."
@@ -84,33 +84,47 @@
                   :min-height 100
                   :max-height 100
                   :change-callback #'(lambda (text &rest args)          
-                                (setq *text* text)))
+                                (setq *text* text))))
+
+
+ (make-instance 'capi:column-layout :gap 20 :description 
+                (list 
+
+                 (make-instance 'capi:row-layout :gap 20 :description 
+                                (list 
+                                 (make-instance 
+                                  'capi:button 
+                                  :text "reset" 
+                                  :callback #'(lambda (&rest args) 
+                                  (setf (capi:text-input-pane-text swgui==searchField) "")))))
+                 ""
                  
+                 
+                 (make-instance 'capi:row-layout :gap 20 :description 
+                                (list 
+                                 (make-instance 
+                                  'capi:radio-button-panel
+                                  :items (list 
+                                          (make-instance 'capi:radio-button
+                                                         :text "AND"
+                                                         :selected t
+                                                         :selection-callback 
+                                                         #'(lambda  (a interface &rest args) 
+                                                             (setq radio-button 1)))
+                                          (make-instance 'capi:radio-button
+                                                         :text "OR"
+                                                         :selected nil
+                                                         :selection-callback 
+                                                         #'(lambda  (a interface &rest args) 
+                                                             (setq radio-button 2)))))
+                                 (make-instance 
+                                  'capi:button 
+                                  :text "add" 
+                                  :callback #'(lambda (&rest args) 
+                                                ))))))))
+                
 
-     
- (make-instance 
-  'capi:radio-button-panel
-  :items (list 
-          (make-instance 'capi:radio-button
-                         :text "AND"
-                         :selected t
-                         :selection-callback 
-                         #'(lambda  (a interface &rest args) 
-                             (setq radio-button 1)))
-          (make-instance 'capi:radio-button
-                         :text "OR"
-                         :selected nil
-                         :selection-callback 
-                         #'(lambda  (a interface &rest args) 
-                             (setq radio-button 2)))))
 
-(make-instance 
-                  'capi:button 
-                  :text "add" 
-                  :callback #'(lambda (&rest args) 
-                                (print "button")))
-
-                 ))
 
 "" "Keys:"
 

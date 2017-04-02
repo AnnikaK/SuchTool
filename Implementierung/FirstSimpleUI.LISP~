@@ -18,9 +18,9 @@
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
                                                                                                   (setf (capi:display-pane-text swgui==path-text) antwort)
-                                                                                                  (make-dokument-list antwort)
+                                                                                                  (setf (capi:collection-items swgui==keyword-panel) (make-dokument-list antwort))
                                                                                                   ;(setf (capi:collection-items swgui==keyword-panel) (verarbeite-datei-zeilenweise antwort))
-                                                                                                  ;(setq datei-string (datei-lesen-in-einen-string antwort))   
+
                                                                                                   
                                                                                                   
                                                                                                   
