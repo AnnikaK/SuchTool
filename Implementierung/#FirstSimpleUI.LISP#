@@ -18,7 +18,7 @@
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
                                                                                                   (setf (capi:display-pane-text swgui==path-text) antwort)
-                                                                                                  (setf (capi:collection-items swgui==keyword-panel) (make-dokument-list antwort))
+                                                                                                  (setf (capi:collection-items swgui==keyword-panel) (append '("FREE TEXT") (make-dokument-list antwort)))
                                                                                                   ;(setf (capi:collection-items swgui==keyword-panel) (verarbeite-datei-zeilenweise antwort))
 
                                                                                                   
@@ -128,26 +128,21 @@
 
 "" "Keys:"
 
-(make-instance 'capi:column-layout 
-:vertical-scroll t
-:description (list
- (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
-                :min-width 900
-                :layout-class 'capi:column-layout
-                 :items   nil))))
+
+              (make-instance 'capi:column-layout 
+                             :vertical-scroll t
+                             :description (list
+                                           (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
+                                                                                     :min-width 900
+                                                                                     :layout-class 'capi:column-layout
+                                                                                     :items   nil))))
 
 
 
 
 
-     (make-instance 
-      'capi:column-layout :gap 20
-      :description
-      (list (make-instance 
-             'capi:row-layout :gap 10
-             :description
-             (list "     "))))
-     )
+              
+              )
     :gap 20
     :x 0
     :min-width 1124;'(- :screen-width 50)

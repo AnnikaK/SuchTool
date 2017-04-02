@@ -128,26 +128,30 @@
 
 "" "Keys:"
 
-(make-instance 'capi:column-layout 
-:vertical-scroll t
+(make-instance 'capi:row-layout
+:gap 5 
 :description (list
- (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
-                :min-width 900
-                :layout-class 'capi:column-layout
-                 :items   nil))))
+
+              (make-instance 'capi:column-layout 
+                             :vertical-scroll t
+                             :description (list
+                                           (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
+                                                                                     :min-width 900
+                                                                                     :layout-class 'capi:column-layout
+                                                                                     :items   nil))))
 
 
 
 
 
-     (make-instance 
-      'capi:column-layout :gap 20
-      :description
-      (list (make-instance 
-             'capi:row-layout :gap 10
-             :description
-             (list "     "))))
-     )
+              (make-instance 
+               'capi:column-layout :gap 20
+               :description
+               (list (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
+                                                               :min-width 900
+                                                               :layout-class 'capi:column-layout
+                                                               :items   '("FREE TEXT")))))))
+              )
     :gap 20
     :x 0
     :min-width 1124;'(- :screen-width 50)

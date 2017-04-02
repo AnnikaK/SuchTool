@@ -78,7 +78,7 @@
 
 
 (defun generateKeywords (document-list)
-  (setq string-liste '())
+  (setq string-liste '("Free Text"))
   (setq keyword-liste (make-hash-table))
   (loop for key being the hash-key of document-list do ;for each document
         (setq  datei-string (datei-lesen-in-einen-string (gethash key document-list))) 
@@ -116,6 +116,7 @@
         (setq datei-string (make-string-input-stream datei-string))
 
         (loop while (not (equal (read-line datei-string nil 'eof) nil))  do
+              (setq current-line (read-line datei-string nil 'eof))
               (cond ((equal (char current-line 0) '#\( ) ;zeile enthaelt keyword
                      (setq index 1) ;don't want the bracket
                      (setq keyword-string "")
