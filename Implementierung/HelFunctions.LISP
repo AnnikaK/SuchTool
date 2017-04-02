@@ -28,7 +28,7 @@
 
 
 (defun intersect (p1 p2)
-  (let* ((answer '()))
+  (let ((answer '()))
     (loop while (and (not (equal p1 nil)) (not (equal p2 nil))) do
           (cond ((equal (car p1) (car p2))
                  (setq answer (append answer (list (car p1))))
@@ -36,6 +36,15 @@
                  (setq p2 (cdr p2)))
                 ((< (car p1) (car p2)) (setq p1 (cdr p1)))
                 (t (setq p2 (cdr p2))))) answer))
+
+
+;ACHTUNG: Die Term-Liste muss zuvor nach aufsteigender Term-Frequency sortiert worden sein!! Hier Annahme: Auswetung des jeweiligen terms liefert die Postings-Liste
+(defun intersectConjunctive (termList)
+  (let ((result (eval (car termList))) (terms (cdr termList)))
+    (loop while (and (not (equal terms nil)) (not (equal result nil))) do
+          (setq result (intersect result (eval (car terms)))) ;die kleinste/erste posting list nacheinander mit allen restlichen intersecten
+          (setq terms (cdr terms))) result))
+          
 
 
 
@@ -49,7 +58,10 @@
 
 (setq a '(1 34 345 900))
 (setq b '(34 50 900 12321))
+(setq c nil)
+
 
 (intersect a b)
-a
-b
+
+
+(intersectConjunctive '(a b c))
