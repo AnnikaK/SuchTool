@@ -14,10 +14,10 @@
 
 (defun merge-lists (aLeft aRight)
   (let* ((size (+ (length aLeft) (length aRight)))
-         (b (make-array size)))
+         (b (make-array size :fill-pointer 0)))
     (loop for x from 0 to size do
           (let ((x (car aLeft))(y (car aRight))) ;get first elem
-            (when (and (not (equal null x)) (not (equal null y)))
+            (when (and (not (equal nil x)) (not (equal nil y)))
               (if (<= x y) 
                   (progn (setq aLeft (cdr aLeft)) ;set list to rest
                     (vector-push x b)) ;add smaller list item ro sorted list
@@ -26,7 +26,10 @@
 (mapcar (lambda (x) (vector-push x b)) (append aLeft aRight)) ;one of the lists has to be empty (x or y nil) --> this is the rest
 (coerce b 'list)))
 
+;;;---------------------------------------------------------------------------------------------------------------------------------List Functions for boolean Queries
 
+
+;entspricht AND
 (defun intersect (p1 p2)
   (let ((answer '()))
     (loop while (and (not (equal p1 nil)) (not (equal p2 nil))) do
@@ -37,6 +40,18 @@
                 ((< (car p1) (car p2)) (setq p1 (cdr p1)))
                 (t (setq p2 (cdr p2))))) answer))
 
+;entspricht OR (fasst, im Gegensatz zu merge, doppelte zusammen)
+(defun unionLists (p1 p2)
+  (let ((answer '()))
+    (loop while (and (not (equal p1 nil)) (not (equal p2 nil))) do
+          (cond ((equal (car p1) (car p2)) ;no doubles
+                 (setq answer (append answer (list (car p1))))
+                 (setq p1 (cdr p1))
+                 (setq p2 (cdr p2)))
+                ((< (car p1) (car p2)) (setq answer (append answer (list (car p1)))) (setq p1 (cdr p1)))
+                (t (setq answer (append answer (list (car p2)))) (setq p2 (cdr p2)))))
+    (mapcar (lambda (x) (setq answer (append answer (list x)))) (append p1 p2)) answer))
+
 
 ;ACHTUNG: Die Term-Liste muss zuvor nach aufsteigender Term-Frequency sortiert worden sein!! Hier Annahme: Auswetung des jeweiligen terms liefert die Postings-Liste
 (defun intersectConjunctive (termList)
@@ -44,8 +59,21 @@
     (loop while (and (not (equal terms nil)) (not (equal result nil))) do
           (setq result (intersect result (eval (car terms)))) ;die kleinste/erste posting list nacheinander mit allen restlichen intersecten
           (setq terms (cdr terms))) result))
-          
 
+(defun unionConjunctive (termList)
+ (let ((result (eval (car termList))) (terms (cdr termList)))
+    (loop while (and (not (equal terms nil)) (not (equal result nil))) do
+          (setq result (intersect result (eval (car terms)))) ;die kleinste/erste posting list nacheinander mit allen restlichen intersecten
+          (setq terms (cdr terms))) result))
+
+
+;delete everything in p1 which occurs in p2  
+;konkret: p1 enthaelt alle vorkommen von a, p2 alle von b. wenn die anfrage a and (not b) lautet, wird aus p1 (Vorkommen von a) alles geloescht, was sich mit p2 ueberschneidet (Vorkommen von b)
+(defun differenceLists (p1 p2)
+  (let ((answers '()))
+    (mapcar (lambda (x)
+              (if (not (member x p2))
+                  (setq answers (append answers (list x))))) p1)  answers))
 
 
 
@@ -58,10 +86,16 @@
 
 (setq a '(1 34 345 900))
 (setq b '(34 50 900 12321))
-(setq c nil)
+(setq c '(30))
 
 
 (intersect a b)
 
 
 (intersectConjunctive '(a b c))
+
+(merge-lists (merge-lists a b) c)
+
+(unionLists (unionLists a b) c)
+
+(differenceLists a b)
