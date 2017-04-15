@@ -1,5 +1,9 @@
 
 
+
+
+
+
 (defun datei-lesen-in-einen-string (dateiname &key (max-anz nil))
 ; input: ein dateiname (vollstängiger Pfad)
 ; value: ein String.
@@ -78,7 +82,7 @@
 
 
 (defun generateKeywords (document-list)
-  (setq string-liste '("Free Text"))
+  (setq string-liste '())
   (setq keyword-liste (make-hash-table))
   (loop for key being the hash-key of document-list do ;for each document
         (setq  datei-string (datei-lesen-in-einen-string (gethash key document-list))) 
@@ -130,6 +134,16 @@
                              (progn (setq string-liste (append string-liste (list keyword-string))) ;add to item list UI
                               (setf (gethash current-keyword keyword-liste) (list key)))
                          (setf (gethash current-keyword keyword-liste) (append (gethash current-keyword keyword-liste) (list key)))))))))) string-liste)
+
+
+
+
+(defun getAllSelectedKeywords (checkButtonPanel)
+  (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
+    (loop for x from 0 to size do
+          (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
+
+
 
                                
         

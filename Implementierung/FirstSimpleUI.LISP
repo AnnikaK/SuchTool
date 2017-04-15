@@ -107,25 +107,26 @@
                  
                  (make-instance 'capi:row-layout :gap 20 :description 
                                 (list 
-                                 (make-instance 
+                                 (setq swgui==radio-button-panel (make-instance 
                                   'capi:radio-button-panel
                                   :items (list 
-                                          (make-instance 'capi:radio-button
+                                          (setq buttonAnd (make-instance 'capi:radio-button
                                                          :text "AND"
                                                          :selected t
                                                          :selection-callback 
                                                          #'(lambda  (a interface &rest args) 
-                                                             (setq radio-button 1)))
-                                          (make-instance 'capi:radio-button
+                                                             (setq radio-button 1))))
+                                          (setq buttonOr (make-instance 'capi:radio-button
                                                          :text "OR"
                                                          :selected nil
                                                          :selection-callback 
                                                          #'(lambda  (a interface &rest args) 
-                                                             (setq radio-button 2)))))
+                                                             (setq radio-button 2)))))))
                                  (make-instance 
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
+                                              (displaySelection swgui==radio-button-panel)
                                             (print (capi:choice-selected-items swgui==keyword-panel))))))))))  ;  <__ HERE 
                 
 

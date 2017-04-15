@@ -1,3 +1,8 @@
+(defun displaySelection (radioButtonPanel)
+  (setq tmp (capi:choice-selected-item radioButtonPanel))
+  (if (equal tmp buttonAnd) 
+      (print "AND")
+    (print "OR")))
 
 
 (defun datei-lesen-in-einen-string (dateiname &key (max-anz nil))
@@ -138,7 +143,6 @@
   (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
     (loop for x from 0 to size do
           (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
-
 
 
 
