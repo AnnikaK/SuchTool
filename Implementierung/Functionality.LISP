@@ -131,6 +131,17 @@
                               (setf (gethash current-keyword keyword-liste) (list key)))
                          (setf (gethash current-keyword keyword-liste) (append (gethash current-keyword keyword-liste) (list key)))))))))) string-liste)
 
+
+
+
+(defun getAllSelectedKeywords (checkButtonPanel)
+  (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
+    (loop for x from 0 to size do
+          (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
+
+
+
+
                                
         
 

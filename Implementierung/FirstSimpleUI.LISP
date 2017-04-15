@@ -18,7 +18,12 @@
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
                                                                                                   (setf (capi:display-pane-text swgui==path-text) antwort)
-                                                                                                  (setf (capi:collection-items swgui==keyword-panel) (make-dokument-list antwort))
+                                                                                                  (setq itemList (append '("FREE TEXT") (make-dokument-list antwort)))
+
+                                                                                                  (setf (capi:collection-items swgui==keyword-panel) itemList)
+
+
+
                                                                                                   ;(setf (capi:collection-items swgui==keyword-panel) (verarbeite-datei-zeilenweise antwort))
 
                                                                                                   
@@ -121,16 +126,13 @@
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
-                                                ))))))))
+                                            (print (capi:choice-selected-items swgui==keyword-panel))))))))))  ;  <__ HERE 
                 
 
 
 
 "" "Keys:"
 
-(make-instance 'capi:row-layout
-:gap 5 
-:description (list
 
               (make-instance 'capi:column-layout 
                              :vertical-scroll t
@@ -144,13 +146,7 @@
 
 
 
-              (make-instance 
-               'capi:column-layout :gap 20
-               :description
-               (list (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
-                                                               :min-width 900
-                                                               :layout-class 'capi:column-layout
-                                                               :items   '("FREE TEXT")))))))
+              
               )
     :gap 20
     :x 0
