@@ -1,7 +1,8 @@
-
-
-
-
+(defun displaySelection (radioButtonPanel)
+  (setq tmp (capi:choice-selected-item radioButtonPanel))
+  (if (equal tmp buttonAnd) 
+      (print "AND")
+    (print "OR")))
 
 
 (defun datei-lesen-in-einen-string (dateiname &key (max-anz nil))

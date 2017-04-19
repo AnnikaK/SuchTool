@@ -1,0 +1,31 @@
+(defun split(expr-list)
+  (let ((keywords-list '())(free-text '()))
+    (mapcar (lambda (x) 
+              (if (listp x) (setq keywords-list (append (list x) keywords-list))
+                (setq free-text (append (list x) free-text))))
+            expr-list)
+ (list keywords-list free-text)))
+
+
+(defun readFileInLines (dateiname) 
+; input: ein dateiname (vollstängiger Pfad)
+; value: eine Liste mit Strings, je Zeile ein String.
+  (if (probe-file dateiname)
+      (do* ((streamin (open dateiname))
+            (currentLine (read-line streamin nil 'eof) (read-line streamin nil 'eof))
+            (lineSet nil))
+           ((equal currentLine'eof) (close streamin) (nreverse lineSet))
+        (setq lineSet (cons (list currentLine) lineSet)))
+    nil))
+
+
+
+
+(defun test()
+  (setq tmp (readFileInLines2 "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))
+  (loop for x from 0 to (length tmp) do
+       (print (car tmp))
+       (setq tmp (cdr tmp))))
+
+
+(test)
