@@ -1,0 +1,300 @@
+(|SYSTEM|::|VERSION| '(20080430.))
+#0Y_ #0Y |CHARSET|::|UTF-8|
+#Y(#:|1 36 (DEFPACKAGE :SPLIT-SEQUENCE (:USE :COMMON-LISP) ...)-1-1|
+   #18Y(00 00 00 00 00 00 00 00 20 01 DA 01 04 31 F0 3E 19 01)
+   ("SPLIT-SEQUENCE")
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|1 36 (DEFPACKAGE :SPLIT-SEQUENCE (:USE :COMMON-LISP) ...)-1-2|
+   #17Y(00 00 00 00 00 00 00 00 20 01 DA DB 31 EC 3E 19 01)
+   (("COMMON-LISP") "SPLIT-SEQUENCE")
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|1 36 (DEFPACKAGE :SPLIT-SEQUENCE (:USE :COMMON-LISP) ...)-1-3|
+   #19Y(00 00 00 00 00 00 00 00 20 01 DA DB 63 2D 03 02 3E 19 01)
+   (("SPLIT-SEQUENCE" "SPLIT-SEQUENCE-IF" "SPLIT-SEQUENCE-IF-NOT")
+    "SPLIT-SEQUENCE" |SYSTEM|::|INTERN-EXPORT|)
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|1 36 (DEFPACKAGE :SPLIT-SEQUENCE (:USE :COMMON-LISP) ...)-1-4|
+   #15Y(00 00 00 00 00 00 00 00 20 01 DA 31 D9 19 01) ("SPLIT-SEQUENCE")
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|NIL| |COMMON-LISP|::|NIL|))
+#Y(#:|38 38 (IN-PACKAGE :SPLIT-SEQUENCE)-2|
+   #17Y(00 00 00 00 00 00 00 00 20 01 DA 31 F6 0F 01 19 01)
+   ("SPLIT-SEQUENCE" |COMMON-LISP|::|*PACKAGE*|)
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|40 41 (DEFTYPE ARRAY-INDEX (&OPTIONAL #) ...)-3|
+   #24Y(00 00 00 00 00 00 00 00 20 01 DA DB DC 32 A2 DA DD 63 2D 03 04 C5 19
+        01)
+   (|SPLIT-SEQUENCE|::|ARRAY-INDEX| |SYSTEM|::|DEFTYPE-EXPANDER|
+    #Y(#:|DEFTYPE-ARRAY-INDEX|
+       #43Y(00 00 00 00 01 00 00 00 20 02 AD DA DB 2D 03 02 1D 0F 9E 5C 1C 10
+            C9 14 DF E0 AE 7B 01 61 03 19 03 AD 2F 03 19 02 9E 5C 5B 1B 6C)
+       (1. 2. |SYSTEM|::|PROPER-LIST-LENGTH-IN-BOUNDS-P|
+        |SYSTEM|::|TYPE-CALL-ERROR| #.|COMMON-LISP|::|ARRAY-DIMENSION-LIMIT|
+        |COMMON-LISP|::|INTEGER| 0.)
+       (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+    |COMMON-LISP|::|TYPE| |SYSTEM|::|%SET-DOCUMENTATION|)
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|43 44 (DECLAIM (FTYPE # SPLIT-SEQUENCE ...))-4|
+   #15Y(00 00 00 00 00 00 00 00 20 01 DA 31 62 19 01)
+   ((|COMMON-LISP|::|FTYPE|
+     (|COMMON-LISP|::|FUNCTION| (|COMMON-LISP|::|&REST| |COMMON-LISP|::|T|)
+      (|COMMON-LISP|::|VALUES| |COMMON-LISP|::|LIST| |COMMON-LISP|::|INTEGER|))
+     |SPLIT-SEQUENCE|::|SPLIT-SEQUENCE| |SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF|
+     |SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT|))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|46 49 (DECLAIM (FTYPE # SPLIT-FROM-START ...))-5|
+   #15Y(00 00 00 00 00 00 00 00 20 01 DA 31 62 19 01)
+   ((|COMMON-LISP|::|FTYPE|
+     (|COMMON-LISP|::|FUNCTION|
+      (|COMMON-LISP|::|FUNCTION| |COMMON-LISP|::|SEQUENCE|
+       |SPLIT-SEQUENCE|::|ARRAY-INDEX|
+       (|COMMON-LISP|::|OR| |COMMON-LISP|::|NULL|
+        |SPLIT-SEQUENCE|::|ARRAY-INDEX|)
+       (|COMMON-LISP|::|OR| |COMMON-LISP|::|NULL|
+        |SPLIT-SEQUENCE|::|ARRAY-INDEX|)
+       |COMMON-LISP|::|BOOLEAN|)
+      (|COMMON-LISP|::|VALUES| |COMMON-LISP|::|LIST| |COMMON-LISP|::|INTEGER|))
+     |SPLIT-SEQUENCE|::|SPLIT-FROM-START| |SPLIT-SEQUENCE|::|SPLIT-FROM-END|))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|51 132 (MACROLET (#) (DEFUN SPLIT-SEQUENCE # ...) ...)-6-1|
+   #20Y(00 00 00 00 00 00 00 00 20 01 DA 2F 01 DA DC 32 9C 3E 19 01)
+   (|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE| |SYSTEM|::|REMOVE-OLD-DEFINITIONS|
+    #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE|
+       #248Y(00 00 00 00 02 00 00 00 A6 1D 08 00 00 00 00 2B 06 7F 0B 00 00 3B
+             09 01 CD 0B 00 01 3B 08 01 00 0B 00 02 3D 07 3D 06 3D 05 3B 04 01
+             CE 0B 00 03 3B 03 01 00 0B 00 04 3B 02 01 CF 0B 00 05 B6 72 62 1B
+             80 45 16 01 06 01 02 1D 80 55 1B 80 56 68 01 02 AC 8F 1E 04 AC 8F
+             AE 6A EB AD B0 6D 12 01 E7 ED E9 2D 06 10 16 01 1B 65 EE 68 02 01
+             68 03 02 33 02 1E AC 2C 15 01 1B 80 4D E5 AD B0 6D 0C 01 E7 E8 E9
+             2D 06 10 16 01 68 01 01 AC 8F 1E 6B AC 8E AE 67 16 01 06 01 02 1C
+             FF B3 06 01 02 1C 04 7F 00 01 02 68 01 01 68 02 02 AE 91 02 33 FF
+             B9 16 01 92 07 06 06 00 04 1D FF B8 92 07 1E 06 00 04 1D 19 AC 2C
+             17 01 14 B7 68 02 01 68 03 02 B6 B6 2D 06 16 19 0C AC 2C 18 01 1B
+             0C 93 07 05 06 00 04 1D 72 AC 2C 1A 01 14 B7 68 02 01 68 03 02 B6
+             B6 2D 06 19 19 0C)
+       (:|START| :|END| :|FROM-END| :|COUNT| :|REMOVE-EMPTY-SUBSEQS| :|TEST|
+        :|TEST-NOT| :|KEY| 0. #.#'|COMMON-LISP|::|EQL|
+        #.#'|COMMON-LISP|::|IDENTITY| |SPLIT-SEQUENCE|::|START|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-1|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 02 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        1. "a non-negative integer" |COMMON-LISP|::|UNSIGNED-BYTE|
+        |SYSTEM|::|CHECK-TYPE-FAILED| |SPLIT-SEQUENCE|::|END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-2|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 03 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        "a non-negative integer or NIL"
+        "Wrong sequence bounds. start: ~S end: ~S"
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-3|
+           #30Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 38 06 A6 FC 07 00 06
+                FA 07 00 04 F9 32 7A 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|START|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-START|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-4|
+           #29Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 38 05 A5 FB 07 00 06
+                F9 69 00 05 32 7A 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|START|)
+           |COMMON-LISP|::|NIL| 1)
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-5|
+           #31Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 64 38 05 A6 FB 07 00
+                06 FA 07 00 04 F9 32 7A 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|END|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-6|
+           #30Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 64 38 04 A5 FA 07 00
+                06 F9 69 00 05 32 7A 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|END|)
+           |COMMON-LISP|::|NIL| 1))
+       (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+       (|SPLIT-SEQUENCE|::|DELIMITER| |COMMON-LISP|::|SEQUENCE|
+        |COMMON-LISP|::|&KEY| (|SPLIT-SEQUENCE|::|START| 0.)
+        (|SPLIT-SEQUENCE|::|END| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|FROM-END| |COMMON-LISP|::|NIL|)
+        (|COMMON-LISP|::|COUNT| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|REMOVE-EMPTY-SUBSEQS| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|TEST| #'|COMMON-LISP|::|EQL|)
+        (|SPLIT-SEQUENCE|::|TEST-NOT| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|KEY| #'|COMMON-LISP|::|IDENTITY|))
+       "Return a list of subsequences in seq delimited by delimiter.\n
+If :remove-empty-subseqs is NIL, empty subsequences will be included\n
+in the result; otherwise they will be discarded.  All other keywords\n
+work analogously to those for CL:SUBSTITUTE.  In particular, the\n
+behaviour of :from-end is possibly different from other versions of\n
+this function; :from-end values of NIL and T are equivalent unless\n
+:count is supplied. The second return value is an index suitable as an\n
+argument to CL:SUBSEQ into the sequence indicating where processing\n
+stopped."
+       1))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|51 132 (MACROLET (#) (DEFUN SPLIT-SEQUENCE # ...) ...)-6-2|
+   #20Y(00 00 00 00 00 00 00 00 20 01 DA 2F 01 DA DC 32 9C 3E 19 01)
+   (|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF| |SYSTEM|::|REMOVE-OLD-DEFINITIONS|
+    #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF|
+       #198Y(00 00 00 00 02 00 00 00 A6 1D 06 00 00 00 00 2B 04 7F 09 00 00 3B
+             07 01 CB 0B 00 01 3B 06 01 00 0B 00 02 3D 05 3D 04 3D 03 3B 02 01
+             CC 0B 00 03 B4 72 62 1B 80 50 16 01 06 01 02 1D 80 60 1B 80 61 68
+             01 02 AC 8F 1E 04 AC 8F AE 6A E8 AD B0 6D 0F 01 E4 EA E6 2D 06 0D
+             16 01 1B 65 EB 68 02 01 68 03 02 33 02 1E AC 6D 12 01 B5 68 02 01
+             68 03 02 B4 B4 2D 06 13 19 0A E2 AD B0 6D 09 01 E4 E5 E6 2D 06 0D
+             16 01 68 01 01 AC 8F 1E 6B AC 8E AE 67 16 01 06 01 02 1C FF A8 06
+             01 02 1C 04 7F 00 01 02 68 01 01 68 02 02 AE 91 02 33 FF AE 16 01
+             92 05 FF B2 AC 6D 14 01 B5 68 02 01 68 03 02 B4 B4 2D 06 15 19 0A)
+       (:|START| :|END| :|FROM-END| :|COUNT| :|REMOVE-EMPTY-SUBSEQS| :|KEY| 0.
+        #.#'|COMMON-LISP|::|IDENTITY| |SPLIT-SEQUENCE|::|START|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-1|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 02 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        1. "a non-negative integer" |COMMON-LISP|::|UNSIGNED-BYTE|
+        |SYSTEM|::|CHECK-TYPE-FAILED| |SPLIT-SEQUENCE|::|END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-2|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 03 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        "a non-negative integer or NIL"
+        "Wrong sequence bounds. start: ~S end: ~S"
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-3|
+           #25Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 64 38 01 B1 69 00 04
+                32 7B 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|END|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-4|
+           #25Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 38 03 A3 F9 69 00 04
+                32 7B 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|START|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-START|)
+       (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+       (|SPLIT-SEQUENCE|::|PREDICATE| |COMMON-LISP|::|SEQUENCE|
+        |COMMON-LISP|::|&KEY| (|SPLIT-SEQUENCE|::|START| 0.)
+        (|SPLIT-SEQUENCE|::|END| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|FROM-END| |COMMON-LISP|::|NIL|)
+        (|COMMON-LISP|::|COUNT| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|REMOVE-EMPTY-SUBSEQS| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|KEY| #'|COMMON-LISP|::|IDENTITY|))
+       "Return a list of subsequences in seq delimited by items satisfying\n
+predicate.\n
+If :remove-empty-subseqs is NIL, empty subsequences will be included\n
+in the result; otherwise they will be discarded.  All other keywords\n
+work analogously to those for CL:SUBSTITUTE-IF.  In particular, the\n
+behaviour of :from-end is possibly different from other versions of\n
+this function; :from-end values of NIL and T are equivalent unless\n
+:count is supplied. The second return value is an index suitable as an\n
+argument to CL:SUBSEQ into the sequence indicating where processing\n
+stopped."
+       1))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|51 132 (MACROLET (#) (DEFUN SPLIT-SEQUENCE # ...) ...)-6-3|
+   #20Y(00 00 00 00 00 00 00 00 20 01 DA 2F 01 DA DC 32 9C C5 19 01)
+   (|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT|
+    |SYSTEM|::|REMOVE-OLD-DEFINITIONS|
+    #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT|
+       #198Y(00 00 00 00 02 00 00 00 A6 1D 06 00 00 00 00 2B 04 7F 09 00 00 3D
+             07 3D 06 3D 05 3B 04 01 CB 0B 00 01 3B 03 01 00 0B 00 02 3B 02 01
+             CC 0B 00 03 B4 72 62 1B 80 50 16 01 06 01 02 1D 80 60 1B 80 61 68
+             01 02 AC 8F 1E 04 AC 8F AE 6A E8 AD B0 6D 0F 01 E4 EA E6 2D 06 0D
+             16 01 1B 65 EB 68 02 01 68 03 02 33 02 1E AC 6D 12 01 B5 68 02 01
+             68 03 02 B7 B7 2D 06 13 19 0A E2 AD B0 6D 09 01 E4 E5 E6 2D 06 0D
+             16 01 68 01 01 AC 8F 1E 6B AC 8E AE 67 16 01 06 01 02 1C FF A8 06
+             01 02 1C 04 7F 00 01 02 68 01 01 68 02 02 AE 91 02 33 FF AE 16 01
+             92 05 FF B2 AC 6D 14 01 B5 68 02 01 68 03 02 B7 B7 2D 06 15 19 0A)
+       (:|COUNT| :|REMOVE-EMPTY-SUBSEQS| :|FROM-END| :|START| :|END| :|KEY| 0.
+        #.#'|COMMON-LISP|::|IDENTITY| |SPLIT-SEQUENCE|::|START|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT-1|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 02 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        1. "a non-negative integer" |COMMON-LISP|::|UNSIGNED-BYTE|
+        |SYSTEM|::|CHECK-TYPE-FAILED| |SPLIT-SEQUENCE|::|END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT-2|
+           #16Y(00 00 00 00 01 00 00 00 20 02 9E 0C 00 03 19 02)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+        "a non-negative integer or NIL"
+        "Wrong sequence bounds. start: ~S end: ~S"
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT-3|
+           #25Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 64 38 01 B1 69 00 04
+                32 7C 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|END|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-END|
+        #Y(|SPLIT-SEQUENCE|::|SPLIT-SEQUENCE-IF-NOT-4|
+           #25Y(00 00 00 00 02 00 00 00 26 03 69 00 01 AF 38 03 A3 F9 69 00 04
+                32 7C 19 03)
+           (|COMMON-LISP|::|NIL|)
+           (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+           (|COMMON-LISP|::|SEQUENCE| |SPLIT-SEQUENCE|::|START|)
+           |COMMON-LISP|::|NIL| 1)
+        |SPLIT-SEQUENCE|::|SPLIT-FROM-START|)
+       (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+       (|SPLIT-SEQUENCE|::|PREDICATE| |COMMON-LISP|::|SEQUENCE|
+        |COMMON-LISP|::|&KEY| (|COMMON-LISP|::|COUNT| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|REMOVE-EMPTY-SUBSEQS| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|FROM-END| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|START| 0.)
+        (|SPLIT-SEQUENCE|::|END| |COMMON-LISP|::|NIL|)
+        (|SPLIT-SEQUENCE|::|KEY| #'|COMMON-LISP|::|IDENTITY|))
+       "Return a list of subsequences in seq delimited by items satisfying\n
+(CL:COMPLEMENT predicate).\n
+If :remove-empty-subseqs is NIL, empty subsequences will be included\n
+in the result; otherwise they will be discarded.  All other keywords\n
+work analogously to those for CL:SUBSTITUTE-IF-NOT.  In particular,\n
+the behaviour of :from-end is possibly different from other versions\n
+of this function; :from-end values of NIL and T are equivalent unless\n
+:count is supplied. The second return value is an index suitable as an\n
+argument to CL:SUBSEQ into the sequence indicating where processing\n
+stopped."
+       1))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|134 149 (DEFUN SPLIT-FROM-END (POSITION-FN SEQUENCE START ...) ...)-7|
+   #20Y(00 00 00 00 00 00 00 00 20 01 DA 2F 01 DA DC 32 9C C5 19 01)
+   (|SPLIT-SEQUENCE|::|SPLIT-FROM-END| |SYSTEM|::|REMOVE-OLD-DEFINITIONS|
+    #Y(|SPLIT-SEQUENCE|::|SPLIT-FROM-END|
+       #102Y(00 00 00 00 06 00 00 00 26 00 01 04 DA A5 FC 1B 10 AD 72 64 A2 1B
+             80 49 AF AD 80 B8 03 1B 32 A0 FC B7 B7 B2 36 02 1C 01 C6 14 97 0A
+             82 01 35 03 B0 96 04 91 01 2F 03 92 06 1B 93 07 06 AC B4 90 01 34
+             4E B6 96 04 B2 72 60 7B 01 92 02 4A 9D FA FB 16 01 85 00 AF B6 91
+             01 31 44 AD 72 64 B0 32 B1 14 40 02 19 0C)
+       (0. -1.) (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+       (|SPLIT-SEQUENCE|::|POSITION-FN| |COMMON-LISP|::|SEQUENCE|
+        |SPLIT-SEQUENCE|::|START| |SPLIT-SEQUENCE|::|END|
+        |COMMON-LISP|::|COUNT| |SPLIT-SEQUENCE|::|REMOVE-EMPTY-SUBSEQS|)
+       |COMMON-LISP|::|NIL| 1))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|151 167 (DEFUN SPLIT-FROM-START (POSITION-FN SEQUENCE START ...) ...)-8|
+   #20Y(00 00 00 00 00 00 00 00 20 01 DA 2F 01 DA DC 32 9C C5 19 01)
+   (|SPLIT-SEQUENCE|::|SPLIT-FROM-START| |SYSTEM|::|REMOVE-OLD-DEFINITIONS|
+    #Y(|SPLIT-SEQUENCE|::|SPLIT-FROM-START|
+       #98Y(00 00 00 00 06 00 00 00 26 00 B1 72 62 01 04 DA A7 FC 1B 10 AD A2
+            1B 80 44 AF AD 80 B8 03 1B 31 AF 81 B1 04 B8 B8 B2 36 02 1C 01 A2
+            14 B6 82 01 36 03 14 B1 91 01 2F 03 92 07 1A 93 08 06 AC B5 90 01
+            34 50 B7 B1 B1 72 60 7B 01 92 02 4B 9D FA FB 16 01 85 00 AF B6 91
+            01 34 45 AD A1 14 40 02 19 0D)
+       (0.) (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|)
+       (|SPLIT-SEQUENCE|::|POSITION-FN| |COMMON-LISP|::|SEQUENCE|
+        |SPLIT-SEQUENCE|::|START| |SPLIT-SEQUENCE|::|END|
+        |COMMON-LISP|::|COUNT| |SPLIT-SEQUENCE|::|REMOVE-EMPTY-SUBSEQS|)
+       |COMMON-LISP|::|NIL| 1))
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))
+#Y(#:|169 169 (PUSHNEW :SPLIT-SEQUENCE *FEATURES*)-9|
+   #21Y(00 00 00 00 00 00 00 00 20 01 DA 6B 01 38 03 31 C5 0F 01 19 01)
+   (:|SPLIT-SEQUENCE| |COMMON-LISP|::|*FEATURES*|)
+   (|COMMON-LISP|::|T| |COMMON-LISP|::|T| |COMMON-LISP|::|T|))

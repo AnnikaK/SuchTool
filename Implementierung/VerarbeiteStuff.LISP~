@@ -1,21 +1,44 @@
+(defvar *keyword-dict* (make-hash-table))
+
+;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
-  (let ((keywords-list '())(free-text '()))
+  (setq keywords-list '())
+  (setq free-text '())
+  (setq stack '())
+  (mapcar (lambda (x) 
+            (if ( > (length x) 0) 
+                (cond ((and (equal (char x 0) '#\() (equal (char x (- (length x) 1)) '#\))) (setq keywords-list (cons x keywords-list))) ;add keyword
+                      ((and (equal (char x 0) '#\() (really-opening x)) (setq stack (cons x stack))) ;start of keyword over multiple lines, add to stack
+                      ((> (length stack) 0) ;unfinished keyword on stack?
+                       (if (and (equal (char x (- (length x) 1)) '#\)) (really-closing x)) (progn (setq keywords-list (cons (merge-multiple-line-keyword stack x) keywords-list)) (setq stack '())) ;keyword closing, merge stacked lines and add complete keyword
+                         (setq stack (cons x stack)))) ;not closing yet, add to stack
+                      (t (setq free-text (cons x free-text))))))  ;free text
+          expr-list) 
+  (list (nreverse keywords-list) (nreverse free-text)))
+
+
+(defun merge-multiple-line-keyword (stack curr)
+  (let ((expr curr))
     (mapcar (lambda (x)
-              (if (isList x) (setq keywords-list (append (list x) keywords-list))
-                (setq free-text (append (list x) free-text))))
-            expr-list) 
- (list keywords-list free-text)))
+          (setq expr (concatenate 'string x expr))) stack)
+    expr))
 
 
-(defun isList (x)
-  (if ( > (length x) 0) 
-      (if (and (equal (char x 0) '#\() (equal (char x (- (length x) 1)) '#\)))
-          t nil)
-    nil))
+;check if ")" is left over 
+(defun really-closing (x) 
+  (let ((numberOpening (count '#\( x :test #'equal)) (numberClosing (count '#\) x :test #'equal)))
+    (equal 1 (- numberClosing numberOpening))))
+
+;check if "(" is left over 
+(defun really-opening (x) 
+  (let ((numberOpening (count '#\( x :test #'equal)) (numberClosing (count '#\) x :test #'equal)))
+    (equal 1 (- numberOpening numberClosing))))
+   
+   
 
 
 (defun readFileInLines (dateiname) 
-; input: ein dateiname (vollstängiger Pfad)
+; input: ein dateiname (vollstaengiger Pfad)
 ; value: eine Liste mit Strings, je Zeile ein String.
   (if (probe-file dateiname)
       (do* ((streamin (open dateiname))
@@ -27,18 +50,54 @@
 
 
 
+;;;;---------------------------------------------------------------------------------------------------------
 
 
 
+;form: dictionary mit keywords mit dem keyword-namen [symbol] als key und entries in der form (docID type content)
+
+(defun process-keyword-list (keyword-list docID)
+  (do* ((k-list keyword-list (cdr k-list)) (k (car k-list) (car k-list))) ;iterate over keyword list, k is the whole term!
+       ((equal k-list nil) nil)
+    (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
+
+    (setq splitted-string (split-sequence:SPLIT-SEQUENCE #\Space k))
+    (print splitted-string)))
+
+
+
+   ; (setq entry (list docID  type content))
+   ;(setq key (read-from-string k)) 
+    ;(if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
+   ;   (setf (gethash key *keyword-dict*) (list entry))))) ;new entry for keyword
+ 
+            
+         
+
+
+
+
+
+
+
+;;;;---------------------------------------------------------------------------------------------------------
 
 (defun test(l)
-  (loop for x from 0 to (length l) do
+  (loop for x from 0 to (- (length l) 1) do
        (print (car l))
        (setq l (cdr l))))
+
+(defun printDict (dict)
+  (loop for key being the hash-key of dict do 
+        (print key)(print (gethash key dict))))
+
 
 
 
 (test (cdr (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))))
 
 
+(process-keyword-list (car (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))) 1)
 
+
+;(printDict *keyword-dict*)
