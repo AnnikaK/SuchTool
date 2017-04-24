@@ -1,11 +1,17 @@
 (defun split(expr-list)
   (let ((keywords-list '())(free-text '()))
     (mapcar (lambda (x)
-              (print (type-of x))
               (if (isList x) (setq keywords-list (append (list x) keywords-list))
                 (setq free-text (append (list x) free-text))))
-            expr-list)
+            expr-list) 
  (list keywords-list free-text)))
+
+
+(defun isList (x)
+  (if ( > (length x) 0) 
+      (if (and (equal (char x 0) '#\() (equal (char x (- (length x) 1)) '#\)))
+          t nil)
+    nil))
 
 
 (defun readFileInLines (dateiname) 
@@ -25,16 +31,14 @@
 
 
 
-(defun test()
-  (setq tmp (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))
-  (loop for x from 0 to (length tmp) do
-       (print (car tmp))
-       (setq tmp (cdr tmp))))
+(defun test(l)
+  (loop for x from 0 to (length l) do
+       (print (car l))
+       (setq l (cdr l))))
 
 
 
-(split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))
+(test (cdr (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))))
 
 
 
-(nth 3 "blag4") 
