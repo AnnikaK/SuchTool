@@ -126,6 +126,7 @@
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
+                                              (displaySelection swgui==radio-button-panel)
                                             (print (capi:choice-selected-items swgui==keyword-panel))))))))))  ;  <__ HERE 
                 
 
