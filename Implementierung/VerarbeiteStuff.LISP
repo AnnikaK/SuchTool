@@ -1,4 +1,8 @@
-(defvar *keyword-dict* (make-hash-table))
+(defvar *keyword-dict* (make-hash-table)) ;key is term, value is posting list with doc-IDs
+
+(defvar *documents* (make-hash-table)) ;key is docID, value is tuple (docPath docVector)
+(defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
+
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
@@ -74,7 +78,7 @@
      (setq current (split-name-content k)) 
     ;TODO: text content (cdr current)
      (setq key (read-from-string (car current)))
-     (setq entry id)
+     (setq entry docID)
      
      
      (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
@@ -82,23 +86,22 @@
   
 
 
-;makes a list of all document paths
-(defun createDocumentList (directory-name)
-  (let (document-list '()) 
+
+(defun createDocumentDictionary(directory-name)
+  (let ((id 0))
      (mapcar (lambda (x) 
-           (setq document-list (cons x document-list))) ;path in docID speichern 
-         (directory directory-name))
-     document-list))
+           (setf (gethash id *documents*) (list x '())) ;save document as tuple (path doc-vector) in dictionary
+           (setq id (+ 1 id)))
+         (directory directory-name))))
+  
 
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
-  (setq documents (createDocumentList directory-name))
-  (setq id 0)
-  (mapcar (lambda (x) 
-            (process-keyword-list (car (split (readFileInLines x))) id)
-            (setq id (+ 1 id)))
-                  documents) (getKeys *keyword-dict*))
+  (createDocumentDictionary directory-name)
+  (loop for docID being the hash-key of *documents* do 
+            (process-keyword-list (car (split (readFileInLines (car (gethash docID *documents*))))) docID))
+  (getKeys *keyword-dict*))
 
          
 

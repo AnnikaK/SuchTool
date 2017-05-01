@@ -50,36 +50,70 @@
 
 
 
+
 ;;;;---------------------------------------------------------------------------------------------------------
 
 
 
-;form: dictionary mit keywords mit dem keyword-namen [symbol] als key und entries in der form (docID type content)
 
+(defun split-name-content (str)
+  (cond ((> (length str) 0)
+         (setq j (position #\Space str :start 0))
+          (setq key-name (subseq str 0 j))
+          (setq key-content (subseq str j (length str)))
+          (list key-name key-content))))
+
+
+
+;form: dictionary mit keywords mit dem keyword-namen [symbol] als key und entries in der form (docID type content)
 (defun process-keyword-list (keyword-list docID)
   (do* ((k-list keyword-list (cdr k-list)) (k (car k-list) (car k-list))) ;iterate over keyword list, k is the whole term!
        ((equal k-list nil) nil)
-    (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
+        (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
+      
+     (setq current (split-name-content k)) 
+    ;TODO: text content (cdr current)
+     (setq key (read-from-string (car current)))
+     (setq entry id)
+     
+     
+     (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
+          (setf (gethash key *keyword-dict*) (list entry))))) ;new entry for keyword
+  
 
-    (setq splitted-string (split-sequence:SPLIT-SEQUENCE #\Space k))
-    (print splitted-string)))
+
+;makes a list of all document paths
+(defun createDocumentList (directory-name)
+  (let (document-list '()) 
+     (mapcar (lambda (x) 
+           (setq document-list (cons x document-list))) ;path in docID speichern 
+         (directory directory-name))
+     document-list))
 
 
+;has to do all init steps, called when directory selected
+(defun onSelected (directory-name)
+  (setq documents (createDocumentList directory-name))
+  (setq id 0)
+  (mapcar (lambda (x) 
+            (process-keyword-list (car (split (readFileInLines x))) id)
+            (setq id (+ 1 id)))
+                  documents) (getKeys *keyword-dict*))
 
-   ; (setq entry (list docID  type content))
-   ;(setq key (read-from-string k)) 
-    ;(if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
-   ;   (setf (gethash key *keyword-dict*) (list entry))))) ;new entry for keyword
- 
-            
          
 
 
+;returns all keys from  dictionary sorted alphabetically (+ freitext as special keyword)
+(defun getKeys (dict)
+  (let ((keylist '()))
+  (loop for key being the hash-key of dict do 
+        (setq keylist (cons key keylist)))
+ (cons "FREITEXT" (sort keylist 'string<))))
 
 
 
 
-
+;;;TESTING STUFF
 ;;;;---------------------------------------------------------------------------------------------------------
 
 (defun test(l)
@@ -93,11 +127,8 @@
 
 
 
+;test (cdr (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))))
 
-(test (cdr (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))))
+;process-keyword-list (car (split (readFileInLines "H:\\SuchTool-develop\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))) 1)
 
-
-(process-keyword-list (car (split (readFileInLines "C:\\Users\\kreme\\OneDrive\\PractisingLisp\\Lisp\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))) 1)
-
-
-;(printDict *keyword-dict*)
+;(printDict *keyword-dict*)                 
