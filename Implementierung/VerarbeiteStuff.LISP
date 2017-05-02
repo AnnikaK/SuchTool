@@ -76,7 +76,6 @@
         (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
       
      (setq current (split-name-content k)) 
-    ;TODO: text content (cdr current)
      (setq key (read-from-string (car current)))
      (setq entry docID)
      
@@ -98,10 +97,13 @@
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
+ (let ((vocabulary '()))
   (createDocumentDictionary directory-name)
   (loop for docID being the hash-key of *documents* do 
-            (process-keyword-list (car (split (readFileInLines (car (gethash docID *documents*))))) docID))
-  (getKeys *keyword-dict*))
+        (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
+            (process-keyword-list (first current-doc) docID)
+            (setup-vocabulary (second current-doc) vocabulary))
+  (getKeys *keyword-dict*)))
 
          
 
@@ -114,6 +116,17 @@
  (cons "FREITEXT" (sort keylist 'string<))))
 
 
+;1.Tokenize 2.Remove Duplicates
+(defun setup-vocabulary (string-liste-doc vocabulary)
+  (mapcar (lambda (x) 
+           (print (split-sequence:SPLIT-SEQUENCE #\Space x :remove-empty-subseqs t))) ;<----------------HERE
+          string-liste-doc))
+  
+
+;(mapcar (lambda (x)
+ ;           (print (split-sequence x
+   ;                    :remove-empty-subseqs t))
+    ;      string-liste-doc)))
 
 
 ;;;TESTING STUFF
