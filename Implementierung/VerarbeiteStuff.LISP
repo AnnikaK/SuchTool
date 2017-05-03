@@ -1,7 +1,6 @@
 (defvar *keyword-dict* (make-hash-table)) ;key is term, value is posting list with doc-IDs
 
 (defvar *documents* (make-hash-table)) ;key is docID, value is tuple (docPath docVector)
-(defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
 
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
@@ -97,12 +96,14 @@
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
- (let ((vocabulary '()))
+  (let ((free-text '()))
   (createDocumentDictionary directory-name)
   (loop for docID being the hash-key of *documents* do 
         (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
-            (process-keyword-list (first current-doc) docID)
-            (setup-vocabulary (second current-doc) vocabulary))
+        (process-keyword-list (first current-doc) docID)
+        (setq free-text (cons (list docID (second current-doc)) free-text))
+        (add-to-vocabulary (second current-doc)))
+  (create-term-dictionary)
   (getKeys *keyword-dict*)))
 
          
@@ -116,18 +117,6 @@
  (cons "FREITEXT" (sort keylist 'string<))))
 
 
-;1.Tokenize 2.Remove Duplicates
-(defun setup-vocabulary (string-liste-doc vocabulary)
-  (mapcar (lambda (x) 
-           (print (split-sequence:SPLIT-SEQUENCE #\Space x :remove-empty-subseqs t))) ;<----------------HERE
-          string-liste-doc))
-  
-
-;(mapcar (lambda (x)
- ;           (print (split-sequence x
-   ;                    :remove-empty-subseqs t))
-    ;      string-liste-doc)))
-
 
 ;;;TESTING STUFF
 ;;;;---------------------------------------------------------------------------------------------------------
@@ -139,7 +128,8 @@
 
 (defun printDict (dict)
   (loop for key being the hash-key of dict do 
-        (print key)(print (gethash key dict))))
+        (print key)
+        (print (gethash key dict))))
 
 
 
@@ -147,4 +137,4 @@
 
 ;process-keyword-list (car (split (readFileInLines "H:\\SuchTool-develop\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))) 1)
 
-;(printDict *keyword-dict*)                 
+;(printDict *terms*)                 

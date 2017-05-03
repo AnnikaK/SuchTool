@@ -1,4 +1,8 @@
-(defvar *keyword-dict* (make-hash-table))
+(defvar *keyword-dict* (make-hash-table)) ;key is term, value is posting list with doc-IDs
+
+(defvar *documents* (make-hash-table)) ;key is docID, value is tuple (docPath docVector)
+(defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
+
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
@@ -72,9 +76,8 @@
         (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
       
      (setq current (split-name-content k)) 
-    ;TODO: text content (cdr current)
      (setq key (read-from-string (car current)))
-     (setq entry id)
+     (setq entry docID)
      
      
      (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
@@ -82,23 +85,25 @@
   
 
 
-;makes a list of all document paths
-(defun createDocumentList (directory-name)
-  (let (document-list '()) 
+
+(defun createDocumentDictionary(directory-name)
+  (let ((id 0))
      (mapcar (lambda (x) 
-           (setq document-list (cons x document-list))) ;path in docID speichern 
-         (directory directory-name))
-     document-list))
+           (setf (gethash id *documents*) (list x '())) ;save document as tuple (path doc-vector) in dictionary
+           (setq id (+ 1 id)))
+         (directory directory-name))))
+  
 
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
-  (setq documents (createDocumentList directory-name))
-  (setq id 0)
-  (mapcar (lambda (x) 
-            (process-keyword-list (car (split (readFileInLines x))) id)
-            (setq id (+ 1 id)))
-                  documents) (getKeys *keyword-dict*))
+ (let ((vocabulary '()))
+  (createDocumentDictionary directory-name)
+  (loop for docID being the hash-key of *documents* do 
+        (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
+            (process-keyword-list (first current-doc) docID)
+            (setup-vocabulary (second current-doc) vocabulary))
+  (getKeys *keyword-dict*)))
 
          
 
@@ -111,6 +116,17 @@
  (cons "FREITEXT" (sort keylist 'string<))))
 
 
+;1.Tokenize 2.Remove Duplicates
+(defun setup-vocabulary (string-liste-doc vocabulary)
+  (mapcar (lambda (x) 
+           (print (split-sequence:SPLIT-SEQUENCE #\Space x :remove-empty-subseqs t))) ;<----------------HERE
+          string-liste-doc))
+  
+
+;(mapcar (lambda (x)
+ ;           (print (split-sequence x
+   ;                    :remove-empty-subseqs t))
+    ;      string-liste-doc)))
 
 
 ;;;TESTING STUFF
