@@ -20,16 +20,7 @@
                                                                                                   (setf (capi:display-pane-text swgui==path-text) antwort)
                                                                                                   (setq itemList (onSelected antwort))
 
-                                                                                                  (setf (capi:collection-items swgui==keyword-panel) itemList)
-
-
-
-                                                                                                  ;(setf (capi:collection-items swgui==keyword-panel) (verarbeite-datei-zeilenweise antwort))
-
-                                                                                                  
-                                                                                                  
-                                                                                                  
-                                                                                                  )))))))
+                                                                                                  (setf (capi:collection-items swgui==keyword-panel) itemList))))))))
           
     
 

@@ -2,6 +2,7 @@
 
 (defvar *documents* (make-hash-table)) ;key is docID, value is tuple (docPath docVector)
 
+(defvar *free-text* '())
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
@@ -88,7 +89,7 @@
 (defun createDocumentDictionary(directory-name)
   (let ((id 0))
      (mapcar (lambda (x) 
-           (setf (gethash id *documents*) (list x '())) ;save document as tuple (path doc-vector) in dictionary
+           (setf (gethash id *documents*) (list x)) ;save document as tuple (path doc-vector) in dictionary
            (setq id (+ 1 id)))
          (directory directory-name))))
   
@@ -96,15 +97,15 @@
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
-  (let ((free-text '()))
-  (createDocumentDictionary directory-name)
-  (loop for docID being the hash-key of *documents* do 
-        (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
-        (process-keyword-list (first current-doc) docID)
-        (setq free-text (cons (list docID (second current-doc)) free-text))
-        (add-to-vocabulary (second current-doc)))
-  (create-term-dictionary)
-  (getKeys *keyword-dict*)))
+   (createDocumentDictionary directory-name)
+   (loop for docID being the hash-key of *documents* do 
+          (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
+          (process-keyword-list (first current-doc) docID)
+          (setq *free-text* (cons (list docID (second current-doc)) *free-text*))
+          (add-to-vocabulary (second current-doc)))
+    (create-term-dictionary)
+    (create-document-vectors *free-text*)
+    (getKeys *keyword-dict*))
 
          
 

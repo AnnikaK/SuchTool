@@ -18,7 +18,7 @@
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
                                                                                                   (setf (capi:display-pane-text swgui==path-text) antwort)
-                                                                                                  (setq itemList (append '("FREE TEXT") (make-dokument-list antwort)))
+                                                                                                  (setq itemList (onSelected antwort))
 
                                                                                                   (setf (capi:collection-items swgui==keyword-panel) itemList)
 
