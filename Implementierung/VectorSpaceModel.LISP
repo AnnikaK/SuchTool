@@ -1,6 +1,7 @@
 (defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
 (defvar *special-characters* '(#\# #\' #\" #\\ #\/))
 (defvar *vocabulary* '())
+(symbol-plist 'document-vectors) 
 
 (defun add-to-vocabulary (doc-text)
    (mapcar (lambda (x)
@@ -31,17 +32,23 @@
          (setq document-vector (make-hash-table)) ;only entries for existing terms, if no entry than its zero -> less memory necessary
          (setq current-element (car free-text))
          (setq free-text (cdr free-text))
-         (setq docID (first current-element))
          (setq text-content (second current-element))
-         (mapcar (lambda (x)
-                   (setq words (process-string x))
-                   (mapcar (lambda (w) 
-                             (setq index (gethash w *terms*))
-                             (if (gethash index document-vector) (setf (gethash index document-vector) (+ 1 (gethash index document-vector))) ;increase term frequency
-                               (setf (gethash index document-vector) 1))) ;create new entry
-                           words))
-                   text-content)
-         (setf (gethash docID *documents*) (append (list document-vector) (gethash docID *documents*))))))
+         (setq docID (first current-element))
+         (symbol-plist (make-symbol (write-to-string docID)))
+         (cond ((not (equal nil docID))
+                (mapcar (lambda (x)
+                          (setq words (process-string x))
+                          (mapcar (lambda (w) 
+                                    (setq index (gethash w *terms*))
+                                    (if (gethash index document-vector) (setf (gethash index document-vector) (+ 1 (gethash index document-vector))) ;increase term frequency
+                                      (setf (gethash index document-vector) 1))) ;create new entry
+                                  words))
+                        text-content)
+               (setf (get 'document-vectors docID) document-vector))))
+   (symbol-plist 'document-vectors)))
+
+
+
          
          
 

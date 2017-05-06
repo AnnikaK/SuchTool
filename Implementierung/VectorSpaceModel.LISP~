@@ -41,7 +41,7 @@
                                (setf (gethash index document-vector) 1))) ;create new entry
                            words))
                    text-content)
-         (setq (gethash docID *documents*) (append document-vector (gethash docID *documents*))))))
+         (setf (gethash docID *documents*) (append (list document-vector) (gethash docID *documents*))))))
          
          
 
