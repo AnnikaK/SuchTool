@@ -2,6 +2,9 @@
 (defvar *special-characters* '(#\# #\' #\" #\\ #\/))
 (defvar *vocabulary* '())
 
+(defstruct doc-vector termindex termfrequency
+
+
 (defun add-to-vocabulary (doc-text)
    (mapcar (lambda (x)
             (setq words (process-string x))
@@ -19,33 +22,57 @@
     (mapcar (lambda (x)
               ;(setq term (ignore-errors (read-from-string (delete-if (lambda (c) (member c *special-characters*)) x))))
                      (setq term x) ;TOSO: control check
-                     (setf (gethash term *terms*) index)
+                     (setf (gethash term *terms*) (make-term :index index :document-frequency 0))
                      (setq index (+ 1 index)))
               *vocabulary*)))
   
-  
-  
+ 
+
+ 
 (defun create-document-vectors (free-text)
  (let ((size (length free-text)))
    (loop for x from 0 to size do
-         (setq document-vector (make-hash-table)) ;only entries for existing terms, if no entry than its zero -> less memory necessary
-         (setq current-element (car free-text))
-         (setq free-text (cdr free-text))
+         (setq current-element (car free-text)) ;(docID text-content) , text-content ist liste mit line-strings
+         (setq free-text (cdr free-text)) 
          (setq docID (first current-element))
          (setq text-content (second current-element))
-         (mapcar (lambda (x)
-                   (setq words (process-string x))
-                   (mapcar (lambda (w) 
-                             (setq index (gethash w *terms*))
-                             (if (gethash index document-vector) (setf (gethash index document-vector) (+ 1 (gethash index document-vector))) ;increase term frequency
-                               (setf (gethash index document-vector) 1))) ;create new entry
-                           words))
-                   text-content)
-         (setf (gethash docID *documents*) (append (list document-vector) (gethash docID *documents*))))))
+         (cond ((not (equal nil docID))
+
+
+                (setq doc-vector (make-hash-table))
+                (setf (gethash 'dummy doc-vector) 'bla)
+
+               
+
+     
+                (setf (document-document-vector (gethash docID *documents*)) doc-vector)  
+               ))) (printDocuments)
+))
+
+
+
          
-         
+
+
+
+(defun printDocuments () 
+  (loop for key being the hash-key of *documents* do 
+        (setq docID key)
+        (printDict (document-document-vector (gethash docID *documents*)))))
+        
+
 
 
          
          
   
+
+ (mapcar (lambda (line)
+                          (setq words (process-string line))
+                          (mapcar (lambda (word)
+                                    (setq wordindex (first (gethash word *terms*)))
+                                    (setq wordindex (make-symbol (write-to-string wordindex)))
+                                    (if (get doc-vector wordindex) (setf (get doc-vector wordindex) (+ 1 (get doc-vector wordindex)))
+                                      (setf (get doc-vector wordindex) 1))) words)
+
+                          ) text-content)
