@@ -1,4 +1,4 @@
-(defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
+(defvar *terms* (make-hash-table :test 'equalp)) ;key is term, value is tuple (vector-index document-frequency)
 (defvar *special-characters* '(#\# #\' #\" #\\ #\/))
 (defvar *vocabulary* '())
 
@@ -37,25 +37,23 @@
          (setq text-content (second current-element))
          (cond ((not (equal nil docID))
                 (setq doc-vector (make-hash-table))
-
                 (mapcar (lambda (line)
                           (setq words (process-string line))
                           (mapcar (lambda (word)
                                     (setq current-term (gethash word *terms*))
                                     (cond ((not (equal nil current-term))
-                                          (setq wortindex (term-index current-term))
-                                          (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector)))
-                                            (setf (gethash wortindex doc-vector) 1))))) words)
+                                           (setq wortindex (term-index current-term))
+                                           (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector)))
+                                             (setf (gethash wortindex doc-vector) 1))))) words)
 
                           ) text-content)
 
                 (setf (document-document-vector (gethash docID *documents*)) doc-vector)  
-               ))) (printDocuments)
+               ))) (printDocuments) ;for testing!!!
 ))
 
 
-
-         
+;;;;----------------------------------------------------------------------------------------
 
 
 
@@ -64,10 +62,18 @@
         (setq docID key)
         (printDict (document-document-vector (gethash docID *documents*)))))
         
+(defun printTerms () 
+  (loop for key being the hash-key of *terms* do 
+        (print key)
+        (setq value (gethash key *terms*))
+        (print (term-index value))
+        (print (term-document-frequency value))))
+
+;(printTerms)
+
+(printDict *documents*)
+
+(printDict (document-document-vector (gethash 19 *documents*)))
 
 
-
-         
-         
-  
-(printDict *terms*)
+(gethash "DFKI" *terms*)

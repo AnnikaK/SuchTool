@@ -4,6 +4,9 @@
 
 (defvar *free-text* '())
 
+(defstruct document path document-vector)
+(defstruct term index document-frequency)
+
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
   (setq keywords-list '())
@@ -89,7 +92,7 @@
 (defun createDocumentDictionary(directory-name)
   (let ((id 0))
      (mapcar (lambda (x) 
-           (setf (gethash id *documents*) (list x)) ;save document as tuple (doc-vector path) in dictionary
+           (setf (gethash id *documents*) (make-document :path x :document-vector nil)) ;save document as tuple (doc-vector path) in dictionary
            (setq id (+ 1 id)))
          (directory directory-name))))
   
@@ -99,7 +102,7 @@
 (defun onSelected (directory-name)
    (createDocumentDictionary directory-name)
    (loop for docID being the hash-key of *documents* do 
-          (setq current-doc (split (readFileInLines (car (gethash docID *documents*)))))
+          (setq current-doc (split (readFileInLines (document-path (gethash docID *documents*)))))
           (process-keyword-list (first current-doc) docID)
           (setq *free-text* (cons (list docID (second current-doc)) *free-text*))
           (add-to-vocabulary (second current-doc)))
