@@ -14,8 +14,15 @@
                     words))
           doc-text)))
 
+
+
+
 (defun process-string (str) 
   (split-sequence:SPLIT-SEQUENCE #\Space  str :remove-empty-subseqs t))
+
+
+
+
 
 (defun create-term-dictionary ()
   (let ((index 0) (term))
@@ -57,8 +64,42 @@
    ))
 
 
-(defun transfrom-document-frequency-to-idf ()) ;TODO, die :idf slots der terme nach idf-Formel anpassen 
-(defun create-tf-idf-weighting ()) ;TODO, document-vectors nach tf*idf Formel anpassen
+
+
+
+(defun transfrom-document-frequency-to-idf ()
+  (let ((number-of-documents (hash-table-count *documents*)) (df) (idf))
+    (loop for key being the hash-key of *terms* do
+          (setq current-term (gethash key *terms*))
+          (cond ((not (equal nil current-term))
+                 (setq df(term-idf current-term))
+                 (setq idf (log (/ number-of-documents df) 10))
+                 (setf (term-idf current-term) idf))))))
+                 
+                 
+
+
+
+
+(defun create-tf-idf-weighting ()
+  (let ((document) (tf))
+    (loop for docID being the hash-key of *documents* do
+        (setq document (gethash docID *documents*))
+        (setq doc-vector (document-document-vector document))
+        (loop for wortindex being the hash-key of doc-vector do
+              (setq tf (gethash wortindex doc-vector))
+              (setq current-term (gethash wortindex *terms*))
+              (cond ((not (equal nil current-term))
+                     (setq idf (term-idf current-term))
+                     (setq tf-idf (* (+ 1 (log tf 10)) idf))
+                     (setf (gethash wortindex doc-vector) tf-idf)))))))
+              
+        
+
+
+
+
+
 
 (defun create-query-vector (user-query)
  (let ((words) (max 0) (tf-idf 0))
@@ -103,7 +144,7 @@
         (print key)
         (setq value (gethash key *terms*))
         (print (term-index value))
-        (print (term-document-frequency value))))
+        (print (term-idf value))))
 
 ;(printTerms)
 
