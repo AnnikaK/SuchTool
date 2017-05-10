@@ -1,17 +1,18 @@
 (defvar *terms* (make-hash-table :test 'equalp)) ;key is term, value is tuple (vector-index document-frequency)
-(defvar *special-characters* '(#\# #\' #\" #\\ #\/))
+(defvar *special-characters* '(#\# #\' #\" #\/ #\\ #\; #\- #\( #\) #\[ #\]))
 (defvar *vocabulary* '())
-
+(defvar *query-vector*)
 
 
 (defun add-to-vocabulary (doc-text)
+  (let ((words))
    (mapcar (lambda (x)
             (setq words (process-string x))
             (mapcar (lambda (y) 
                       (cond ((not (member y *vocabulary*))
                              (setq *vocabulary* (cons y *vocabulary*)))))
                     words))
-          doc-text))
+          doc-text)))
 
 (defun process-string (str) 
   (split-sequence:SPLIT-SEQUENCE #\Space  str :remove-empty-subseqs t))
@@ -21,7 +22,7 @@
     (mapcar (lambda (x)
               ;(setq term (ignore-errors (read-from-string (delete-if (lambda (c) (member c *special-characters*)) x))))
                      (setq term x) ;TOSO: control check
-                     (setf (gethash term *terms*) (make-term :index index :document-frequency 0))
+                     (setf (gethash term *terms*) (make-term :index index :idf 0))
                      (setq index (+ 1 index)))
               *vocabulary*)))
   
@@ -29,7 +30,7 @@
 
  
 (defun create-document-vectors (free-text)
- (let ((size (length free-text)) (alreadySet))
+ (let ((size (length free-text)) (current-element) (docID) (text-content) (doc-vector) (alreadySet) (words) (current-term) (wordindex)) ;local variables
    (loop for x from 0 to size do
          (setq current-element (car free-text)) ;(docID text-content) , text-content ist liste mit line-strings
          (setq free-text (cdr free-text)) 
@@ -46,19 +47,49 @@
                                            (setq wortindex (term-index current-term))
                                            (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector))) ;increase term frequency
                                              (setf (gethash wortindex doc-vector) 1))
-                                           (cond ((equal (gethash wortindex alreadySet) nil) ;increase doc-freuency
+                                           (cond ((equal (gethash wortindex alreadySet) nil) ;increase doc-freuency (has to be transformed to idf later!!!)
                                                   (setf (gethash wortindex alreadySet) t)
-                                                  (setf (term-document-frequency current-term) (+ 1 (term-document-frequency current-term)))))
-
-))) words))
+                                                  (setf (term-idf current-term) (+ 1 (term-idf current-term)))))))) words))
                         text-content)
-
                 (setf (document-document-vector (gethash docID *documents*)) doc-vector))))
- (printDocuments) ;for testing!!!
-))
+   (transfrom-document-frequency-to-idf) 
+   (create-tf-idf-weighting) 
+   ))
 
 
-;;;;----------------------------------------------------------------------------------------
+(defun transfrom-document-frequency-to-idf ()) ;TODO, die :idf slots der terme nach idf-Formel anpassen 
+(defun create-tf-idf-weighting ()) ;TODO, document-vectors nach tf*idf Formel anpassen
+
+(defun create-query-vector (user-query)
+ (let ((words) (max 0) (tf-idf 0))
+  (setq words (process-string user-query))
+  (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
+  (mapcar (lambda (word)  ;get term frequencies 
+            (setq current-term (gethash word *terms*))
+            (cond ((not (equal nil current-term))
+                   (setq wortindex (term-index current-term))
+                   (if (gethash wortindex *query-vector*) (setf (gethash wortindex *query-vector*) (+ 1 (gethash wortindex *query-vector*)))
+                     (setf (gethash wortindex *query-vector*) 1))))) words)
+  (loop for key being the hash-key of *query-vector* do  ;find maximum term-frequency in query 
+        (setq tf (gethash key *query-vector*))
+        (cond ((> tf max) (setq max tf))))
+  (loop for key being the hash-key of *query-vector* do
+        (setq current-term (gethash key *terms*))
+        (cond ((not (equal nil current-term))  
+               (setq idf (term-idf current-term))
+               (setq tf-idf (* (/ (gethash key *query-vector*) max) idf)) ;FORMEL
+               (setf (gethash key *query-vector*) tf-idf))))))
+
+
+
+
+
+
+
+
+
+
+;;;;----------------------------------------------------------------------------------------TESTING 
 
 
 
@@ -77,8 +108,14 @@
 ;(printTerms)
 
 ;(printDict *documents*)
+;(printDict *query-vector*)
+
 
 ;(printDict (document-document-vector (gethash 2 *documents*)))
 
 
 ;(gethash "DFKI" *terms*)
+
+
+
+(create-query-vector "grillen im Mai") 
