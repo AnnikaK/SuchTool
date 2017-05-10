@@ -29,7 +29,7 @@
 
  
 (defun create-document-vectors (free-text)
- (let ((size (length free-text)))
+ (let ((size (length free-text)) (alreadySet))
    (loop for x from 0 to size do
          (setq current-element (car free-text)) ;(docID text-content) , text-content ist liste mit line-strings
          (setq free-text (cdr free-text)) 
@@ -37,19 +37,24 @@
          (setq text-content (second current-element))
          (cond ((not (equal nil docID))
                 (setq doc-vector (make-hash-table))
+                (setq alreadySet (make-hash-table)) ;check if doc frequency already increased for terms
                 (mapcar (lambda (line)
                           (setq words (process-string line))
                           (mapcar (lambda (word)
                                     (setq current-term (gethash word *terms*))
                                     (cond ((not (equal nil current-term))
                                            (setq wortindex (term-index current-term))
-                                           (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector)))
-                                             (setf (gethash wortindex doc-vector) 1))))) words)
+                                           (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector))) ;increase term frequency
+                                             (setf (gethash wortindex doc-vector) 1))
+                                           (cond ((equal (gethash wortindex alreadySet) nil) ;increase doc-freuency
+                                                  (setf (gethash wortindex alreadySet) t)
+                                                  (setf (term-document-frequency current-term) (+ 1 (term-document-frequency current-term)))))
 
-                          ) text-content)
+))) words))
+                        text-content)
 
-                (setf (document-document-vector (gethash docID *documents*)) doc-vector)  
-               ))) (printDocuments) ;for testing!!!
+                (setf (document-document-vector (gethash docID *documents*)) doc-vector))))
+ (printDocuments) ;for testing!!!
 ))
 
 
@@ -71,9 +76,9 @@
 
 ;(printTerms)
 
-(printDict *documents*)
+;(printDict *documents*)
 
-(printDict (document-document-vector (gethash 19 *documents*)))
+;(printDict (document-document-vector (gethash 2 *documents*)))
 
 
-(gethash "DFKI" *terms*)
+;(gethash "DFKI" *terms*)

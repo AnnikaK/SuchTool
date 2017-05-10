@@ -74,3 +74,6 @@
 (printDict *documents*)
 
 (printDict (document-document-vector (gethash 19 *documents*)))
+
+
+(gethash "DFKI" *terms*)
