@@ -2,6 +2,10 @@
 (defvar *special-characters* '(#\# #\' #\" #\/ #\\ #\; #\- #\( #\) #\[ #\]))
 (defvar *vocabulary* '())
 (defvar *query-vector*)
+(defvar *score-list*)
+
+
+(defstruct score :value :docID)
 
 
 (defun add-to-vocabulary (doc-text)
@@ -73,7 +77,7 @@
           (setq current-term (gethash key *terms*))
           (cond ((not (equal nil current-term))
                  (setq df(term-idf current-term))
-                 (setq idf (log (/ number-of-documents df) 10))
+                 (setq idf (log (/ (- number-of-documents df) df) 10))
                  (setf (term-idf current-term) idf))))))
                  
                  
@@ -91,7 +95,7 @@
               (setq current-term (gethash wortindex *terms*))
               (cond ((not (equal nil current-term))
                      (setq idf (term-idf current-term))
-                     (setq tf-idf (* (+ 1 (log tf 10)) idf))
+                     (setq tf-idf (* (/ tf (+ 1 tf)) idf))
                      (setf (gethash wortindex doc-vector) tf-idf)))))))
               
         
@@ -120,6 +124,56 @@
                (setq idf (term-idf current-term))
                (setq tf-idf (* (/ (gethash key *query-vector*) max) idf)) ;FORMEL
                (setf (gethash key *query-vector*) tf-idf))))))
+
+
+
+
+
+
+
+
+
+(defun cosinesSimilarity (document-vector)
+ (let ((maxindex (- (hash-table-count *terms*) 1)) (cosine-similarity) (doc-tf-idf) (query-tf-idf) (tmp-result))
+   (loop for x from 0 to maxindex do
+         (if (gethash x document-vector) (setq doc-tf-idf (gethash x document-vector))
+           (setq doc-tf-idf 0))
+         (if (gethash x *query-vector*) (setq query-tf-idf (gethash x *query-vector*))
+           (setq query-tf-idf 0))
+         (setq tmp-result (/ (* doc-tf-idf query-tf-idf) (* (expt doc-tf-idf 2) (expt query-tf-idf 2))))
+         (setq cosine-similarity (+ tmp-result  cosine-similarity)))
+   cosine-similarity))
+
+
+(defun calculateScores ()
+  (let  ((doc-vector) (score) (score-value)(top-ten))
+    (setq *score-list* '())
+    (loop for docID being the hash-key of *documents* do
+          (setq doc-vector (document-document-vector (gethash docID *documents*)))
+          (setq score-value (cosine-similarity doc-vector))
+          (setq score (make-score score-value docID))
+          (cons score *score-list*))
+    (setq *scores* (sort *scores* '> :key 'score-score-value))
+    (setq top-five (subseq *scores* 0 (min 10 (length *scores*))))))
+
+
+
+    
+
+  
+
+
+
+          
+          
+          
+         
+         
+         
+  
+  
+
+
 
 
 
