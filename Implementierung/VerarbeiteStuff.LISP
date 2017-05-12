@@ -1,6 +1,6 @@
 (defvar *keyword-dict* (make-hash-table :test 'equalp)) ;key is term, value is posting list with doc-IDs
 
-(defvar *documents* (make-hash-table)) ;key is docID, value is tuple (docPath docVector)
+(defvar *documents*) ;key is docID, value is tuple (docPath docVector)
 
 (defvar *free-text* '())
 
@@ -91,6 +91,7 @@
 
 (defun createDocumentDictionary(directory-name)
   (let ((id 0))
+    (setq *documents* (make-hash-table))
      (mapcar (lambda (x) 
            (setf (gethash id *documents*) (make-document :path x :document-vector nil)) ;save document as tuple (doc-vector path) in dictionary
            (setq id (+ 1 id)))

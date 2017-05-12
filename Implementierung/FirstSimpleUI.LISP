@@ -13,7 +13,7 @@
        (list 
              (setq swgui==path-text(make-instance 'capi:display-pane :text "C:\\" :min-width 900 :max-width 900))
              (make-instance 'capi:button :text "select" :callback #'(lambda (&rest args)(let (antwort)
-                                                                                           (setq antwort (capi:prompt-for-directory "Select directory" )) ;later prompt-for-directory!!
+                                                                                           (setq antwort (capi:prompt-for-directory "Select directory" )) 
                                                                                            (cond (antwort 
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
@@ -33,12 +33,12 @@
      (make-instance 
       'capi:row-layout :gap 20
       :description
-      (list (setq swgui==schlagwoerter-suchtext
+      (list (setq query-display
                   (make-instance  'capi:display-pane   :text ""  :min-height 100 :max-height 100 :min-width 900 :max-width 900))
             (make-instance  'capi:button :text "search" 
-                            :callback #'(lambda (&rest args) ()))
+                            :callback #'(lambda (&rest args) ))   
              (make-instance  'capi:button :text "reset" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) "")))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text query-display) "")))
             ;make-instance  'capi:button :text "quit" 
                            ; :callback #'(lambda (&rest args) (quit)))
 
@@ -50,16 +50,16 @@
       :description
       (list "Insert: "
              (make-instance  'capi:button :text "("  
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text swgui==schlagwoerter-suchtext) "("))))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) "("))))
             (make-instance  'capi:button :text ")" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text swgui==schlagwoerter-suchtext) ")"))))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) ")"))))
             (make-instance  'capi:button :text "AND" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text swgui==schlagwoerter-suchtext) " AND "))))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " AND "))))
             
             (make-instance  'capi:button :text "OR" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text swgui==schlagwoerter-suchtext) " OR "))))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " OR "))))
             (make-instance  'capi:button :text "NOT" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text swgui==schlagwoerter-suchtext) " NOT "))))
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " NOT "))))
 
 
 
@@ -71,7 +71,7 @@
 
  (make-instance 'capi:row-layout :gap 20 :description 
                 (list 
-                 (setq swgui==searchField (make-instance 
+                 (setq search-field (make-instance 
                   'capi:text-input-pane 
  
                   :text "search for..."
@@ -92,7 +92,7 @@
                                   'capi:button 
                                   :text "reset" 
                                   :callback #'(lambda (&rest args) 
-                                  (setf (capi:text-input-pane-text swgui==searchField) "")))))
+                                  (setf (capi:text-input-pane-text search-field) "")))))
                  ""
                  
                  
@@ -117,8 +117,10 @@
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
-                                              (displaySelection swgui==radio-button-panel)
-                                            (print (capi:choice-selected-items swgui==keyword-panel))))))))))  ;  <__ HERE 
+                                              (on-query-submitted (capi:text-input-pane-text search-field))
+                                                ;(displaySelection swgui==radio-button-panel)
+                                            ;(print (capi:choice-selected-items swgui==keyword-panel))
+                                            ))))))))  
                 
 
 

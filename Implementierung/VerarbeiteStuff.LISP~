@@ -5,7 +5,7 @@
 (defvar *free-text* '())
 
 (defstruct document path document-vector)
-(defstruct term index document-frequency)
+(defstruct term index idf)
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)

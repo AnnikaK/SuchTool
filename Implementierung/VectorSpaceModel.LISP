@@ -1,15 +1,15 @@
-(defvar *terms* (make-hash-table :test 'equalp)) ;key is term, value is tuple (vector-index document-frequency)
+(defvar *terms*) ;key is term, value is tuple (vector-index document-frequency)
 (defvar *special-characters* '(#\# #\' #\" #\/ #\\ #\; #\- #\( #\) #\[ #\]))
-(defvar *vocabulary* '())
+(defvar *vocabulary*)
 (defvar *query-vector*)
+(defvar *query-vector-norm*)
 (defvar *score-list*)
 
-
-(defstruct score :value :docID)
 
 
 (defun add-to-vocabulary (doc-text)
   (let ((words))
+   (setq vocabulary '())
    (mapcar (lambda (x)
             (setq words (process-string x))
             (mapcar (lambda (y) 
@@ -30,6 +30,7 @@
 
 (defun create-term-dictionary ()
   (let ((index 0) (term))
+    (setq *terms* (make-hash-table :test 'equalp))
     (mapcar (lambda (x)
               ;(setq term (ignore-errors (read-from-string (delete-if (lambda (c) (member c *special-characters*)) x))))
                      (setq term x) ;TOSO: control check
@@ -41,7 +42,7 @@
 
  
 (defun create-document-vectors (free-text)
- (let ((size (length free-text)) (current-element) (docID) (text-content) (doc-vector) (alreadySet) (words) (current-term) (wordindex)) ;local variables
+ (let ((size (length free-text)) (current-element) (docID) (text-content) (doc-vector) (alreadySet) (words) (current-term) (wordindex)) 
    (loop for x from 0 to size do
          (setq current-element (car free-text)) ;(docID text-content) , text-content ist liste mit line-strings
          (setq free-text (cdr free-text)) 
@@ -64,8 +65,7 @@
                         text-content)
                 (setf (document-document-vector (gethash docID *documents*)) doc-vector))))
    (transfrom-document-frequency-to-idf) 
-   (create-tf-idf-weighting) 
-   ))
+   (create-tf-idf-weighting)))
 
 
 
@@ -77,7 +77,7 @@
           (setq current-term (gethash key *terms*))
           (cond ((not (equal nil current-term))
                  (setq df(term-idf current-term))
-                 (setq idf (log (/ (- number-of-documents df) df) 10))
+                 (setq idf (log (/ number-of-documents df) 10)) ;idf FORMEL S.108
                  (setf (term-idf current-term) idf))))))
                  
                  
@@ -95,7 +95,7 @@
               (setq current-term (gethash wortindex *terms*))
               (cond ((not (equal nil current-term))
                      (setq idf (term-idf current-term))
-                     (setq tf-idf (* (/ tf (+ 1 tf)) idf))
+                     (setq tf-idf (* (+ 1 (log tf 10)) idf)) ;http://www.phil-fak.uni-koeln.de/fileadmin/spinfo/information-retrieval/ir04_WS09-10.pdf
                      (setf (gethash wortindex doc-vector) tf-idf)))))))
               
         
@@ -122,46 +122,72 @@
         (setq current-term (gethash key *terms*))
         (cond ((not (equal nil current-term))  
                (setq idf (term-idf current-term))
-               (setq tf-idf (* (/ (gethash key *query-vector*) max) idf)) ;FORMEL
+               (setq tf-idf (* (/ (gethash key *query-vector*) max) idf)) ;FORMEL http://www.site.uottawa.ca/~diana/csi4107/cosine_tf_idf_example.pdf
                (setf (gethash key *query-vector*) tf-idf))))))
 
 
 
 
+;normalize vector
+(defun calculate-norm (vector)
+  (let ((norm 0))
+    (loop for index being the hash-key of vector do
+          (setq norm (+ norm (expt (gethash index vector) 2))))
+    (sqrt norm)))
+        
+        
 
 
 
+(defun cosine-similarity (document-vector)
+ (let ((dot-product 0) (weight-doc) (weight-query) (doc-vector-norm (calculate-norm document-vector)) (res))
+   (loop for x being the hash-key of *query-vector* do
+         (setq weight-query (gethash x *query-vector*))
+         (if (gethash x document-vector) (setq weight-doc (gethash x document-vector)) (setq weight-doc 0))
+         (setq dot-product (+ dot-product (* weight-doc weight-query))))
+   (/ dot-product (* doc-vector-norm *query-vector-norm*))))
 
-
-(defun cosinesSimilarity (document-vector)
- (let ((maxindex (- (hash-table-count *terms*) 1)) (cosine-similarity) (doc-tf-idf) (query-tf-idf) (tmp-result))
-   (loop for x from 0 to maxindex do
-         (if (gethash x document-vector) (setq doc-tf-idf (gethash x document-vector))
-           (setq doc-tf-idf 0))
-         (if (gethash x *query-vector*) (setq query-tf-idf (gethash x *query-vector*))
-           (setq query-tf-idf 0))
-         (setq tmp-result (/ (* doc-tf-idf query-tf-idf) (* (expt doc-tf-idf 2) (expt query-tf-idf 2))))
-         (setq cosine-similarity (+ tmp-result  cosine-similarity)))
-   cosine-similarity))
 
 
 (defun calculateScores ()
-  (let  ((doc-vector) (score) (score-value)(top-ten))
+  (let  ((doc-vector) (score-value))
     (setq *score-list* '())
     (loop for docID being the hash-key of *documents* do
           (setq doc-vector (document-document-vector (gethash docID *documents*)))
           (setq score-value (cosine-similarity doc-vector))
-          (setq score (make-score score-value docID))
-          (cons score *score-list*))
-    (setq *scores* (sort *scores* '> :key 'score-score-value))
-    (setq top-five (subseq *scores* 0 (min 10 (length *scores*))))))
+          (print score-value)
+          (setq *score-list* (cons (list score-value docID) *score-list*))
+    (setq *score-list* (sort *score-list* '> :key 'car)))))
+
+
+(defun calculate-top-results (score-list)
+  (let ((top-ten) (top '()))
+    (setq top-ten (subseq *score-list* 0 (min 10 (length *score-list*))))
+    (mapcar (lambda (x) (if (> (car x) 0) (setq top (cons x top)))) top-ten)
+    top))
+
+
+
+(defun on-query-submitted (query)
+ (let ((top))
+  (create-query-vector query)
+  (setq *query-vector-norm* (calculate-norm *query-vector*))
+  (calculateScores)
+  (setq top (calculate-top-results *score-list*))))
+
+
+
+
+
+;(printDict *query-vector*)
+;(term-index (gethash "DFKI" *terms*))
+;(print *score-list*)
 
 
 
     
 
   
-
 
 
           
