@@ -135,7 +135,6 @@
   (let ((laenge 0))
     (loop for index being the hash-key of vector do
           (setq laenge (+ laenge (expt (gethash index vector) 2))))
-    (print (concatenate 'string "Laenge:" (write-to-string (sqrt laenge))))
     (sqrt laenge)))
         
         
@@ -144,12 +143,13 @@
 
 (defun cosine-similarity (document-vector)
  (let ((dot-product 0) (weight-doc) (weight-query) (doc-vector-length (vector-length document-vector)) (res))
-   (if (equal 0.0 *query-vector-length*) (progn (print "nope") 0)
-          (progn (loop for x being the hash-key of *query-vector* do
+   (cond ((not (equal 0.0 *query-vector-length*)) 
+          (loop for x being the hash-key of *query-vector* do
                        (setq weight-query (gethash x *query-vector*))
                        (if (gethash x document-vector) (setq weight-doc (gethash x document-vector)) (setq weight-doc 0))
                        (setq dot-product (+ dot-product (* weight-doc weight-query))))
-            (/ dot-product (* doc-vector-length *query-vector-length*))))))
+            (/ dot-product (* doc-vector-length *query-vector-length*)))
+         (t 0))))
 
 
 
@@ -160,7 +160,6 @@
     (loop for docID being the hash-key of *documents* do
           (setq doc-vector (document-document-vector (gethash docID *documents*)))
           (setq score-value (cosine-similarity doc-vector))
-          (print score-value)
           (setq *score-list* (cons (list score-value docID) *score-list*))
     (setq *score-list* (sort *score-list* '> :key 'car)))))
 
@@ -184,11 +183,11 @@
 
 
 (defun show (top)
-  (let ((string-list '()) (tmp))
+  (let ((string-list '()) (tmp) (index 1))
     (mapcar (lambda (x) 
-             (setq tmp (concatenate 'string (write-to-string (first x)) "    "  
+             (setq tmp (concatenate 'string (write-to-string index) ".  " (write-to-string (first x)) "    "  
                                     (write-to-string (document-path (gethash (second x) *documents*)))))
-             (setq string-list (cons tmp string-list))) top)
+             (setq string-list (cons tmp string-list)) (setq index (+ 1 index)) top)
     (show-results string-list)
 ))
 

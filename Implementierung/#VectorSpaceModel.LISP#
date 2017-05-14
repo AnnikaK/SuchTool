@@ -135,7 +135,6 @@
   (let ((laenge 0))
     (loop for index being the hash-key of vector do
           (setq laenge (+ laenge (expt (gethash index vector) 2))))
-    (print (concatenate 'string "Laenge:" (write-to-string (sqrt laenge))))
     (sqrt laenge)))
         
         
@@ -161,7 +160,6 @@
     (loop for docID being the hash-key of *documents* do
           (setq doc-vector (document-document-vector (gethash docID *documents*)))
           (setq score-value (cosine-similarity doc-vector))
-          (print score-value)
           (setq *score-list* (cons (list score-value docID) *score-list*))
     (setq *score-list* (sort *score-list* '> :key 'car)))))
 
@@ -185,13 +183,13 @@
 
 
 (defun show (top)
-  (let ((string-list '()) (tmp) (index 1)
+  (let ((string-list '()) (tmp) (index (length top)))
     (mapcar (lambda (x) 
-             (setq tmp (concatenate 'string (write-to-string index) ".  " (write-to-string (first x)) "    "  
+             (setq tmp (concatenate 'string (write-to-string index) ".      " (subseq (write-to-string (first x)) 0 7) "        "  
                                     (write-to-string (document-path (gethash (second x) *documents*)))))
-             (setq string-list (cons tmp string-list))) top)
-    (show-results string-list)
-))
+             (setq string-list (cons tmp string-list)) (setq index (- index 1))) top)
+    (show-results string-list)))
+
 
 
 
