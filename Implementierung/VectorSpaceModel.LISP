@@ -1,9 +1,11 @@
-(defvar *terms*) ;key is term, value is tuple (vector-index document-frequency)
+(defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
 (defvar *special-characters* '(#\# #\' #\" #\/ #\\ #\; #\- #\( #\) #\[ #\]))
-(defvar *vocabulary*)
+(defvar *vocabulary* '())
 (defvar *query-vector*)
-(defvar *query-vector-norm*)
+(defvar *query-vector-length*)
+(defvar *document-vector-length*)
 (defvar *score-list*)
+
 
 
 
@@ -95,7 +97,7 @@
               (setq current-term (gethash wortindex *terms*))
               (cond ((not (equal nil current-term))
                      (setq idf (term-idf current-term))
-                     (setq tf-idf (* (+ 1 (log tf 10)) idf)) ;http://www.phil-fak.uni-koeln.de/fileadmin/spinfo/information-retrieval/ir04_WS09-10.pdf
+                     (setq tf-idf (* tf idf)) 
                      (setf (gethash wortindex doc-vector) tf-idf)))))))
               
         
@@ -106,7 +108,7 @@
 
 
 (defun create-query-vector (user-query)
- (let ((words) (max 0) (tf-idf 0))
+ (let ((words) (max 1) (tf-idf 0))
   (setq words (process-string user-query))
   (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
   (mapcar (lambda (word)  ;get term frequencies 
@@ -129,23 +131,26 @@
 
 
 ;normalize vector
-(defun calculate-norm (vector)
-  (let ((norm 0))
+(defun vector-length (vector)
+  (let ((laenge 0))
     (loop for index being the hash-key of vector do
-          (setq norm (+ norm (expt (gethash index vector) 2))))
-    (sqrt norm)))
+          (setq laenge (+ laenge (expt (gethash index vector) 2))))
+    (print (concatenate 'string "Laenge:" (write-to-string (sqrt laenge))))
+    (sqrt laenge)))
         
         
 
 
 
 (defun cosine-similarity (document-vector)
- (let ((dot-product 0) (weight-doc) (weight-query) (doc-vector-norm (calculate-norm document-vector)) (res))
-   (loop for x being the hash-key of *query-vector* do
-         (setq weight-query (gethash x *query-vector*))
-         (if (gethash x document-vector) (setq weight-doc (gethash x document-vector)) (setq weight-doc 0))
-         (setq dot-product (+ dot-product (* weight-doc weight-query))))
-   (/ dot-product (* doc-vector-norm *query-vector-norm*))))
+ (let ((dot-product 0) (weight-doc) (weight-query) (doc-vector-length (vector-length document-vector)) (res))
+   (if (equal 0.0 *query-vector-length*) (progn (print "nope") 0)
+          (progn (loop for x being the hash-key of *query-vector* do
+                       (setq weight-query (gethash x *query-vector*))
+                       (if (gethash x document-vector) (setq weight-doc (gethash x document-vector)) (setq weight-doc 0))
+                       (setq dot-product (+ dot-product (* weight-doc weight-query))))
+            (/ dot-product (* doc-vector-length *query-vector-length*))))))
+
 
 
 
@@ -171,44 +176,29 @@
 (defun on-query-submitted (query)
  (let ((top))
   (create-query-vector query)
-  (setq *query-vector-norm* (calculate-norm *query-vector*))
+  (setq *query-vector-length* (vector-length *query-vector*))
   (calculateScores)
-  (setq top (calculate-top-results *score-list*))))
+  (setq top (calculate-top-results *score-list*))
+  (show top)
+))
 
 
-
-
-
-;(printDict *query-vector*)
-;(term-index (gethash "DFKI" *terms*))
-;(print *score-list*)
-
-
-
-    
-
-  
-
-
-          
-          
-          
-         
-         
-         
-  
-  
+(defun show (top)
+  (let ((string-list '()) (tmp))
+    (mapcar (lambda (x) 
+             (setq tmp (concatenate 'string (write-to-string (first x)) "    "  
+                                    (write-to-string (document-path (gethash (second x) *documents*)))))
+             (setq string-list (cons tmp string-list))) top)
+    (show-results string-list)
+))
 
 
 
 
 
 
-
-
-
-
-
+        
+       
 
 ;;;;----------------------------------------------------------------------------------------TESTING 
 
@@ -239,4 +229,4 @@
 
 
 
-(create-query-vector "grillen im Mai") 
+;(create-query-vector "grillen im Mai") 
