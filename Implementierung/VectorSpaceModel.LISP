@@ -183,13 +183,13 @@
 
 
 (defun show (top)
-  (let ((string-list '()) (tmp) (index 1))
+  (let ((string-list '()) (tmp) (index (length top)))
     (mapcar (lambda (x) 
-             (setq tmp (concatenate 'string (write-to-string index) ".  " (write-to-string (first x)) "    "  
+             (setq tmp (concatenate 'string (write-to-string index) ".      " (subseq (write-to-string (first x)) 0 7) "        "  
                                     (write-to-string (document-path (gethash (second x) *documents*)))))
-             (setq string-list (cons tmp string-list)) (setq index (+ 1 index)) top)
-    (show-results string-list)
-))
+             (setq string-list (cons tmp string-list)) (setq index (- index 1))) top)
+    (show-results string-list)))
+
 
 
 

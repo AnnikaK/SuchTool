@@ -5,6 +5,12 @@
     (print "OR")))
 
 
+(defun getAllSelectedKeywords (checkButtonPanel)
+  (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
+    (loop for x from 0 to size do
+          (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
+
+
 (defun datei-lesen-in-einen-string (dateiname &key (max-anz nil))
 ; input: ein dateiname (vollstängiger Pfad)
 ; value: ein String.
@@ -139,10 +145,6 @@
 
 
 
-(defun getAllSelectedKeywords (checkButtonPanel)
-  (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
-    (loop for x from 0 to size do
-          (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
 
 
 

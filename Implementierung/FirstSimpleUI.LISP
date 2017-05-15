@@ -11,16 +11,16 @@
        'capi:row-layout :gap 20
        :description
        (list 
-             (setq swgui==path-text(make-instance 'capi:display-pane :text "C:\\" :min-width 900 :max-width 900))
+             (setq path-text (make-instance 'capi:display-pane :text "C:\\" :min-width 900 :max-width 900))
              (make-instance 'capi:button :text "select" :callback #'(lambda (&rest args)(let (antwort)
                                                                                            (setq antwort (capi:prompt-for-directory "Select directory" )) 
                                                                                            (cond (antwort 
                                                                                                   
                                                                                                   (setq antwort (namestring antwort))
-                                                                                                  (setf (capi:display-pane-text swgui==path-text) antwort)
+                                                                                                  (setf (capi:display-pane-text path-text) antwort)
                                                                                                   (setq itemList (onSelected antwort))
 
-                                                                                                  (setf (capi:collection-items swgui==keyword-panel) itemList))))))))
+                                                                                                  (setf (capi:collection-items keyword-panel) itemList))))))))
           
     
 
@@ -117,9 +117,9 @@
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
-                                              (on-query-submitted (capi:text-input-pane-text search-field))
-                                                ;(displaySelection swgui==radio-button-panel)
-                                            ;(print (capi:choice-selected-items swgui==keyword-panel))
+                                                (on-add-clicked keyword-panel (capi:text-input-pane-text search-field))
+                                                ;(on-query-submitted (capi:text-input-pane-text search-field))
+
                                             ))))))))  
                 
 
@@ -131,7 +131,7 @@
               (make-instance 'capi:column-layout 
                              :vertical-scroll t
                              :description (list
-                                           (setq swgui==keyword-panel (make-instance 'capi:check-button-panel
+                                           (setq keyword-panel (make-instance 'capi:check-button-panel
                                                                                      :min-width 900
                                                                                      :layout-class 'capi:column-layout
                                                                                      :items   nil))))
