@@ -1,25 +1,23 @@
 
 (defun show-results (result-list)
-  (let* ((show '("No results found.")) (breite))
+  (let ((show '("No results found.")) (breite))
     
     
     (cond ((not (equal '() result-list)) (setq show  result-list)))
-    (setq breite (+ 30 (round (* 9 (reduce 'max (mapcar 'length show))))))
+    (setq breite (+ 30 (round (* 7.5 (reduce 'max (mapcar 'length show))))))
    
-    (capi:display-dialog  ; oder (capi:display
+    (capi:display-dialog  
      (capi:make-container
       (make-instance 'capi:column-layout
                      :x-adjust  :center
                      :min-width breite 
-                     :background  :white
-                  :foreground :white
                      :description
-                     (list ;(make-instance 'capi:title-pane :text "Resultate:")
+                     (list 
                      
                            (make-instance 
                             'capi:row-layout :description 
                             (list (make-instance 'capi:column-layout
-                                                 :x-adjust :left ; :center
+                                                 :x-adjust :left
                                                  :min-width breite  
                                                  :background  :white :gap 5
                   :foreground :reda
@@ -34,8 +32,9 @@
                                 (capi:exit-dialog arg)))
                            ))
       :title "RESULTS"
-      :background  :white
-  ; :x-adjust  :center
       :min-width breite
+      :background  :white
       ))))
+
+
 

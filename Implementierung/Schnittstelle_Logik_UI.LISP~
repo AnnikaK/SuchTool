@@ -5,7 +5,10 @@
     (print "OR")))
 
 
-(defun getAllSelectedKeywords (checkButtonPanel)
-  (let* ((answer '()) (boxes (capi:collection-items checkButtonPanel)) (size (length boxes)))
-    (loop for x from 0 to size do
-          (if (capi:button-selected (vector-pop boxes)) (setq answer (append answer (list x))))) boxes))
+
+(defun on-add-clicked (checkButtonPanel text)
+  (let ((selection-list))
+    (setq selection-list (capi:choice-selected-items checkButtonPanel))
+    (cond ((member 'FREITEXT selection-list) 
+           (on-query-submitted text)))))
+    

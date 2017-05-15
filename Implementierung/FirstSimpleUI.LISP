@@ -98,16 +98,16 @@
                  
                  (make-instance 'capi:row-layout :gap 20 :description 
                                 (list 
-                                 (setq swgui==radio-button-panel (make-instance 
+                                 (setq radio-buttons (make-instance 
                                   'capi:radio-button-panel
                                   :items (list 
-                                          (setq buttonAnd (make-instance 'capi:radio-button
+                                          (setq button-and (make-instance 'capi:radio-button
                                                          :text "AND"
                                                          :selected t
                                                          :selection-callback 
                                                          #'(lambda  (a interface &rest args) 
                                                              (setq radio-button 1))))
-                                          (setq buttonOr (make-instance 'capi:radio-button
+                                          (setq button-or (make-instance 'capi:radio-button
                                                          :text "OR"
                                                          :selected nil
                                                          :selection-callback 
@@ -117,7 +117,7 @@
                                   'capi:button 
                                   :text "add" 
                                   :callback #'(lambda (&rest args) 
-                                                (on-add-clicked keyword-panel (capi:text-input-pane-text search-field))
+                                                (on-add-clicked (capi:text-input-pane-text search-field))
                                                 ;(on-query-submitted (capi:text-input-pane-text search-field))
 
                                             ))))))))  

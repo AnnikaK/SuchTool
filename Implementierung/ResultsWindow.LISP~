@@ -22,7 +22,7 @@
                                                  :x-adjust :left ; :center
                                                  :min-width breite  
                                                  :background  :white :gap 5
-                  :foreground :red
+                  :foreground :reda
                                                  :description show)))
                            "" 
                            (make-instance

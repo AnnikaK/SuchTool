@@ -119,7 +119,7 @@
   (let ((keylist '()))
   (loop for key being the hash-key of dict do 
         (setq keylist (cons key keylist)))
- (cons "FREITEXT" (sort keylist 'string<))))
+ (cons 'FREITEXT (sort keylist 'string<))))
 
 
 
