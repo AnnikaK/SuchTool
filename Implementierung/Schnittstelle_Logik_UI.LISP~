@@ -13,14 +13,21 @@
   (let ((and t) (displayed-query) (tmp "") (before "") (middle "") (after ""))
     (cond ((equal (capi:choice-selected-item radio-buttons) button-or) (setq and nil))) 
     (setq displayed-query (capi:display-pane-text query-display))
+    ;verknuepfung intern
     (cond ((> (length selection-list) 1)
            (if and (setq before " (and ") (setq before " (or "))
            (setq after ") ")))
+    ;surround with not
+    (cond ((equal '(not) (capi:choice-selected-items not-operator-panel))
+           (setq before (concatenate 'string " (not " before))
+           (setq after (concatenate 'string after ") "))))
+    
+     ;create bracket-expression for each keyword
     (mapcar (lambda (x) 
               (setq tmp (concatenate 'string " (= " (write-to-string x) " \""  text  "\") "))
               (setq middle (concatenate 'string middle tmp))) selection-list)
     (setq tmp (concatenate 'string before middle after))
-    ;auessere schachtelung 
+    ;verknuepfung extern
     (cond ((> (length displayed-query) 0)
            (cond ((equal (capi:choice-selected-item buttons-outer-term) and-outer-term)(setq displayed-query (concatenate 'string "(AND " displayed-query)))
                  ((equal (capi:choice-selected-item buttons-outer-term) or-outer-term) (setq displayed-query (concatenate 'string "(OR " displayed-query))))

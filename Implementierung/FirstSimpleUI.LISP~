@@ -92,8 +92,6 @@
                                   :text "reset" 
                                   :callback #'(lambda (&rest args) 
                                   (setf (capi:text-input-pane-text search-field) "")))))
-
-                 "Connect keywords with:"
                  
                  
                  (make-instance 'capi:row-layout :gap 20 :description 
@@ -113,6 +111,7 @@
                                                          :selection-callback 
                                                          #'(lambda  (a interface &rest args) 
                                                              (setq radio-button 2)))))))
+                            
                                  (make-instance 
                                   'capi:button 
                                   :text "add" 
@@ -120,7 +119,17 @@
                                                 (on-add-clicked (capi:text-input-pane-text search-field))
                                                 ;(on-query-submitted (capi:text-input-pane-text search-field))
 
-                                            ))))))))  
+                                            ))))
+
+     (setq not-operator-panel (make-instance 'capi:check-button-panel
+                                                                                     :min-width 900
+                                                                                     :layout-class 'capi:column-layout
+                                                                                     :items   '(not)))
+
+
+
+
+))))  
                 
 
 
