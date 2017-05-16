@@ -1,4 +1,4 @@
-(defvar *keyword-dict* (make-hash-table :test 'equalp)) ;key is term, value is posting list with doc-IDs
+(defvar *keyword-dict* (make-hash-table :test 'equalp)) ;key is term, value is posting list with doc-ID and type
 
 (defvar *documents*) ;key is docID, value is tuple (docPath docVector)
 
@@ -6,6 +6,7 @@
 
 (defstruct document path document-vector)
 (defstruct term index idf)
+(defstruct keyword-entry doc-id keyword-type content)
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
@@ -64,27 +65,29 @@
 
 
 (defun split-name-content (str)
-  (cond ((> (length str) 0)
-         (setq j (position #\Space str :start 0))
-          (setq key-name (subseq str 0 j))
-          (setq key-content (subseq str j (length str)))
-          (list key-name key-content))))
+  (let ((key-name) (key-content) (j))
+    (cond ((> (length str) 0)
+           (setq j (position #\Space str :start 0))
+           (setq key-name (subseq str 0 j))
+           (setq key-content (subseq str j (length str)))
+           (list key-name key-content)))))
 
 
 
 ;form: dictionary mit keywords mit dem keyword-namen [symbol] als key und entries in der form (docID type content)
 (defun process-keyword-list (keyword-list docID)
-  (do* ((k-list keyword-list (cdr k-list)) (k (car k-list) (car k-list))) ;iterate over keyword list, k is the whole term!
-       ((equal k-list nil) nil)
-        (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
+  (let ((current) (key) (entry) (type) (content))
+    (do* ((k-list keyword-list (cdr k-list)) (k (car k-list) (car k-list))) ;iterate over keyword list, k is the whole term!
+         ((equal k-list nil) nil)
+      (setq k (subseq k 1 (- (length k) 1))) ;dont want the brackets
       
-     (setq current (split-name-content k)) 
-     (setq key (read-from-string (car current)))
-     (setq entry docID)
-     
-     
-     (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
-          (setf (gethash key *keyword-dict*) (list entry))))) ;new entry for keyword
+      (setq current (split-name-content k)) 
+      (setq key (read-from-string (first current)))
+      (setq content (read-from-string (second current)))
+      (setq type (type-of content))
+      (setq entry (make-keyword-entry :doc-id docID :keyword-type type :content content)) 
+      (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
+        (setf (gethash key *keyword-dict*) (list entry)))))) ;new entry for keyword
   
 
 
@@ -101,15 +104,16 @@
 
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
-   (createDocumentDictionary directory-name)
-   (loop for docID being the hash-key of *documents* do 
+  (let ((current-doc))
+    (createDocumentDictionary directory-name)
+    (loop for docID being the hash-key of *documents* do 
           (setq current-doc (split (readFileInLines (document-path (gethash docID *documents*)))))
           (process-keyword-list (first current-doc) docID)
           (setq *free-text* (cons (list docID (second current-doc)) *free-text*))
           (add-to-vocabulary (second current-doc)))
     (create-term-dictionary)
     (create-document-vectors *free-text*)
-    (getKeys *keyword-dict*))
+    (getKeys *keyword-dict*)))
 
          
 
@@ -117,9 +121,9 @@
 ;returns all keys from  dictionary sorted alphabetically (+ freitext as special keyword)
 (defun getKeys (dict)
   (let ((keylist '()))
-  (loop for key being the hash-key of dict do 
-        (setq keylist (cons key keylist)))
- (cons 'FREITEXT (sort keylist 'string<))))
+    (loop for key being the hash-key of dict do 
+          (setq keylist (cons key keylist)))
+    (cons 'FREITEXT (sort keylist 'string<))))
 
 
 
@@ -142,4 +146,6 @@
 
 ;process-keyword-list (car (split (readFileInLines "H:\\SuchTool-develop\\mail-beispiele-eingang\\mail-beispiele-eingang\\mail-588.ldd"))) 1)
 
-;(printDict *terms*)                 
+;(printDict *terms*)
+
+;(printDict *keyword-dict*)                 

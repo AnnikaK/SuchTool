@@ -48,25 +48,24 @@
 (make-instance 
       'capi:row-layout :gap 20
       :description
-      (list "Insert: "
-             (make-instance  'capi:button :text "("  
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) "("))))
-            (make-instance  'capi:button :text ")" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) ")"))))
-            (make-instance  'capi:button :text "AND" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " AND "))))
-            
-            (make-instance  'capi:button :text "OR" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " OR "))))
-            (make-instance  'capi:button :text "NOT" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text swgui==schlagwoerter-suchtext) (concatenate 'string (capi:display-pane-text query-display) " NOT "))))
+      (list "Connect multiple query-terms with: "
+             (setq buttons-outer-term (make-instance 
+                                  'capi:radio-button-panel
+                                  :items (list 
+                                          (setq and-outer-term (make-instance 'capi:radio-button
+                                                         :text "AND"
+                                                         :selected t
+                                                         :selection-callback 
+                                                         #'(lambda  (a interface &rest args) 
+                                                             (setq radio-button 1))))
+                                          (setq or-outer-term (make-instance 'capi:radio-button
+                                                         :text "OR"
+                                                         :selected nil
+                                                         :selection-callback 
+                                                         #'(lambda  (a interface &rest args) 
+                                                             (setq radio-button 2)))))))))
 
-
-
-           
-           ))
-
-"" "Search text for selected keys:"
+"" ""
 
 
  (make-instance 'capi:row-layout :gap 20 :description 
@@ -93,7 +92,6 @@
                                   :text "reset" 
                                   :callback #'(lambda (&rest args) 
                                   (setf (capi:text-input-pane-text search-field) "")))))
-                 ""
                  
                  
                  (make-instance 'capi:row-layout :gap 20 :description 
@@ -113,6 +111,7 @@
                                                          :selection-callback 
                                                          #'(lambda  (a interface &rest args) 
                                                              (setq radio-button 2)))))))
+                            
                                  (make-instance 
                                   'capi:button 
                                   :text "add" 
@@ -120,7 +119,17 @@
                                                 (on-add-clicked (capi:text-input-pane-text search-field))
                                                 ;(on-query-submitted (capi:text-input-pane-text search-field))
 
-                                            ))))))))  
+                                            ))))
+
+     (setq not-operator-panel (make-instance 'capi:check-button-panel
+                                                                                     :min-width 900
+                                                                                     :layout-class 'capi:column-layout
+                                                                                     :items   '(not)))
+
+
+
+
+))))  
                 
 
 
