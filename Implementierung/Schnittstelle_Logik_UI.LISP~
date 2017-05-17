@@ -1,11 +1,14 @@
-
+(defstruct result keyword docs)
 
 (defun on-add-clicked (text)
   (let ((selection-list))
     (setq selection-list (capi:choice-selected-items keyword-panel))
     (display-query selection-list text)
+    ;free-text-search
     (cond ((member 'FREITEXT selection-list) 
-           (on-query-submitted text)))))
+           (on-query-submitted text)))
+    ;keyword-search
+    (verarbeite-query selection-list text)))
 
 
 
@@ -34,9 +37,46 @@
            (setq tmp (concatenate 'string tmp ")"))))
 
     (setf (capi:display-pane-text query-display) (concatenate 'string displayed-query tmp))))
+
+
+
+
+(defun verarbeite-query (selection-list text)
+  (let ((entry-list) (entry) (type) (content) (result-list))
+    (mapcar (lambda (keyword)
+              (setq entry-list (gethash keyword *keyword-dict*))
+              (setq keyword-result '())
+              (mapcar (lambda (entry)    
+                        (setq type (keyword-entry-keyword-type entry))
+                        (setq content (keyword-entry-content entry))
+                        (cond ((equal type 'cons)
+                               (if (list-search text content) (setq keyword-result cons keyword-entry-doc-id keyword-result)))
+                               ((equal type 'simple-base-string) 
+                                (if (string-search text content)
+                                   (setq keyword-result cons keyword-entry-doc-id keyword-result)))
+                               ((equal type 'fixnum)
+                                (if (number-search text content) (setq keyword-result cons keyword-entry-doc-id keyword-result))))) entry-list)
+              (setq result-list (cons keyword-result result-list))) selection-list)
+    result-list))
     
     
 
+
+    
+    
+
+(defun list-search (text content)
+  (member text content))
+    
+
+
+
+(defun string-search (text content)
+  (subseq text content))
+
+
+(defun number-search (text content)
+  (= text content))
 
 
 

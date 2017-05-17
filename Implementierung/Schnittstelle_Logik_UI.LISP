@@ -11,7 +11,7 @@
     (verarbeite-query selection-list text)))
 
 
-
+;show query in display-panel (without any logic!!!)
 (defun display-query (selection-list text)
   (let ((and t) (displayed-query) (tmp "") (before "") (middle "") (after ""))
     (cond ((equal (capi:choice-selected-item radio-buttons) button-or) (setq and nil))) 
@@ -41,46 +41,76 @@
 
 
 
+
+;logical procession of query
 (defun verarbeite-query (selection-list text)
-  (let ((entry-list) (entry) (type) (content) (result-list))
+  (let ((entry-list) (entry) (type) (content) (result-list '()))
     (mapcar (lambda (keyword)
               (setq entry-list (gethash keyword *keyword-dict*))
-              (setq keyword-result '())
-              (mapcar (lambda (entry)    
+              (setq keyword-result '()) ;alle dokumente, bei denen das keyword den suchtext enthaelt
+              (mapcar (lambda (entry) 
+                        (setq docID (keyword-entry-doc-id entry))
                         (setq type (keyword-entry-keyword-type entry))
                         (setq content (keyword-entry-content entry))
-                        (cond ((equal type 'cons)
-                               (if (list-search text content) (setq keyword-result cons keyword-entry-doc-id keyword-result)))
-                               ((equal type 'simple-base-string) 
-                                (if (string-search text content)
-                                   (setq keyword-result cons keyword-entry-doc-id keyword-result)))
-                               ((equal type 'fixnum)
-                                (if (number-search text content) (setq keyword-result cons keyword-entry-doc-id keyword-result))))) entry-list)
+                        (cond ((and (equal type 'cons) (list-search text content)) (setq keyword-result (cons docID keyword-result)))
+                              ((and (equal type 'simple-base-string) (string-search text content)) (setq keyword-result (cons docID keyword-result)))
+                              ((and (equal type 'fixnum) (num-search text content)) (setq keyword-result (cons docID keyword-result))))) entry-list)
               (setq result-list (cons keyword-result result-list))) selection-list)
-    result-list))
-    
-    
+    (if (equal (capi:choice-selected-item radio-buttons) button-or) (setq result-list (connect-or result-list))
+      (setq result-list (setq result-list (connect-and result-list))))
+    (if (equal '(not) (capi:choice-selected-items not-operator-panel)) (setq result-list (negate result-list))) 
+    (print result-list)))
 
 
-    
-    
+
 
 (defun list-search (text content)
-  (member text content))
-    
-
-
+  (or (member text content) 
+      (member (ignore-errors (read-from-string text)) content)))
 
 (defun string-search (text content)
-  (subseq text content))
+  (search text content))
 
 
-(defun number-search (text content)
-  (= text content))
+(defun num-search (text content)
+  (setq num (ignore-errors (read-from-string text)))
+  (cond ((numberp num) (= num content))
+        (t nil)))
 
 
-
+(defun connect-and (result-list)
+ (let ((and-res))
+  (setq result-list (sort result-list '< :key 'length))
+  (setq and-res (car result-list))
+  (setq result-list (cdr result-list))
+  (mapcar (lambda (x) 
+            (setq and-res (intersection and-res x))) result-list)
+  (setq and-res (sort and-res '<))))
     
+
+
+(defun connect-or (result-list)
+  (let ((or-res))
+    (setq or-res (car result-list))
+    (setq result-list (cdr result-list))
+    (mapcar (lambda (x)
+              (setq or-res (union or-res x))) result-list)
+    (setq or-res (sort or-res '<))))
     
+
+;only one list because and/or operation before negation
+(defun negate (result)
+  (let ((all-docs '()))
+    (loop for id being the hash-key of *documents* do
+          (setq all-docs (cons id all-docs)))
+    (setq all-docs (set-difference all-docs result))
+    all-docs))
     
-   
+               
+                        
+                               
+
+;(negate '(1 2 3))
+;(connect-or '((1 2 3 4 7) (2 3 4)))
+;(connect-and '((1 2 3) (4 2 8 3)))
+
