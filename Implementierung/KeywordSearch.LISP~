@@ -10,7 +10,7 @@
                         (setq docID (keyword-entry-doc-id entry))
                         (setq type (keyword-entry-keyword-type entry))
                         (setq content (keyword-entry-content entry))
-                        (cond ((and (equal type 'cons) (list-search text content)) (setq keyword-result (cons docID keyword-result)))
+                        (cond ((and (equal type 'cons) (recursive-list-search text content)) (setq keyword-result (cons docID keyword-result)))
                               ((and (equal type 'simple-base-string) (string-search text content)) (setq keyword-result (cons docID keyword-result)))
                               ((and (equal type 'fixnum) (num-search text content)) (setq keyword-result (cons docID keyword-result))))) entry-list)
               (setq result-list (cons keyword-result result-list))) selection-list)
@@ -22,14 +22,23 @@
 
 
 
-(defun list-search (text content)
-  (or (member text content) 
-      (member (ignore-errors (read-from-string text)) content)))
+(defun recursive-list-search (text content)
+  (let ((elem) (found nil))
+    (cond ((null (car content)) nil)
+           (t (setq elem (car content)) ;erstes element durchsuchen
+              (cond ((equal (type-of elem) 'simple-base-string) (setq found (string-search text elem)))
+                    ((equal (type-of elem) 'fixnum) (setq found (num-search text elem)))
+                    ((equal (type-of elem) 'cons) (setq found (recursive-list-search text elem)))) ;sublisten auch durchsuchen
+              (if found t (recursive-list-search text (cdr content)))))))
+          
+              
+
 
 (defun string-search (text content)
   (search text content))
 
 
+;TODO : convert
 (defun num-search (text content)
   (setq num (ignore-errors (read-from-string text)))
   (cond ((numberp num) (= num content))
@@ -64,7 +73,7 @@
     (setq all-docs (set-difference all-docs result))
     all-docs))
     
-               
+(gethash 15 *documents*)
                         
                                
 
@@ -72,3 +81,10 @@
 ;(connect-or '((1 2 3 4 7) (2 3 4)))
 ;(connect-and '((1 2 3) (4 2 8 3)))
 
+
+
+
+               
+        
+
+;(recursive-list-search "drei" '("sdfkj" '(bla kansdfj "sjdfblaskdjfkd" "dredf") jfsdof 3 '(2 '('("drei")))))

@@ -1,5 +1,4 @@
 
-
 ;logical procession of query
 (defun verarbeite-query (selection-list text)
   (let ((entry-list) (entry) (type) (content) (result-list '()))
@@ -40,9 +39,20 @@
 
 ;TODO : convert
 (defun num-search (text content)
-  (setq num (ignore-errors (read-from-string text)))
-  (cond ((numberp num) (= num content))
-        (t nil)))
+  (let ((num (ignore-errors (read-from-string text))))
+    (cond ((numberp num) (= num content))
+          (t (cond ((equalp text "null") (setq num 0))
+                   ((equalp text "eins") (setq num 1))
+                   ((equalp text "zwei") (setq num 2))
+                   ((equalp text "drei") (setq num 3))
+                   ((equalp text "vier") (setq num 4))
+                   ((equalp text "fünf") (setq num 5))
+                   ((equalp text "sechs") (setq num 6))
+                   ((equalp text "sieben") (setq num 7))
+                   ((equalp text "acht") (setq num 8))
+                   ((equalp text "neun") (setq num 9)))
+             (if (numberp num) (= num content))))))
+
 
 
 (defun connect-and (result-list)
@@ -72,8 +82,7 @@
           (setq all-docs (cons id all-docs)))
     (setq all-docs (set-difference all-docs result))
     all-docs))
-    
-(gethash 15 *documents*)
+
                         
                                
 
@@ -84,7 +93,8 @@
 
 
 
-               
         
 
 ;(recursive-list-search "drei" '("sdfkj" '(bla kansdfj "sjdfblaskdjfkd" "dredf") jfsdof 3 '(2 '('("drei")))))
+
+;(num-search "drei" 3)

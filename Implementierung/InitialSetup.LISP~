@@ -3,8 +3,6 @@
 (defvar *documents*) ;key is docID, value is tuple (docPath docVector)
 
 (defvar *free-text* '())
-(defvar *results* '())
-
 
 (defstruct document path document-vector)
 (defstruct term index idf)
@@ -107,7 +105,6 @@
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
   (let ((current-doc))
-    (setq *results* '()) ;reset results because new directory
     (createDocumentDictionary directory-name)
     (loop for docID being the hash-key of *documents* do 
           (setq current-doc (split (readFileInLines (document-path (gethash docID *documents*)))))

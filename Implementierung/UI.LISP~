@@ -38,7 +38,7 @@
             (make-instance  'capi:button :text "search" 
                             :callback #'(lambda (&rest args) ))   
              (make-instance  'capi:button :text "reset" 
-                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text query-display) "") (setq *results* #()))) ;wenn anfrage resetted dann auch resultate hierfuer!
+                            :callback #'(lambda (&rest args) (setf (capi:display-pane-text query-display) "")))
             ;make-instance  'capi:button :text "quit" 
                            ; :callback #'(lambda (&rest args) (quit)))
 
