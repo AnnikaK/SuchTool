@@ -1,8 +1,0 @@
-
-
-;1.Tokenize 2.Remove Duplicates
-(defun setup-vocabulary (string-liste-doc vocabulary)
-  (mapcar (lambda (x) 
-           (print (split-sequence:SPLIT-SEQUENCE #\Space x :remove-empty-subseqs t))) 
-          string-liste-doc))
-  
