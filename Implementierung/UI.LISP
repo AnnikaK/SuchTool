@@ -124,7 +124,7 @@
      (setq not-operator-panel (make-instance 'capi:check-button-panel
                                                                                      :min-width 900
                                                                                      :layout-class 'capi:column-layout
-                                                                                     :items   '(not)))
+                                                                                     :items   '(NOT)))
 
 
 

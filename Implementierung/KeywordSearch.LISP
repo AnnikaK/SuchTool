@@ -1,22 +1,44 @@
 
 ;logical procession of query
 (defun verarbeite-query (selection-list text)
-  (let ((entry-list) (entry) (type) (content) (result-list '()))
-    (mapcar (lambda (keyword)
-              (setq entry-list (gethash keyword *keyword-dict*))
-              (setq keyword-result '()) ;alle dokumente, bei denen das keyword den suchtext enthaelt
-              (mapcar (lambda (entry) 
-                        (setq docID (keyword-entry-doc-id entry))
-                        (setq type (keyword-entry-keyword-type entry))
-                        (setq content (keyword-entry-content entry))
-                        (cond ((and (equal type 'cons) (recursive-list-search text content)) (setq keyword-result (cons docID keyword-result)))
-                              ((and (equal type 'simple-base-string) (string-search text content)) (setq keyword-result (cons docID keyword-result)))
-                              ((and (equal type 'fixnum) (num-search text content)) (setq keyword-result (cons docID keyword-result))))) entry-list)
-              (setq result-list (cons keyword-result result-list))) selection-list)
-    (if (equal (capi:choice-selected-item radio-buttons) button-or) (setq result-list (connect-or result-list))
-      (setq result-list (setq result-list (connect-and result-list))))
-    (if (equal '(not) (capi:choice-selected-items not-operator-panel)) (setq result-list (negate result-list))) 
-    (print result-list)))
+  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result))
+    (cond  ((> (length selection-list) 0) ;only react if user selected something
+            (mapcar (lambda (keyword) ;iterate over keywords
+                      (setq entry-list (gethash keyword *keyword-dict*))
+                      (setq keyword-result '()) ;contains all documents in which the current keyword contains specified text
+                      (mapcar (lambda (entry)  ;iterate over all entries for current keyword
+                                (setq docID (keyword-entry-doc-id entry))
+                                (setq type (keyword-entry-keyword-type entry))
+                                (setq content (keyword-entry-content entry))
+                                (cond ((and (equal type 'cons) (recursive-list-search text content)) ;different search procedures according to type
+                                       (setq keyword-result (cons docID keyword-result)))
+                                      ((and (equal type 'simple-base-string) (string-search text content))
+                                       (setq keyword-result (cons docID keyword-result)))
+                                      ((and (equal type 'fixnum) (num-search text content))
+                                       (setq keyword-result (cons docID keyword-result)))))
+                              entry-list)
+                      (setq result-list (cons keyword-result result-list)))
+                    selection-list)
+
+
+            (if (equal (capi:choice-selected-item radio-buttons) button-or) 
+                (setq result-list (connect-or result-list)) ;connect inner term with and/or
+              (setq result-list (setq result-list (connect-and result-list))))
+
+
+
+            (cond ((not (null (member 'NOT (capi:choice-selected-items not-operator-panel))))  ;if selected, surround with not
+                   (setq result-list (negate result-list)))) 
+
+
+            (cond ((and (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
+                   (setq tmp (list result-list *results*))
+                   (setq *results* (connect-and tmp)))
+                  ((and (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
+                   (setq tmp (list result-list *results*))
+                   (setq *results* (connect-or tmp))))
+            (print *results*))
+           (t nil)))) ;todo: dialog window
 
 
 
@@ -37,6 +59,7 @@
   (search text content))
 
 
+
 ;TODO : convert
 (defun num-search (text content)
   (let ((num (ignore-errors (read-from-string text))))
@@ -52,6 +75,7 @@
                    ((equalp text "acht") (setq num 8))
                    ((equalp text "neun") (setq num 9)))
              (if (numberp num) (= num content))))))
+
 
 
 
@@ -83,6 +107,8 @@
     (setq all-docs (set-difference all-docs result))
     all-docs))
 
+
+
                         
                                
 
@@ -92,9 +118,9 @@
 
 
 
-
         
 
 ;(recursive-list-search "drei" '("sdfkj" '(bla kansdfj "sjdfblaskdjfkd" "dredf") jfsdof 3 '(2 '('("drei")))))
 
 ;(num-search "drei" 3)
+;(symbol-search "blacvbfdg" 'bla)
