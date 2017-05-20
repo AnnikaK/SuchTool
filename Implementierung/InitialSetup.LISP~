@@ -12,19 +12,17 @@
 
 ;;;;-----------------------------------------------------------------------------------------------------------------
 (defun split(expr-list)
-  (setq keywords-list '())
-  (setq free-text '())
-  (setq stack '())
-  (mapcar (lambda (x) 
-            (if ( > (length x) 0) 
-                (cond ((and (equal (char x 0) '#\() (equal (char x (- (length x) 1)) '#\))) (setq keywords-list (cons x keywords-list))) ;add keyword
-                      ((and (equal (char x 0) '#\() (really-opening x)) (setq stack (cons x stack))) ;start of keyword over multiple lines, add to stack
-                      ((> (length stack) 0) ;unfinished keyword on stack?
-                       (if (and (equal (char x (- (length x) 1)) '#\)) (really-closing x)) (progn (setq keywords-list (cons (merge-multiple-line-keyword stack x) keywords-list)) (setq stack '())) ;keyword closing, merge stacked lines and add complete keyword
-                         (setq stack (cons x stack)))) ;not closing yet, add to stack
-                      (t (setq free-text (cons x free-text))))))  ;free text
-          expr-list) 
-  (list (nreverse keywords-list) (nreverse free-text)))
+  (let ((keywords-list '()) (free-text '()) (stack '()))
+    (mapcar (lambda (x) 
+              (if ( > (length x) 0) 
+                  (cond ((and (equal (char x 0) '#\() (equal (char x (- (length x) 1)) '#\))) (setq keywords-list (cons x keywords-list))) ;add keyword
+                        ((and (equal (char x 0) '#\() (really-opening x)) (setq stack (cons x stack))) ;start of keyword over multiple lines, add to stack
+                        ((> (length stack) 0) ;unfinished keyword on stack?
+                         (if (and (equal (char x (- (length x) 1)) '#\)) (really-closing x)) (progn (setq keywords-list (cons (merge-multiple-line-keyword stack x) keywords-list)) (setq stack '())) ;keyword closing, merge stacked lines and add complete keyword
+                           (setq stack (cons x stack)))) ;not closing yet, add to stack
+                        (t (setq free-text (cons x free-text))))))  ;free text
+            expr-list) 
+    (list (nreverse keywords-list) (nreverse free-text))))
 
 
 (defun merge-multiple-line-keyword (stack curr)
@@ -151,4 +149,4 @@
 
 ;(printDict *terms*)
 
-;(printDict *keyword-dict*)                 
+;(printDict *keyword-dict*)                

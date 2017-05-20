@@ -149,4 +149,6 @@
 
 ;(printDict *terms*)
 
+;(printDict *documents*)
+
 ;(printDict *keyword-dict*)                

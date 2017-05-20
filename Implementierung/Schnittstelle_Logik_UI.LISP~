@@ -1,14 +1,15 @@
 (defstruct result keyword docs)
 
 (defun on-add-clicked (text)
-  (let ((selection-list))
+  (let ((selection-list) (free-text-results '()) (keyword-results '()))
     (setq selection-list (capi:choice-selected-items keyword-panel))
     (display-query selection-list text)
     ;free-text-search
     (cond ((member 'FREITEXT selection-list) 
-           (on-query-submitted text)))
+           (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
+           (show free-text-results)))
     ;keyword-search
-    (verarbeite-query selection-list text)))
+    (setq keyword-results (verarbeite-query selection-list text))))
 
 
 ;show query in display-panel (without any logic!!!)
@@ -37,6 +38,15 @@
            (setq tmp (concatenate 'string tmp ")"))))
 
     (setf (capi:display-pane-text query-display) (concatenate 'string displayed-query tmp))))
+
+
+(defun show (top)
+  (let ((string-list '()) (tmp) (index (length top)))
+    (mapcar (lambda (x) 
+             (setq tmp (concatenate 'string (write-to-string index) ".      " (subseq (write-to-string (first x)) 0 7) "        "  
+                                    (write-to-string (document-path (gethash (second x) *documents*)))))
+             (setq string-list (cons tmp string-list)) (setq index (- index 1))) top)
+    (show-results string-list)))
 
 
 
@@ -74,6 +84,30 @@
                            ))
       :title "RESULTS"
       :min-width breite
+      :background  :white
+      ))))
+
+
+(defun show-error ()
+  (capi:display-dialog  
+     (capi:make-container
+      (make-instance 'capi:column-layout
+                     :x-adjust  :center
+                     :width 200
+                     :description
+                     (list 
+                     
+                           (make-instance 
+                            'capi:row-layout :description 
+                            (list "Please select at least one keyword!" ""))
+                           (make-instance
+                            'capi:push-button
+                            :text "OK"  
+                            :callback-type :data
+                            :callback 
+                            #'(lambda (arg)  
+                                (capi:exit-dialog arg))))
+      :min-width 200
       :background  :white
       ))))
 

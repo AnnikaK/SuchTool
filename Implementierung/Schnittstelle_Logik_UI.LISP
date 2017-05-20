@@ -1,14 +1,23 @@
 (defstruct result keyword docs)
 
 (defun on-add-clicked (text)
-  (let ((selection-list))
+  (let ((selection-list) (free-text-results '()) (keyword-results '()) (no-error nil))
     (setq selection-list (capi:choice-selected-items keyword-panel))
     (display-query selection-list text)
     ;free-text-search
     (cond ((member 'FREITEXT selection-list) 
-           (on-query-submitted text)))
+           (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
+           (show free-text-results)))
     ;keyword-search
-    (verarbeite-query selection-list text)))
+    (setq tmp (verarbeite-query selection-list text))
+    (print tmp)
+    (cond ((second tmp) (setq keyword-results (first tmp)) (setq no-error t))) 
+    (cond (no-error 
+           (mapcar (lambda (x) (if (not (member x free-text-results))
+                                   (setq free-text-results (cons (list 1 x) free-text-results)))) keyword-results)
+           (show free-text-results)))))
+
+    
 
 
 ;show query in display-panel (without any logic!!!)
@@ -39,6 +48,16 @@
     (setf (capi:display-pane-text query-display) (concatenate 'string displayed-query tmp))))
 
 
+(defun show (top)
+  (let ((string-list '()) (tmp) (index (length top)) (score))
+    (mapcar (lambda (x) 
+             (cond ((equal (first x) 1) (setq score "-")) 
+                   (t (setq score (write-to-string (first x)))
+                      (setq score (subseq score 0 (min (length score) 7)))))
+             (setq tmp (concatenate 'string (write-to-string index) ".      " score "        "  
+                                    (write-to-string (document-path (gethash (second x) *documents*)))))
+             (setq string-list (cons tmp string-list)) (setq index (- index 1))) top)
+    (show-results string-list)))
 
 
 
@@ -102,8 +121,6 @@
       :min-width 200
       :background  :white
       ))))
-
-
 
 
 

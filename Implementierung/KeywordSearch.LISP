@@ -1,7 +1,7 @@
 
 ;logical procession of query
 (defun verarbeite-query (selection-list text)
-  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result) (tmp))
+  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result) (tmp) (no-error nil))
     (cond  ((> (length selection-list) 0) ;only react if user selected something
             (mapcar (lambda (keyword) ;iterate over keywords
                       (print keyword)
@@ -41,9 +41,11 @@
                   ((and (> (length *results*) 0) (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
                    (setq tmp (list result-list *results*))
                    (setq *results* (connect-or tmp)))
-                  ((> (length result-list) 0) (setq *results* result-list)))) ;nothing to connect with
+                  ((> (length result-list) 0) (setq *results* result-list))) ;nothing to connect with
+            (setq no-error t)) 
 
-           (t (show-error))))) ;nothing selected
+           (t (show-error))) ;nothing selected
+    (list *results* no-error))) 
 
 
 
@@ -130,4 +132,3 @@
 ;(symbol-search "blacvbfdg" 'bla)
 
 
-(gethash 15 *documents*)

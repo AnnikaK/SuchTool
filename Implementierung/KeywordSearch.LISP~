@@ -1,9 +1,10 @@
 
 ;logical procession of query
 (defun verarbeite-query (selection-list text)
-  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result))
+  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result) (tmp))
     (cond  ((> (length selection-list) 0) ;only react if user selected something
             (mapcar (lambda (keyword) ;iterate over keywords
+                      (print keyword)
                       (setq entry-list (gethash keyword *keyword-dict*))
                       (setq keyword-result '()) ;contains all documents in which the current keyword contains specified text
                       (mapcar (lambda (entry)  ;iterate over all entries for current keyword
@@ -12,10 +13,10 @@
                                 (setq content (keyword-entry-content entry))
                                 (cond ((and (equal type 'cons) (recursive-list-search text content)) ;different search procedures according to type
                                        (setq keyword-result (cons docID keyword-result)))
-                                      ((and (equal type 'simple-base-string) (string-search text content))
-                                       (setq keyword-result (cons docID keyword-result)))
+                                      ((and (equal type 'simple-base-string) (string-search text content)) ;union is necessary if keyword occurs multiple times in document (e.g. different cases)
+                                       (setq keyword-result (union (list docID) keyword-result))) 
                                       ((and (equal type 'fixnum) (num-search text content))
-                                       (setq keyword-result (cons docID keyword-result)))))
+                                       (setq keyword-result (union (list docID) keyword-result)))))
                               entry-list)
                       (setq result-list (cons keyword-result result-list)))
                     selection-list)
@@ -24,21 +25,25 @@
             (if (equal (capi:choice-selected-item radio-buttons) button-or) 
                 (setq result-list (connect-or result-list)) ;connect inner term with and/or
               (setq result-list (setq result-list (connect-and result-list))))
+            
+            
 
-
+            
 
             (cond ((not (null (member 'NOT (capi:choice-selected-items not-operator-panel))))  ;if selected, surround with not
                    (setq result-list (negate result-list)))) 
 
 
-            (cond ((and (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
+
+            (cond ((and (> (length *results*) 0) (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
                    (setq tmp (list result-list *results*))
                    (setq *results* (connect-and tmp)))
-                  ((and (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
+                  ((and (> (length *results*) 0) (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
                    (setq tmp (list result-list *results*))
-                   (setq *results* (connect-or tmp))))
-            (print *results*))
-           (t nil)))) ;todo: dialog window
+                   (setq *results* (connect-or tmp)))
+                  ((> (length result-list) 0) (setq *results* result-list)))) ;nothing to connect with
+
+           (t (show-error))))) ;nothing selected
 
 
 
@@ -108,7 +113,6 @@
     all-docs))
 
 
-
                         
                                
 
@@ -124,3 +128,5 @@
 
 ;(num-search "drei" 3)
 ;(symbol-search "blacvbfdg" 'bla)
+
+
