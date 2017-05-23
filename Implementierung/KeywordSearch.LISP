@@ -21,31 +21,20 @@
                       (setq result-list (cons keyword-result result-list)))
                     selection-list)
 
+            
+                   (if (equal (capi:choice-selected-item radio-buttons) button-or) 
+                       (setq result-list (connect-or result-list)) ;connect inner term with and/or
+                     (setq result-list (setq result-list (connect-and result-list))))
 
-            (if (equal (capi:choice-selected-item radio-buttons) button-or) 
-                (setq result-list (connect-or result-list)) ;connect inner term with and/or
-              (setq result-list (setq result-list (connect-and result-list))))
-            
-            
-
-            
 
             (cond ((not (null (member 'NOT (capi:choice-selected-items not-operator-panel))))  ;if selected, surround with not
                    (setq result-list (negate result-list)))) 
 
 
-
-            (cond ((and (> (length *results*) 0) (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
-                   (setq tmp (list result-list *results*))
-                   (setq *results* (connect-and tmp)))
-                  ((and (> (length *results*) 0) (> (length result-list) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
-                   (setq tmp (list result-list *results*))
-                   (setq *results* (connect-or tmp)))
-                  ((> (length result-list) 0) (setq *results* result-list))) ;nothing to connect with
             (setq no-error t)) 
 
            (t (show-error))) ;nothing selected
-    (list *results* no-error))) 
+    (list result-list no-error))) 
 
 
 
@@ -88,12 +77,12 @@
 
 (defun connect-and (result-list)
  (let ((and-res))
-  (setq result-list (sort result-list '< :key 'length))
+  (setq result-list (sort result-list '> :key 'length))
   (setq and-res (car result-list))
   (setq result-list (cdr result-list))
   (mapcar (lambda (x) 
             (setq and-res (intersection and-res x))) result-list)
-  (setq and-res (sort and-res '<))))
+  and-res))
     
 
 
@@ -103,7 +92,7 @@
     (setq result-list (cdr result-list))
     (mapcar (lambda (x)
               (setq or-res (union or-res x))) result-list)
-    (setq or-res (sort or-res '<))))
+    or-res))
     
 
 ;only one list because and/or operation before negation
