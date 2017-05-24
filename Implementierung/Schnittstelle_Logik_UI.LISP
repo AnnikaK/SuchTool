@@ -184,4 +184,6 @@
 
 ;(connect-and-total '(((0.2 15) (0.3 2)) ((0.2 4) (0.3 2))))
 ;(connect-or-total '(((0.2 15) (0.3 2)) ((0.2 4) (0.3 2))))
-            
+
+(setq string (namestring (document-path (gethash 4 *documents*))))
+ (dir string)
