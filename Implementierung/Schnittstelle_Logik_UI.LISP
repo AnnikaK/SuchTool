@@ -2,25 +2,44 @@
 (defun on-add-clicked (text)
   (let ((selection-list) (free-text-results '()) (keyword-results '()) (no-error nil) (total-results '()) (free-text-search-included nil))
     (setq selection-list (capi:choice-selected-items keyword-panel))
-    (display-query selection-list text)
+    (cond ((not (equal nil selection-list))
+
+           (display-query selection-list text)
     ;free-text-search
-    (cond ((member 'FREITEXT selection-list) 
-           (setq free-text-search-included t)
-           (setq free-text-results (on-free-text-query-submitted text)))) ;(score docID)
-           
+           (cond ((member 'FREITEXT selection-list)
+                  (setq free-text-search-included t)
+                  (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
+                  (setq selection-list (remove 'FREITEXT selection-list)))) 
+
+
+
+
     ;keyword-search
-    (setq tmp (verarbeite-query selection-list text))
-    (cond ((second tmp) (setq keyword-results (first tmp)) (setq no-error t))) 
+           (setq keyword-results (verarbeite-query selection-list text))
+
 
     ;get total result list for current query-term
-    (cond (no-error  
-           (setq keyword-results (mapcar (lambda (x) (replace x (list 1 x))) keyword-results))
-           (cond (free-text-search-included
-                  (if (equal (capi:choice-selected-item radio-buttons) button-and)
-                      (merge-and keyword-results free-text-results)
-                    (merge-or keyword-results free-text-results)))
-                 (t (setq total-results keyword-results)))
 
+           (setq keyword-results (mapcar (lambda (x) (list 1 x)) keyword-results))
+
+           
+           (cond (free-text-search-included
+                  
+                  (cond 
+                   ((equal (length selection-list) 0)(setq total-results free-text-results)) ;free-text search alone
+
+
+                   ((equal (capi:choice-selected-item radio-buttons) button-and) ;connect with and
+                    (setq total-results (merge-and keyword-results free-text-results)))
+
+
+                   ((equal (capi:choice-selected-item radio-buttons) button-or) ;connect with or
+                    (setq total-results (merge-or keyword-results free-text-results)))))
+
+
+                 (t (setq total-results keyword-results)))  ;keyword-search alone
+
+           
            (cond ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
                   (setq *results* (merge-and total-results *results*)))  
                  ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
@@ -28,7 +47,6 @@
                  (t (setq *results* total-results))))
 
           (t (show-error)))))
-
 
 
 
@@ -50,7 +68,6 @@
 
 (defun merge-or (a b)
   (let ((res '()) (all (list a b)) (smaller) (larger))
-           (cond ((and (> (length a) 0) (> (length b) 0))
                   (setq all (sort all '< :key 'length))
                   (setq smaller (first all))
                   (setq larger (second all))
@@ -60,7 +77,7 @@
                                    (setq new-score (list (+ (car x) (car score)) (second x))) 
                                    (setq res (cons new-score res))
                                    (setq larger (remove larger b))))) smaller)
-                  (setq res (append larger res))))
+                  (setq res (append larger res))
            res))
 
 
@@ -93,8 +110,10 @@
     (setq tmp (concatenate 'string before middle after))
     ;verknuepfung extern
     (cond ((> (length displayed-query) 0)
-           (cond ((equal (capi:choice-selected-item buttons-outer-term) and-outer-term)(setq displayed-query (concatenate 'string "(AND " displayed-query)))
-                 ((equal (capi:choice-selected-item buttons-outer-term) or-outer-term) (setq displayed-query (concatenate 'string "(OR " displayed-query))))
+           (cond ((equal (capi:choice-selected-item buttons-outer-term) and-outer-term)
+                  (setq displayed-query (concatenate 'string "(AND " displayed-query)))
+                 ((equal (capi:choice-selected-item buttons-outer-term) or-outer-term)
+                  (setq displayed-query (concatenate 'string "(OR " displayed-query))))
            (setq tmp (concatenate 'string tmp ")"))))
 
     (setf (capi:display-pane-text query-display) (concatenate 'string displayed-query tmp))))

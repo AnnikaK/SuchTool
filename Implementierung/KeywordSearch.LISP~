@@ -119,5 +119,3 @@
 
 ;(num-search "drei" 3)
 ;(symbol-search "blacvbfdg" 'bla)
-
-

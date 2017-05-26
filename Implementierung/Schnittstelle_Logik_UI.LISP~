@@ -1,93 +1,78 @@
 
 (defun on-add-clicked (text)
-  (let ((selection-list) (free-text-results '()) (keyword-results '()) (no-error nil) (total-results '()))
+  (let ((selection-list) (free-text-results '()) (keyword-results '()) (no-error nil) (total-results '()) (free-text-search-included nil))
     (setq selection-list (capi:choice-selected-items keyword-panel))
-    (display-query selection-list text)
+    (cond ((not (equal nil selection-list))
+
+           (display-query selection-list text)
     ;free-text-search
-    (cond ((member 'FREITEXT selection-list) 
-           (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
-           ))
+           (cond ((member 'FREITEXT selection-list)
+                  (setq free-text-search-included t)
+                  (setq free-text-results (on-free-text-query-submitted text))
+                  (setq selection-list (remove 'FREITEXT selection-list)))) ;(score docID)
+           
     ;keyword-search
-    (setq tmp (verarbeite-query selection-list text))
-    (cond ((second tmp) (setq keyword-results (first tmp)) (setq no-error t))) 
+           (setq keyword-results (verarbeite-query selection-list text))
 
     ;get total result list for current query-term
-    (cond (no-error  
-           (if(equal (capi:choice-selected-item radio-buttons) button-and) 
-               (setq total-results (merge-results-and free-text-results keyword-results))
-             (setq total-results (merge-results-or free-text-results keyword-results)))
- 
+
+           (setq keyword-results (mapcar (lambda (x) (list 1 x)) keyword-results))
+
+
+           (cond (free-text-search-included
+                  (if (equal (capi:choice-selected-item radio-buttons) button-and)
+                      (setq total-results (merge-and keyword-results free-text-results))
+                    (setq total-results (merge-or keyword-results free-text-results))))
+                 (t (setq total-results keyword-results)))
+
            (cond ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
-                  (setq tmp (list total-results *results*))
-                  (setq *results* (connect-and-total tmp)))
+                  (setq *results* (merge-and total-results *results*)))  
                  ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
-                  (setq tmp (list total-results *results*))
-                  (setq *results* (connect-or-total tmp)))
+                  (setq *results* (merge-or total-results *results*)))
                  (t (setq *results* total-results))))
-          (t show-error))))
+
+          (t (show-error)))))
 
 
 
 
-
-
-
-(defun merge-results-and (free-text-results keyword-results)
-  (let ((res '()))
-    (cond ((and (> (length keyword-results) 0) (> (length free-text-results) 0))
+(defun merge-and (a b)
+  (let ((res '()) (all (list a b)) (smaller) (larger))
+    (cond ((and (> (length a) 0) (> (length b) 0))
+           (setq all (sort all '< :key 'length))
+           (setq smaller (first all))
+           (setq larger (second all))
            (mapcar (lambda (x)
-                     (setq old-score (car (member x free-text-results :test '= :key 'second)))
-                     (cond ((not (equal nil old-score)) 
-                            (setq new-score (list (+ 1 (car old-score)) x)) ;existing vector-space score + 1 (for succesful keyword search)
-                            (setq res (cons new-score res))))) keyword-results)))  ;add new result entey with score 1 
+                     (setq score (car (member (second x) larger :test '= :key 'second)))
+                     (cond ((not (equal nil score)) 
+                            (setq new-score (list (+ (car x) (car score)) (second x))) 
+                            (setq res (cons new-score res))))) smaller)))
+    res)) 
+
+
+
+(defun merge-or (a b)
+  (let ((res '()) (all (list a b)) (smaller) (larger))
+           (cond ((and (> (length a) 0) (> (length b) 0))
+                  (setq all (sort all '< :key 'length))
+                  (setq smaller (first all))
+                  (setq larger (second all))
+                  (mapcar (lambda (x)
+                            (setq score (car (member (second x) larger :test '= :key 'second)))
+                            (cond ((not (equal nil score)) 
+                                   (setq new-score (list (+ (car x) (car score)) (second x))) 
+                                   (setq res (cons new-score res))
+                                   (setq larger (remove larger b))))) smaller)
+                  (setq res (append larger res))))
            res))
 
-;TODO
-(defun merge-results-or (free-text-results keyword-results)
-  (let ((res '()))
-    (cond ((and (> (length keyword-results) 0) (> (length free-text-results) 0))
-           (mapcar (lambda (x)
-                     (setq old-score (car (member x free-text-results :test '= :key 'second)))
-                     (cond ((not (equal nil old-score)) 
-                            (setq new-score (list (+ 1 (car old-score)) x)) ;existing vector-space score + 1 (for succesful keyword search)
-                            (setq res (cons new-score res))))) keyword-results)))  ;add new result entey with score 1 
-           res))
+
+;(merge-and '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
+;(merge-or '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
 
 
 
-
-;todo: add existing scores together and sort after scores
-(defun connect-and-total (res) 
- (let ((smaller-list '()) (larger-list '()) (total '()))
-   (setq res (sort res '< :key 'length))
-   (setq smaller-list (first res))
-   (setq larger-list (second res))
-   (mapcar (lambda (x)
-             (setq tmp (car (member (second x) larger-list :test '= :key 'second)))
-             (cond ((not (equal nil tmp)) 
-                    (setq new (list (+ (first x) (first tmp)) (second tmp))) ;add scores 
-                    (setq total (cons new total))))) smaller-list)))
-
-
-            
-
-
-(defun connect-or-total (res) 
- (let ((smaller-list '()) (larger-list '()) (elem) (tmp))
-   (setq res (sort res '< :key 'length))
-   (setq smaller-list (first res))
-   (setq larger-list (second res))
-   (mapcar (lambda (x)
-             (setq elem (member (second x) larger-list :test '= :key 'second))
-             (setq tmp (car elem))
-             (cond ((not (equal nil elem)) 
-                    (setq new (list (+ (first x) (first tmp)) (second tmp))) ;add scores 
-                    (replace tmp new))
-                   (t (setq larger-list (cons x larger-list))))) smaller-list)
-   (setq larger-list (sort larger-list '> :key 'car))))
-
-
-;pretty-print und editor-pane
+;TODO : pretty-print und editor-pane? Nice to have
  
 
 ;show query in display-panel (without any logic!!!)
