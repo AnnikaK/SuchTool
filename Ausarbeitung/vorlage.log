@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  24 MAY 2017 13:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  28 MAY 2017 15:47
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -720,7 +720,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=131, 812.03375pt x 157.58
+<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=139, 812.03375pt x 157.58
 875pt>
 File: Logo_Hauptcampus_Informatik-eps-converted-to.pdf Graphic file (type pdf)
  <use Logo_Hauptcampus_Informatik-eps-converted-to.pdf>
@@ -774,19 +774,24 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] (chapters/EinleitungProblemstellung.tex
 Kapitel 1.
 
-Overfull \hbox (12.00992pt too wide) in paragraph at lines 6--7
-\OT1/cmr/m/n/12 Hier rum-la-bern von we-gen in EMails sucht man manch-mal nach 
-iwas, un[]ubersichtlich,
+Underfull \hbox (badness 10000) in paragraph at lines 6--10
+
  []
 
-) (chapters/InformationRetrieval.tex [1
+
+Overfull \hbox (27.00992pt too wide) in paragraph at lines 13--14
+[]\OT1/cmr/m/n/12 Hier rum-la-bern von we-gen in EMails sucht man manch-mal nac
+h iwas, un[]ubersichtlich,
+ []
+
+[1
 
 
 
 
-]
+]) (chapters/InformationRetrieval.tex [2]
 Kapitel 2.
-) (chapters/BooleanRetrieval.tex [2
+) (chapters/BooleanRetrieval.tex [3
 
 
 ]
@@ -795,7 +800,7 @@ Kapitel 3.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 3.
 
-) (chapters/VectorSpaceModel.tex [3
+) (chapters/VectorSpaceModel.tex [4
 
 
 ]
@@ -812,27 +817,27 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 8.
 
-) (chapters/PrecisionAndRecall.tex [4
+) (chapters/PrecisionAndRecall.tex [5
 
 
 ]
 Kapitel 5.
-) (chapters/Implementierung.tex [5
+) (chapters/Implementierung.tex [6
 
 
 ]
 Kapitel 6.
-) (chapters/BenutzeroberflaecheUndBedienung.tex [6
+) (chapters/BenutzeroberflaecheUndBedienung.tex [7
 
 
 ]
 Kapitel 7.
-) (chapters/ZusammenfassungAusblick.tex [7
+) (chapters/ZusammenfassungAusblick.tex [8
 
 
 ]
 Kapitel 8.
-) [8
+) [9
 
 
 ] (vorlage.bbl
@@ -843,7 +848,7 @@ psview ? document =$
 
 )
 No file vorlage.ind.
-[9
+[10
 
 
 
@@ -856,7 +861,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--130
 
  []
 
-[10
+[11
 
 
 
@@ -878,7 +883,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) [11
+) [12
 
 
 
@@ -890,15 +895,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
 (chapters/Selbststaendigkeitserklaerung.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
-
-
-Package rerunfilecheck Warning: File `vorlage.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `vorlage.out':
-(rerunfilecheck)             Before: 8991D1BA08FE6DC58860564E9F05E8E8;2117
-(rerunfilecheck)             After:  C894E3252C9E85C32AA67C504D712F51;2253.
+Package rerunfilecheck Info: File `vorlage.out' has not changed.
+(rerunfilecheck)             Checksum: C894E3252C9E85C32AA67C504D712F51;2253.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
  )
 (\end occurred inside a group at level 1)
@@ -906,39 +904,28 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10664 strings out of 493634
- 155015 string characters out of 3143744
- 284017 words of memory out of 3000000
- 13739 multiletter control sequences out of 15000+200000
+ 10663 strings out of 493634
+ 154989 string characters out of 3143744
+ 285017 words of memory out of 3000000
+ 13741 multiletter control sequences out of 15000+200000
  15059 words of font info for 57 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,8n,32p,638b,3328s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsection.1.2.4} has been referenc
-ed but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.2.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.2.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.2.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on vorlage.pdf (18 pages, 187382 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
+2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.p
+fb>
+Output written on vorlage.pdf (19 pages, 193258 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 70 named destinations out of 1000 (max. 500000)
- 262 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 338 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 278 words of extra memory for PDF output out of 10000 (max. 10000000)
 

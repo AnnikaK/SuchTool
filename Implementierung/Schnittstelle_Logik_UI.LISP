@@ -76,7 +76,7 @@
                             (cond ((not (equal nil score)) 
                                    (setq new-score (list (+ (car x) (car score)) (second x))) 
                                    (setq res (cons new-score res))
-                                   (setq larger (remove larger b))))) smaller)
+                                   (setq larger (remove score larger))))) smaller)
                   (setq res (append larger res))
            res))
 
