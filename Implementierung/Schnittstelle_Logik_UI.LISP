@@ -11,18 +11,23 @@
                   (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
                   (setq selection-list (remove 'FREITEXT selection-list)))) 
 
+                    ; (print free-text-results)
 
 
 
     ;keyword-search
            (setq keyword-results (verarbeite-query selection-list text))
 
+ 
 
     ;get total result list for current query-term
 
            (setq keyword-results (mapcar (lambda (x) (list 1 x)) keyword-results))
 
-           
+           (print keyword-results)
+
+
+           ;set total results for this query
            (cond (free-text-search-included
                   
                   (cond 
@@ -39,11 +44,13 @@
 
                  (t (setq total-results keyword-results)))  ;keyword-search alone
 
+           (print total-results)
+
            
-           (cond ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
+           (cond ((and (> (length *results*) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
                   (setq *results* (merge-and total-results *results*)))  
-                 ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
-                  (setq *results* (merge-or total-results *results*)))
+                 ((and (> (length *results*) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
+                (print *results*)  (setq *results* (merge-or total-results *results*)) (print *results*))
                  (t (setq *results* total-results))))
 
           (t (show-error)))))
@@ -73,10 +80,12 @@
                   (setq larger (second all))
                   (mapcar (lambda (x)
                             (setq score (car (member (second x) larger :test '= :key 'second)))
-                            (cond ((not (equal nil score)) 
+                            (cond 
+                             ((not (equal nil score)) 
                                    (setq new-score (list (+ (car x) (car score)) (second x))) 
                                    (setq res (cons new-score res))
-                                   (setq larger (remove score larger))))) smaller)
+                                   (setq larger (remove score larger)))
+                             (t (setq res (cons x res))))) smaller)
                   (setq res (append larger res))
            res))
 
@@ -125,11 +134,18 @@
     (mapcar (lambda (x) 
                     (setq score (write-to-string (first x)))
                     (setq score (subseq score 0 (min (length score) 7)))
+                    (setq datum (document-datum (gethash (second x) *documents*)))
+                    (setq absender (document-absender (gethash (second x) *documents*)))
+
+                    (if (equal nil datum) (setq datum ""))
+                    (if (equal nil absender) (setq absender ""))
+                    
+
                     (setq tmp (list (concatenate 'string (write-to-string index) ".      ")
                                     score
-                                    ""
+                                    datum
                                     (namestring (document-path (gethash (second x) *documents*)))
-                                    ""))
+                                    absender))
                     (setq string-list (cons tmp string-list))
                     (setq index (- index 1))) top)
     (show-results string-list)))

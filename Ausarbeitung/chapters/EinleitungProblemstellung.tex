@@ -5,10 +5,12 @@
 
 Tag für Tag treffen neue E-Mail Nachrichten mit den unterschiedlichsten Inhalten im Posteingang ein, weshalb die Anzahl gesendeter und empfangener Mails schnell unübersichtlich groß wird. \\
  Will der Nutzer eine Weile später auf eine bestimmte Nachricht erneut zugreifen, steht er oftmals vor der Problematik, mit der manuellen Suche aufgrund der schieren Datenmenge überfordert zu sein. \\
- Besonders schwierig wird es für ihn, wenn er nach bestimmten Inhalten sucht, sich jedoch weder an das genaue Datum noch an den Absender erinnert. An dieser Stelle hilft dem Nutzer ein Suchprogramm, mit dem er Suchkriterien beliebig logisch verknüpfen kann. \\
+ Besonders schwierig wird es für ihn, wenn er nach bestimmten Inhalten sucht, sich jedoch weder an das genaue Datum noch an den Absender erinnert. An dieser Stelle hilft dem Nutzer ein Suchprogramm, mit dem er selbstgewählte Suchkriterien beliebig logisch verknüpfen kann. \\
  Weiß er beispielsweise noch, dass die Nachricht im Mai ankam und eine wichtige Adresse beinhaltet, könnte seine Suchanfrage \glqq Datum = Mai und Freitext = Adresse \grqq lauten.\\
-  Das Suchprogramm präsentiert dann eine Liste für ihn in Frage kommender Dokumente, was die Suche auf einen kleinen Kreis relevanter Treffer einschränkt. \\
-  Die Suche nach bestimmten 
+  Die Ausgabe des Programms besteht aus einer Liste damit für ihn in Frage kommender Dokumente, was die Suche auf einen kleinen Kreis relevanter Treffer einschränkt. \\
+  Die Suche basierend auf Freitext sowie Metadaten beschränkt sich nicht nur auf E-Mails, sondern lässt sich auch auf andere Formen von Dokumentenarchiven anwenden.
+  
+  
  
  
 
@@ -23,12 +25,65 @@ beschreiben, was man mit dieser Arbeit (mindestens) erreichen möchte.
 
 \section{Problemstellung}
 
-Teilweise strukturiert, teilweise Freitext, man will zeugs finden -> relativ allgemein halten
+Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche (engl. Information Retrieval System) in einem Dokumentenarchiv, wobei die Dokumente von teilweise strukturierter Natur sind. \\
+Dies bedeutet, dass sie sowohl gewöhnlichen Freitext als auch Metadaten enthalten. Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Alle Suchanfragen sollen hierbei beliebig mit den booleschen Operatoren \textit{AND} (engl. und) sowie \textit{OR} (engl. oder) verknüpfbar sein. \\
+Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postausgang, allerdings soll das System so flexibel sein, dass es auch auf andere teilweise strukturierte Dokumentenarchive anwendbar ist. 
 
 
 \section{Teilprobleme}
-\subsection{Unterscheidung zwischen Metadaten und Freitext}
+Aus der Aufgabenstellung ergeben sich die im folgenden beschriebenen Teilprobleme.
+
+
+\subsection{Dynamisches einlesen der Metadaten}
+Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das IR-System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
+
+\subsection{Unterscheidung Metadaten und Freitext}
+Damit das System die Metadaten dynamisch einlesen kann, müssen die folgenden Punkte erfüllt sein:
+\begin{enumerate}
+	\item Das System muss zwischen Metadaten und Freitext unterscheiden können.
+	\item Die Namen der Metadaten, welche im Folgenden mit \glqq Keywords \grqq{} bezeichnet werden, müssen vom Inhalt der Metadaten abgegrenzt werden.
+	\item Der Inhalt kann unterschiedlichen Datentyps sein, z.B. String oder Liste, weshalb dieser bestimmt werden muss.
+\end{enumerate}
+
+
 \subsection{Metadatensuche}
+Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
+Im Gegensatz zur Freitextsuche muss zu jedem Dokument geprüft werden, ob das entsprechende Schlüsselwort überhaupt auftritt, bevor in diesem gesucht wird.
+
+
 \subsection{Freitextsuche}
+Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche. Daraus resultieren zwei Probleme:
+\begin {enumerate}
+\item Wie kann effizient in großen Wortmengen gesucht werden?
+\item Wie kann die Suche bei begrenztem Speicher bewältigt werden?
+\end{enumerate}
+
+Zudem stellt sich die Frage nach einem geeigneten Verfahren, das bei längeren Anfragen auch teilweise passende Ergebnisse liefert und messen kann, wie gut die erzielten Treffer zur Nutzeranfrage passen.
+
+
 \subsection{Verknüpfung mit UND/ODER}
+Alle Anfragen sollen beliebig logisch verknüpfbar sein. Dies beinhaltet die folgenden Problemstellungen:
+\begin{enumerate}
+	\item Innere Schachtelung der Suchanfrage:
+	\begin {itemize}
+	\item Die Resultate zu den verschiedenen ausgewählten Keywords einer Anfrage müssen miteinander verknüpft werden.
+	\item Die Resultate der Freitextsuche,sofern in der Anfrage ausgewählt, müssen mit den Ergebnissen der Medatensuche verknpüft werden.
+	\item Es sollt möglich sein, die Anfrage mit dem logischen Operator \textit{NOT} (engl. nicht) zu negieren.
+	\end{itemize}
+
+\item Äußere Schachtelung der Suchanfrage:
+
+\begin{itemize}
+	\item Mehrere Anfragen sollen miteinander logisch verknüpfbar sein.
+	\item Hierbei sollen sowohl \textit{AND }als auch \textit{OR} möglich sein.
+\end{itemize}
+
+\end{enumerate}
+
+
+
 \subsection{Benutzeroberfläche}
+Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht, seine Suchanfragen beliebig komplex zusammenzustellen.
+\begin{itemize}
+	\item 
+\end{itemize}
