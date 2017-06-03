@@ -2,25 +2,16 @@
 
 \section{Einleitung}
 
-
-Tag für Tag treffen neue E-Mail Nachrichten mit den unterschiedlichsten Inhalten im Posteingang ein, weshalb die Anzahl gesendeter und empfangener Mails schnell unübersichtlich groß wird. \\
- Will der Nutzer eine Weile später auf eine bestimmte Nachricht erneut zugreifen, steht er oftmals vor der Problematik, mit der manuellen Suche aufgrund der schieren Datenmenge überfordert zu sein. \\
- Besonders schwierig wird es für ihn, wenn er nach bestimmten Inhalten sucht, sich jedoch weder an das genaue Datum noch an den Absender erinnert. An dieser Stelle hilft dem Nutzer ein Suchprogramm, mit dem er selbstgewählte Suchkriterien beliebig logisch verknüpfen kann. \\
- Weiß er beispielsweise noch, dass die Nachricht im Mai ankam und eine wichtige Adresse beinhaltet, könnte seine Suchanfrage \glqq Datum = Mai und Freitext = Adresse \grqq lauten.\\
-  Die Ausgabe des Programms besteht aus einer Liste damit für ihn in Frage kommender Dokumente, was die Suche auf einen kleinen Kreis relevanter Treffer einschränkt. \\
-  Die Suche basierend auf Freitext sowie Metadaten beschränkt sich nicht nur auf E-Mails, sondern lässt sich auch auf andere Formen von Dokumentenarchiven anwenden.
-  
-  
- 
- 
+Wer kennt es nicht: Tagtäglich treffen neue E-Mails ein, sodass das Postfach sich immer weiter füllt. \\
+Schnell ist es passiert, dass die Menge an Nachrichten unübersichtlich groß wird, was zu einem ernsthaften Problem wird, sobald man etwas bestimmtes darin wiederfinden möchte. \\
+Die benötigte Mail war wichtig, weil sie eine bestimmte Kontaktadresse enthielt, aber wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Wer jetzt manuell suchen muss, ist an dieser Stelle verloren. \\
+Abhilfe schafft ein Information Retrieval System, mit dem man bestimmte Suchkriterien eingeben und beliebig miteinander kombinieren kann. \\
+ So bekommt der Nutzer genau die Nachrichten präsentiert, die sein Informationsbedürfnis am ehesten bedienen, und  braucht sich nicht erst durch hunderte von Mails durchzuarbeiten. In diesem Fall könnte die Person beispielsweise im Freitext nach dem Wort \glqq Kontaktadresse\grqq{} suchen und weitere Kriterien wie \glqq Datum = Juni \grqq{} hinzufügen. \\
+Besonderheit ist das beliebige Verknüpfen: Der Nutzer kann sich entscheiden, ob er nur Resultate akzeptiert, auf die Beides zutrifft, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Dies erlaubt eine sehr individuelle, auf den Benutzer zugeschnittene Suche. \\
+Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wertvoll, sondern lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
 
 
-Begonnen werden soll mit einer Einleitung zum Thema, also Hintergrund und Ziel erläutert werden.
 
-Weiterhin wird das vorliegende Problem diskutiert: Was ist zu lösen, warum ist es wichtig, dass man dieses Problem löst und welche Lösungsansätze gibt es bereits. Der Bezug auf vorhandene oder eben bisher fehlende Lösungen begründet auch die Intention und Bedeutung dieser Arbeit. Dies können allgemeine Gesichtspunkte sein: Man liefert einen Beitrag für ein generelles Problem oder man hat eine spezielle Systemumgebung oder ein spezielles Produkt (z.B. in einem Unternehmen), woraus sich dieses noch zu lösende Problem ergibt.
-
-Im weiteren Verlauf wird die Problemstellung konkret dargestellt: Was ist spezifisch zu lösen? Welche Randbedingungen sind gegeben und was ist die Zielsetzung? Letztere soll das
-beschreiben, was man mit dieser Arbeit (mindestens) erreichen möchte.
 
 
 \section{Problemstellung}
@@ -41,15 +32,14 @@ Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen 
 Damit das System die Metadaten dynamisch einlesen kann, müssen die folgenden Punkte erfüllt sein:
 \begin{enumerate}
 	\item Das System muss zwischen Metadaten und Freitext unterscheiden können.
-	\item Die Namen der Metadaten, welche im Folgenden mit \glqq Keywords \grqq{} bezeichnet werden, müssen vom Inhalt der Metadaten abgegrenzt werden.
+	\item Metadaten setzen sich aus Name und Inhalt zusammen, weshalb beides erkannt und voneinander abgegrenzt werden muss. Im folgenden werden die Namen als \glqq Keywords \grqq{} bezeichnet.
 	\item Der Inhalt kann unterschiedlichen Datentyps sein, z.B. String oder Liste, weshalb dieser bestimmt werden muss.
 \end{enumerate}
 
 
 \subsection{Metadatensuche}
 Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
-Im Gegensatz zur Freitextsuche muss zu jedem Dokument geprüft werden, ob das entsprechende Schlüsselwort überhaupt auftritt, bevor in diesem gesucht wird.
-
+Im Gegensatz zur Freitextsuche muss zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort überhaupt darin auftritt.
 
 \subsection{Freitextsuche}
 Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche. Daraus resultieren zwei Probleme:
@@ -62,28 +52,25 @@ Zudem stellt sich die Frage nach einem geeigneten Verfahren, das bei längeren An
 
 
 \subsection{Verknüpfung mit UND/ODER}
-Alle Anfragen sollen beliebig logisch verknüpfbar sein. Dies beinhaltet die folgenden Problemstellungen:
+Alle Anfragen sollen beliebig mit den logischen Operatoren \textit{AND}, \textit{OR} sowie \textit{NOT} verknüpfbar sein. Dies beinhaltet die folgenden Problemstellungen:
 \begin{enumerate}
-	\item Innere Schachtelung der Suchanfrage:
-	\begin {itemize}
-	\item Die Resultate zu den verschiedenen ausgewählten Keywords einer Anfrage müssen miteinander verknüpft werden.
-	\item Die Resultate der Freitextsuche,sofern in der Anfrage ausgewählt, müssen mit den Ergebnissen der Medatensuche verknpüft werden.
-	\item Es sollt möglich sein, die Anfrage mit dem logischen Operator \textit{NOT} (engl. nicht) zu negieren.
-	\end{itemize}
+\item Keywordsuche und Freitextsuche müssen miteinander verknüpft werden.
+\item Sind meherere Keywords ausgewählt, müssen die Teilergebnisse verknüpft werden.
+\item Stellt der Nutzer mehrere Anfragen, müssen die Ergebnisse der einzelnen Anfragen verknüpft werden.
+	\end{enumerate}
 
-\item Äußere Schachtelung der Suchanfrage:
 
-\begin{itemize}
-	\item Mehrere Anfragen sollen miteinander logisch verknüpfbar sein.
-	\item Hierbei sollen sowohl \textit{AND }als auch \textit{OR} möglich sein.
-\end{itemize}
 
-\end{enumerate}
 
 
 
 \subsection{Benutzeroberfläche}
-Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht, seine Suchanfragen beliebig komplex zusammenzustellen.
-\begin{itemize}
-	\item 
-\end{itemize}
+Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht, seine Suchanfragen beliebig zusammenzustellen. Hierzu muss die Oberfläche folgende grundlegenden Funktionalitäten aufweisen:
+\begin{enumerate}
+	\item Das Suchverzeichnis, d.h. das Dokumentenarchiv in welchem die Suche stattfindet, muss auswählbar sein. 
+	\item Alle im Archiv auftretenden Keywords sowie die Freitextsuche müssen auswählbar sein.
+	\item Logische Operatoren (AND,OR,NOT) zur Verknüpfung müssen auswählbar sein.
+	\item Die Suchanfrage muss für den Nutzer verständlich angezeigt werden.
+	
+	
+\end{enumerate}

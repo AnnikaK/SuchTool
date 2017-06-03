@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  2 JUN 2017 11:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  2 JUN 2017 14:48
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -778,7 +778,13 @@ Kapitel 1.
 
 
 
-] [2]) (chapters/InformationRetrieval.tex [3]
+] [2]
+Overfull \hbox (11.1851pt too wide) in paragraph at lines 71--72
+[]\OT1/cmr/m/n/12 Alle im Ar-chiv auf-tre-ten-den Key-words so-wie die Frei-tex
+t-su-che m[]ussen ausw[]ahlbar
+ []
+
+) (chapters/InformationRetrieval.tex [3]
 Kapitel 2.
 
 Overfull \hbox (29.08243pt too wide) in paragraph at lines 5--6
@@ -912,28 +918,27 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10679 strings out of 493634
- 155147 string characters out of 3143744
- 284908 words of memory out of 3000000
- 13744 multiletter control sequences out of 15000+200000
- 15227 words of font info for 57 fonts, out of 3000000 for 9000
+ 10681 strings out of 493634
+ 155144 string characters out of 3143744
+ 284910 words of memory out of 3000000
+ 13742 multiletter control sequences out of 15000+200000
+ 14890 words of font info for 56 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,8n,32p,638b,3328s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\kreme\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
-pen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmbsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/symbols/msam10.pfb>
-Output written on vorlage.pdf (21 pages, 197932 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
+msam10.pfb>
+Output written on vorlage.pdf (21 pages, 197830 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 85 named destinations out of 1000 (max. 500000)
  318 words of extra memory for PDF output out of 10000 (max. 10000000)
 

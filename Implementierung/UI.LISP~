@@ -36,7 +36,7 @@
       (list (setq query-display
                   (make-instance  'capi:display-pane   :text ""  :min-height 100 :max-height 100 :min-width 900 :max-width 900))
             (make-instance  'capi:button :text "search" 
-                            :callback #'(lambda (&rest args) ))   
+                            :callback #'(lambda (&rest args) (cond ((> (length (capi:display-pane-text query-display)) 0) (show *results*)))))  
              (make-instance  'capi:button :text "reset" 
                             :callback #'(lambda (&rest args) (setf (capi:display-pane-text query-display) "") (setq *results* '()))) ;wenn anfrage resetted dann auch resultate hierfuer!
             ;make-instance  'capi:button :text "quit" 
