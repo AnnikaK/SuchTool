@@ -35,7 +35,7 @@
     (setq *terms* (make-hash-table :test 'equalp))
     (mapcar (lambda (x)
               ;(setq term (ignore-errors (read-from-string (delete-if (lambda (c) (member c *special-characters*)) x))))
-                     (setq term x) ;TOSO: control check
+                     (setq term x) 
                      (setf (gethash term *terms*) (make-term :index index :idf 0))
                      (setq index (+ 1 index)))
               *vocabulary*)))

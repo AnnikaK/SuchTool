@@ -1,3 +1,5 @@
+(defvar *clicks* 0)
+(defvar *last* nil)
 
 (defun on-add-clicked (text)
   (let ((selection-list) (free-text-results '()) (keyword-results '()) (no-error nil) (total-results '()) (free-text-search-included nil))
@@ -10,40 +12,28 @@
                   (setq free-text-search-included t)
                   (setq free-text-results (on-free-text-query-submitted text)) ;(score docID)
                   (setq selection-list (remove 'FREITEXT selection-list)))) 
-
-
-
-
     ;keyword-search
            (setq keyword-results (verarbeite-query selection-list text))
-
-
     ;get total result list for current query-term
-
            (setq keyword-results (mapcar (lambda (x) (list 1 x)) keyword-results))
-
-           
+           ;set total results for this query
            (cond (free-text-search-included
-                  
                   (cond 
                    ((equal (length selection-list) 0)(setq total-results free-text-results)) ;free-text search alone
-
 
                    ((equal (capi:choice-selected-item radio-buttons) button-and) ;connect with and
                     (setq total-results (merge-and keyword-results free-text-results)))
 
-
                    ((equal (capi:choice-selected-item radio-buttons) button-or) ;connect with or
                     (setq total-results (merge-or keyword-results free-text-results)))))
-
 
                  (t (setq total-results keyword-results)))  ;keyword-search alone
 
            
-           (cond ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
+           (cond ((and (> (length *results*) 0) (equal (capi:choice-selected-item buttons-outer-term) and-outer-term)) ;connect with compplete query
                   (setq *results* (merge-and total-results *results*)))  
-                 ((and (> (length *results*) 0) (> (length total-results) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
-                  (setq *results* (merge-or total-results *results*)))
+                 ((and (> (length *results*) 0) (equal (capi:choice-selected-item buttons-outer-term) or-outer-term))
+                  (print *results*)  (setq *results* (merge-or total-results *results*)) (print *results*))
                  (t (setq *results* total-results))))
 
           (t (show-error)))))
@@ -68,21 +58,19 @@
 
 (defun merge-or (a b)
   (let ((res '()) (all (list a b)) (smaller) (larger))
-                  (setq all (sort all '< :key 'length))
-                  (setq smaller (first all))
-                  (setq larger (second all))
-                  (mapcar (lambda (x)
-                            (setq score (car (member (second x) larger :test '= :key 'second)))
-                            (cond ((not (equal nil score)) 
-                                   (setq new-score (list (+ (car x) (car score)) (second x))) 
-                                   (setq res (cons new-score res))
-                                   (setq larger (remove larger b))))) smaller)
-                  (setq res (append larger res))
-           res))
-
-
-;(merge-and '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
-;(merge-or '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
+    (setq all (sort all '< :key 'length))
+    (setq smaller (first all))
+    (setq larger (second all))
+    (mapcar (lambda (x)
+              (setq score (car (member (second x) larger :test '= :key 'second)))
+              (cond 
+               ((not (equal nil score)) 
+                (setq new-score (list (+ (car x) (car score)) (second x))) 
+                (setq res (cons new-score res))
+                (setq larger (remove score larger)))
+               (t (setq res (cons x res))))) smaller)
+    (setq res (append larger res))
+    res))
 
 
 
@@ -122,16 +110,23 @@
 (defun show (top)
   (let ((string-list '()) (tmp) (index (length top)) (score) (current-elem '()))
     (setq top (sort top '< :key 'car))
+    (setq *top-results* top)
     (mapcar (lambda (x) 
-                    (setq score (write-to-string (first x)))
-                    (setq score (subseq score 0 (min (length score) 7)))
-                    (setq tmp (list (concatenate 'string (write-to-string index) ".      ")
-                                    score
-                                    ""
-                                    (namestring (document-path (gethash (second x) *documents*)))
-                                    ""))
-                    (setq string-list (cons tmp string-list))
-                    (setq index (- index 1))) top)
+              (setq score (write-to-string (first x)))
+              (setq score (subseq score 0 (min (length score) 7)))
+              (setq datum (document-datum (gethash (second x) *documents*)))
+              (setq absender (document-absender (gethash (second x) *documents*)))
+              (if (equal nil datum) (setq datum ""))
+              (if (equal nil absender) (setq absender ""))
+                    
+
+              (setq tmp (list (concatenate 'string (write-to-string index) ".      ")
+                              score
+                              datum
+                              absender
+                              (namestring (document-path (gethash (second x) *documents*)))))
+              (setq string-list (cons tmp string-list))
+              (setq index (- index 1))) top)
     (show-results string-list)))
 
 
@@ -140,9 +135,7 @@
 
 (defun show-results (result-list)
   (let  ((breite 1000))
-   
-    ;(setq breite (+ 30 (round (* 7.5 (reduce 'max (mapcar 'length show))))))
-   
+    (setq height (+ 30 (round (reduce 'min (list (* 11.5 (length result-list)) 300)))))
     (capi:display-dialog 
      (capi:make-container
  
@@ -154,51 +147,58 @@
                      :description
                      
                        
-                     (list ""
+                     (list
+                      ""
+
+                                      
                       (setq open-mode-panel (make-instance 
-                       'capi:radio-button-panel
+                                             'capi:radio-button-panel
                        
-                       :items (list 
-                               (setq dir-button (make-instance 'capi:radio-button
-                                              :text "Open directory"
-                                              :selected nil
-                                              :selection-callback 
-                                              #'(lambda  (a interface &rest args) 
-                                                  ())))
-                               (setq file-button (make-instance 'capi:radio-button
-                                              :text "Open file"
-                                              :selected t
-                                              :selection-callback 
-                                              #'(lambda  (a interface &rest args) 
-                                                  ()))))))
+                                             :items (list 
+                                                     (setq dir-button (make-instance 'capi:radio-button
+                                                                                     :text "Open directory"
+                                                                                     :selected t
+                                                                                     :selection-callback 
+                                                                                     #'(lambda  (a interface &rest args) 
+                                                                                         (switch-number))))
+                                                     (setq file-button (make-instance 'capi:radio-button
+                                                                                      :text "Open file"
+                                                                                      :selected nil
+                                                                                      :selection-callback 
+                                                                                      #'(lambda  (a interface &rest args) 
+                                                                                          (switch-number)))))))
+
+                                 
                       (make-instance 'capi:row-layout 
                                      :gap 20
                                      :description (list ""
 
-                                                                    (make-instance 'capi:multi-column-list-panel
-                                     
-                                                                                   :visible-min-width 500
-                                                                                   :visible-min-height :text-height
-                                                                                   :vertical-scroll t
-                                                                                   :horizontal-scroll t
-                                                                                   :selection-callback 'result-selected
-                                                                                   :columns '((:title "Rank"
-                                                                                               :adjust :left
-                                                                                               :width (character 10))
-                                                                                              (:title "Score"
-                                                                                               :adjust :left
-                                                                                               :width (character 15))
-                                                                                              (:title "Datum"
-                                                                                               :adjust :left 
-                                                                                               :visible-min-width (character 30))
-                                                                                              (:title "Dateipfad"
-                                                                                               :adjust :left 
-                                                                                               :visible-min-width (character 70))
-                                                                                              (:title "Absender"
-                                                                                               :adjust :left 
-                                                                                               :visible-min-width (character 60)))
+                                                        (setq result-table (make-instance 'capi:multi-column-list-panel
 
-                                                                                   :items result-list) "" ))
+
+                                     
+                                                                                          :visible-min-width 600
+                                                                                          :visible-min-height height
+                                                                                          :vertical-scroll t
+                                                                                          :horizontal-scroll t
+                                                                                          :selection-callback 'result-selected
+                                                                                          :columns '((:title "Rank"
+                                                                                                      :adjust :left
+                                                                                                      :visible-min-width (character 10))
+                                                                                                     (:title "Score"
+                                                                                                      :adjust :left
+                                                                                                      :visible-min-width (character 15))
+                                                                                                     (:title "Datum"
+                                                                                                      :adjust :left 
+                                                                                                      :visible-min-width (character 30))
+                                                                                                     (:title "Absender"
+                                                                                                      :adjust :left 
+                                                                                                      :visible-min-width (character 60))                                                                                 
+                                                                                                     (:title "Dateipfad"
+                                                                                                      :adjust :left 
+                                                                                                      :visible-min-width (character 70)))
+
+                                                                                          :items result-list))"" ))
       
                       "" 
                      
@@ -212,10 +212,8 @@
                                                          :callback-type :data
                                                          :callback 
                                                          #'(lambda (arg)  
-                                                             (capi:exit-dialog arg))))))
-      :min-width breite
-      :background  :white
-      )))))
+                                                             (capi:exit-dialog arg)))))))))))
+
 
 
 
@@ -223,38 +221,47 @@
 
 (defun show-error ()
   (capi:display-dialog  
-     (capi:make-container
-      (make-instance 'capi:column-layout
-                     :x-adjust  :center
-                     :width 200
-                     :description
-                     (list 
+   (capi:make-container
+    (make-instance 'capi:column-layout
+                   :x-adjust  :center
+                   :width 200
+                   :description
+                   (list 
                      
-                           (make-instance 
-                            'capi:row-layout :description 
-                            (list "Please select at least one keyword!" ""))
-                           (make-instance
-                            'capi:push-button
-                            :text "OK"  
-                            :callback-type :data
-                            :callback 
-                            #'(lambda (arg)  
-                                (capi:exit-dialog arg))))
-      :min-width 200
-      :background  :white
-      ))))
-
+                    (make-instance 
+                     'capi:row-layout :description 
+                     (list "Please select at least one keyword!" ""))
+                    (make-instance
+                     'capi:push-button
+                     :text "OK"  
+                     :callback-type :data
+                     :callback 
+                     #'(lambda (arg)  
+                         (capi:exit-dialog arg))))
+                   :min-width 200
+                   :background  :white))))
 
 
 (defun result-selected (&rest args)
-  (let* ((selected (car args)) (path (fourth selected)))
-    (cond ((equal (capi:choice-selected-item open-mode-panel) dir-button)
-           (dir path))
-          (t (datei-oeffnen path)))))
+  (let* ((selected (car args)) (path (fifth selected)))
+    (setq *clicks* (mod (+ 1 *clicks*) 2)) 
+    (cond ((equal 0 *clicks*)
+           (cond ((equal (capi:choice-selected-item open-mode-panel) dir-button)
+                  (dir path))
+                 (t (datei-oeffnen path)))))))
+
+(defun dir (arg) 
+  (sys:call-system (concatenate 'string "explorer /select,"  "\"" arg "\"")))
 
 
-(defun dir (arg) (sys:call-system (concatenate 'string "explorer /select,"  "\"" arg "\"")))
-(defun datei-oeffnen  (arg) (sys:call-system (concatenate 'string "\"" arg "\"")))
+(defun datei-oeffnen  (arg)
+  (sys:call-system (concatenate 'string "\"" arg "\"")))
+
+
+
+
+
+;;;testing----------------------------------------------------------
 
 
 ;(connect-and-total '(((0.2 15) (0.3 2)) ((0.2 4) (0.3 2))))
@@ -262,7 +269,12 @@
 
 
 
+;(merge-and '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
+;(merge-or '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
+
+
 
 ; (dir "C:\\testdatei.txt")
 
 ; (datei-oeffnen "C:\\testdatei.txt")
+

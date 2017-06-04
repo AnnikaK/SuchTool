@@ -6,7 +6,7 @@
 (defvar *results* '())
 
 
-(defstruct document path document-vector)
+(defstruct document path document-vector datum absender)
 (defstruct term index idf)
 (defstruct keyword-entry doc-id keyword-type content)
 
@@ -85,6 +85,10 @@
       (setq key (read-from-string (first current)))
       (setq content (read-from-string (second current)))
       (setq type (type-of content))
+
+      (cond ((equalp key 'datum) (setf (document-datum (gethash docID *documents*)) content))
+            ((equalp key 'absender) (setf (document-absender (gethash docID *documents*)) content)))
+      
       (setq entry (make-keyword-entry :doc-id docID :keyword-type type :content content)) 
       (if (gethash key *keyword-dict*) (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
         (setf (gethash key *keyword-dict*) (list entry)))))) ;new entry for keyword
