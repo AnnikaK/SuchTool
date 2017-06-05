@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  3 JUN 2017 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  5 JUN 2017 14:35
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -720,7 +720,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=155, 812.03375pt x 157.58
+<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=171, 812.03375pt x 157.58
 875pt>
 File: Logo_Hauptcampus_Informatik-eps-converted-to.pdf Graphic file (type pdf)
  <use Logo_Hauptcampus_Informatik-eps-converted-to.pdf>
@@ -787,35 +787,78 @@ t-su-che m[]ussen ausw[]ahlbar
 ) (chapters/InformationRetrieval.tex [3]
 Kapitel 2.
 
-Overfull \hbox (34.1348pt too wide) in paragraph at lines 5--7
+Overfull \hbox (34.1348pt too wide) in paragraph at lines 6--8
 \OT1/cmr/m/n/12 Der eng-li-sche Be-griff []In-for-ma-ti-on Re-trie-val \ l[]ass
 t sich mit []In-for-ma-ti-onsr[]uckgewinnung\
  []
 
-! Undefined control sequence.
-l.11 Die Bedeutung des Begriffsbestandteils \qlqq
-                                                  Information \grqq erweist ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Overfull \hbox (14.62517pt too wide) in paragraph at lines 6--8
+\OT1/cmr/m/n/12 Bevor er-kl[]art wird, wof[]ur In-for-ma-ti-onsr[]uckgewinnung 
+tats[]achlich steht, wird zun[]achst
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
 
-) (chapters/BooleanRetrieval.tex [4
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
+
+ []
+
+[4
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Overfull \hbox (4.00723pt too wide) in paragraph at lines 47--54
+\OT1/cmr/m/n/12 HTML- oder pdf-Format) auf-ge-fun-den wer-den sol-len, um das I
+n-for-ma-ti-ons-bed[]urfnis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--54
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 58--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--71
+
+ []
+
+) (chapters/BooleanRetrieval.tex [6]
 Kapitel 3.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 3.
 
-) (chapters/VectorSpaceModel.tex [5
+) (chapters/VectorSpaceModel.tex [7
 
 
 ]
@@ -832,37 +875,43 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 8.
 
-) (chapters/PrecisionAndRecall.tex [6
+) (chapters/PrecisionAndRecall.tex [8
 
 
 ]
 Kapitel 5.
-) (chapters/Implementierung.tex [7
+) (chapters/Implementierung.tex [9
 
 
 ]
 Kapitel 6.
-) (chapters/BenutzeroberflaecheUndBedienung.tex [8
+) (chapters/BenutzeroberflaecheUndBedienung.tex [10
 
 
 ]
 Kapitel 7.
-) (chapters/ZusammenfassungAusblick.tex [9
+) (chapters/ZusammenfassungAusblick.tex [11
 
 
 ]
 Kapitel 8.
-) [10
+) [12
 
 
 ] (vorlage.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 4--7
+Underfull \hbox (badness 10000) in paragraph at lines 4--8
+[]$\OT1/cmtt/m/n/12 http : / / universal _ lexikon . deacademic . com / 253489 
+/$
+ []
+
+
+Underfull \hbox (badness 5652) in paragraph at lines 10--13
 []\OT1/cmr/m/sc/12 Christopher D. Man-ning, Prab-ha-kar Rag-ha-van, Hin-
  []
 
 )
 No file vorlage.ind.
-[11
+[13
 
 
 
@@ -875,7 +924,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--130
 
  []
 
-[12
+[14
 
 
 
@@ -897,7 +946,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) [13
+) [15
 
 
 
@@ -910,7 +959,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 8C6B77E1DDD9DA64BF3AD55756EAD1EC;2525.
+(rerunfilecheck)             Checksum: DE295BFC192763C12DBD7DD91BE9464C;2841.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
  )
 (\end occurred inside a group at level 1)
@@ -918,27 +967,29 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10678 strings out of 493634
- 155103 string characters out of 3143744
- 284910 words of memory out of 3000000
- 13741 multiletter control sequences out of 15000+200000
- 14890 words of font info for 56 fonts, out of 3000000 for 9000
+ 10700 strings out of 493634
+ 155388 string characters out of 3143744
+ 285113 words of memory out of 3000000
+ 13753 multiletter control sequences out of 15000+200000
+ 15396 words of font info for 58 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,8n,32p,638b,3332s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
-sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
-msam10.pfb>
-Output written on vorlage.pdf (20 pages, 195952 bytes).
+ <C:\Users\kreme\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmbsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
+s/msam10.pfb>
+Output written on vorlage.pdf (22 pages, 223112 bytes).
 PDF statistics:
- 371 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
- 310 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 91 named destinations out of 1000 (max. 500000)
+ 342 words of extra memory for PDF output out of 10000 (max. 10000000)
 

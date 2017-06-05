@@ -1,8 +1,24 @@
-\begin{thebibliography}{CDM08}
+\begin{thebibliography}{PDVC06}
+
+\bibitem[Aca]{Academic:17}
+{\em {Academic - Academic dictionaries and encyclopedias, Universal Lexikon}}.
+\newblock \\
+  {\url{http://universal_lexikon.deacademic.com/253489/Informationsr%C3%BCckgewinnung},
+  letzter Zugriff am 05.06.2017}.
 
 \bibitem[CDM08]{Manning:08}
 {\sc Christopher D.~Manning, Prabhakar~Raghavan, Hinrich~Schütze}: {\em
   {Introduction to Information Retrieval}}.
 \newblock Cambridge University Press, 2008.
+
+\bibitem[Fer03]{Ferber:03}
+{\sc Ferber, Reginald}: {\em {Information Retrieval, Suchmodelle und
+  Data-Mining-Verfahren für Textsammlungen und das Web}}.
+\newblock dpunkt.verlag, 2003.
+
+\bibitem[PDVC06]{Claus:06}
+{\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden -
+  Informatik A-Z, Fachlexikon für Studium, Ausbildung und Beruf}}.
+\newblock Dudenverlag, 2006.
 
 \end{thebibliography}

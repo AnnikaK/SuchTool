@@ -3,3 +3,10 @@ The style file: geralpha.bst
 A level-1 auxiliary file: chapters/Glossar.aux
 A level-1 auxiliary file: chapters/Selbststaendigkeitserklaerung.aux
 Database file #1: literatur.bib
+I was expecting a `,' or a `}'---line 280 of file literatur.bib
+ : 
+ : %%%%%%%% phdthesis
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in Academic:17
+(There was 1 error message)

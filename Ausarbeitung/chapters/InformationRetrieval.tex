@@ -1,23 +1,78 @@
 \chapter{Information Retrieval}
-Dieses Kapitel soll dem Leser einen Überblick darüber vermitteln, wofür der Begriff \glqq Information Retrieval \grqq steht.
+Dieses Kapitel soll dem Leser einen Überblick über die Bedeutung des Begriffs \glqq Information Retrieval \grqq{} vermitteln.
+
 
 \section{Bedeutung}
-Der englische Begriff \glqq Information Retrieval \grqq{} lässt sich mit \glqq Informationsrückgewinnung\grqq{} ins Deutsche übersetzen. Hierbei wird explizit von Rückgewinnung gesprochen, da ein Information Retrieval System keine neuen Informationen erzeugt.\\
- Hier stellt sich sofort die Frage nach der tatsächlichen Aufgabe eines solchen Systems. Bevor dies beschrieben wird, soll zunächst geklärt werden, was mit dem Teilbegriff \glqq Information\grqq{} gemeint ist.
+Der englische Begriff \glqq Information Retrieval \grqq{} lässt sich mit \glqq Informationsrückgewinnung\grqq{} ins Deutsche übersetzen. \cite{Academic:17} Hierbei wird explizit von \textit{Rück}gewinnung gesprochen, da keine neuen Informationen erzeugt werden. \\
+Bevor erklärt wird, wofür Informationsrückgewinnung tatsächlich steht, wird zunächst auf den Teilbegriff \glqq Information\grqq{} eingegangen. \\
 
-%hier referenz angeben
-
+ 
 \subsection{Information}
-Die Bedeutung des Begriffsbestandteils \qlqq Information \grqq erweist sich als weitaus schwieriger darzustellen: Was ist eine Information?\\
- Eine einheitliche Definition hierzu lässt sich nicht finden, zumal es zahlreiche Betrachtungsweisen aus unterschiedlichen Disziplinen gibt. Für diese Arbeit ist lediglich die Perspektive der Disziplin Informatik relevant, darum wurde hieraus ein Definitionsansatz gewählt.
- 
- 
-\subsubsection{Information}
+Die Bedeutung des Begriffs Information ist sehr weit gefasst, was eine einheitliche Definition unmöglich macht. \\
+Er stammt aus dem Lateinischen (informare = Gestalt geben) und heißt im Übertragenen Sinne so viel wie jemanden durch Unterweisung bilden. \\
+Dies betont den Aspekt, dass eine Information stets einen Empfänger besitzt, welcher \glqq gebildet\grqq{} wird. Dies kann eine Person, aber auch ein geeignetes, nach außen wirksames System sein. \\
+Daten als Träger von Informationen müssen vom Empfänger aufgenommen und korrekt interpretiert werden, damit aus den Daten tatsächlich Informationen entstehen. \\
+Die Informationen müssen deshalb auf irgendeine Weise dargestellt werden, z.B. durch alphabetische Zeichen, außerdem muss es hierfür einen geeigneten Träger geben. Dies kann beispielsweise ein Textdokument sein. \\
+Information lassen sich in die folgenden drei Bestandteile zerlegen: 
 
-\section{Information Retrieval}
+\begin{itemize}
+	\item Syntaktischer Teil: Ist die Struktur der Information syntaktisch zulässig? Beispiel hierfür ist die Einhaltung von Rechtschreibung und Grammatik bei Texten.
+	\item Semantischer Teil: Welchen inhaltliche Bedeutung besitzt die Information? 
+	\item Pragmatischer Teil: Welchem Zweck dient sie?
+\end{itemize} (\cite{Claus:06}, S.314-315)
+
+
+\subsection{Information Retrieval}
+Nachdem bekannt ist, worum es sich bei Informationen handelt, wird im Folgenden beschrieben, worauf sich \glqq Information Retrieval\grqq{} bezieht. \\
+Auch hier ist es problematisch, eine einheitliche Definition zu finden. Eine mögliche Erklärung lautet so: \\
 
 
 \begin{definition} (Information Retrieval) \\
+	
+	\label{Def}
 Mit Information Retrieval, kurz IR, wird das Auffinden von in unstrukturierter Form vorliegender und ein Informationsbedürfnis befriedigender Materialien innerhalb großer Sammlungen bezeichnet. \\
+
 \end{definition}
-Mit unstrukturierten Materialien sind hierbei meist Dokumente in Textform gemeint. Üblicherweise liegen die Sammlungen auf dem Computer gespeichert vor (\cite{Manning:08}, S.1).
+Mit unstrukturierten Materialien sind hierbei meist Dokumente in Textform gemeint. Üblicherweise liegen die Sammlungen auf dem Computer gespeichert vor (\cite{Manning:08}, S.1). \\
+
+\subsection{Unterschied zur Datenbankensuche}
+Information Retrieval unterscheidet sich stark von der Suche in Datenbanken. \\
+In einer Datenbank liegen die Daten strukturiert in Form von Werttupeln bekannten Datentyps vor, was Definition \ref{Def} widerspricht.\\
+Im Gegensatz zum Information Retrieval kann bei der Datenbankensuche nicht mit vagen Anfragen umgegangen werden. In der Datenbank kann  zwar nach $(Miete < 300)$ gesucht werden, aber mit \textit{\glqq günstige Miete\grqq{}} wäre das System überfordert: Wie ist günstig zu interpretieren?  (\cite{Ferber:03}, S.10) \\
+Ein Information Retrieval System muss solche Anfragen mit unklarer Bedeutung verarbeiten können.
+
+
+
+\section{Beispiel Websuche}
+Zum besseren Verständnis soll an dieser Stelle ein Beispiel zur Veranschaulichung gegeben werden. \\
+Nahezu jeder benutzt im Alltag Web-Suchmaschinen.
+Websuche stellt eine Form Information Retrieval dar, da hier Freitext beinhaltende Dokumente (z.B. im HTML- oder pdf-Format) aufgefunden werden sollen, um das Informationsbedürfnis des Internetnutzers zu befriedigen. (\cite{Ferber:03}, S.6)\\
+Möchte dieser zum Beispiel seinen nächsten Urlaub planen, könnte seine Suchanfrage \textit{\glqq Hotel günstig Kreta\grqq{} }lauten.\\
+Die gesuchten Informationen dienen also dem Zweck, den Urlaub zu planen. \\
+Problematisch ist hierbei  der semantische Teil der Informationen: Die inhaltliche Bedeutung der Resultate muss mit der ursprünglichen Intention des Nutzers übereinstimmen. \\
+Ein von der Suchmaschine geliefertes Resultat kann zwar zum syntaktischen Teil passen, da die korrekten Wörter darin auftauchen, allerdings in einem ganz anderen Kontext, sodass der Nutzer mit dem Dokument nichts anfangen kann. \\
+
+
+
+\section{Bezug zur Problemstellung}
+Die Aufgabe besteht darin, nach vom Nutzer auswählbaren, logisch verknüpften Kriterien innerhalb eines Dokumentenarchivs zu suchen (\ref{Problemstellung}). \\
+Demnach ist die Definition \ref{Def} erfüllt, da hier Materialien innerhalb einer Sammlung, dem Dokumentenarchiv, aufgefunden werden sollen, um ein Informationsbedürfnis zu befriedigen. \\
+Dieses Bedürfnis unterscheidet sich natürlich von Anfrage zu Anfrage, besteht aber allgemein gefasst darin, Dokumente wiederzufinden, z.B. eine bestimmte E-Mail. \\
+
+\subsection{Teilweise strukturierte Daten}
+Besonderheit der Problemstellung ist hierbei, dass die Dokumente teilweise strukturiert sind, d.h. es liegt zwar Freitext vor, aber zusätzlich sind Metadaten vorhanden. \\
+Im Falle der Freitextsuche lässt sich aufgrund der unstrukturierten Textform eindeutig von Information Retrieval sprechen. \\
+Anders sieht es bei den Metadaten aus, welche alle die folgende Syntax besitzen: \\
+
+(Name Inhalt)\\\\
+Aber selbst hier sind die Daten nur teilweise strukturiert. Erstens ist der Datentyp des Inhalts im Gegensatz zu den Werten in Datenbanken vollkommen offen gelassen. Zweitens besteht immer die Unsicherheit, ob das Keyword überhaupt im entsprechenden Dokument vorkommt, da es keinerlei Vorgaben gibt, welche Keywords auftreten müssen. \\
+Demnach kann sowohl bei der Freitext- als auch bei der Metadatensuche von Information Retrieval gesprochen werden \\
+In den folgenden Kapiteln wird erklärt, auf welche Weise ein Information Retrieval System konzipiert und realisiert werden kann, welches in der Lage ist, die Problemstellung \ref{Problemstellung} zu lösen. 
+
+
+
+
+
+
+
+
