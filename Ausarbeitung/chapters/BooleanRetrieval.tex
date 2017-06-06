@@ -1,5 +1,81 @@
-\chapter{Boolean Retrieval}
+\chapter{Boolesches Retrieval}
+Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren \glqq Boolesches Retrieval\grqq{} (engl. \glqq Boolean Retrieval\grqq) vor. \\
 
-\subsection{Matrix}
-\subsection{Posting List}
-\subsection{Anfragenverkn\"upfung}
+\section{Eigenschaften des Verfahrens}
+Boolesches Retrieval überprüft Dokumente darauf, ob eine bestimmte Bedingung zutrifft.\\
+Somit gibt es nur die Unterteilung in passende Dokumente und solche, welche die Bedingung nicht erfüllen. Eine weitere Bewertung der Ergebnisse findet nicht statt (\cite{Ferber:03}, S.33). Das fehlende Ranking der Ergebnisse ist ein häufiger Kritikpunkt des Verfahrens.\\
+ 
+ 
+\section{Funktionsprinzip}
+Boolesches Retrieval basiert auf Mengenoperationen. Deshalb werden Dokumente Mengen zugeordnet, die jeweils durch bestimmte Attribute charakterisiert sind. \\
+Dokument bezeichnet die Einheit, auf welcher das Retrieval stattfindet. Ein Dokument kann deshalb eine kleine Textmemo, aber auch ein ganzes Buchkapitel sein (\cite{Manning:08}, S.4).\\
+\subsection{Attribut}
+Ein solches Attribut ist eine Abbildung, welche jedem Dokument einen Wert für dieses Attribut zuordnet. Die Abbildung erzeugt somit Attribut-Wert-Paare, was in Formel \ref{attr} gezeigt wird. 
+
+\begin{equation}
+\label{attr}
+t: D \rightarrow T, t(d) = t_i
+\end{equation}
+
+
+Hierbei bezeichnet $t$ die Abbildung (d.h. das Attribut), $D$ die Menge aller Dokumente und $T$ den Wertebereich des Attributs $t$. \\
+ Der Attributwert $t_i$ mit $t_i \in T$ und $i \in N$ wird durch die Abbildung $t$ dem Dokument $d \in D$ zugeordnet. \\
+
+\subsection{Anfragen}
+
+\subsubsection{Elementare boolesche Anfrage}
+Ein Attribut-Wert-Paar wird auch als elementare boolesche Anfrage bezeichnet. Bei der elementaren booleschen Anfrage  $(t,t_1)$ werden zum Beispiel alle Dokumente gesucht, deren Attribut $t$ den Wert $t_1$ annimmt. \\
+Mathematisch kann die Ergebnismenge $D_t,_{t_i}$ für eine Anfrage $(t,t_i)$ wie in Formel \ref{ergMen} beschrieben werden. 
+
+\begin{equation}
+\label{ergMen}
+D_t,_{t_i} =  \{d \in D | t(d) = t_i\} \\
+\end{equation}
+
+\subsubsection{Verknüpfung}
+
+Mehrere Attribut-Wert-Paare lassen sich mit booleschen Operatoren $AND$, $OR$ und $NOT$ verknüpfen. \\
+$(t,t_1)$ $AND$ $(s,s_1)$ bedeutet, dass alle Dokumente gesucht sind, bei denen sowohl $t(d) = t_1$ als auch $s(d) = s_1$ gilt, d.h. hier muss der Durchschnitt dieser beiden Ergebnismengen gebildet werden, wie in Formel \ref{intersection} gezeigt.
+
+\begin{equation}
+\label{intersection}
+D_t,_{t_1} \cap D_s,_{s_1}
+\end{equation}
+
+
+Wird hingegen der Operator $OR$ verwendet, werden die Ergebnismengen vereinigt, wie in Formel \ref{union} gezeigt. \\
+
+
+\begin{equation}
+\label{union}
+D_t,_{t_1} \cup D_s,_{s_1}
+\end{equation}
+
+
+Außerdem kann der unäre Operator $NOT$ verwendet werden, der das Komplement der Ergebnismenge erzeugt. Demnach wird für die Anfrage $NOT$ $(t,t_1)$ erst die Menge aller Dokumente bestimmt, bei denen $t(d) = t_1$ zutrifft, und diese anschließend von der Gesamtmenge aller Dokumente abgezogen. Dies wird in Formel \ref{minus} dargestellt.
+
+
+\begin{equation}
+\label{minus}
+D \setminus D_t,_{t_1}
+\end{equation}
+
+
+
+Da bei jeder Operation neue Ergebnismengen entstehen, lassen sich hierauf erneut die oben beschriebenen Operatoren anwenden. Auf diese Weise können Anfragen beliebig tief geschachtelt werden (\cite{Ferber:03}, S.34).
+
+
+\section{Indizierung}
+Um boolesche Anfragen zu verarbeiten zu können, müssen die Terme der Dokumente zunächst indiziert werden. \\
+Mit \glqq Term\grqq{} wird die Einheit, welche indiziert wird, bezeichnet. Dies kann ein Wort, aber auch eine andere Einheit wie die entsprechende Stammform sein. \\
+Auch die Dokumente selbst müssen mit einem Index versehen werden. \\
+Dieses Vorgehen ist unabdingbar, da ohne Indizierung nicht effizient auf die Dokument sowie deren Terme zugriffen werden kann. Eine fehlende Indizierung würde bedeuten, dass für jede Anfrage alle Dokumente der Sammlung vollständig durchlaufen werden müssen, was unzumutbar langsam wäre (\cite{Manning:08}, S.3).
+
+
+\section{Inzidenz-Matrix}
+Eine mögliche Implementierung des Boolean Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen (\cite{Manning:08}, S.4). \\
+Diese Herangehensweise ist belegt jedoch unnötig viel Speicherplatz, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dies nicht realisierbar.
+
+
+\section{Invertierte Liste}
+

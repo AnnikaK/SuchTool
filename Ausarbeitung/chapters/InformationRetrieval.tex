@@ -62,12 +62,14 @@ Dieses Bedürfnis unterscheidet sich natürlich von Anfrage zu Anfrage, besteht ab
 \subsection{Teilweise strukturierte Daten}
 Besonderheit der Problemstellung ist hierbei, dass die Dokumente teilweise strukturiert sind, d.h. es liegt zwar Freitext vor, aber zusätzlich sind Metadaten vorhanden. \\
 Im Falle der Freitextsuche lässt sich aufgrund der unstrukturierten Textform eindeutig von Information Retrieval sprechen. \\
-Anders sieht es bei den Metadaten aus, welche alle die folgende Syntax besitzen: \\
+Anders sieht es bei den Metadaten aus, welche alle die folgende Syntax und damit Struktur besitzen: \\
 
-(Name Inhalt)\\\\
-Aber selbst hier sind die Daten nur teilweise strukturiert. Erstens ist der Datentyp des Inhalts im Gegensatz zu den Werten in Datenbanken vollkommen offen gelassen. Zweitens besteht immer die Unsicherheit, ob das Keyword überhaupt im entsprechenden Dokument vorkommt, da es keinerlei Vorgaben gibt, welche Keywords auftreten müssen. \\
-Demnach kann sowohl bei der Freitext- als auch bei der Metadatensuche von Information Retrieval gesprochen werden \\
-In den folgenden Kapiteln wird erklärt, auf welche Weise ein Information Retrieval System konzipiert und realisiert werden kann, welches in der Lage ist, die Problemstellung \ref{Problemstellung} zu lösen. 
+(Name Inhalt)\\
+
+Es liegt jedoch immer noch ein Information Retrieval Problem vor, da der Begriff auch die Suche in teilweise strukturierten (engl. semistructured) Dokumenten einschließt (\cite{Manning:08}, S.1-2). \\
+Wobei hierbei angemerkt sei, dass selbst die Metadaten nicht vollkommen strukturiert sind: Der Datentyp des Inhalts ist offen gelassen und es gibt keinerlei Vorgaben, welche Keywords in den Dokumenten auftreten müssen. \\
+In den folgenden Kapiteln wird beschrieben, auf welche Weise ein Information Retrieval System konzipiert und realisiert werden kann, welches in der Lage ist, die Problemstellung \ref{Problemstellung} zu lösen.\\
+ Hierzu werden zunächst die hierfür benötigten Modelle \glqq Boolean Retrieval\grqq{} sowie das \glqq Vector Space Model\grqq {} erläutert.
 
 
 

@@ -18,27 +18,33 @@
 \contentsline {section}{\numberline {2.2}Beispiel Websuche}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Bezug zur Problemstellung}{6}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Teilweise strukturierte Daten}{6}{subsection.2.3.1}
-\contentsline {chapter}{\numberline {3}Boolean Retrieval}{7}{chapter.3}
-\contentsline {subsection}{\numberline {3.0.1}Matrix}{7}{subsection.3.0.1}
-\contentsline {subsection}{\numberline {3.0.2}Posting List}{7}{subsection.3.0.2}
-\contentsline {subsection}{\numberline {3.0.3}Anfragenverkn\"upfung}{7}{subsection.3.0.3}
-\contentsline {chapter}{\numberline {4}Das Vektorraum-Modell}{8}{chapter.4}
-\contentsline {section}{\numberline {4.1}Funktionsprinzip}{8}{section.4.1}
-\contentsline {section}{\numberline {4.2}Term Frequency}{8}{section.4.2}
-\contentsline {section}{\numberline {4.3}Document Frequency}{8}{section.4.3}
-\contentsline {section}{\numberline {4.4}Inverted Document Frequency}{8}{section.4.4}
-\contentsline {section}{\numberline {4.5}$Tf \times idf$ Weighting}{8}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Formeln}{8}{subsection.4.5.1}
-\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{8}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{8}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{8}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Alternativen}{8}{subsection.4.6.3}
-\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{9}{chapter.5}
-\contentsline {section}{\numberline {5.1}Precisison}{9}{section.5.1}
-\contentsline {section}{\numberline {5.2}Recall}{9}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{10}{chapter.6}
-\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{11}{chapter.7}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{12}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{13}{chapter*.8}
-\contentsline {chapter}{Glossar}{14}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{15}{appendix.B}
+\contentsline {chapter}{\numberline {3}Boolesches Retrieval}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Eigenschaften des Verfahrens}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Funktionsprinzip}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Attribut}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Anfragen}{8}{subsection.3.2.2}
+\contentsline {subsubsection}{Elementare boolesche Anfrage}{8}{section*.8}
+\contentsline {subsubsection}{Verkn\"upfung}{8}{section*.9}
+\contentsline {section}{\numberline {3.3}Indizierung}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}Inzidenz-Matrix}{9}{section.3.4}
+\contentsline {section}{\numberline {3.5}Invertierte Liste}{9}{section.3.5}
+\contentsline {chapter}{\numberline {4}Das Vektorraum-Modell}{10}{chapter.4}
+\contentsline {section}{\numberline {4.1}Funktionsprinzip}{10}{section.4.1}
+\contentsline {section}{\numberline {4.2}Term Frequency}{10}{section.4.2}
+\contentsline {section}{\numberline {4.3}Document Frequency}{10}{section.4.3}
+\contentsline {section}{\numberline {4.4}Inverted Document Frequency}{10}{section.4.4}
+\contentsline {section}{\numberline {4.5}$Tf \times idf$ Weighting}{10}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Formeln}{10}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{10}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{10}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{10}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Alternativen}{10}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Precisison}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}Recall}{11}{section.5.2}
+\contentsline {chapter}{\numberline {6}Implementierung}{12}{chapter.6}
+\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{13}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{14}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{15}{chapter*.10}
+\contentsline {chapter}{Glossar}{16}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{17}{appendix.B}
