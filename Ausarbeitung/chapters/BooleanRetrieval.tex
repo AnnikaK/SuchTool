@@ -66,7 +66,8 @@ Da bei jeder Operation neue Ergebnismengen entstehen, lassen sich hierauf erneut
 
 
 \section{Indizierung}
-Um boolesche Anfragen zu verarbeiten zu können, müssen die Terme der Dokumente zunächst indiziert werden. \\
+\label{index}
+Um boolesche Anfragen zu verarbeiten zu können, müssen die Terme der Dokumente zunächst indiziert werden.\\
 Mit \glqq Term\grqq{} wird die Einheit, welche indiziert wird, bezeichnet. Dies kann ein Wort, aber auch eine andere Einheit wie die entsprechende Stammform sein. \\
 Auch die Dokumente selbst müssen mit einem Index versehen werden. \\
 Dieses Vorgehen ist unabdingbar, da ohne Indizierung nicht effizient auf die Dokument sowie deren Terme zugriffen werden kann. Eine fehlende Indizierung würde bedeuten, dass für jede Anfrage alle Dokumente der Sammlung vollständig durchlaufen werden müssen, was unzumutbar langsam wäre (\cite{Manning:08}, S.3).
@@ -76,6 +77,23 @@ Dieses Vorgehen ist unabdingbar, da ohne Indizierung nicht effizient auf die Dok
 Eine mögliche Implementierung des Boolean Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen (\cite{Manning:08}, S.4). \\
 Diese Herangehensweise ist belegt jedoch unnötig viel Speicherplatz, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dies nicht realisierbar.
 
+%beispiel
+
+\subsection{Verarbeitung einer Anfrage}
 
 \section{Invertierte Liste}
+In der Regel werden zur Implementierung invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
+Der Name basiert auf den in den Listen gespeicherten \glqq invertierten Indizes\grqq{}. Die Indizes werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen. \\
+Dies bedeutet, dass in einer geeigneten Speicherstruktur, zum Beispiel in einem Dictionary, zu jedem Term eine Liste gespeichert wird, die alle Dokumente enthält, in denen der Term auftritt.\\
+ Diese Dokumentlisten werden als invertierte Listen (engl. \textit{inverted lists}) bezeichnet. Manche Implementierungen beinhalten auch zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
+Dieses Vorgehen setzt voraus, dass zuvor eine Indizierung (siehe \ref{index}) stattgefunden hat (\cite{Manning:08}, S.5-6). \\
+Hierbei sei noch angemerkt, dass die invertierten Listen auch in anderen Datenstrukturen als einer Liste gespeichert werden können. \\
+Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv (\cite{Ferber:03}, S.36). Im Vergleich zur Inzidenz-Matrix wird jedoch deutlich weniger Speicher benötigt, da die vielen leeren Einträge entfallen.
+
+
+%beispiel
+
+\subsection{Verarbeitung einer Anfrage}
+
+
 

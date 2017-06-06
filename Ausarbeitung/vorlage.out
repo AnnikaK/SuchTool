@@ -23,24 +23,26 @@
 \BOOKMARK [2][-]{subsection.3.2.2}{Anfragen}{section.3.2}% 23
 \BOOKMARK [1][-]{section.3.3}{Indizierung}{chapter.3}% 24
 \BOOKMARK [1][-]{section.3.4}{Inzidenz-Matrix}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.5}{Invertierte Liste}{chapter.3}% 26
-\BOOKMARK [0][-]{chapter.4}{Das Vektorraum-Modell}{}% 27
-\BOOKMARK [1][-]{section.4.1}{Funktionsprinzip}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.2}{Term Frequency}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.3}{Document Frequency}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.4}{Inverted Document Frequency}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.5}{Tf idf Weighting}{chapter.4}% 32
-\BOOKMARK [2][-]{subsection.4.5.1}{Formeln}{section.4.5}% 33
-\BOOKMARK [1][-]{section.4.6}{\304hnlichkeitsfunktion}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.6.1}{Euklidische Distanz}{section.4.6}% 35
-\BOOKMARK [2][-]{subsection.4.6.2}{Cosine Similarity}{section.4.6}% 36
-\BOOKMARK [2][-]{subsection.4.6.3}{Alternativen}{section.4.6}% 37
-\BOOKMARK [0][-]{chapter.5}{Bewertung eines Information Retrieval Systems}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Precisison}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Recall}{chapter.5}% 40
-\BOOKMARK [0][-]{chapter.6}{Implementierung}{}% 41
-\BOOKMARK [0][-]{chapter.7}{Die Benutzeroberfl\344che}{}% 42
-\BOOKMARK [0][-]{chapter.8}{Zusammenfassung und Ausblick}{}% 43
-\BOOKMARK [0][-]{chapter*.10}{Literaturverzeichnis}{}% 44
-\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 45
-\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 46
+\BOOKMARK [2][-]{subsection.3.4.1}{Verarbeitung einer Anfrage}{section.3.4}% 26
+\BOOKMARK [1][-]{section.3.5}{Invertierte Liste}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.5.1}{Verarbeitung einer Anfrage}{section.3.5}% 28
+\BOOKMARK [0][-]{chapter.4}{Das Vektorraum-Modell}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Funktionsprinzip}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{Term Frequency}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.3}{Document Frequency}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.4}{Inverted Document Frequency}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.5}{Tf idf Weighting}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.5.1}{Formeln}{section.4.5}% 35
+\BOOKMARK [1][-]{section.4.6}{\304hnlichkeitsfunktion}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.6.1}{Euklidische Distanz}{section.4.6}% 37
+\BOOKMARK [2][-]{subsection.4.6.2}{Cosine Similarity}{section.4.6}% 38
+\BOOKMARK [2][-]{subsection.4.6.3}{Alternativen}{section.4.6}% 39
+\BOOKMARK [0][-]{chapter.5}{Bewertung eines Information Retrieval Systems}{}% 40
+\BOOKMARK [1][-]{section.5.1}{Precisison}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.2}{Recall}{chapter.5}% 42
+\BOOKMARK [0][-]{chapter.6}{Implementierung}{}% 43
+\BOOKMARK [0][-]{chapter.7}{Die Benutzeroberfl\344che}{}% 44
+\BOOKMARK [0][-]{chapter.8}{Zusammenfassung und Ausblick}{}% 45
+\BOOKMARK [0][-]{chapter*.10}{Literaturverzeichnis}{}% 46
+\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 47
+\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 48
