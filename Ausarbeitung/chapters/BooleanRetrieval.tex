@@ -82,17 +82,22 @@ Diese Herangehensweise ist belegt jedoch unnötig viel Speicherplatz, da sehr vie
 \subsection{Verarbeitung einer Anfrage}
 
 \section{Invertierte Liste}
-In der Regel werden zur Implementierung invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
-Der Name basiert auf den in den Listen gespeicherten \glqq invertierten Indizes\grqq{}. Die Indizes werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen. \\
-Dies bedeutet, dass in einer geeigneten Speicherstruktur, zum Beispiel in einem Dictionary, zu jedem Term eine Liste gespeichert wird, die alle Dokumente enthält, in denen der Term auftritt.\\
- Diese Dokumentlisten werden als invertierte Listen (engl. \textit{inverted lists}) bezeichnet. Manche Implementierungen beinhalten auch zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
+In der Regel werden zur Implementierung des Booleschen Retrieval invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
+Der Name basiert auf den darin gespeicherten \glqq invertierten Indizes\grqq{}. Diese werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
+In einer geeigneten Speicherstruktur, zum Beispiel einem Dictionary, werden zu jedem Term alle Dokumente gespeichert, in denen der Term auftritt.\\
+ Diese Dokumentlisten werden als invertierte Listen (engl. \textit{inverted lists}) bezeichnet (siehe Abbildung Abbildung \ref{abb1}). Manche Implementierungen beinhalten neben dem Dokumentindex zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
 Dieses Vorgehen setzt voraus, dass zuvor eine Indizierung (siehe \ref{index}) stattgefunden hat (\cite{Manning:08}, S.5-6). \\
-Hierbei sei noch angemerkt, dass die invertierten Listen auch in anderen Datenstrukturen als einer Liste gespeichert werden können. \\
 Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv (\cite{Ferber:03}, S.36). Im Vergleich zur Inzidenz-Matrix wird jedoch deutlich weniger Speicher benötigt, da die vielen leeren Einträge entfallen.
+\begin{figure} [hbtp]
+	\centering
+	\includegraphics[width=1\textwidth]{images/inverted_list.png}
+	\caption{Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}
+	\label{abb1}
+\end{figure}
 
 
 %beispiel
-
+\newpage
 \subsection{Verarbeitung einer Anfrage}
 
 

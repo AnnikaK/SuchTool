@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  6 JUN 2017 21:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  7 JUN 2017 10:30
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -720,7 +720,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=191, 812.03375pt x 157.58
+<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=195, 812.03375pt x 157.58
 875pt>
 File: Logo_Hauptcampus_Informatik-eps-converted-to.pdf Graphic file (type pdf)
  <use Logo_Hauptcampus_Informatik-eps-converted-to.pdf>
@@ -882,7 +882,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
-[8]) (chapters/VectorSpaceModel.tex [9] [10]
+[8] <images/inverted_list.png, id=381, 846.16125pt x 318.43968pt>
+File: images/inverted_list.png Graphic file (type png)
+
+<use images/inverted_list.png>
+Package pdftex.def Info: images/inverted_list.png used on input line 93.
+(pdftex.def)             Requested size: 418.25368pt x 157.40218pt.
+ [9]) (chapters/VectorSpaceModel.tex [10 <./images/inverted_list.png>]
 Kapitel 4.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -979,15 +985,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
 (chapters/Selbststaendigkeitserklaerung.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
-
-
-Package rerunfilecheck Warning: File `vorlage.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `vorlage.out':
-(rerunfilecheck)             Before: C39F3D1B026058AB954F6E0702563FC3;3166
-(rerunfilecheck)             After:  650A152DABB9F4CEFC2E1340DF4317F9;3247.
+Package rerunfilecheck Info: File `vorlage.out' has not changed.
+(rerunfilecheck)             Checksum: 650A152DABB9F4CEFC2E1340DF4317F9;3247.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
  )
 (\end occurred inside a group at level 1)
@@ -995,10 +994,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10727 strings out of 493634
- 155687 string characters out of 3143744
- 285373 words of memory out of 3000000
- 13764 multiletter control sequences out of 15000+200000
+ 10737 strings out of 493634
+ 155871 string characters out of 3143744
+ 285533 words of memory out of 3000000
+ 13771 multiletter control sequences out of 15000+200000
  15396 words of font info for 58 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,8n,32p,638b,3332s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1018,9 +1017,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on vorlage.pdf (25 pages, 273202 bytes).
+Output written on vorlage.pdf (25 pages, 288094 bytes).
 PDF statistics:
- 501 PDF objects out of 1000 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
- 382 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 512 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
+ 395 words of extra memory for PDF output out of 10000 (max. 10000000)
 
