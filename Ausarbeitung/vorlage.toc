@@ -25,28 +25,34 @@
 \contentsline {subsection}{\numberline {3.2.2}Anfragen}{8}{subsection.3.2.2}
 \contentsline {subsubsection}{Elementare boolesche Anfrage}{8}{section*.8}
 \contentsline {subsubsection}{Verkn\"upfung}{8}{section*.9}
-\contentsline {section}{\numberline {3.3}Indizierung}{9}{section.3.3}
-\contentsline {section}{\numberline {3.4}Inzidenz-Matrix}{9}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Verarbeitung einer Anfrage}{9}{subsection.3.4.1}
-\contentsline {section}{\numberline {3.5}Invertierte Liste}{9}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Verarbeitung einer Anfrage}{10}{subsection.3.5.1}
-\contentsline {chapter}{\numberline {4}Das Vektorraum-Modell}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Funktionsprinzip}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Term Frequency}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Document Frequency}{11}{section.4.3}
-\contentsline {section}{\numberline {4.4}Inverted Document Frequency}{11}{section.4.4}
-\contentsline {section}{\numberline {4.5}$Tf \times idf$ Weighting}{11}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Formeln}{11}{subsection.4.5.1}
-\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{11}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{11}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{11}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Alternativen}{11}{subsection.4.6.3}
-\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{12}{chapter.5}
-\contentsline {section}{\numberline {5.1}Precisison}{12}{section.5.1}
-\contentsline {section}{\numberline {5.2}Recall}{12}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{13}{chapter.6}
-\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{14}{chapter.7}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{15}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{16}{chapter*.10}
-\contentsline {chapter}{Glossar}{17}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{18}{appendix.B}
+\contentsline {section}{\numberline {3.3}Notwendige Begriffe}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Term}{9}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Index}{9}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Implementierungsans\"atze}{9}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Inzidenz-Matrix}{9}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Invertierte Liste}{10}{subsection.3.4.2}
+\contentsline {subsubsection}{Verarbeitung einer Anfrage}{11}{section*.10}
+\contentsline {paragraph}{Elementare Anfrage}{11}{section*.11}
+\contentsline {paragraph}{AND-Verkn\"upfungen}{11}{section*.12}
+\contentsline {paragraph}{OR-Verkn\"upfungen}{11}{section*.13}
+\contentsline {paragraph}{Komplexe Ausdr\"ucke}{12}{section*.14}
+\contentsline {chapter}{\numberline {4}Das Vektorraum-Modell}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Funktionsprinzip}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Term Frequency}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Document Frequency}{13}{section.4.3}
+\contentsline {section}{\numberline {4.4}Inverted Document Frequency}{13}{section.4.4}
+\contentsline {section}{\numberline {4.5}$Tf \times idf$ Weighting}{13}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Formeln}{13}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{13}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{13}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{13}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Alternativen}{13}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Precisison}{14}{section.5.1}
+\contentsline {section}{\numberline {5.2}Recall}{14}{section.5.2}
+\contentsline {chapter}{\numberline {6}Implementierung}{15}{chapter.6}
+\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{17}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{18}{chapter*.15}
+\contentsline {chapter}{Glossar}{19}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{20}{appendix.B}

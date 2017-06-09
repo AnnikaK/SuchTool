@@ -1,4 +1,4 @@
-(defvar *keyword-dict* (make-hash-table :test 'equalp)) ;key is term, value is posting list with doc-ID and type
+(defvar *keyword-dict* (make-hash-table :test 'equalp)) ;key is term, value is posting list with doc-ID and type and content
 (defvar *documents*) ;key is docID, value is tuple (docPath docVector)
 (defvar *free-text* '())
 (defvar *results* '())

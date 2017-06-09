@@ -1,5 +1,6 @@
 \chapter{Boolesches Retrieval}
-Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren \glqq Boolesches Retrieval\grqq{} (engl. \glqq Boolean Retrieval\grqq) vor. \\
+\label{bool}
+Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren boolesches Retrieval (engl.Boolean Retrieval) vor. \\
 
 \section{Eigenschaften des Verfahrens}
 Boolesches Retrieval überprüft Dokumente darauf, ob eine bestimmte Bedingung zutrifft.\\
@@ -22,7 +23,7 @@ Hierbei bezeichnet $t$ die Abbildung (d.h. das Attribut), $D$ die Menge aller Do
  Der Attributwert $t_i$ mit $t_i \in T$ und $i \in N$ wird durch die Abbildung $t$ dem Dokument $d \in D$ zugeordnet. \\
 
 \subsection{Anfragen}
-
+ \label{formelzeugs}
 \subsubsection{Elementare boolesche Anfrage}
 Ein Attribut-Wert-Paar wird auch als elementare boolesche Anfrage bezeichnet. Bei der elementaren booleschen Anfrage  $(t,t_1)$ werden zum Beispiel alle Dokumente gesucht, deren Attribut $t$ den Wert $t_1$ annimmt. \\
 Mathematisch kann die Ergebnismenge $D_t,_{t_i}$ für eine Anfrage $(t,t_i)$ wie in Formel \ref{ergMen} beschrieben werden. 
@@ -64,28 +65,39 @@ D \setminus D_t,_{t_1}
 
 Da bei jeder Operation neue Ergebnismengen entstehen, lassen sich hierauf erneut die oben beschriebenen Operatoren anwenden. Auf diese Weise können Anfragen beliebig tief geschachtelt werden (\cite{Ferber:03}, S.34).
 
+\section{Notwendige Begriffe}
 
-\section{Indizierung}
-\label{index}
-Um boolesche Anfragen zu verarbeiten zu können, müssen die Terme der Dokumente zunächst indiziert werden.\\
-Mit \glqq Term\grqq{} wird die Einheit, welche indiziert wird, bezeichnet. Dies kann ein Wort, aber auch eine andere Einheit wie die entsprechende Stammform sein. \\
-Auch die Dokumente selbst müssen mit einem Index versehen werden. \\
-Dieses Vorgehen ist unabdingbar, da ohne Indizierung nicht effizient auf die Dokument sowie deren Terme zugriffen werden kann. Eine fehlende Indizierung würde bedeuten, dass für jede Anfrage alle Dokumente der Sammlung vollständig durchlaufen werden müssen, was unzumutbar langsam wäre (\cite{Manning:08}, S.3).
+\subsection{Term}
+Im Laufe der Arbeit wird der Begriff Term häufig auftauchen, darum sei er an dieser Stelle erklärt. \\
+Wenn im Folgenden von Termen gesprochen wird, ist dies nicht äquivalent zu Wörtern: Bei einem Term kann es sich zwar um ein Wort handeln, dies muss jedoch nicht zwangsläufig der Fall sein.\\
+Manche Implementierungen verwenden beispielsweise Stammformen, um ähnliche Wörter zu einem Term zusammenzufassen, was den Speicherbedarf reduziert. \\
+Dokumente werden zu Beginn in solche Terme zerlegt, um später verarbeitet werden zu können (siehe Abschnitt \ref{matrix} und \ref{inverted}). Die Terme bilden somit die indexierten (oder indizierten) Einheiten der Dokumente (\cite{Manning:08}, S.3). \\
+
+\subsection{Index}
+Terme als indexierte Einheiten zu bezeichnen bedeutet, dass jedem unterschiedlichen Term in der Dokumentensammlung ein in der Sammlung einmaliger Index zugeordnet wird. Die Menge unterschiedlicher Terme wird als \glqq Vokabular\grqq{} bezeichnet. \\
+Auch die Dokumente selbst werden mit einem Index,  der \textit{docID} (kurz für \textit{document identification}), versehen. Dabei handelt es sich meist um einen ganzzahligen Wert (\cite{Manning:08}, S.7). \\
 
 
-\section{Inzidenz-Matrix}
-Eine mögliche Implementierung des Boolean Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen (\cite{Manning:08}, S.4). \\
+\section{Implementierungsansätze}
+In diesem Abschnitt werden typische Implementierungen für das boolesche Retrieval vorgestellt. Diese dienen als Grundlage für die tatsächliche Realisierung des Projektes, welche jedoch erst im zweiten Teil der Arbeit vorgestellt wird. \\
+
+\subsection{Inzidenz-Matrix}
+\label{matrix}
+Eine mögliche Implementierung des booleschen Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. \\
+Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Genau betrachtet handelt es sich hier nicht um die Terme und Dokumente selbst, sondern deren Indizes. \\
+ Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen (\cite{Manning:08}, S.4). \\
 Diese Herangehensweise ist belegt jedoch unnötig viel Speicherplatz, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dies nicht realisierbar.
 
 %beispiel
 
-\subsection{Verarbeitung einer Anfrage}
+%\subsubsection{Verarbeitung einer Anfrage}
 
-\section{Invertierte Liste}
-In der Regel werden zur Implementierung des Booleschen Retrieval invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
-Der Name basiert auf den darin gespeicherten \glqq invertierten Indizes\grqq{}. Diese werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
+\subsection{Invertierte Liste}
+\label{inverted}
+In der Regel werden zur Implementierung des booleschen Retrieval invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
+Der Name basiert auf den darin gespeicherten invertierten Indizes. Diese werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
 In einer geeigneten Speicherstruktur, zum Beispiel einem Dictionary, werden zu jedem Term alle Dokumente gespeichert, in denen der Term auftritt.\\
- Diese Dokumentlisten werden als invertierte Listen (engl. \textit{inverted lists}) bezeichnet (siehe Abbildung Abbildung \ref{abb1}). Manche Implementierungen beinhalten neben dem Dokumentindex zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
+ Diese Dokumentlisten werden als invertierte Listen (engl. inverted lists) bezeichnet (siehe Abbildung Abbildung \ref{abb1}). Manche Implementierungen beinhalten neben dem Dokumentindex zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
 Dieses Vorgehen setzt voraus, dass zuvor eine Indizierung (siehe \ref{index}) stattgefunden hat (\cite{Manning:08}, S.5-6). \\
 Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv (\cite{Ferber:03}, S.36). Im Vergleich zur Inzidenz-Matrix wird jedoch deutlich weniger Speicher benötigt, da die vielen leeren Einträge entfallen.
 \begin{figure} [hbtp]
@@ -98,7 +110,29 @@ Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv
 
 %beispiel
 \newpage
-\subsection{Verarbeitung einer Anfrage}
+\subsubsection{Verarbeitung einer Anfrage}
+Hier stellt sich die Frage, wie denn nun eine boolesche Anfrage, wie in Abschnitt \ref{formelzeugs} beschrieben, mithilfe invertierter Listen umgesetzt werden kann. \\
+\paragraph{Elementare Anfrage}
+Angenommen, es liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor. In der Praxis ist meist nach dem Vorkommen eines bestimmtes Wortes gefragt.\\
+ Demnach entspricht das Attribut $t$ dem Term des gesuchten Wortes.\\ Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
+ Die Verarbeitung einer solchen elementaren Anfrage geht relativ einfach: Über den Index kann auf den Term schnell zugegriffen werden, vorausgesetzt dieser ist in der Sammlung enthalten. Trifft dies zu, kann einfach die gesamte zugehörige invertierte Liste als Resultat ausgegeben werden, da für alle enthaltenen Dokumente $t_1 = true$ gilt. \\
+ \paragraph{AND-Verknüpfungen}
+ Wie sieht nun die Verarbeitung aus, wenn mehrere Anfragen miteinander verknüpft werden? Hierzu wird zunächst der AND - Operator betrachtet. Eine Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa bei dem Beispiel \textit{Kontaktadresse AND Seminar}, wobei gilt $t=Kontaktadress, t_1=true$ sowie $s=Seminar, s_1=true$.\\
+Demnach werden alle Dokumente gesucht, in denen beide Terme auftauchen. Dazu wird der Durchschnitt aus den zugehörigen invertierten Listen gebildet. Betrachtet man die Abbildung \ref{abb1}, so ist der Durchschnitt für $D_{t,t_1} \cap D_{s,s_1} $ bzw. für $Kontaktadress \cap Seminar$ gleich der Ergebnisliste $\{3,11\}$. \\
+\paragraph{OR-Verknüpfungen}
+Lautet die Anfrage hingegen $(t,t_1)$ $OR$ $(s,s_1)$ bzw. \textit{Kontaktadresse OR Seminar}, so sind alle Dokumente gesucht, in denen entweder $t_1$ oder $s_1$ oder auch beide Terme vorkommen. \\
+Gesucht ist also die Vereinigung  $D_{t,t_1} \cup D_{s,s_1}$ bzw. $Kontaktadress \cup Seminar$. Dies ist die Vereinigung der invertierten Listen beider Terme. Im Falle des Beispiels \ref{abb1} lautet die Ergebnisliste für die Anfrage \textit{Kontaktadresse OR Seminar} $\{1,2,3,5,7,9,11,15,22,25,30,32\}$.\\
+Für beide Listenoperationen gilt, das die Indizes in den Ergebnislisten sortiert und Duplikate entfernt werden (\cite{Manning:08}, S.11).
+
+\paragraph{Komplexe Ausdrücke}
+Wie werden komplex geschachtelte Ausdrücke, die mehrere Operatoren enthalten, wie etwa $Kontaktadresse$ $AND$ $Seminar$ $AND$ $Termin$ verarbeitet?\\
+
+Im Falle von mehreren $AND$-Operatoren ist es effizient, zunächst die einzelnen invertierten Listen aufsteigend nach deren Länge zu sortieren und dann von links nach rechts zu verarbeiten, indem das nachfolgende AND auf die Ergebnisliste des vorherigen Durchschnitts angewandt wird: \\
+$(Seminar$ $AND$ $Termin)$ $AND$ $Kontaktadresse$ \\
+Auf diese Weise werden die Listen, über die iteriert werden muss, möglichst klein gehalten. Besitzt die kleinste Liste beispielsweise die Länge eins, dann kann nach der ersten Iteration bereits abgebrochen werden, da zulässige Lösungen in allen drei Listen vorkommen müssen. \\
+
+Bei mehreren $OR$-Operatoren werden die Ausdrücke analog von links nach rechts verarbeitet, wobei die Sortierung nach Länge hierbei keinen Vorteil bringt, da bei der $OR$-Operation ohnehin über alle Elemente iteriert werden muss. Die Verarbeitung würde demnach in der folgenden Reihenfolge erfolgen: \\
+$(Kontaktadresse$ $OR$ $Seminar)$ $OR$ $Termin$
 
 
 
