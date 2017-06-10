@@ -3,7 +3,8 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Term-Dokument-Inzidenz-Matrix. Die Zeile enthalten die Terme, die Spalten die Dokumente (hier durch deren \textit {docID} repr\"asentiert). Alle Eintr\"age mit einer 0 sind leere Eintr\"age (Eigene Abbildung).}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}}{11}{figure.3.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
