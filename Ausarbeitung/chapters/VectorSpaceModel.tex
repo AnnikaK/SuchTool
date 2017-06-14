@@ -1,12 +1,99 @@
-\chapter{Das Vektorraum-Modell}
+\chapter{Das Vektorraummodell}
 \label{vector}
+Dieses Kapitel stellt ein weiteres klassisches Information Retrieval Verfahren, das Vektorraummodell, vor. \\
 
 \section{Funktionsprinzip}
-\section{Term Frequency}
-\section{Document Frequency}
-\section{Inverted Document Frequency}
-\section{$Tf \times idf$ Weighting}
-\subsection{Formeln}
+Analog zum booleschen Retrieval werden zunächst alle Dokumente in Terme zerlegt und indexiert. Die Ermittlung des Vokabulars ist Grundvoraussetzung für alle weiteren Schritte. \\
+Wie der Name bereits nahelegt, basiert das Verfahren auf Vektoren.
+%definition vektor?
+Die Grundidee besteht darin, für jedes Dokument sowie für die Anfrage einen reellen Vektor zu erstellen und anschließend zu ermitteln, welche Dokumentvektoren dem Anfragevektor am ähnlichsten sind. Alle Vektoren besitzen hierbei die Länge des Vokabulars und liegen in einem Vektorraum. \\
+%hier mehr zu vektorraum?
+Die Länge ergibt sich dadurch, dass zu jedem in der Sammlung vorkommenden Term dessen Gewicht im Vektor eingetragen wird. Auf die Bedeutung des Gewichts wird an späterer Stelle eingegangen (siehe Abschnitt \ref{weights}).\\
+Im Gegensatz zum booleschen Retrieval können die Resultate des Vektorraummodells basierend auf dem Grad der Ähnlichkeit in eine Rangfolge gebracht werden (\cite{Ferber:03}, S.62). \\
+
+\section{Definition Vektorraummodell}
+Das soeben beschriebene Funktionsprinzip lässt sich mathematisch mithilfe von Attributen formulieren. \\
+Attribute stellen wie beim booleschen Retrieval eine Abbildung dar, bei der die Dokumentenmenge $D$ auf etwas abgebildet wird. Allerdings ist beim Vektorraummodell der Wertebereich des Attributs auf die reellen Zahlen $R$ festgelegt.\\
+Die Definition lautet somit wie folgt: \\
+
+
+\begin{definition}\textit{(Vektorraummodell mit Attributen)} \\
+	
+Sei $D = {d_1,...,d_n}$ eine Menge von Dokumenten oder Objekten und $A = {A_1,...,A_n}$ eine Menge von Attributen $A_j: D \rightarrow R$ auf diesen Objekten. Die Attributwerte $A_j(d_i) =:w_i,_j$ des Dokuments $d_i$ lassen sich als Gewichte auffassen und zu einem Vektor $w_i = (w_i,_1,...,w_i,_n) \in R^{n}$ zusammenfassen. Dieser Vektor beschreibt das Dokument im Vektorraummodell: Er ist seine Repräsentation und wird Dokumentvektor genannt. \\
+Eine Anfrage wird durch einen Vektor $q \in R^{n}$ mit Attributwerten, den Anfragevektor oder Query-Vektor, dargestellt. \\
+Eine Ähnlichkeitsfunktion $s: R^{n} \times R^{n} \rightarrow R$ definiere für je zwei Vektoren $x,y \in R^{n}$einen reellen Ähnlichkeitswert $s(x,y)$.
+\end{definition} 
+Diese Definition ist aufgrund der Attribute sehr allgemein gehalten. Es ist nicht definiert, was ein Attribut ist, d.h. welche Einheiten des Dokuments gewichtet werden. Demnach sind theoretisch auch andere Dokumentformate wie etwa Bilder mit Pixeln bzw. Pixelgruppen als Attribute möglich (\cite{Ferber:03}, S.63). \\
+Praktisch gesehen machen im  Rahmen dieser Arbeit jedoch andere Formate als Texte keinen Sinn. Darum wird im folgenden davon ausgegangen, dass ausschließlich Terme gewichtet werden. Demnach lässt sich die Attributmenge $A$ spezifisch auf die Problemstellung bezogen als Menge der Terme oder Vokabular $T$ auffassen.
+
+\section{Gewichte}
+\label{weights}
+Bisher wurde nur von Gewichten in Form von reellen Zahlen gesprochen, aber deren inhaltliche Bedeutung außer Acht gelassen. In diesem Abschnitt sollen sowohl der semantische Aspekt als auch die mathematische Berechnung erläutert werden.\\
+Ein Gewicht gibt die Wichtigkeit eines Terms basierend auf dessen statistischer Häufigkeit an (\cite{Manning:08}, S.100).\\
+
+\subsection{Termhäufigkeit}
+Die Häufigkeit, mit der ein Term $t$ in einem Dokument $d$ auftritt, wird als Termhäufigkeit (engl. term frequency) bezeichnet (\cite{Manning:08}, S.71). \\
+Jedes Mal, wenn $t$ in $d$ auftritt, wird die Termhäufikeit $tf_t,_d$ inkrementiert, sodass das Gewicht umso größer ist, je häufiger ein Term im Dokument enthalten ist. Es erscheint intuitiv logisch, dass ein Text, der das gesuchte Wort mehrmals beinhaltet wichtiger sein muss als einer, in dem es nur ein einziges Mal auftaucht. \\
+Dies Gewichtungsschema erlaubt eine viel genauere Differenzierung als die simple Unterscheidung zwischen true und false wie es beim booleschen Retrieval der Fall ist.\\
+ 
+\subsection{Dokumenthäufigkeit}
+Die Termhäufigkeit stellt an sich schon eine allein funktionierende Gewichtungsmethode dar, allerdings keine besonders gute: Die Bewertung alleine aufgrund der Termhäufigkeit lässt außer Acht, dass nicht alle Terme gleich wichtig sind. \\
+Taucht ein Wort beispielsweise in jedem Dokument auf, kann es nicht besonders aussagekräftig sein. Demnach ist es sinnvoll, zusätzlich zur Termhäufigkeit $tf_t,_d$ auch die Dokumenthäufigkeit (engl. document frequency) $df_t$  zu berechnen. \\
+Diese ist $df_t$ die Anzahl der Dokumente in $D$, welche $t$ enthalten. Die Termhäufigkeit wird umso stärker reduziert, je größer die Dokumenthäufigkeit ist, sodass der Einfluss nicht aussagekräftiger Terme reduziert wird (\cite{Manning:08}, S.108). \\
+
+\subsection{Invertierte Dokumenthäufigkeit}
+Zur Reduktion des Gewichts basierend auf der Dokumenthäufigkeit wird die Invertierte Dokumenthäufigkeit (engl. inverse document frequency) verwendet. Die invertierte Dokumenthäufigkeit $idf_t$ des Terms $t$ aus der berechnet sich wie in Formel \ref{idfa} gezeigt.\\
+
+
+\begin{equation}
+\label{idfa}
+idf_t =  \frac{1}{df_t}	
+\end{equation}   \\
+Die invertierte Dokumenthäufigkeit ist demnach umso kleiner, je häufiger $t$ auftaucht. \\
+Oftmals werden modifizierte Formen verwendet, um die großen Werte seltener Terme durch den Logarithmus wieder zu dämpfen (\cite{Ferber:03}, S.68-69). \\
+Formel \ref{idfb} zeigt ein  Beispiel für eine solche modifizierte invertierte Dokumenthäufigkeit.
+In der Regel beträgt die Basis des Logarithmus 10, dies spielt aber letztendlich für das korrekte Ranking der Resultate keine Rolle  (\cite{Manning:08}, S.109). \\ 
+\begin{equation}
+\label{idfb}
+idf_t = log  \frac{N}{df_t}	
+\end{equation}   \\
+
+
+
+
+\section{TF-IDF-Gewichtung}
+Die vollständige Formel zur Berechnung der Gewichte, welche in die Dokumentvektoren eingetragen werden, besteht darin, die Termhäufigkeit mit der invertierten Dokumenthäufigkeit als verringernden bzw. vergrößernden Faktor zu multiplizieren. Alle Formeln dieses Typs werden als TF-IDF Gewichtung (engl. tf-idf weighting) bezeichnet (\cite{Ferber:03}, S.71). \\ 
+Das Gewicht für Term $t$ in Dokument $d$ berechnet sich somit wie in Formel \ref{tfidfa} gezeigt (\cite{Manning:08}, S.109). \\
+
+
+\begin{equation}
+\label{tfidfa}
+	tf-idf_t,_d = tf_t,_d \times idf_t,
+\end{equation}
+Verwendet man für die invertierte Dokumenthäufigkeit den unmodifizierten Wert \ref{idfa}, so ergibt sich hieraus die Berechnung:
+\begin{equation}
+\label{tfidfb}
+tf-idf_t,_d = \frac{tf_t,_d}{ df_t,_d}
+\end{equation}
+
+Für die modifizierte Formel \ref{idfb} lautet die TF-IDF-Gewichtung wie folgt:
+
+\begin{equation}
+\label{tfidfc}
+tf-idf_t,_d = tf_t,_d \times (log\frac{N} {df_t,_d})
+\end{equation}
+
+Der Gewichtsvektor $w_i$ zu einem Dokument $d_i \in D$ enthält demnach zu jedem Term $t_j \in T$  dessen Gewicht $w_i,_j$ = $tf-idf_j,_i$.
+
+\section{Anfragen}
+Beim Vektorraummodell gibt es keine booleschen Operatoren zur Verknüpfung von Termen. Die Anfragen liegen stattdessen in Freitextform vor, wie es bei der Websuche üblich ist. Damit stellt jede Anfrage eine Menge von Wörtern dar, aus der eine Menge von Termen resultiert. \\
+Da für jeden Term ein anderer Ähnlichkeitswert erzielt wird, werden die Ähnlichkeitswerte für alle in der Anfrage enthaltenen Terme addiert, sodass pro Dokument ein Gesamtwert berechnet wird (\cite{Manning:08}, S.107).
+Anfragen werden wie Dokumente behandelt und die Vektoren analog mit TF-IDF-Gewichtung berechnet (\cite{Ferber:03}, S.82).
+
+%ANPASSEN IN LISP!!!
+%-> nicht durch max tf teilen
+%-> posting lists für keywords sortieren
+%->stop words raushauen
 
 \section{\"Ahnlichkeitsfunktion}
 \subsection{Euklidische Distanz}

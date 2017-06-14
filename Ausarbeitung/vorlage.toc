@@ -39,23 +39,25 @@
 \contentsline {paragraph}{AND NOT-Verkn\"upfung}{12}{section*.15}
 \contentsline {paragraph}{Komplexe Ausdr\"ucke}{13}{section*.16}
 \contentsline {paragraph}{Die Verarbeitung mehrerer W\"orter}{13}{section*.17}
-\contentsline {chapter}{\numberline {4}Das Vektorraum-Modell}{14}{chapter.4}
+\contentsline {chapter}{\numberline {4}Das Vektorraummodell}{14}{chapter.4}
 \contentsline {section}{\numberline {4.1}Funktionsprinzip}{14}{section.4.1}
-\contentsline {section}{\numberline {4.2}Term Frequency}{14}{section.4.2}
-\contentsline {section}{\numberline {4.3}Document Frequency}{14}{section.4.3}
-\contentsline {section}{\numberline {4.4}Inverted Document Frequency}{14}{section.4.4}
-\contentsline {section}{\numberline {4.5}$Tf \times idf$ Weighting}{14}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Formeln}{14}{subsection.4.5.1}
-\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{14}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{14}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{14}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Alternativen}{14}{subsection.4.6.3}
-\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}Precisison}{15}{section.5.1}
-\contentsline {section}{\numberline {5.2}Recall}{15}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{16}{chapter.6}
-\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{17}{chapter.7}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{18}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{19}{chapter*.18}
-\contentsline {chapter}{Glossar}{20}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{21}{appendix.B}
+\contentsline {section}{\numberline {4.2}Definition Vektorraummodell}{14}{section.4.2}
+\contentsline {section}{\numberline {4.3}Gewichte}{15}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Termh\"aufigkeit}{15}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Dokumenth\"aufigkeit}{16}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Invertierte Dokumenth\"aufigkeit}{16}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}TF-IDF-Gewichtung}{16}{section.4.4}
+\contentsline {section}{\numberline {4.5}Anfragen}{17}{section.4.5}
+\contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{17}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Euklidische Distanz}{17}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Cosine Similarity}{17}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Alternativen}{17}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{18}{chapter.5}
+\contentsline {section}{\numberline {5.1}Precisison}{18}{section.5.1}
+\contentsline {section}{\numberline {5.2}Recall}{18}{section.5.2}
+\contentsline {chapter}{\numberline {6}Implementierung}{19}{chapter.6}
+\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{20}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{21}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{22}{chapter*.18}
+\contentsline {chapter}{Glossar}{23}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{24}{appendix.B}
