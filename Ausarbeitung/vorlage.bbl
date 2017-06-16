@@ -1,4 +1,4 @@
-\begin{thebibliography}{PDVC06}
+\begin{thebibliography}{KMOB14}
 
 \bibitem[Aca]{Academic:17}
 {\em {Academic - Academic dictionaries and encyclopedias, Universal Lexikon}}.
@@ -22,6 +22,13 @@
 \newblock \\
   {\url{https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/medieninformatik/Dateien/Publikationen/2008/henrich-ir1-1.2.pdf},
   letzter Zugriff am 10.06.2017 }.
+
+\bibitem[KMOB14]{Bryson:14}
+{\sc Kweku-Muata Osei-Bryson, Ojelanki~Ngwenyama}: {\em {Advances in Research
+  Methods for Information Systems Research - Data Mining, Data Envelopment
+  Analysis, Value Focused Thinking}}.
+\newblock \Btxnumberlong{}~34 \btxinserieslong{}\ {\em Integrated Series in
+  Information Systems}. Springer Verlag, 2014.
 
 \bibitem[PDVC06]{Claus:06}
 {\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden -
