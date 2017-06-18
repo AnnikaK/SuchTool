@@ -112,50 +112,68 @@ Grundidee des Vektorraummodells ist das Ermitteln der Ähnlichkeit zwischen Vekto
 \subsection{Euklidischer Abstand}
 Eine typische Distanzfunktion für Vektoren ist der euklidische Abstand, bei dem die Differenz wie in Formel \ref{euklid} gezeigt berechnet wird (\cite{Bryson:14},S.132). \\
 
-%hier bessere Quelle finden!
+
 \begin{equation}
 \label{euklid}
 d(\overrightarrow{x},\overrightarrow{y}) = \sqrt{\sum_{i=1}^{M} (x_i - y_i)^{2}}
 \end{equation}
 
-\subsection{Euklidische Länge}
-Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Formel \ref{length} angegeben berechnet (\cite{Manning:08}, S.111).
+Allerdings besitzt der euklidische Abstand den gravierenden Nachteil, dass die Länge der Vektoren eine Rolle spielt. \\
+Liegen zwei Dokumente $d1$ und $d2$ vor und $d2$ besitzt den Inhalt von $d1$ zweimal aneinandergereiht, so wird $d2$ als ähnlicher eingestuft, aus dem einzigen Grund weil die Termhäufigkeit doppelt so groß ist und der Vektor damit die doppelte Länge hat. \\
+Das Problem, dass zwei unterschiedlich lange Dokumente, in denen die gesuchten Terme etwa gleich verteilt sind, dennoch vollkommen verschiedene Ähnlichkeitswerte erzielen macht den euklidischen Abstand zu einer ungeeigneten Ähnlichkeitsfunktion.
+
+
+
+\subsection{Cosinus-Maß}
+Um den Einfluss der Vektorlänge zu eliminieren, wird in der Regel das Cosinus-Maß verwendet. 
+Das Cosinus-Maß ist das Skalarprodukt der normalisierten Vektoren (\cite{Manning:08}, S.112), d.h. die Vektoren werden durch ihre Länge dividiert. \\
+Da zur Berechnung des Cosinus-Maßes somit sowohl das Skalarprodukt als auch die Längenberechnung eines Vektors bekannt sein müssen, werden beide an diese Stelle vorgestellt.
+
+\subsubsection{Euklidische Länge}
+Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Formel \ref{length} angegeben berechnet.
 
 \begin{equation}
 \label{length}
-	\vert \overrightarrow{x} \vert =\sqrt{\sum_{i=1}^{M}x_i^{2}}
+\vert \overrightarrow{x} \vert =\sqrt{\sum_{i=1}^{M}x_i^{2}}
 \end{equation}
 
 
-\subsection{Skalarprodukt}
-Das Skalarprodukt zweier Vektoren $\overrightarrow{x}$ und $\overrightarrow{y}$ wird wie in Formel \ref{dot} gezeigt berechnet (\cite{Manning:08}, S.111).
+
+\subsubsection{Skalarprodukt}
+Das Skalarprodukt zweier Vektoren $\overrightarrow{x}$ und $\overrightarrow{y}$ wird wie in Formel \ref{dot} gezeigt berechnet.
 
 \begin{equation}
-	\label{dot}
-	\overrightarrow{x}\cdot \overrightarrow{y}=\sum_{i=1}^{M}x_iy_i
+\label{dot}
+\overrightarrow{x}\cdot \overrightarrow{y}=\sum_{i=1}^{M}x_iy_i
 \end{equation}
 
-\subsection{Cosinus-Maß}
 
+\subsubsection{Funktion}
+Das Cosinus-Maß multipliziert die Vektoren und dividiert sie durch deren Länge, sodass die Ähnlichkeitsfunktion von der Länge unbeeinflusst ist, was in Formel \ref{cos} gezeigt wird (\cite{Manning:08}, S.111).
 \begin{equation}
 \label{cos}
 sim(\overrightarrow{x},\overrightarrow{y}) = \frac{\overrightarrow{x} \cdot \overrightarrow{y}}{\vert \overrightarrow{x}\vert \cdot \vert \overrightarrow{y} \vert}
-\end{equation} (\cite{Manning:08}, S.111)
+\end{equation} 
 
+\subsubsection{Beispiel}
 \begin{figure} [http]
+	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/vector_space.png}
-	\caption{Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren $d_i$ und dem Anfragevektor $q$. Das Cosinus-Maß liefert als ähnlichsten Dokumentvektor $d_2$ (Eigene Abbildung).}
+	\caption{Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren und dem Anfragevektor. Das Cosinus-Maß liefert als ähnlichsten Dokumentvektor $d_2$ (Eigene Abbildung).}
+	\label{fancy}
+
 \end{figure}
 
+Abbildung \ref{fancy} zeigt einen Vektorraum mit zwei Termen als Achsen, sodass er sich zweidimensional darstellen lässt. In der Realität gibt es meist weitaus mehr Achsen, da das Vokabular tausende Terme beinhalten kann. Die hier dargestellten Vektoren wurden bereits normalisiert.\\
+Dieser beispielhafte Vektorraum beinhaltet insgesamt drei Dokumentvektoren $\overrightarrow{d_i}$ sowie den Anfragevektor $\overrightarrow{q}$.\\
+ Unter Verwendung des Cosinus-Maßes ergibt sich für $sim(\overrightarrow{d_2}, \overrightarrow{q})=cos(\alpha)$ der höchsten Wert, da $\alpha$ der kleinste Winkel ist. Damit wird $d2$ als erstes Ergebnisdokument ausgegeben (\cite{Manning:08}, S.112).
+
+%hier noch andere Quelle angeben (Bild)
 
 \subsection{Alternativen}
 
 
 
 
-
-\begin{equation}
-\alpha
-\end{equation}
 

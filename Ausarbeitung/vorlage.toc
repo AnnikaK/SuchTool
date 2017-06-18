@@ -53,16 +53,18 @@
 \contentsline {section}{\numberline {4.5}Anfragen}{17}{section.4.5}
 \contentsline {section}{\numberline {4.6}\"Ahnlichkeitsfunktion}{17}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}Euklidischer Abstand}{17}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Euklidische L\"ange}{18}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Skalarprodukt}{18}{subsection.4.6.3}
-\contentsline {subsection}{\numberline {4.6.4}Cosinus-Ma\IeC {\ss }}{18}{subsection.4.6.4}
-\contentsline {subsection}{\numberline {4.6.5}Alternativen}{18}{subsection.4.6.5}
-\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{19}{chapter.5}
-\contentsline {section}{\numberline {5.1}Precisison}{19}{section.5.1}
-\contentsline {section}{\numberline {5.2}Recall}{19}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{20}{chapter.6}
-\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{21}{chapter.7}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{22}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{23}{chapter*.18}
-\contentsline {chapter}{Glossar}{24}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{25}{appendix.B}
+\contentsline {subsection}{\numberline {4.6.2}Cosinus-Ma\IeC {\ss }}{18}{subsection.4.6.2}
+\contentsline {subsubsection}{Euklidische L\"ange}{18}{section*.18}
+\contentsline {subsubsection}{Skalarprodukt}{18}{section*.19}
+\contentsline {subsubsection}{Funktion}{18}{section*.20}
+\contentsline {subsubsection}{Beispiel}{19}{section*.21}
+\contentsline {subsection}{\numberline {4.6.3}Alternativen}{19}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}Bewertung eines Information Retrieval Systems}{20}{chapter.5}
+\contentsline {section}{\numberline {5.1}Precisison}{20}{section.5.1}
+\contentsline {section}{\numberline {5.2}Recall}{20}{section.5.2}
+\contentsline {chapter}{\numberline {6}Implementierung}{21}{chapter.6}
+\contentsline {chapter}{\numberline {7}Die Benutzeroberfl\"ache}{22}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{23}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{24}{chapter*.22}
+\contentsline {chapter}{Glossar}{25}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{26}{appendix.B}
