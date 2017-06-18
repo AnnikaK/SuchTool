@@ -117,7 +117,7 @@
              :keyword-type type 
              :content content)) 
       (if (gethash key *keyword-dict*)
-          (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing
+          (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing ;HIER sortiert einfuegen
         (setf (gethash key *keyword-dict*) (list entry)))))) ;new entry for keyword
 
 
@@ -130,6 +130,13 @@
     (cons 'FREITEXT (sort keylist 'string<))))
 
 
+
+(defun sort-keyword-list()
+  (let ((entry-list))
+    (loop for key being the hash-key of *keyword-dict* do
+          (setq entry-list (gethash key *keyword-dict*))
+          (stable-sort entry-list #'(lambda (x y)
+                       (< (keyword-entry-doc-id x) (keyword-entry-doc-id y)))))))
 
 
 
@@ -144,10 +151,9 @@
           (process-keyword-list (first current-doc) docID)
           (setq *free-text* (cons (list docID (second current-doc)) *free-text*))
           (add-to-vocabulary (second current-doc)))
+    (sort-keyword-list)
     (create-term-dictionary)
     (create-document-vectors *free-text*)
     (getKeys *keyword-dict*)))
-
-
 
 
