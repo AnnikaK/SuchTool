@@ -1,0 +1,91 @@
+(absender (""=?WINDOWS-1252?q?=22Prof._Dr._Karl_Hans_Bl=E4sius=22?=" <blaesius@hochschule-trier.de>"))
+(EmpfaengerNamen ("blaesius@hochschule-trier.de" ))
+(Betreff (" [Stud.IP - Hochschule Trier] [Programmierparadigmen]"))
+(datum ("Fri, 15 Apr 2016 19:37:17 +0200"))
+(anzahlAnhaenge 0)
+(Termin nil)
+
+
+"blaesius-h_-Stud-IP_-_1.erg"
+
+
+(ORG-BELEG
+ "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\blaesius-h_-Stud-IP_-_1.txt")
+
+(DATUM "15.04.2016")
+
+(DATUM-SORT "20160415193717")
+
+(ORIGINAL-DATEINAME "blaesius-h_-Stud-IP_-_1.txt")
+
+(BELEG-TYP E-MAIL)
+
+(ANHAENGE NIL)
+
+(ABSENDER "Prof._Dr._Karl_Hans_Bläsius")
+
+(ABSENDER-MAIL-ADRESSE "blaesius@hochschule-trier.de")
+
+(EMPFAENGER ("Prof._Dr._Karl_Hans_Bläsius"))
+
+(EMPFAENGER-MAIL-ADRESSEN ("blaesius@hochschule-trier.de"))
+
+(BETREFF "[Stud.IP - Hochschule Trier] [Programmierparadigmen]")
+
+(EMAIL-TYP "inbox")
+
+(QUELLART "KHB-FH")
+
+(QUELLBOXART "INBOX-S")
+
+
+
+"blaesius-h_-Stud-IP_-_1.txt"
+
+; Header-Informationen
+(EMAIL-INFOS 
+:INDEXIERDATUM           "0000-00-00"
+:INDEXIERWOERTER         NIL
+:VON                     "Prof._Dr._Karl_Hans_Bläsius"
+:VON-EMAIL-ADRESSE       "blaesius@hochschule-trier.de"
+:AN                      ("Prof._Dr._Karl_Hans_Bläsius")
+:AN-EMAIL-ADRESSEN       ("blaesius@hochschule-trier.de")
+:BETREFF                 "[Stud.IP - Hochschule Trier] [Programmierparadigmen]"
+:DATUM                   "2016-04-15 19:37:17"
+:DATEINAME               "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\blaesius-h_-Stud-IP_-_1.txt"
+:EMAIL-TYP               "inbox"
+:QUELLDATEI              "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\mail-584.mxt"
+:QUELLART                "KHB-FH"
+:QUELLBOXART             "INBOX-S"
+:QUELLZEITRAUM           " "
+:QUELLINFO               " "
+)
+
+;Ende Header-Informationen
+
+
+
+Hallo, 
+
+wie heute in der Vorlesung besprochen, habe ich die LISP-Erweiterung (Datei LISP-update.zip) in studip bereitgestellt. Nach dem Entzippen kann die exe in einem Windows-System (XP, Vista, 7 bis 10) als Administrator gestartet werden. Eventuell muss vorher der Schreibschutz im LISPWorks-Ordner entfernt werden. 
+Im LISP-System muss dann noch vom Emacs-Modus in den Windows-Modus umgeschaltet werden. 
+Danach sollte das Auswerten mit strg-e möglich sein und bei einem Funktionsaufruf müssten mit einem blank nach dem Funktionsnamen die zulässigen Parameter angezeigt werden. 
+Diese Erweiterungen enthalten noch weitere nützliche Funktionen, die ich aber erst zeigen kann, wenn der entsprechende Stoff behandelt ist. 
+Hinweis für Linux-User:  Unter  (Anmeldung erforderlich)
+http://www.hochschule-trier.de/index.php?id=2662
+finden Sie (rechts unten) Hinweise für eine manuelle Änderung der config-Datei, sodass Sie auch unter linux strg-e verwenden können. Einer Ihrer Kommilitonen hat dies erfolgreich getestet. 
+
+Viele Grüße und schönes Wochenende
+Karl Hans Bläsius
+
+
+
+--
+Diese E-Mail ist eine Kopie einer systeminternen Nachricht, die in Stud.IP an Prof. Dr. Karl Hans Bläsius versendet wurde.
+Sie erreichen Stud.IP unter https://studip.hochschule-trier.de/
+
+
+
+
+;Original-Header angefŸgt:
+(MH "From - Fri Apr 15 19:38:27 2016" "X-Account-Key: account3" "X-UIDL: 0000501a466460f7" "X-Mozilla-Status: 0001" "X-Mozilla-Status2: 00000000" "X-Mozilla-Keys:                                                                                 " "Return-Path: <blaesius@hochschule-trier.de>" "Received: from gateway-a.fh-trier.de (gateway-a.fh-trier.de [143.93.54.181])" "	by hochschule-trier.de (8.13.1/8.13.1) with ESMTP id u3FHbkpg585958" "	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)" "	for <blaesius@hochschule-trier.de>; Fri, 15 Apr 2016 19:37:46 +0200" "X-Virus-Scanned: by Amavisd-new + McAfee uvscan + ClamAV [Rechenzentrum" "	Hochschule Trier]" "X-Spam-Flag: NO" "X-Spam-Score: -5.223" "X-Spam-Level: " "X-Spam-Status: No, score=-5.223 tagged_above=-200 required=6" "	tests=[ALL_TRUSTED=-1, BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1," "	DKIM_VALID_AU=-0.1, LOCAL_RCVD_FHT=-5, TW_TR=0.077] autolearn=disabled" "Authentication-Results: gateway.hochschule-trier.de (amavisd-new); dkim=pass" "	header.i=@hochschule-trier.de" "Received: from hochschule-trier.de (studip.fh-trier.de [143.93.54.106])" "	by gateway-a.fh-trier.de (Postfix) with ESMTP id 04BFD1797A6F" "	for <blaesius@hochschule-trier.de>; Fri, 15 Apr 2016 19:37:17 +0200 (CEST)" "DKIM-Signature: v=1; a=rsa-sha1; c=simple/simple; d=hochschule-trier.de;" "	s=default; t=1460741837; bh=kmD+QbVYZ7AtrZi4RcjH6svQy7Y=;" "	h=From:To:Subject:MIME-Version:Content-Type:" "	 Content-Transfer-Encoding:Date:Message-ID;" "	b=Y4Vism9GyUCM/eXENYdcMmoMd290s6OkIzVHaxYN9rDcgTcUJ+FBLaoxf9xR3U2JB" "	 vRHR/lnyzBunjv4sdbV7Dfxm1M2exe2ItDSRuCGB2h8O6VzTC20ff6I8B95ruX6Wqt" "	 jMqIaJI6SaD6p5aBphIxm3uDnFb5yd3nMTbzIGTI=" "From: \"\"Prof._Dr._Karl_Hans_Bläsius\"\" <blaesius@hochschule-trier.de>" "To: \"\"Prof._Dr._Karl_Hans_Bläsius\"\" <blaesius@hochschule-trier.de>" "Subject: [Stud.IP - Hochschule Trier] [Programmierparadigmen]" "MIME-Version: 1.0" "Content-Type: text/plain; charset=WINDOWS-1252" "Date: Fri, 15 Apr 2016 19:37:17 +0200" "Message-ID: <20160415193717.0183.blaesius@hochschule-trier.de>" "Content-Transfer-Encoding: 8bit" "X-MIME-Autoconverted: from quoted-printable to 8bit by hochschule-trier.de id u3FHbkpg585958" "X-MS-Exchange-Organization-SCL: 0")

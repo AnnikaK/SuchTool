@@ -23,6 +23,11 @@
   {\url{https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/medieninformatik/Dateien/Publikationen/2008/henrich-ir1-1.2.pdf},
   letzter Zugriff am 10.06.2017 }.
 
+\bibitem[Jän84]{Jaenich:84}
+{\sc Jänich, Klaus}: {\em {Lineare Algebra - Ein Skriptum für das erste
+  Semester}}.
+\newblock Springer-Verlag, 1984.
+
 \bibitem[KMOB14]{Bryson:14}
 {\sc Kweku-Muata Osei-Bryson, Ojelanki~Ngwenyama}: {\em {Advances in Research
   Methods for Information Systems Research - Data Mining, Data Envelopment
@@ -34,5 +39,10 @@
 {\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden -
   Informatik A-Z, Fachlexikon für Studium, Ausbildung und Beruf}}.
 \newblock Dudenverlag, 2006.
+
+\bibitem[SB10]{Buettcher:10}
+{\sc Stefan~B\"uttcher, Charles~L.A.Clarke, Gordon~V.Cormack}: {\em
+  {Information Retrieval - Implementing and Evaluating Search Engines}}.
+\newblock The MIT Press - Massachusetts Institute of Technology, 2010.
 
 \end{thebibliography}

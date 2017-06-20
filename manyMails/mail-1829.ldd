@@ -1,0 +1,100 @@
+(absender (""Rainer Oechsle" <oechsle@hochschule-trier.de>"))
+(EmpfaengerNamen ("professoren-inf@lists.hochschule-trier.de" "mitarbeiter-inf@lists.hochschule-trier.de" "baguiov@hochschule-trier.de" "jaehnigj@hochschule-trier.de" "puczynk@hochschule-trier.de" "schaefg@hochschule-trier.de" "schoenj@hochschule-trier.de" "zimmerdu@hochschule-trier.de" ))
+(Betreff (" Einladung zur 11. Sitzung des Fachbereichsrats Informatik am 8.11.2016"))
+(datum ("Wed, 26 Oct 2016 11:21:47 +0200"))
+(anzahlAnhaenge 1)
+(AnhaengeNamen ("3DGenerator =" "3D" "EinladungFBR11_08_11_2016.pdf" ))
+(Termin t)
+
+
+"oechsle-ho_Einladung__1.erg"
+
+
+(ORG-BELEG
+ "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1.txt")
+
+(DATUM "26.10.2016")
+
+(DATUM-SORT "20161026112147")
+
+(ORIGINAL-DATEINAME "oechsle-ho_Einladung__1.txt")
+
+(BELEG-TYP E-MAIL)
+
+(ANHAENGE
+ ("K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1\\#alternativtext.html"
+  "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1\\EinladungFBR11_08_11_2016.pdf"))
+
+(ABSENDER "Rainer Oechsle")
+
+(ABSENDER-MAIL-ADRESSE "oechsle@hochschule-trier.de")
+
+(EMPFAENGER
+ (""
+  ""
+  ""
+  ""
+  "INF-DMS'"
+  ""
+  "'Georg_Schäfer'"
+  "'Jonas_Schön'"
+  ""
+  "INF-I'"))
+
+(EMPFAENGER-MAIL-ADRESSEN
+ ("professoren-inf@lists.hochschule-trier.de"
+  "mitarbeiter-inf@lists.hochschule-trier.de"
+  "baguiov@hochschule-trier.de"
+  "'Jerome Jaehnig"
+  "jaehnigj@hochschule-trier.de"
+  "puczynk@hochschule-trier.de"
+  "schaefg@hochschule-trier.de"
+  "schoenj@hochschule-trier.de"
+  "'Dustin Zimmermann"
+  "zimmerdu@hochschule-trier.de"))
+
+(BETREFF
+ "Einladung zur 11. Sitzung des Fachbereichsrats Informatik am 8.11.2016")
+
+(EMAIL-TYP "inbox")
+
+(QUELLART "KHB-FH")
+
+(QUELLBOXART "INBOX-S")
+
+
+
+"oechsle-ho_Einladung__1.txt"
+
+; Header-Informationen
+(EMAIL-INFOS 
+:INDEXIERDATUM           "0000-00-00"
+:INDEXIERWOERTER         NIL
+:VON                     "Rainer Oechsle"
+:VON-EMAIL-ADRESSE       "oechsle@hochschule-trier.de"
+:AN                      ("" "" "" "" "INF-DMS'" "" "'Georg_Schäfer'" "'Jonas_Schön'" "" "INF-I'")
+:AN-EMAIL-ADRESSEN       ("professoren-inf@lists.hochschule-trier.de" "mitarbeiter-inf@lists.hochschule-trier.de" "baguiov@hochschule-trier.de" "'Jerome Jaehnig" "jaehnigj@hochschule-trier.de" "puczynk@hochschule-trier.de" "schaefg@hochschule-trier.de" "schoenj@hochschule-trier.de" "'Dustin Zimmermann" "zimmerdu@hochschule-trier.de")
+:KOPIE-AN                ("" "" "'Fachschaftsrat Informatik'")
+:KOPIE-AN-EMAIL-ADRESSEN ("Praesident@hochschule-trier.de" "kanzler@hochschule-trier.de" "rat@fsi.hochschule-trier.de")
+:BETREFF                 "Einladung zur 11. Sitzung des Fachbereichsrats Informatik am 8.11.2016"
+:DATUM                   "2016-10-26 11:21:47"
+:DATEINAME               "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1.txt"
+:EMAIL-TYP               "inbox"
+:QUELLDATEI              "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\mail-1829.mxt"
+:QUELLART                "KHB-FH"
+:QUELLBOXART             "INBOX-S"
+:QUELLZEITRAUM           " "
+:QUELLINFO               " "
+:ANHAENGE                ("K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1\\#alternativtext.html" "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\oechsle-ho_Einladung__1\\EinladungFBR11_08_11_2016.pdf")
+)
+
+;Ende Header-Informationen
+
+
+
+
+(EMAIL-INFOS FEHLER-IN-TXT-DATEI)
+
+
+;Original-Header angefŸgt:
+(MH "From - Wed Oct 26 11:42:48 2016" "X-Account-Key: account3" "X-UIDL: 00005513466460f7" "X-Mozilla-Status: 0001" "X-Mozilla-Status2: 00000000" "X-Mozilla-Keys:                                                                                 " "Return-Path: <professoren-inf-request+0514549D@lists.hochschule-trier.de>" "Received: from fh-trier.de (seclist@localhost)" "	by hochschule-trier.de (8.13.1/8.13.1) id u9Q9LsN91982650;" "	Wed, 26 Oct 2016 11:21:54 +0200" "Received: from gateway-a.fh-trier.de (gateway-a.fh-trier.de [143.93.54.181])" "	by hochschule-trier.de (8.13.1/8.13.1) with ESMTP id u9Q9Llor2859210" "	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);" "	Wed, 26 Oct 2016 11:21:47 +0200" "X-Virus-Scanned: by Amavisd-new + McAfee uvscan + ClamAV [Rechenzentrum" "	Hochschule Trier (RZ/HT)]" "X-Spam-Flag: NO" "X-Spam-Score: -34.129" "X-Spam-Level: " "X-Spam-Status: No, score=-34.129 tagged_above=-200 required=6" "	tests=[ALL_TRUSTED=-1, AUTH_USER_FHT=-30, BAYES_50=0.8," "	DCC_CHECK=1.17, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1," "	HTML_MESSAGE=0.001, LOCAL_RCVD_FHT=-5] autolearn=disabled" "Authentication-Results: gateway.hochschule-trier.de (amavisd-new); dkim=pass" "	header.i=@hochschule-trier.de" "Received: from MeinPC (infnb02.fh-trier.de [143.93.53.52])" "	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))" "	(No client certificate requested)" "	(Authenticated sender: oechsle)" "	by gateway-a.fh-trier.de (Postfix) with ESMTPSA id B3CA617996E3;" "	Wed, 26 Oct 2016 11:21:33 +0200 (CEST)" "From: \"Rainer Oechsle\" <oechsle@hochschule-trier.de>" "To: <professoren-inf@lists.hochschule-trier.de>," "        <mitarbeiter-inf@lists.hochschule-trier.de>," "        <baguiov@hochschule-trier.de>," "        \"'Jerome Jaehnig, INF-DMS'\" <jaehnigj@hochschule-trier.de>," "        <puczynk@hochschule-trier.de>," "        \"'Georg_Schäfer'\" <schaefg@hochschule-trier.de>," "        \"'Jonas_Schön'\" <schoenj@hochschule-trier.de>," "        \"'Dustin Zimmermann, INF-I'\" <zimmerdu@hochschule-trier.de>" "Cc: <Praesident@hochschule-trier.de>, <kanzler@hochschule-trier.de>," "        \"'Fachschaftsrat Informatik'\" <rat@fsi.hochschule-trier.de>" "Subject: Einladung zur 11. Sitzung des Fachbereichsrats Informatik am 8.11.2016" "Date: Wed, 26 Oct 2016 11:21:47 +0200" "Message-ID: <001901d22f6a$6094f7a0$21bee6e0$@hochschule-trier.de>" "MIME-Version: 1.0" "Content-Type: multipart/mixed;" "	boundary=\"----=_NextPart_000_001A_01D22F7B.242038A0\"" "X-Mailer: Microsoft Outlook 15.0" "Thread-Index: AdIvamAwFcq2BxOQRGGBAgBzVFNQpQ==" "Content-Language: de" "X-RFT-LIST-FORWARDED: professoren-inf@lists.hochschule-trier.de" "X-RFT-SECURELIST-VERSION: securelist-ldap:17:2014-01-07:11:56:38Z" "X-RFT-LIST-DISPLAYNAME: Professor/innen der Fachbereich Informatik" "X-MS-Exchange-Organization-SCL: 0")

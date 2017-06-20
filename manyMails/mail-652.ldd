@@ -1,0 +1,106 @@
+(absender (""Dr. Claus-Peter Wirth" <wirth@logic.at>"))
+(EmpfaengerNamen ("admin@ki-profs.de"))
+(Betreff ("Stellenausschreibung_Universit=C3=A4t_Osnabr=C3=BCck_W
+3_Professur_=22Semantische_Technologien_fu=CC=88r_indu
+strielle_Systeme_und_Prozesse=22
+"))
+(datum ("Wed, 13 Apr 2016 13:46:24 +0200"))
+(anzahlAnhaenge 0)
+(Termin nil)
+
+
+"wirth-logi_Stellenaus_1.erg"
+
+
+(ORG-BELEG
+ "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\wirth-logi_Stellenaus_1.txt")
+
+(DATUM "13.04.2016")
+
+(DATUM-SORT "20160413134624")
+
+(ORIGINAL-DATEINAME "wirth-logi_Stellenaus_1.txt")
+
+(BELEG-TYP E-MAIL)
+
+(ANHAENGE NIL)
+
+(ABSENDER "Dr. Claus-Peter Wirth")
+
+(ABSENDER-MAIL-ADRESSE "wirth@logic.at")
+
+(EMPFAENGER (""))
+
+(EMPFAENGER-MAIL-ADRESSEN ("admin@ki-profs.de"))
+
+(BETREFF
+ "Stellenausschreibung_Universität_Osnabrück_W 3_Professur_\"Semantische_Technologien_für_indu strielle_Systeme_und_Prozesse\"")
+
+(EMAIL-TYP "inbox")
+
+(QUELLART "KHB-FH")
+
+(QUELLBOXART "INBOX-S")
+
+
+
+"wirth-logi_Stellenaus_1.txt"
+
+; Header-Informationen
+(EMAIL-INFOS 
+:INDEXIERDATUM           "0000-00-00"
+:INDEXIERWOERTER         NIL
+:VON                     "Dr. Claus-Peter Wirth"
+:VON-EMAIL-ADRESSE       "wirth@logic.at"
+:AN                      ("")
+:AN-EMAIL-ADRESSEN       ("admin@ki-profs.de")
+:BETREFF                 "Stellenausschreibung_Universität_Osnabrück_W 3_Professur_\"Semantische_Technologien_für_indu strielle_Systeme_und_Prozesse\""
+:DATUM                   "2016-04-13 13:46:24"
+:DATEINAME               "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\wirth-logi_Stellenaus_1.txt"
+:EMAIL-TYP               "inbox"
+:QUELLDATEI              "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\mail-652.mxt"
+:QUELLART                "KHB-FH"
+:QUELLBOXART             "INBOX-S"
+:QUELLZEITRAUM           " "
+:QUELLINFO               " "
+)
+
+;Ende Header-Informationen
+
+
+
+Liebe Kolleginnen und Kollegen,
+
+bitte geben Sie die folgende Stellenausschreibung weiter an interessierte Personen.
+
+Mit freundlichen Grüßen,
+
+	Joachim Hertzberg
+
+-----------------------------------------------------------
+
+Am Institut für Informatik der Universität Osnabrück ist folgende Professur zum nächstmöglichen Zeitpunkt zu besetzen:
+
+Professur (Bes.Gr. W3)
+„Semantische Technologien für industrielle Systeme und Prozesse“
+
+Das Institut für Informatik sucht eine international ausgewiesene Forscherpersönlichkeit, die bei der weiteren Entwicklung des Instituts mitwirkt. Die Forschung im Rahmen der Professur soll sich bevorzugt im Umfeld der Modellierung, Analyse und Automatisierung flexibler Fertigungs- und Steuerungsprozesse bewegen. Kooperation mit Arbeitsgruppen mit angrenzenden Themen im Institut für Informatik und im Institut für Kognitionswissenschaft, der Hochschule Osnabrück sowie mit Wirtschaftsunternehmen ist erwünscht. In der Lehre wird die Beteiligung an den Bachelor- und Masterstudiengängen der Informatik erwartet; mindestens eines der Themen „Datenbanken“, „Mensch-Maschine-Interaktion“, „Datamining & Knowledge Discovery“ und „Semantic Web“ ist regelmäßig in der Lehre abzudecken. Das Lehrangebot ist zudem mit der Nachfrage aus einschlägigen Studiengängen (Wirtschaftsinformatik, Mathematik, Cognitive Science) abzustimmen.
+
+Es ist vorgesehen, dass die Inhaberin/der Inhaber der Professur eine weitere Arbeitsgruppe des Deutschen Forschungszentrums für Künstliche Intelligenz (DFKI) GmbH an der DFKI-"Außenstelle Osnabrück aufbaut und leitet. Dabei soll die Forschung im DFKI thematisch zu der in der universitären Arbeitsgruppe passen. Von Bewerberinnen/Bewerbern werden langjährige Erfahrungen in Kooperationsprojekten mit der Wirtschaft und der Einwerbung von Drittmittelprojekten sowie Managementfähigkeiten erwartet.
+
+Einstellungsvoraussetzungen sind ein abgeschlossenes Hochschulstudium, durch praktische Erfahrungen bestätigte pädagogisch-didaktische Eignung, die besondere Befähigung zu vertiefter selbständiger wissenschaftlicher Arbeit, die in der Regel durch eine überdurchschnittliche Promotion nachgewiesen wird, und zusätzliche wissenschaftliche Leistungen im Sinne des § 25 Abs. 1 Nr. 4 a NHG (z. B. Juniorprofessur oder Habilitation).
+
+Als zertifizierte familiengerechte Hochschule setzt sich die Universität Osnabrück für die Vereinbarkeit von Beruf/Studium und Familie ein.
+
+Die Universität Osnabrück will die berufliche Gleichberechtigung von Frauen und Männern besonders fördern und fordert deshalb qualifizierte Frauen nachdrücklich auf, sich zu bewerben.
+
+Schwerbehinderte Bewerberinnen und Bewerber werden bei gleicher Eignung bevorzugt berücksichtigt.
+
+Bewerbungen mit den üblichen Unterlagen, möglichst in elektronischer Form im PDF- Format, sind bis zum 15.05.2016 zu richten an den Dekan des Fachbereichs Mathematik/Informatik der Universität Osnabrück, 49069 Osnabrück, dekan-fb06@uni-osnabrueck.de. Nähere Auskünfte erteilt Herr Prof. Dr. Joachim Hertzberg (joachim.hertzberg@uni-osnabrueck.de).
+
+
+
+
+
+;Original-Header angef�gt:
+(MH "From - Wed Apr 13 18:47:26 2016" "X-Account-Key: account3" "X-UIDL: 00005005466460f7" "X-Mozilla-Status: 0001" "X-Mozilla-Status2: 00000000" "X-Mozilla-Keys:                                                                                 " "Return-Path: <drcpwirth@googlemail.com>" "Received: from gateway-b.fh-trier.de (gateway-b.fh-trier.de [143.93.54.182])" "	by hochschule-trier.de (8.13.1/8.13.1) with ESMTP id u3DBkgVv1937482" "	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)" "	for <blaesius@informatik.fh-trier.de>; Wed, 13 Apr 2016 13:46:42 +0200" "X-Virus-Scanned: by Amavisd-new + McAfee uvscan + ClamAV [Rechenzentrum" "	Hochschule Trier]" "X-Spam-Flag: NO" "X-Spam-Score: 1.109" "X-Spam-Level: *" "X-Spam-Status: No, score=1.109 tagged_above=-200 required=6" "	tests=[BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1," "	FREEMAIL_FROM=0.001, HK_RANDOM_ENVFROM=0.001, MIME_QP_LONG_LINE=0.998," "	RCVD_IN_DNSWL_LOW=-0.7, SPF_PASS=-0.001, T_HK_NAME_FM_DR=0.01]" "	autolearn=disabled" "Authentication-Results: gateway.hochschule-trier.de (amavisd-new); dkim=pass" "	header.i=@googlemail.com" "Received: from mail-wm0-f66.google.com (mail-wm0-f66.google.com [74.125.82.66])" "	(using TLSv1 with cipher RC4-SHA (128/128 bits))" "	(No client certificate requested)" "	by gateway-b.fh-trier.de (Postfix) with ESMTPS id 63DD217B4B5" "	for <blaesius@informatik.fh-trier.de>; Wed, 13 Apr 2016 13:46:29 +0200 (CEST)" "Authentication-Results: gateway-b.fh-trier.de; dkim=pass" "	(2048-bit key; insecure key) header.i=@googlemail.com;" "	x-dkim-adsp=none (insecure policy)" "Received: by mail-wm0-f66.google.com with SMTP id a140so13217435wma.2" "        for <blaesius@informatik.fh-trier.de>; Wed, 13 Apr 2016 04:46:29 -0700 (PDT)" "DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;" "        d=googlemail.com; s=20120113;" "        h=sender:subject:mime-version:from:date:content-transfer-encoding" "         :reply-to:message-id:to;" "        bh=V6IU/zFx6p+5WQu23oeYjN+65yCT5vzc3G9CCE9xoOs=;" "        b=qzRWojBnIaSc2FQqFjHu8V6XntMHNCLc4VdTExBxGE7BRLZg0dLQPzwdjBwR6XghoC" "         RsWw9qS253vcnNTCu7mghJoIs7aoCYupZZoWrBAp9una0EhnALx0ofa+HzsUvgddDzH7" "         AEEdk/DPJxQKCHw0cL5gM9hAzBYbNNQBTVLkORaoF9LC2GBuj4tBerf8pCUuxLnPStbL" "         exR71XrzV6Wi09cCY7GPlFOK0bGEosGTn/Cjb0QizflXiNhN+Tr6n0P0fazB56Gkw0gI" "         fcp3QJcZppWbbkBoB5pzokLAQ5PAvzB5pMdDF6qct9oapcE+ObG+HMwFx4gdPZlYO1mN" "         F7FA==" "X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;" "        d=1e100.net; s=20130820;" "        h=x-gm-message-state:sender:subject:mime-version:from:date" "         :content-transfer-encoding:reply-to:message-id:to;" "        bh=V6IU/zFx6p+5WQu23oeYjN+65yCT5vzc3G9CCE9xoOs=;" "        b=OVN5zZW1xv/jdbCQt3S2IJW+sYvHKYUYICeJL5lbqcouW4rVklXl1dTXfkDfhyNy+w" "         qFgaBFR1DUEjUJMmzumegqGDP6u6tM0qI/jsKdXvWw3kX0dK/0zys/zvthPpqxpNVi+U" "         6i4/keFwO0KU+lAMvBmpr6FqM8TuHiOKaVj90x7a0rGHHJF8RPMHdTKzducqPbeFlHKT" "         MmHKapQV8nUjtVa2coTqpXJMKM9P/eXzaKeHVybjvotpsnbVMgRvtjwAgXdPtHFiewJC" "         7h/7h99QlJh/mjeuhPmTz1I1pRLjhLn53Ml+H4aGQhdyt/p3PT+8hTRKM0WdL/YqcaC3" "         5e1g==" "X-Gm-Message-State: AOPr4FVVKTBq/RNKcV61Qin/jTHGz54duIJcHVnEJo+/lZJuei2GTGQaYOCdKeAR0mkitg==" "X-Received: by 10.28.101.213 with SMTP id z204mr10371778wmb.22.1460547989031;" "        Wed, 13 Apr 2016 04:46:29 -0700 (PDT)" "Received: from [192.168.1.77] (p5DC68507.dip0.t-ipconnect.de. [93.198.133.7])" "        by smtp.gmail.com with ESMTPSA id d2sm38305954wjf.28.2016.04.13.04.46.25" "        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);" "        Wed, 13 Apr 2016 04:46:28 -0700 (PDT)" "Sender: \"Dr. Claus-Peter Wirth\" <drcpwirth@googlemail.com>" "Content-Type: text/plain; charset=utf-8" "Subject: Stellenausschreibung_Universität_Osnabrück_W" " 3_Professur_\"Semantische_Technologien_für_indu" " strielle_Systeme_und_Prozesse\"" "Mime-Version: 1.0 (Mac OS X Mail 8.2 \\(2104\\))" "From: \"Dr. Claus-Peter Wirth\" <wirth@logic.at>" "Date: Wed, 13 Apr 2016 13:46:24 +0200" "Reply-To: wirth@logic.at" "Message-Id: <81D2E9F4-19D9-403F-B72E-7009EF1DDBE2@logic.at>" "To: admin@ki-profs.de" "X-Mailer: Apple Mail (2.2104)" "Content-Transfer-Encoding: 8bit" "X-MIME-Autoconverted: from quoted-printable to 8bit by hochschule-trier.de id u3DBkgVv1937482" "X-MS-Exchange-Organization-SCL: 0")

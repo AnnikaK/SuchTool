@@ -1,0 +1,98 @@
+(absender ("=?utf-8?B?TWFuZnJlZCBTdMO8YmVy?= <M.Stueber@inf.hochschule-trier.de>"))
+(EmpfaengerNamen ("Blaesius@hochschule-trier.de" ))
+(CCNamen ("hormesct@hochschule-trier.de" ))
+(Betreff ("AW Raumnderung"))
+(datum ("Tue, 3 May 2016 07:18:52 +0000"))
+(anzahlAnhaenge 0)
+(Termin nil)
+
+
+"M-Stueber-_AW-_Raum--_1.erg"
+
+
+(ORG-BELEG
+ "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\M-Stueber-_AW-_Raum--_1.txt")
+
+(DATUM "03.05.2016")
+
+(DATUM-SORT "20160503071852")
+
+(ORIGINAL-DATEINAME "M-Stueber-_AW-_Raum--_1.txt")
+
+(BELEG-TYP E-MAIL)
+
+(ANHAENGE NIL)
+
+(ABSENDER "Manfred Stüber")
+
+(ABSENDER-MAIL-ADRESSE "M.Stueber@inf.hochschule-trier.de")
+
+(EMPFAENGER ("Karl Hans Bläsius"))
+
+(EMPFAENGER-MAIL-ADRESSEN ("Blaesius@hochschule-trier.de"))
+
+(BETREFF "AW: Raumänderung")
+
+(EMAIL-TYP "inbox")
+
+(QUELLART "KHB-FH")
+
+(QUELLBOXART "INBOX-S")
+
+
+
+"M-Stueber-_AW-_Raum--_1.txt"
+
+; Header-Informationen
+(EMAIL-INFOS 
+:INDEXIERDATUM           "0000-00-00"
+:INDEXIERWOERTER         NIL
+:VON                     "Manfred Stüber"
+:VON-EMAIL-ADRESSE       "M.Stueber@inf.hochschule-trier.de"
+:AN                      ("Karl Hans Bläsius")
+:AN-EMAIL-ADRESSEN       ("Blaesius@hochschule-trier.de")
+:KOPIE-AN                ("" "")
+:KOPIE-AN-EMAIL-ADRESSEN ("Subject:Date:Message-ID:References:In-Reply-To:  Content-Type:Content-Transfer-Encoding:MIME-Version" "b=hvamCf5lOrZw3wba8/eV0hhWLCsS0kpVUmIrmU1MEUPelnwxPae0BzmSmU1A7AQuy  AJi3JBB+T+k3nHL9BUEHV4Dcdiv1Rx3EnZUEkWPlHfgWxT5Lr1xJ1ZeXrnlKl1Pvqc  leWR6ehKc++6UCB5VVsPCKbusPoXNvwzvSBYv354=")
+:BETREFF                 "AW: Raumänderung"
+:DATUM                   "2016-05-03 07:18:52"
+:DATEINAME               "K:/mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\zo-temp\\M-Stueber-_AW-_Raum--_1.txt"
+:EMAIL-TYP               "inbox"
+:QUELLDATEI              "K:\\mail-archiv\\E-Mail-2017\\E-Mail-201701231610-INBOX-S-KHB-FH\\mail-802.mxt"
+:QUELLART                "KHB-FH"
+:QUELLBOXART             "INBOX-S"
+:QUELLZEITRAUM           " "
+:QUELLINFO               " "
+)
+
+;Ende Header-Informationen
+
+
+
+Hallo Karl Hans,
+
+ich habe es in den L103 verlegt.
+
+Viele Grüße
+Manni
+
+-----Ursprüngliche Nachricht-----
+Von: Karl Hans Bläsius [mailto:Blaesius@hochschule-trier.de] 
+Gesendet: Montag, 2. Mai 2016 16:16
+An: Manfred Stüber <M.Stueber@inf.hochschule-trier.de>
+Cc: Thomas Hormesch, INF-I <hormesct@hochschule-trier.de>
+Betreff: Raumänderung
+
+Hallo Manni,
+
+wäre es möglich, dass das Tutorium "Programmierparadigmen"
+diese Woche Freitag (9:45 - 11:15 Uhr) ausnahmsweise in einem Rechnerpool stattfindet?
+
+Viele Grüße
+Karl Hans
+
+
+
+
+
+;Original-Header angef�gt:
+(MH "From - Tue May 03 10:00:26 2016" "X-Account-Key: account3" "X-UIDL: 000050a8466460f7" "X-Mozilla-Status: 0011" "X-Mozilla-Status2: 00000000" "X-Mozilla-Keys:                                                                                 " "Return-Path: <M.Stueber@inf.hochschule-trier.de>" "Received: from gateway-b.fh-trier.de (gateway-b.fh-trier.de [143.93.54.182])" "	by hochschule-trier.de (8.13.1/8.13.1) with ESMTP id u437Iqhm1953798" "	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);" "	Tue, 3 May 2016 09:18:53 +0200" "Received: from mara.fh-trier.de (mara.fh-trier.de [143.93.51.175])" "	(using TLSv1 with cipher AES256-SHA (256/256 bits))" "	(No client certificate requested)" "	by gateway-b.fh-trier.de (Postfix) with ESMTPS id C8B9717B4AC;" "	Tue,  3 May 2016 09:18:52 +0200 (CEST)" "DKIM-Signature: v=1; a=rsa-sha1; c=simple/simple; d=inf.hochschule-trier.de;" "	s=default; t=1462259932; bh=W/n3WgKlraweazvrr6Ag+qvCM2g=;" "	h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:" "	 Content-Type:Content-Transfer-Encoding:MIME-Version;" "	b=hvamCf5lOrZw3wba8/eV0hhWLCsS0kpVUmIrmU1MEUPelnwxPae0BzmSmU1A7AQuy" "	 AJi3JBB+T+k3nHL9BUEHV4Dcdiv1Rx3EnZUEkWPlHfgWxT5Lr1xJ1ZeXrnlKl1Pvqc" "	 leWR6ehKc++6UCB5VVsPCKbusPoXNvwzvSBYv354=" "Received: from mara.fh-trier.de ([fe80::a4c7:e8a5:9075:e038]) by" " mara.fh-trier.de ([fe80::a4c7:e8a5:9075:e038%15]) with mapi id" " 14.03.0279.002; Tue, 3 May 2016 09:18:53 +0200" "From: Manfred Stüber <M.Stueber@inf.hochschule-trier.de>" "To: Karl Hans Bläsius <Blaesius@hochschule-trier.de>" "CC: \"hormesct@hochschule-trier.de\" <hormesct@hochschule-trier.de>" "Subject: AW: Raumänderung" "Thread-Topic: Raumänderung" "Thread-Index: AQHRpH0fR+F+ClgVrk6q0i5GDUPP8p+mzubA" "Date: Tue, 3 May 2016 07:18:52 +0000" "Message-ID: <C94BF5AE2242AA4EBDAA11964FBC0518A58F1817@mara.fh-trier.de>" "References: <57276106.2050709@hochschule-trier.de>" "In-Reply-To: <57276106.2050709@hochschule-trier.de>" "Accept-Language: de-DE, en-US" "Content-Language: de-DE" "X-MS-Has-Attach: " "X-MS-TNEF-Correlator: " "x-originating-ip: [143.93.53.82]" "Content-Type: text/plain; charset=\"utf-8\"" "MIME-Version: 1.0" "Content-Transfer-Encoding: 8bit" "X-MIME-Autoconverted: from base64 to 8bit by hochschule-trier.de id u437Iqhm1953798")
