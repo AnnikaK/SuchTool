@@ -3,19 +3,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Term-Dokument-Inzidenz-Matrix. Die Zeile enthalten die Terme, die Spalten die Dokumente (hier durch deren \textit {docID} repr\"asentiert). Alle Eintr\"age mit einer 0 sind leere Eintr\"age (Eigene Abbildung).}}{10}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}}{11}{figure.3.2}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren und dem Anfragevektor. Das Cosinus-Ma\IeC {\ss } liefert als \"ahnlichstes Dokument $d_2$ (Eigene Abbildung, basierend auf \cite {Buettcher:10}, S.55).}}{20}{figure.4.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren und dem Anfragevektor. Das Cosinus-Ma\IeC {\ss } liefert als \"ahnlichstes Dokument $d_2$ (Eigene Abbildung, basierend auf \cite {Buettcher:10}, S.55).}}{17}{figure.5.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{23}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{24}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Keywords mit Freitext verkn\"upfen (eigene Abbildung)}}{24}{figure.7.3}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Display (eigene Abbildung)}}{24}{figure.7.4}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Resultatfenster f\"ur obige Anfrage (eigene Abbildung)}}{24}{figure.7.5}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{25}{figure.7.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Term-Dokument-Inzidenz-Matrix. Die Zeile enthalten die Terme, die Spalten die Dokumente (hier durch deren \textit {docID} repr\"asentiert). Alle Eintr\"age mit einer 0 sind leere Eintr\"age (Eigene Abbildung).}}{20}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}}{21}{figure.7.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{25}{figure.8.1}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{26}{figure.8.2}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{26}{figure.8.3}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Keywords mit Freitext verkn\"upfen (eigene Abbildung)}}{26}{figure.8.4}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{26}{figure.8.5}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster f\"ur obige Anfrage (eigene Abbildung)}}{27}{figure.8.6}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{27}{figure.8.7}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

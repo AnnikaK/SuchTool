@@ -1,9 +1,49 @@
 \chapter{Die Benutzeroberfl\"ache}
 Dieses Kapitel soll die Konzeption der Oberfläche begründen und deren Nutzung erläutern.\\
 
-\section{Anforderung}
+\section{Anforderungen}
+Die Benutzeroberfläche muss die folgenden, aus der Problemstellung resultierenden Funktionalitäten erfüllen:
+\begin{enumerate}
+	\item Wählen, Festlegen und Ändern des Suchverzeichnisses
+	\item Auswählen der Keywords
+	\item Auswählen der Freitextsuche
+	\item Eingabe des Suchtextes
+	\item Logische Operatoren zur externen Verknüpfung zur Verfügung stellen
+	\item Logische Operatoren  zur internen Verknüpfung zur Verfügung stellen
+	\item Anzeigen der Anfrage
+	\item Starten der Suche
+	\item Zurücksetzen der Anfrage
+	\item Anzeige der Resultate 
 
-\section{Auswahl}
+	
+\end{enumerate}
+
+Neben den oben genannten inhaltlichen Anforderungen sind noch weitere Punkte bezüglich Anwenderfreundlichkeit zu berücksichtigen: \\
+\begin{enumerate}
+\item Übersichtlichkeit
+\item Intuitive Bedienbarkeit, d.h. der Nutzer soll möglichst wenig nachdenken müssen
+\end{enumerate}
+
+Die Realisierung  der soeben beschriebenen Anforderungen wird in den folgenden Abschnitten erläutert.
+
+\section{Grundaufbau der Oberfläche}
+Die Oberfläche wurde, um dem Nutzer eine gewisse Übersichtlichkeit zu bieten, in drei Bereiche gegliedert, die in Abbildung \ref{overview} gezeigt sind. \\
+Der oberste Bereich beinhaltet die Verzeichnisauswahl, da dies der erste Schritt ist, der vom Anwender ausgeführt werden muss.\\
+In der Mitte befindet sich die Anzeige der Gesamtanfrage, weil sie sich dort sofort im Blickfeld des Nutzers befindet. \\
+Die Editierung der Teilanfragen wurde im unteren Teil der Oberfläche untergebracht, weil sich hier die meisten Bedienungselemente befinden, weshalb jede andere Position unweigerlich Einbußen  bezüglich Übersichtlichkeit zur Folge hätte. \\
+Funktional zusammengehörige Elemente wurden hierbei stets nah beieinander angeordnet, was dem Gesetz der Nähe entspricht. \\
+Dieses Gesetz besagt, dass Elemente, die nah zusammen liegen, vom Anwender als zusammengehörig wahrgenommen werden (\cite{Hofer:17}, S.17).
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{images/overview.png}
+	\caption{Gliederung der Benutzeroberfläche. Teil \textit{a} beinhaltet die Verzeichnisauswahl, Teil \textit{b} die gesamte Suchanfrage und Teil\textit{c} die Eingabe der Teilanfrage (Eigene Abbildung).}
+	\label{overview}
+	
+\end{figure}
+
+\section{Verzeichnisauswahl}
+
 
 \begin{figure} [http]
 	
