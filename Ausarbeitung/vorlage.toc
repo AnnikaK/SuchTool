@@ -31,7 +31,7 @@
 \contentsline {subsubsection}{Elementare boolesche Anfrage}{10}{section*.8}
 \contentsline {subsubsection}{Verkn\"upfung}{10}{section*.9}
 \contentsline {section}{\numberline {4.3}Implementierungsans\"atze}{11}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Inzidenz-Matrix}{11}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.1}Term-Inzidenz-Matrix}{11}{subsection.4.3.1}
 \contentsline {subsubsection}{Verarbeitung einer Anfrage}{11}{section*.10}
 \contentsline {subsection}{\numberline {4.3.2}Invertierte Liste}{12}{subsection.4.3.2}
 \contentsline {subsubsection}{Verarbeitung einer Anfrage}{13}{section*.11}
@@ -62,15 +62,19 @@
 \contentsline {section}{\numberline {6.2}Recall}{23}{section.6.2}
 \contentsline {chapter}{\numberline {7}Implementierung}{24}{chapter.7}
 \contentsline {section}{\numberline {7.1}Teilweise strukturierte Dokumente}{24}{section.7.1}
-\contentsline {section}{\numberline {7.2}Keywordsuche}{25}{section.7.2}
-\contentsline {section}{\numberline {7.3}Freitextsuche}{25}{section.7.3}
-\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{26}{chapter.8}
-\contentsline {section}{\numberline {8.1}Anforderungen}{26}{section.8.1}
-\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{26}{section.8.2}
-\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{29}{section.8.3}
-\contentsline {section}{\numberline {8.4}Suchanfrage}{29}{section.8.4}
-\contentsline {section}{\numberline {8.5}Ergebnis}{29}{section.8.5}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{30}{chapter.9}
-\contentsline {chapter}{Literaturverzeichnis}{31}{chapter*.21}
-\contentsline {chapter}{Glossar}{32}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{33}{appendix.B}
+\contentsline {section}{\numberline {7.2}Vorverarbeitung}{25}{section.7.2}
+\contentsline {section}{\numberline {7.3}Keywordsuche}{25}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Schritt 1}{25}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Schritt 2}{26}{subsection.7.3.2}
+\contentsline {subsubsection}{Typspezifische Suche}{26}{section*.21}
+\contentsline {section}{\numberline {7.4}Freitextsuche}{27}{section.7.4}
+\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{28}{chapter.8}
+\contentsline {section}{\numberline {8.1}Anforderungen}{28}{section.8.1}
+\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{28}{section.8.2}
+\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{31}{section.8.3}
+\contentsline {section}{\numberline {8.4}Suchanfrage}{31}{section.8.4}
+\contentsline {section}{\numberline {8.5}Ergebnis}{31}{section.8.5}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{32}{chapter.9}
+\contentsline {chapter}{Literaturverzeichnis}{33}{chapter*.22}
+\contentsline {chapter}{Glossar}{34}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{35}{appendix.B}

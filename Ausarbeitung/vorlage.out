@@ -27,7 +27,7 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Attribut}{section.4.2}% 27
 \BOOKMARK [2][-]{subsection.4.2.2}{Anfragen}{section.4.2}% 28
 \BOOKMARK [1][-]{section.4.3}{Implementierungsans\344tze}{chapter.4}% 29
-\BOOKMARK [2][-]{subsection.4.3.1}{Inzidenz-Matrix}{section.4.3}% 30
+\BOOKMARK [2][-]{subsection.4.3.1}{Term-Inzidenz-Matrix}{section.4.3}% 30
 \BOOKMARK [2][-]{subsection.4.3.2}{Invertierte Liste}{section.4.3}% 31
 \BOOKMARK [0][-]{chapter.5}{Das Vektorraummodell}{}% 32
 \BOOKMARK [1][-]{section.5.1}{Funktionsprinzip}{chapter.5}% 33
@@ -47,15 +47,18 @@
 \BOOKMARK [1][-]{section.6.2}{Recall}{chapter.6}% 47
 \BOOKMARK [0][-]{chapter.7}{Implementierung}{}% 48
 \BOOKMARK [1][-]{section.7.1}{Teilweise strukturierte Dokumente}{chapter.7}% 49
-\BOOKMARK [1][-]{section.7.2}{Keywordsuche}{chapter.7}% 50
-\BOOKMARK [1][-]{section.7.3}{Freitextsuche}{chapter.7}% 51
-\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 52
-\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 53
-\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 54
-\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 55
-\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 56
-\BOOKMARK [1][-]{section.8.5}{Ergebnis}{chapter.8}% 57
-\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 58
-\BOOKMARK [0][-]{chapter*.21}{Literaturverzeichnis}{}% 59
-\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 60
-\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 61
+\BOOKMARK [1][-]{section.7.2}{Vorverarbeitung}{chapter.7}% 50
+\BOOKMARK [1][-]{section.7.3}{Keywordsuche}{chapter.7}% 51
+\BOOKMARK [2][-]{subsection.7.3.1}{Schritt 1}{section.7.3}% 52
+\BOOKMARK [2][-]{subsection.7.3.2}{Schritt 2}{section.7.3}% 53
+\BOOKMARK [1][-]{section.7.4}{Freitextsuche}{chapter.7}% 54
+\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 55
+\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.5}{Ergebnis}{chapter.8}% 60
+\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 61
+\BOOKMARK [0][-]{chapter*.22}{Literaturverzeichnis}{}% 62
+\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 63
+\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 64

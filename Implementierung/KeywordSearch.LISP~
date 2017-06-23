@@ -1,7 +1,7 @@
 
 ;logical procession of query
 (defun verarbeite-query (selection-list text)
-  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result) (tmp) (no-error nil))
+  (let ((entry-list) (entry) (type) (content) (result-list '()) (keyword-result) (tmp))
     (cond  ((> (length selection-list) 0) ;only react if user selected something
             (mapcar (lambda (keyword) ;iterate over keywords
                       (print keyword)
@@ -28,15 +28,7 @@
 
 
             (cond ((not (null (member 'NOT (capi:choice-selected-items not-operator-panel))))  ;if selected, surround with not
-                   (setq result-list (negate result-list)))) 
-
-
-            (setq no-error t)) 
-
-           (t (show-error))) ;nothing selected
-    (list result-list no-error))) 
-
-
+                   (setq result-list (negate result-list)))))) result-list)) 
 
 
 (defun recursive-list-search (text content)

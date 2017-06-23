@@ -1,5 +1,5 @@
 \chapter{Implementierung}
-In diesem Kapitel wird beschrieben, auf welche Weise das Information Retrieval System dieser Arbeit realisiert wurde.
+In diesem Kapitel wird beschrieben, auf welche Weise das Information Retrieval System dieser Arbeit in der Programmiersprache Lisp realisiert wurde.
 
 \section{Teilweise strukturierte Dokumente}
 Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}. \\
@@ -50,6 +50,56 @@ Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistruktur
  
  
  
+ \section{Vorverarbeitung}
+ Splitten in Keywords und Text
+ 
  \section{Keywordsuche}
+ Für die Keywordsuche ergeben sich zwei Schritte:
+ \begin{enumerate}
+ 	\item In welchen Dokumenten tritt das Keyword auf? 
+ 	\item Welches dieser Dokumente besitzt einen mit der Anfrage übereinstimmenden Keywordinhalt?
+ \end{enumerate}
+
+
+\subsection{Schritt 1}
+
+Der erste Punkt ist notwendig, da es keine Vorgaben bezüglich des Auftretens von Keywords gibt. Ein Keyword kann in einem einzigen Dokument, aber auch in der gesamten Sammlung vorkommen. \\
+Da hier auf eine klar definierte Bedingung hin überprüft wird, bietet sich das boolesche Retrieval an. \\
+Sei $K$ die Gesamtmenge aller möglichen Keywords, dann lautet die Ergebnismenge $D_{keyword_i},true = \{d \in D | keyword_i(d) = true\}$ mit $keyword_i \in K$. Dabei ist $keyword_i(d) = true$, wenn Dokument $d$ das $keyword_i$ als Keywordnamen (siehe Struktur \ref{struct}) enthält.\\
+Da es sich hierbei um gewöhnliches boolesches Retrieval handelt, wurden die Implementierungsansätze für boolesches Retrieval betrachtet. \\
+Eine Term-Inzidenz-Matrix (siehe Abschnitt \ref{matrix}) wurde sofort verworfen, da sie zu viel Speicher benötigt. \\
+Invertierte Listen (siehe Abschnitt \ref{inverted}) bieten hingegen eine hervorragende Möglichkeit, zu jedem Keyword die Dokumente zu speichern, in welchen es auftritt. \\
+Auch wenn der Begriff \glqq Invertierte Liste\grqq{} lautet, ist die Wahl der zugrunde liegenden Speicherstruktur frei. \\
+In dieser Arbeit wurde sich für die in der Programmiersprache Lisp vorhandenen Hash Tables entschieden.\\
+Die Keywordnamen werden hierbei zu den Keywords der Hash-Table und die Liste der zugehörigen \textit{docID}s zum Inhalt des Hasheintrags. \\
+Grund hierfür ist das effiziente Zugreifen auf Hasheinträge, was das Iterieren über Listen erspart.
+
+\subsection{Schritt 2}
+ Wird zum Beispiel nach $Absender=Klaus$ gesucht, führt das Ausführen von Schritt 1, d.h. das Zugreifen auf den Hasheintrag zum Key $Absender$, erst einmal nur zu einer Liste von in frage kommender Dokumente. \\
+ Deshalb wurde die ursprüngliche Implementierung durch Invertierte Listen modifiziert, indem statt der \textit{docID} eine komplexe Datenstruktur gespeichert wird.\\
+  Lisp bietet hierzu Structs, was verwendet wurde um
+ zusätzlich zur \textit{docID} den Keywordinhalt sowie den Typ des Inhalts, z.B. String oder Number, in einem Struct zusammengefasst zu speichern. \\
+ Das bietet den Vorteil, auf die enthaltenen slots (Variablen im Struct) gezielt per Name zugreifen zu können. \\
+ Das Speichern der Keywordinhalte als Teil der Hasheinträge stellt im Normalfall kein Problem dar, da die Inhalte nur sehr selten über eine Zeile hinausgehen. Ein Zerlegen in Terme wie beim Freitext ist darum nicht notwendig und wurde, um Speicher zu sparen, unterlassen.\\
+ Als Resultat der modifizierten Form invertierter Listen lässt sich einfach über die zum Keyword gespeicherten Structs iterieren und diese werden jeweils nach dem Suchbegriff bzw. den Suchbegriffen durchsucht.
+ 
+ \subsubsection{Typspezifische Suche}
+ Es stellt sich die Frage, was das Speichern des Typs zusätzlich zum Inhalt bringt.\\
+Die Keywordinhalte können unterschiedlichen Typs sein, was über die Art der Suche entscheidet: 
+
+\begin{enumerate}
+\item \textbf{String}: Der Keywordinhalt wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle im Keyword auftaucht.
+\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage (die stets als String übergeben wird) wenn möglich zum Datentyp Number konvertiert. Hierbei sind ausgeschriebene Zahlen von null bis zwölf auch konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
+\item \textbf{Liste}: Eine Liste (Datentyp Cons in Lisp) wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen, d.h. darin enthaltene Strings, Zahlen und Unterlisten.
+\end{enumerate}
+
+%Hier Bild!!!
+ 
  
  \section{Freitextsuche}
+ Die Freitextsuche gestaltet sich komplexer, da hier längere Texte durchsucht werden müssen. Der Einsatz von vordefinierten Funktionen wie search kommt darum aus Effizienzgründen nicht infrage. \\
+ Stattdessen muss der Text erst in Terme zerlegt werden, um ihn verarbeiten zu können. Hierbei wurde das Lisp-Package split-sequence (\cite{Ionescu:16}) verwendet, um die Dokumente zeilenweise in Wörter zu zerlegen.\\
+ Da bei einer Freitextsuche ist ein Verfahren notwendig, das auch teilweise Treffer und ein Ranking der Ergebnisse ermöglicht. Die Suchanfragen sind hier in der Regel länger und sollen auch dann zu Resultaten führen, wenn nur ein paar der Begriffe auftreten. Das Ranking gibt Auskunft darüber, wie hoch der Grad der Übereinstimmung ist.\\
+ Da boolesches Retrieval weder Ranking noch Teiltreffer ermöglicht, fällt die Wahl hier auf das Vektorraummodell (siehe \ref{vector}).
+
+ 

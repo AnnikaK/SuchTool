@@ -68,7 +68,7 @@ Da bei jeder Mengenoperation als Ergebnis neue Mengen entstehen, lassen sich hie
 \section{Implementierungsansätze}
 Im folgenden Abschnitt werden die klassischen Implementierungsansätze vorgestellt, mit denen sich die soeben beschriebenen Operationen realisieren lassen.
 
-\subsection{Inzidenz-Matrix}
+\subsection{Term-Inzidenz-Matrix}
 \label{matrix}
 Eine mögliche Implementierung des booleschen Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. \\
 Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Genau betrachtet handelt es sich hier nicht um die Terme und Dokumente selbst, sondern deren Indizes. \\
@@ -111,7 +111,6 @@ In der Regel werden zur Implementierung des booleschen Retrieval invertierte Lis
 Der Name basiert auf den darin gespeicherten invertierten Indizes. Diese werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
 In einer geeigneten Speicherstruktur, zum Beispiel einem Dictionary, werden zu jedem Term alle Dokumente gespeichert, in denen der Term auftritt.\\
 Diese Dokumentlisten werden als invertierte Listen (engl. inverted lists) bezeichnet (siehe Abbildung Abbildung \ref{abb1}). Manche Implementierungen beinhalten neben dem Dokumentindex zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
-Dieses Vorgehen setzt voraus, dass zuvor eine Indizierung (siehe \ref{index}) stattgefunden hat (\cite{Manning:08}, S.5-6). \\
 Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv (\cite{Ferber:03}, S.36). Im Vergleich zur Inzidenz-Matrix wird jedoch deutlich weniger Speicher benötigt, da die vielen leeren Einträge entfallen.
 
 
@@ -119,7 +118,7 @@ Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv
 \begin{figure} [hbtp]
 	\centering
 	\includegraphics[width=1\textwidth]{images/inverted_list.png}
-	\caption{Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}
+	\caption{Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes oder auch \textit{docID}s, in denen der jeweilige Term vorkommt (Eigene Abbildung).}
 	\label{abb1}
 \end{figure}
 
