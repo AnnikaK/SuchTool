@@ -78,10 +78,10 @@ Grund hierfür ist das effiziente Zugreifen auf Hasheinträge, was das Iterieren ü
  Wird zum Beispiel nach $Absender=Klaus$ gesucht, führt das Ausführen von Schritt 1, d.h. das Zugreifen auf den Hasheintrag zum Key $Absender$, erst einmal nur zu einer Liste von in frage kommender Dokumente. \\
  Deshalb wurde die ursprüngliche Implementierung durch Invertierte Listen modifiziert, indem statt der \textit{docID} eine komplexe Datenstruktur gespeichert wird.\\
   Lisp bietet hierzu Structs, was verwendet wurde um
- zusätzlich zur \textit{docID} den Keywordinhalt sowie den Typ des Inhalts, z.B. String oder Number, in einem Struct zusammengefasst zu speichern. \\
+ zusätzlich zur \textit{docID} den Keywordinhalt sowie den Typ des Inhalts, z.B. String oder Number, in einem Struct zusammengefasst zu speichern, was in Abbildung \ref{fancy_shit} visualisiert ist. \\
  Das bietet den Vorteil, auf die enthaltenen slots (Variablen im Struct) gezielt per Name zugreifen zu können. \\
  Das Speichern der Keywordinhalte als Teil der Hasheinträge stellt im Normalfall kein Problem dar, da die Inhalte nur sehr selten über eine Zeile hinausgehen. Ein Zerlegen in Terme wie beim Freitext ist darum nicht notwendig und wurde, um Speicher zu sparen, unterlassen.\\
- Als Resultat der modifizierten Form invertierter Listen lässt sich einfach über die zum Keyword gespeicherten Structs iterieren und diese werden jeweils nach dem Suchbegriff bzw. den Suchbegriffen durchsucht.
+ Als Resultat der modifizierten Form invertierter Listen lässt sich einfach über die zum Keyword gespeicherten Structs iterieren und diese werden jeweils nach dem Suchbegriff bzw. den Suchbegriffen durchsucht. 
  
  \subsubsection{Typspezifische Suche}
  Es stellt sich die Frage, was das Speichern des Typs zusätzlich zum Inhalt bringt.\\
@@ -93,13 +93,22 @@ Die Keywordinhalte können unterschiedlichen Typs sein, was über die Art der Such
 \item \textbf{Liste}: Eine Liste (Datentyp Cons in Lisp) wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen, d.h. darin enthaltene Strings, Zahlen und Unterlisten.
 \end{enumerate}
 
-%Hier Bild!!!
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{images/mil.png}
+	\caption{Modifizierte invertierte Liste zur Realisierung der Keywordsuche (Eigene Abbildung).}
+	\label{fancy_shit}
+	
+\end{figure}
  
  
  \section{Freitextsuche}
  Die Freitextsuche gestaltet sich komplexer, da hier längere Texte durchsucht werden müssen. Der Einsatz von vordefinierten Funktionen wie search kommt darum aus Effizienzgründen nicht infrage. \\
- Stattdessen muss der Text erst in Terme zerlegt werden, um ihn verarbeiten zu können. Hierbei wurde das Lisp-Package split-sequence (\cite{Ionescu:16}) verwendet, um die Dokumente zeilenweise in Wörter zu zerlegen.\\
- Da bei einer Freitextsuche ist ein Verfahren notwendig, das auch teilweise Treffer und ein Ranking der Ergebnisse ermöglicht. Die Suchanfragen sind hier in der Regel länger und sollen auch dann zu Resultaten führen, wenn nur ein paar der Begriffe auftreten. Das Ranking gibt Auskunft darüber, wie hoch der Grad der Übereinstimmung ist.\\
- Da boolesches Retrieval weder Ranking noch Teiltreffer ermöglicht, fällt die Wahl hier auf das Vektorraummodell (siehe \ref{vector}).
+ Stattdessen muss der Text erst in Terme zerlegt werden, um ihn verarbeiten zu können. Hierbei wurde das Lisp-Package split-sequence (\cite{Ionescu:16}) verwendet, um die Dokumente zeilenweise in Wörter zu zerlegen. Auf eine Lemmatisierung wurde verzichtet, da dies den Rahmen der Arbeit sprengen würde.\\
+Die Freitextsuche erfordert ein Verfahren, welches auch teilweise Treffer basierend auf dem Grad der Übereinstimmung ermöglicht. Das liegt daran, dass Suchanfragen hier häufig aus mehreren Wörtern bestehen, wobei teilweise Treffer wichtig sind, um auch Dokumente zu finden, bei denen zwar viele, aber nicht alle Begriffe enthalten sind. \\
+Ohne Ranking wäre der Nutzer hierbei verloren, da er sehr ähnliche von weniger ähnlichen Dokumenten differenzieren können muss.
+ Da boolesches Retrieval weder Ranking noch Teiltreffer ermöglicht, das Vektorraummodell (siehe \ref{vector}) jedoch beides bietet, fällt die Wahl auf letzteres.\\
+ 
 
  

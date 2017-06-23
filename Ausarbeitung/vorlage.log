@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  23 JUN 2017 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  23 JUN 2017 20:12
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -907,7 +907,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[10] <images/matrix.png, id=502, 389.20406pt x 76.03406pt>
+[10] <images/matrix.png, id=505, 389.20406pt x 76.03406pt>
 File: images/matrix.png Graphic file (type png)
 
 <use images/matrix.png>
@@ -939,7 +939,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--103
  []
 
 [11 <./images/matrix.png>]
-<images/inverted_list.png, id=513, 846.16125pt x 318.43968pt>
+<images/inverted_list.png, id=516, 846.16125pt x 318.43968pt>
 File: images/inverted_list.png Graphic file (type png)
 
 <use images/inverted_list.png>
@@ -1110,7 +1110,7 @@ Overfull \hbox (9.17244pt too wide) in paragraph at lines 165--168
 ig-ne-ten []Ahnlichkeitsfunktion. 
  []
 
-[20] <images/vector_space.png, id=613, 470.50781pt x 437.38406pt>
+[20] <images/vector_space.png, id=616, 470.50781pt x 437.38406pt>
 File: images/vector_space.png Graphic file (type png)
 
 <use images/vector_space.png>
@@ -1132,7 +1132,17 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 
 
 ] [25]
-[26]) (chapters/BenutzeroberflaecheUndBedienung.tex [27]
+<images/mil.png, id=691, 1190.94937pt x 389.20406pt>
+File: images/mil.png Graphic file (type png)
+ <use images/mil.png>
+Package pdftex.def Info: images/mil.png used on input line 99.
+(pdftex.def)             Requested size: 418.25368pt x 136.68668pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
+
+ []
+
+[26]) (chapters/BenutzeroberflaecheUndBedienung.tex [27 <./images/mil.png>]
 Kapitel 8.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1150,72 +1160,72 @@ Overfull \hbox (2.5727pt too wide) in paragraph at lines 24--25
  we-nig nach-den-ken m[]ussen 
  []
 
-<images/overview.png, id=704, 873.2625pt x 651.93562pt>
+<images/overview.png, id=710, 873.2625pt x 651.93562pt>
 File: images/overview.png Graphic file (type png)
 
 <use images/overview.png>
-Package pdftex.def Info: images/overview.png used on input line 39.
+Package pdftex.def Info: images/overview.png used on input line 38.
 (pdftex.def)             Requested size: 418.25368pt x 312.24908pt.
  [28
 
 
 ]
-<images/Select.png, id=721, 870.25125pt x 281.55188pt>
+<images/Select.png, id=727, 870.25125pt x 281.55188pt>
 File: images/Select.png Graphic file (type png)
  <use images/Select.png>
-Package pdftex.def Info: images/Select.png used on input line 51.
+Package pdftex.def Info: images/Select.png used on input line 50.
 (pdftex.def)             Requested size: 418.25368pt x 135.3195pt.
 
-<images/a.png, id=722, 846.91406pt x 207.02344pt>
+<images/a.png, id=728, 846.91406pt x 207.02344pt>
 File: images/a.png Graphic file (type png)
  <use images/a.png>
-Package pdftex.def Info: images/a.png used on input line 61.
+Package pdftex.def Info: images/a.png used on input line 60.
 (pdftex.def)             Requested size: 460.08159pt x 112.46382pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 61--62
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 60--61
  [][] 
  []
 
-<images/b2.png, id=723, 851.43094pt x 188.95593pt>
+<images/b2.png, id=729, 851.43094pt x 188.95593pt>
 File: images/b2.png Graphic file (type png)
  <use images/b2.png>
-Package pdftex.def Info: images/b2.png used on input line 70.
+Package pdftex.def Info: images/b2.png used on input line 69.
 (pdftex.def)             Requested size: 460.08159pt x 102.10675pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 70--71
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 69--70
  [][] 
  []
 
-<images/b.png, id=724, 699.36281pt x 116.68594pt>
+<images/b.png, id=730, 699.36281pt x 116.68594pt>
 File: images/b.png Graphic file (type png)
  <use images/b.png>
-Package pdftex.def Info: images/b.png used on input line 79.
+Package pdftex.def Info: images/b.png used on input line 78.
 (pdftex.def)             Requested size: 460.08159pt x 76.76367pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 79--80
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 78--79
  [][] 
  []
 
-<images/c.png, id=725, 840.89156pt x 340.27126pt>
+<images/c.png, id=731, 840.89156pt x 340.27126pt>
 File: images/c.png Graphic file (type png)
  <use images/c.png>
-Package pdftex.def Info: images/c.png used on input line 89.
+Package pdftex.def Info: images/c.png used on input line 88.
 (pdftex.def)             Requested size: 460.08159pt x 186.17365pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 89--90
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 88--89
  [][] 
  []
 
 [29 <./images/overview.png>] [30 <./images/Select.png> <./images/a.png> <./imag
 es/b2.png> <./images/b.png>]
-<images/results.png, id=739, 765.6103pt x 424.58624pt>
+<images/results.png, id=745, 765.6103pt x 424.58624pt>
 File: images/results.png Graphic file (type png)
 
 <use images/results.png>
-Package pdftex.def Info: images/results.png used on input line 98.
+Package pdftex.def Info: images/results.png used on input line 97.
 (pdftex.def)             Requested size: 460.08159pt x 255.14891pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 98--99
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 97--98
  [][] 
  []
 
@@ -1323,10 +1333,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11643 strings out of 493634
- 165844 string characters out of 3143744
- 319171 words of memory out of 3000000
- 14541 multiletter control sequences out of 15000+200000
+ 11650 strings out of 493634
+ 165948 string characters out of 3143744
+ 319342 words of memory out of 3000000
+ 14546 multiletter control sequences out of 15000+200000
  12069 words of font info for 46 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,14n,42p,638b,4201s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1348,9 +1358,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (42 pages, 535067 bytes).
+Output written on vorlage.pdf (42 pages, 561565 bytes).
 PDF statistics:
- 885 PDF objects out of 1000 (max. 8388607)
- 229 named destinations out of 1000 (max. 500000)
- 568 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 891 PDF objects out of 1000 (max. 8388607)
+ 230 named destinations out of 1000 (max. 500000)
+ 573 words of extra memory for PDF output out of 10000 (max. 10000000)
 
