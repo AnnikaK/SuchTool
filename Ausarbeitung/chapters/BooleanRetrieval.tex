@@ -65,8 +65,103 @@ D \setminus D_t,_{t_1}
 
 Da bei jeder Mengenoperation als Ergebnis neue Mengen entstehen, lassen sich hierauf erneut die oben beschriebenen Operatoren anwenden. Auf diese Weise können Anfragen beliebig tief geschachtelt werden (\cite{Ferber:03}, S.34).
 
+\section{Implementierungsansätze}
+Im folgenden Abschnitt werden die klassischen Implementierungsansätze vorgestellt, mit denen sich die soeben beschriebenen Operationen realisieren lassen.
+
+\subsection{Inzidenz-Matrix}
+\label{matrix}
+Eine mögliche Implementierung des booleschen Retrieval stellt die Umsetzung mittels einer Term-Dokument-Inzidenz-Matrix dar. \\
+Dies bedeutet, dass die Zeilen der Matrix die Terme enthalten und die Spalten die Dokumente, was auch umgekehrt realisierbar ist. Genau betrachtet handelt es sich hier nicht um die Terme und Dokumente selbst, sondern deren Indizes. \\
+Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen. \\
+Abbildung \ref{abb0} zeigt eine Beispielmatrix, wobei die tatsächliche Anzahl an Termen und Dokumenten in einer Sammlung weitaus größer ausfällt. \\
+Eine Term-Inzidenz-Matrix verbraucht unnötig Speicherplatz, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dies praktisch nicht realisierbar.
 
 
+
+
+\begin{figure} [hbtp]
+	\centering
+	\includegraphics[width=1\textwidth]{images/matrix.png}
+	\caption{Term-Dokument-Inzidenz-Matrix. Die Zeile enthalten die Terme, die Spalten die Dokumente (hier durch deren \textit{docID} repräsentiert). Alle Einträge mit einer 0 sind leere Einträge (Eigene Abbildung).}
+	\label{abb0}
+\end{figure}
+
+
+\subsubsection{Verarbeitung einer Anfrage}
+Um eine Anfrage wie $Kontaktadresse$ $AND$ $Seminar$ $AND$ $Termin$ mithilfe einer Matrix zu verarbeiten, werden einfach die entsprechenden Zeilen der Matrix genommen und bitweise logisch verknüpft, was für die obige Anfrage wie folgt aussieht: \\\\
+0110001 AND \\
+1010100 AND\\
+1110000\\
+----------- \\
+0010000 \\\\
+Demnach wird das Dokument mit der \textit{docID} 3 zurückgegeben. Analog funktioniert  die \textit{OR}-Verknüpfung: \\\\
+0110001 OR \\
+1010100 OR\\
+1110000\\
+----------- \\
+1110101 \\\\
+
+Dieses Beispiel führt demnach zur Ergebnismenge $\{1,2,3,5,7\}$ (\cite{Manning:08}, S.4).
+
+
+
+\subsection{Invertierte Liste}
+\label{inverted}
+In der Regel werden zur Implementierung des booleschen Retrieval invertierte Listen verwendet (\cite{Ferber:03}, S.36). \\
+Der Name basiert auf den darin gespeicherten invertierten Indizes. Diese werden deshalb als invertiert bezeichnet, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
+In einer geeigneten Speicherstruktur, zum Beispiel einem Dictionary, werden zu jedem Term alle Dokumente gespeichert, in denen der Term auftritt.\\
+Diese Dokumentlisten werden als invertierte Listen (engl. inverted lists) bezeichnet (siehe Abbildung Abbildung \ref{abb1}). Manche Implementierungen beinhalten neben dem Dokumentindex zusätzliche Informationen wie die genaue Wortpostion im Dokument. \\
+Dieses Vorgehen setzt voraus, dass zuvor eine Indizierung (siehe \ref{index}) stattgefunden hat (\cite{Manning:08}, S.5-6). \\
+Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv (\cite{Ferber:03}, S.36). Im Vergleich zur Inzidenz-Matrix wird jedoch deutlich weniger Speicher benötigt, da die vielen leeren Einträge entfallen.
+
+
+
+\begin{figure} [hbtp]
+	\centering
+	\includegraphics[width=1\textwidth]{images/inverted_list.png}
+	\caption{Invertierte Listen zu Beispieltermen. Die Zahlen sind die Dokumentindizes, in denen der jeweilige Term vorkommt (Eigene Abbildung).}
+	\label{abb1}
+\end{figure}
+
+
+\subsubsection{Verarbeitung einer Anfrage}
+Hier stellt sich die Frage, wie denn nun eine boolesche Anfrage, wie in Abschnitt \ref{formelzeugs} beschrieben, mithilfe invertierter Listen umgesetzt werden kann. \\
+\paragraph{Elementare Anfrage}
+Angenommen, es liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor. In der Praxis ist meist nach dem Vorkommen eines bestimmtes Wortes gefragt.\\
+Demnach entspricht das Attribut $t$ dem Term des gesuchten Wortes.\\ Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
+Die Verarbeitung einer solchen elementaren Anfrage geht relativ einfach: Über den Index kann auf den Term schnell zugegriffen werden, vorausgesetzt dieser ist in der Sammlung enthalten. Trifft dies zu, kann einfach die gesamte zugehörige invertierte Liste als Resultat ausgegeben werden, da für alle enthaltenen Dokumente $t_1 = true$ gilt. \\
+\paragraph{AND-Verknüpfungen}
+Wie sieht nun die Verarbeitung aus, wenn mehrere Anfragen miteinander verknüpft werden? Hierzu wird zunächst der AND - Operator betrachtet. Eine Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa bei dem Beispiel \textit{Kontaktadresse AND Seminar}, wobei gilt $t=Kontaktadress, t_1=true$ sowie $s=Seminar, s_1=true$.\\
+Demnach werden alle Dokumente gesucht, in denen beide Terme auftauchen. Dazu wird der Durchschnitt aus den zugehörigen invertierten Listen gebildet. Betrachtet man die Abbildung \ref{abb1}, so ist der Durchschnitt für $D_{t,t_1} \cap D_{s,s_1} $ bzw. für $Kontaktadress \cap Seminar$ gleich der Ergebnisliste $\{3,11\}$. \\
+\paragraph{OR-Verknüpfungen}
+Lautet die Anfrage hingegen $(t,t_1)$ $OR$ $(s,s_1)$ bzw. \textit{Kontaktadresse OR Seminar}, so sind alle Dokumente gesucht, in denen entweder $t_1$ oder $s_1$ oder auch beide Terme vorkommen. \\
+Gesucht ist also die Vereinigung  $D_{t,t_1} \cup D_{s,s_1}$ bzw. $Kontaktadress \cup Seminar$. Dies ist die Vereinigung der invertierten Listen beider Terme. Im Falle des Beispiels \ref{abb1} lautet die Ergebnisliste für die Anfrage \textit{Kontaktadresse OR Seminar} $\{1,2,3,5,7,9,11,15,22,25,30,32\}$.\\
+Für beide Listenoperationen gilt, das die Indizes in den Ergebnislisten sortiert und Duplikate entfernt werden (\cite{Manning:08}, S.11).
+
+\paragraph{AND NOT-Verknüpfung}
+Da es sich bei $NOT$ um einen unären Operator handelt, könnte dieser theoretisch alleine auftreten. \\
+Eine Anfrage der Form $NOT$ $Seminar$ kann sehr viel Laufzeit kosten, wenn die Sammlung aus vielen Dokumenten besteht: Es muss über die gesamte Sammlung iteriert werden und für jedes Dokument geprüft werden, ob es in der invertierten Liste für den Term Seminar auftaucht. Der alleinstehende NOT-Operator ist deshalb so ineffizient, dass er bei den meisten booleschen Retrieval Systemen nur im Zusammenhang mit einem binären Operator zugelassen ist.\\
+Da die Kombination $OR$ $NOT$ keinen Sinn macht, wenn man einen Term ausschließen möchte, ist dies in der Regel $AND$. \\
+Hierbei wird aus den beiden Listen die Differenz gebildet. Lautet die Anfrage beispielsweise $Kontaktadresse$ $AND$ $NOT$ $Seminar$, so werden aus der Ergebnisliste für Kontaktadresse alle Elemente entfernt, die in der Liste für Seminar enthalten sind (\cite{Henrich:08}, S.174). \\
+
+
+\paragraph{Komplexe Ausdrücke}
+Da sowohl Vereinigung als auch Durchschnitt eine neue Ergebnisliste liefern, kann auf dieser wiederum jeder Operator angewandt werden, was eine beliebig tiefe Schachtelung erlaubt. Dieser Abschnitt erklärt, wie komplex geschachtelte Ausdrücke verarbeitet werden.\\
+
+Im Falle von mehreren $AND$-Operatoren, wie etwa in der Suchanfrage $Kontaktadresse$ $AND$ $Seminar$ $AND$ $Termin$, ist es effizient, zunächst die einzelnen invertierten Listen aufsteigend nach deren Länge zu sortieren und dann von links nach rechts zu verarbeiten, indem das nachfolgende $AND$ auf die Ergebnisliste des vorherigen Durchschnitts angewandt wird: \\
+$(Seminar$ $AND$ $Termin)$ $AND$ $Kontaktadresse$ \\
+Auf diese Weise werden die Listen, über die iteriert werden muss, möglichst klein gehalten. Besitzt die kleinste Liste beispielsweise die Länge eins, dann kann nach der ersten Iteration bereits abgebrochen werden, da zulässige Lösungen in allen drei Listen vorkommen müssen. \\
+
+Bei mehreren $OR$-Operatoren werden die Ausdrücke analog von links nach rechts verarbeitet, wobei die Sortierung nach Länge hierbei keinen Vorteil bringt, da bei der Vereinigung zweier Listen ohnehin über alle Elemente iteriert werden muss. Die Verarbeitung würde demnach in der folgenden Reihenfolge erfolgen: \\
+$(Kontaktadresse$ $OR$ $Seminar)$ $OR$ $Termin$ \\
+
+Ist die Anfrage hingegen gemischt, wie etwa in
+($Kontaktadresse$ $OR$ $Seminar$) $AND$ ($Termin$ $OR$ $Seminar$), werden erst die inneren Ausdrücke ausgewertet und dann aus deren Ergebnislisten der Durchschnitt gebildet (\cite{Manning:08}, S.11).
+
+
+\paragraph{Die Verarbeitung mehrerer Wörter}
+Boolesches Retrieval kann auch mehrere zusammengehörende Wörter verarbeiten. \\
+Über die interne Verarbeitung besteht hierbei jedoch für den Nutzer kein Einblick: Das Information Retrieval System kann so realisiert sein, dass es die aus den Wörtern der Anfrage isolierten Terme mit \textit{OR} veknüpft, es kann diese jedoch genauso gut mit\textit{AND} verbinden (\cite{Henrich:08}, S.171).\\
 
 
 
