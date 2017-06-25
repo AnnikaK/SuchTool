@@ -145,6 +145,7 @@
 \citation{Manning:08}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Dokumenth\"aufigkeit}{19}{subsection.5.4.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Invertierte Dokumenth\"aufigkeit}{19}{subsection.5.4.3}}
+\newlabel{idf}{{5.4.3}{19}{Invertierte Dokumenthäufigkeit}{subsection.5.4.3}{}}
 \newlabel{idfa}{{5.1}{19}{Invertierte Dokumenthäufigkeit}{equation.5.4.1}{}}
 \newlabel{idfb}{{5.2}{19}{Invertierte Dokumenthäufigkeit}{equation.5.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}TF-IDF-Gewichtung}{19}{subsection.5.4.4}}
@@ -191,37 +192,45 @@
 \@writefile{toc}{\contentsline {section}{\numberline {7.2}Vorverarbeitung}{25}{section.7.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {7.3}Keywordsuche}{25}{section.7.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Schritt 1}{25}{subsection.7.3.1}}
-\citation{Ionescu:16}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Schritt 2}{26}{subsection.7.3.2}}
 \@writefile{toc}{\contentsline {subsubsection}{Typspezifische Suche}{26}{section*.21}}
+\citation{Ionescu:16}
 \@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Keywordsuche (Eigene Abbildung).}}{27}{figure.7.1}}
 \newlabel{fancy_shit}{{7.1}{27}{Modifizierte invertierte Liste zur Realisierung der Keywordsuche (Eigene Abbildung)}{figure.7.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7.4}Freitextsuche}{27}{section.7.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Umsetzung des Vektorraummodells}{27}{subsection.7.4.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Indexierung}{27}{section*.22}}
+\@writefile{toc}{\contentsline {subsubsection}{Invertierte Dokumenth\"aufigkeit}{28}{section*.23}}
+\@writefile{toc}{\contentsline {subsubsection}{Dokumentvektoren mit invertierten Listen}{28}{section*.24}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Verkn\"upfung der Verfahren}{28}{section.7.5}}
 \citation{Hofer:17}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{28}{chapter.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{29}{chapter.8}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Anforderungen}{28}{section.8.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{28}{section.8.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit  {a} beinhaltet die Verzeichnisauswahl, Teil \textit  {b} die gesamte Suchanfrage und Teil\textit  {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{29}{figure.8.1}}
-\newlabel{overview}{{8.1}{29}{Gliederung der Benutzeroberfläche. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung)}{figure.8.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{30}{figure.8.2}}
-\newlabel{select}{{8.2}{30}{Verzeichnisauswahl (Eigene Abbildung)}{figure.8.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{30}{figure.8.3}}
-\newlabel{a}{{8.3}{30}{Keywords auswählen und intern verknüpfen, hier OR (eigene Abbildung)}{figure.8.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Keywords mit Freitext verkn\"upfen (eigene Abbildung)}}{30}{figure.8.4}}
-\newlabel{b}{{8.4}{30}{Keywords mit Freitext verknüpfen (eigene Abbildung)}{figure.8.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{30}{figure.8.5}}
-\newlabel{c}{{8.5}{30}{Display (eigene Abbildung)}{figure.8.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{31}{section.8.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Anforderungen}{29}{section.8.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{29}{section.8.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit  {a} beinhaltet die Verzeichnisauswahl, Teil \textit  {b} die gesamte Suchanfrage und Teil\textit  {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{30}{figure.8.1}}
+\newlabel{overview}{{8.1}{30}{Gliederung der Benutzeroberfläche. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung)}{figure.8.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{30}{section.8.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{31}{figure.8.2}}
+\newlabel{select}{{8.2}{31}{Verzeichnisauswahl (Eigene Abbildung)}{figure.8.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {8.4}Suchanfrage}{31}{section.8.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Ergebnis}{31}{section.8.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster f\"ur obige Anfrage (eigene Abbildung)}}{31}{figure.8.6}}
-\newlabel{d}{{8.6}{31}{Resultatfenster für obige Anfrage (eigene Abbildung)}{figure.8.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{31}{figure.8.7}}
-\newlabel{res}{{8.7}{31}{Scrollbare Anzeige für viele Treffer (eigene Abbildung)}{figure.8.7}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{32}{chapter.9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{31}{subsection.8.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Beispiel}{32}{subsection.8.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{32}{figure.8.3}}
+\newlabel{a}{{8.3}{32}{Keywords auswählen und intern verknüpfen, hier OR (eigene Abbildung)}{figure.8.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Gesamtanfrage}{32}{section.8.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Bereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}}{33}{figure.8.4}}
+\newlabel{b}{{8.4}{33}{Freitextauswahl. Da nur ein Bereich ausgewählt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}{figure.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{33}{figure.8.5}}
+\newlabel{c}{{8.5}{33}{Display (eigene Abbildung)}{figure.8.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Ergebnis}{33}{section.8.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster (eigene Abbildung)}}{34}{figure.8.6}}
+\newlabel{d}{{8.6}{34}{Resultatfenster (eigene Abbildung)}{figure.8.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{34}{figure.8.7}}
+\newlabel{res}{{8.7}{34}{Scrollbare Anzeige für viele Treffer (eigene Abbildung)}{figure.8.7}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{35}{chapter.9}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -237,6 +246,6 @@
 \bibcite{Bryson:14}{KMOB14}
 \bibcite{Claus:06}{PDVC06}
 \bibcite{Buettcher:10}{SB10}
-\@writefile{toc}{\contentsline {chapter}{Literaturverzeichnis}{33}{chapter*.22}}
+\@writefile{toc}{\contentsline {chapter}{Literaturverzeichnis}{36}{chapter*.25}}
 \@input{chapters/Glossar.aux}
 \@input{chapters/Selbststaendigkeitserklaerung.aux}

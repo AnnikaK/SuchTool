@@ -42,7 +42,15 @@ Dieses Gesetz besagt, dass Elemente, die nah zusammen liegen, vom Anwender als z
 \end{figure}
 
 \section{Verzeichnisauswahl}
+Die Verzeichnisauswahl (siehe Abbildung \ref{overview} Teil a) besteht aus einem Textfeld und einem rechts daneben befindlichen Button mit der Aufschrift \glqq select\grqq{}, welcher das Auswahlmenü öffnet.\\
+Dieses wird in einem seperaten Pop-Up-Fenster angezeigt (siehe Abbildung \ref{select}) und besitzt zwei Möglichkeiten, ein Verzeichnis zu selektieren: \\
+\begin{enumerate}
+	\item Eintippen des Pfads in ein Textfeld
+	\item Auswahl des Verzeichnisses über ein Dropdown-Menü
+\end{enumerate}
 
+Der Nutzer muss die Wahl mit \glqq ok\grqq{} bestätigen bzw. kann den Dialog über \glqq cancel\grqq{} abbrechen. \\
+Anschließend wird der selektierte Verzeichnispfad im Textfeld angezeigt.
 
 \begin{figure} [http]
 	
@@ -54,6 +62,22 @@ Dieses Gesetz besagt, dass Elemente, die nah zusammen liegen, vom Anwender als z
 \end{figure}
 
 \section{Suchanfrage}
+Im unteren Teil der Benutzeroberfläche (siehe Abbildung \ref{overview} Teil c) befinden sich die Keywords. \\
+Diese wurden als auswählbare Checkboxen realisiert, welche sich auf einem vertikal scrollbaren Panel befinden. So ist sichergestellt, das eine beliebig große Anzahl Keywords angezeigt werden kann. \\
+Die Freitextsuche ist über die erste Checkbox \glqq Freitext\grqq{} auswählbar, womit die Freitextsuche wie ein zusätzliches Keyword behandelt wird, das sich in die Benutzeroberfläche einfügt. 
+Dies ist gewollt, denn der Anwender soll nicht mitbekommen, dass das Suchen im Freitext intern anders implementiert ist als die übrigen Auswahlmöglichkeiten. \\
+
+\subsection{Zusammenstellung der Teilanfrage}
+Im Textdisplay wird die Anfrage vom Nutzer eingegeben und lässt sich über \glqq reset\grqq{} bequem zurücksetzen. \\
+Die ausgewählten Checkboxen bestimmen darüber, in welchen Bereichen nach der Anfrage gesucht werden soll, wobei beliebig viele auf einmal selektierbar sind. \\
+Im Falle mehrerer ausgewählter Bereiche lassen sich die Teilergebnisse mit $AND$ sowie $OR$ verknüpfen. Beide Möglichkeiten lassen sich über zwei Radio-Buttons wählen, wobei $AND$ die Standardauswahl ist.\\
+Zusätzlich lässt sich die Anfrage durch das Auswählen der Checkbox $NOT$ negieren. Der Operator bezieht sich hierbei auf das Gesamtergebnis, wenn die Verknüpfung bereits erfolgt ist. Möchte man Bereiche einzeln negieren, müssen die Anfragen getrennt eingegeben werden.\\
+Das Drücken von \glqq Add\grqq{} fügt die Teilanfrage der Gesamtanfrage hinzu. Sie wird dann auf dem Display im mittleren Bereich angezeigt (siehe Abbildung \ref{overview} Teil b).\\
+
+\subsection{Beispiel}
+Um die einzelnen Schritte besser nachvollziehen zu können, sei ein Beispiel anhand von Abbildungen gezeigt. \\
+Abbildung \ref{a} zeigt, wie der Begriff \glqq Dr. Claus-Peter Wirth\grqq{} im Absender oder in der Absender-Mail-Adresse gesucht werden soll. Das Drücken von Add bestätigt die Teilanfrage und eröffnet die Möglichkeit, eine weitere zu stellen.
+
 \begin{figure} [http]
 	
 	\centering
@@ -63,14 +87,25 @@ Dieses Gesetz besagt, dass Elemente, die nah zusammen liegen, vom Anwender als z
 	
 \end{figure}
 
+Abbildung \ref{b} zeigt, wie der Begriff \glqq dfki\grqq{}\footnote{DFKI = Deutsches Forschungszentrum für Künstliche Intelligenz} gesucht im Bereich Freitext gesucht werden soll. Es erfolgt erneutes Bestätigen durch \glqq Add\grqq{}.
+
+
+
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1.1\textwidth]{images/b2}
-	\caption{Keywords mit Freitext verknüpfen (eigene Abbildung)}
+	\caption{Freitextauswahl. Da nur ein Bereich ausgewählt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}
 	\label{b}
 	
 \end{figure}
+
+\section{Gesamtanfrage}
+Im vorigen Beispiel wurden zwei Teilanfragen gestellt, da zweimal Add  betätigt wurde.\\
+ Das externe Verknüpfen mehrerer Teilanfragen mit $AND$ bzw. $OR$ wird durch zwei Radio-Buttons unter dem oberen Textdisplay (siehe Abbildung \ref{overview}, Teil b) geregelt, wobei die Standardauswahl auch hier $AND$ ist. \\
+Ist stattdessen $OR$ erwünscht, muss diese Auswahl vor dem Betätigen des Add-Buttons getroffen worden sein, da eine Änderung des Operators im Nachhinein nicht mehr möglich ist! \\
+Abbildung \ref{c} zeigt, wie die im Display angezeigte Anfrage für das Beispiel mit dem Operator $AND$ aussieht. \\
+In das obere Display lässt sich vom Nutzer nichts eingeben, um die korrekte Anzeige der intern gespeicherten Anfrage zu gewährleisten. \\
 
 \begin{figure} [http]
 	
@@ -82,11 +117,18 @@ Dieses Gesetz besagt, dass Elemente, die nah zusammen liegen, vom Anwender als z
 \end{figure}
 
 \section{Ergebnis}
+Der Nutzer kann die Gesamtanfrage mittels reset-Button komplett zurücksetzen oder aber über den search-Button die Suche starten. \\
+Das Drücken von \glqq search\grqq{} öffnet ein Pop-Up-Fenster, welches die Resultate anzeigt und in Abbildung \ref{d} gezeigt ist. \\
+In einer tabellarischen Ansicht werden die Rankposition, der Score, wenn möglich Datum und Absender sowie der Dateipfad angezeigt. \\
+Die Tabelle ist vertikal scrollbar (siehe Abbildung \ref{res}), falls viele Ergebnisse vorliegen. Eine Begrenzung wurde nicht vorgenommen, da keine Resultate ausgeschlossen werden sollen. Der Nutzer kann seine Wahl basierend auf der Ranking Position somit selbst treffen. \\
+Die Einträge der Tabelle lassen sich per Doppelklick auswählen, sodass das zugehörige Verzeichnis mit der als ausgewählt markierten Datei bzw. die Datei selbst geöffnet wird. Welche dieser beiden Varianten gewünscht ist, kann der Nutzer über die oben links angebrachten Radio-Buttons \glqq Open directory\grqq{} sowie \glqq Open file \grqq{} bestimmen. \\
+Das Drücken von \glqq ok\grqq{} schließt das Ergebnis-Fenster.
+
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1.1\textwidth]{images/c}
-	\caption{Resultatfenster für obige Anfrage (eigene Abbildung)}
+	\caption{Resultatfenster (eigene Abbildung)}
 	\label{d}
 	
 \end{figure}

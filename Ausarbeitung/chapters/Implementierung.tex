@@ -2,7 +2,7 @@
 In diesem Kapitel wird beschrieben, auf welche Weise das Information Retrieval System dieser Arbeit in der Programmiersprache Lisp realisiert wurde.
 
 \section{Teilweise strukturierte Dokumente}
-Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}. \\
+Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}). \\
  Dies bedeutet, dass zwei unterschiedliche Teilprobleme zu lösen sind: Zum einen die Keywordsuche, welche sich auf die Suche in strukturierten Metadaten bezieht und zum anderen die Freitextsuche. Es liegt nahe, beides getrennt zu lösen, da die Suchen unterschiedliche Anforderungen besitzen.\\
  Bevor erklärt wird, wie die beiden Verfahren jeweils realisiert wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt.
  \begin{lstlisting}[language=lisp, caption={Beispieldokument}
@@ -70,16 +70,16 @@ Da es sich hierbei um gewöhnliches boolesches Retrieval handelt, wurden die Impl
 Eine Term-Inzidenz-Matrix (siehe Abschnitt \ref{matrix}) wurde sofort verworfen, da sie zu viel Speicher benötigt. \\
 Invertierte Listen (siehe Abschnitt \ref{inverted}) bieten hingegen eine hervorragende Möglichkeit, zu jedem Keyword die Dokumente zu speichern, in welchen es auftritt. \\
 Auch wenn der Begriff \glqq Invertierte Liste\grqq{} lautet, ist die Wahl der zugrunde liegenden Speicherstruktur frei. \\
-In dieser Arbeit wurde sich für die in der Programmiersprache Lisp vorhandenen Hash Tables entschieden.\\
+In dieser Arbeit wurde sich für die in der Programmiersprache Lisp vorhandenen Hash-Tables entschieden.\\
 Die Keywordnamen werden hierbei zu den Keywords der Hash-Table und die Liste der zugehörigen \textit{docID}s zum Inhalt des Hasheintrags. \\
 Grund hierfür ist das effiziente Zugreifen auf Hasheinträge, was das Iterieren über Listen erspart.
 
 \subsection{Schritt 2}
  Wird zum Beispiel nach $Absender=Klaus$ gesucht, führt das Ausführen von Schritt 1, d.h. das Zugreifen auf den Hasheintrag zum Key $Absender$, erst einmal nur zu einer Liste von in frage kommender Dokumente. \\
- Deshalb wurde die ursprüngliche Implementierung durch Invertierte Listen modifiziert, indem statt der \textit{docID} eine komplexe Datenstruktur gespeichert wird.\\
+ Deshalb wurde die ursprüngliche Implementierung durch invertierte Listen modifiziert, indem statt der \textit{docID} eine komplexe Datenstruktur gespeichert wird.\\
   Lisp bietet hierzu Structs, was verwendet wurde um
  zusätzlich zur \textit{docID} den Keywordinhalt sowie den Typ des Inhalts, z.B. String oder Number, in einem Struct zusammengefasst zu speichern, was in Abbildung \ref{fancy_shit} visualisiert ist. \\
- Das bietet den Vorteil, auf die enthaltenen slots (Variablen im Struct) gezielt per Name zugreifen zu können. \\
+ Das bietet den Vorteil, auf die enthaltenen Slots (Variablen im Struct) gezielt per Name zugreifen zu können. \\
  Das Speichern der Keywordinhalte als Teil der Hasheinträge stellt im Normalfall kein Problem dar, da die Inhalte nur sehr selten über eine Zeile hinausgehen. Ein Zerlegen in Terme wie beim Freitext ist darum nicht notwendig und wurde, um Speicher zu sparen, unterlassen.\\
  Als Resultat der modifizierten Form invertierter Listen lässt sich einfach über die zum Keyword gespeicherten Structs iterieren und diese werden jeweils nach dem Suchbegriff bzw. den Suchbegriffen durchsucht. 
  
@@ -104,11 +104,28 @@ Die Keywordinhalte können unterschiedlichen Typs sein, was über die Art der Such
  
  
  \section{Freitextsuche}
- Die Freitextsuche gestaltet sich komplexer, da hier längere Texte durchsucht werden müssen. Der Einsatz von vordefinierten Funktionen wie search kommt darum aus Effizienzgründen nicht infrage. \\
- Stattdessen muss der Text erst in Terme zerlegt werden, um ihn verarbeiten zu können. Hierbei wurde das Lisp-Package split-sequence (\cite{Ionescu:16}) verwendet, um die Dokumente zeilenweise in Wörter zu zerlegen. Auf eine Lemmatisierung wurde verzichtet, da dies den Rahmen der Arbeit sprengen würde.\\
-Die Freitextsuche erfordert ein Verfahren, welches auch teilweise Treffer basierend auf dem Grad der Übereinstimmung ermöglicht. Das liegt daran, dass Suchanfragen hier häufig aus mehreren Wörtern bestehen, wobei teilweise Treffer wichtig sind, um auch Dokumente zu finden, bei denen zwar viele, aber nicht alle Begriffe enthalten sind. \\
-Ohne Ranking wäre der Nutzer hierbei verloren, da er sehr ähnliche von weniger ähnlichen Dokumenten differenzieren können muss.
+ Die Freitextsuche gestaltet sich komplexer, da hier längere Texte vorliegen. Der Einsatz von vordefinierten Funktionen wie search kommt darum aus Effizienzgründen nicht infrage. \\
+Zudem  ist ein Verfahren erforderlich, welches auch teilweise Treffer ermöglicht, da Freitext-Suchanfragen häufig aus mehreren Wörtern bestehen. \\
+Das Erkennen von teilweisen Übereinstimmungen ist notwendig, denn Dokumente, bei denen zwar viele, aber nicht alle Begriffe der Anfrage enthalten sind, sollen auch als Ergebnis aufgelistet werden. \\
+Außerdem muss dem Nutzer durch Ranking angezeigt werden, wie hoch der Ähnlichkeitsgrad der einzelnen Dokumente ist, um wichtige von weniger relevanten Treffern differenzieren zu können. \\
  Da boolesches Retrieval weder Ranking noch Teiltreffer ermöglicht, das Vektorraummodell (siehe \ref{vector}) jedoch beides bietet, fällt die Wahl auf letzteres.\\
  
 
+ \subsection{Umsetzung des Vektorraummodells}
+  \subsubsection{Indexierung}
+ Um das Vektorraummodell zu realisieren, muss im ersten Schritt zunächst der Freitext indexiert werden, d.h.
+der Text muss erst in Terme zerlegt werden, um ihn verarbeiten zu können.\\
+ Hierbei wurde das Lisp-Package split-sequence (\cite{Ionescu:16}) verwendet, um die Dokumente zeilenweise in Wörter zu zerlegen. Auf eine Lemmatisierung wurde verzichtet, da dies den Rahmen der Arbeit sprengen würde.\\
+Da jedem Term ein einmaligen Index zugeordnet werden soll, erfolgt die Verwaltung der Terme in einer Hash-Table mit dem Term als String-Key, worin deren Indizes in Form eines fortlaufenden Integer-Wertes gespeichert werden. \\
+So kann für jeden Term des Vokabulars schnell dessen Index abgefragt werden. Dies wird später für die Erstellung der Vektoren notwendig sein, da der Index die Postion im Vektor bestimmt. 
+
+ \subsubsection{Invertierte Dokumenthäufigkeit}
+ Zur Bestimmung der Dokumentvektoren werden die idf-Werte benötigt (\ref{idf}). Hierzu wird während der Indexierung gezählt, wie häufig die Terme vorkommen und dies neben dem Index in derselben Hash-Table gespeichert. Hier wurde erneut ein Struct zum Zusammenfassen der Inhalte verwendet. \\
+ An dieser Stelle enthalten die Struct-Einträge noch die Dokumenthäufigkeiten. Um hieraus den idf-Wert zu ermitteln, muss nach der abgeschlossenen Indexierung zu jedem Term die invertierte Dokumenthäufigkeit nach Formel \ref{idfb} berechnet werden.
  
+ \subsubsection{Dokumentvektoren mit invertierten Listen}
+ Würde man die Dokumentvektoren vollständig anlegen, d.h. mit einem Eintrag pro Term, ergäbe sich eine Matrix mit den \textit{docID}s als Zeilen und den\textit{ Termindizes} als Spalten. Dies würde zum gleichen Problem wie bei der Term-Inzidenz-Matrix führen: Viele Gewichte sind 0, weil die Terme gar nicht vorkommen, was immens Speicher verschwendet. \\
+Stattdessen wurden auch für das Vektorraummodell invertierte Listen verwendet: Nur die Einträge ungleich null werden gespeichert. Bei der Berechnung der Ähnlichkeiten wird ein fehlender Eintrag einfach mit 0 gleichgesetzt.
+ 
+ 
+\section{Verknüpfung der Verfahren}

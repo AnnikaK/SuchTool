@@ -68,13 +68,21 @@
 \contentsline {subsection}{\numberline {7.3.2}Schritt 2}{26}{subsection.7.3.2}
 \contentsline {subsubsection}{Typspezifische Suche}{26}{section*.21}
 \contentsline {section}{\numberline {7.4}Freitextsuche}{27}{section.7.4}
-\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{28}{chapter.8}
-\contentsline {section}{\numberline {8.1}Anforderungen}{28}{section.8.1}
-\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{28}{section.8.2}
-\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{31}{section.8.3}
+\contentsline {subsection}{\numberline {7.4.1}Umsetzung des Vektorraummodells}{27}{subsection.7.4.1}
+\contentsline {subsubsection}{Indexierung}{27}{section*.22}
+\contentsline {subsubsection}{Invertierte Dokumenth\"aufigkeit}{28}{section*.23}
+\contentsline {subsubsection}{Dokumentvektoren mit invertierten Listen}{28}{section*.24}
+\contentsline {section}{\numberline {7.5}Verkn\"upfung der Verfahren}{28}{section.7.5}
+\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{29}{chapter.8}
+\contentsline {section}{\numberline {8.1}Anforderungen}{29}{section.8.1}
+\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{29}{section.8.2}
+\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{30}{section.8.3}
 \contentsline {section}{\numberline {8.4}Suchanfrage}{31}{section.8.4}
-\contentsline {section}{\numberline {8.5}Ergebnis}{31}{section.8.5}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{32}{chapter.9}
-\contentsline {chapter}{Literaturverzeichnis}{33}{chapter*.22}
-\contentsline {chapter}{Glossar}{34}{appendix.A}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{35}{appendix.B}
+\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{31}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Beispiel}{32}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Gesamtanfrage}{32}{section.8.5}
+\contentsline {section}{\numberline {8.6}Ergebnis}{33}{section.8.6}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{35}{chapter.9}
+\contentsline {chapter}{Literaturverzeichnis}{36}{chapter*.25}
+\contentsline {chapter}{Glossar}{37}{appendix.A}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{38}{appendix.B}

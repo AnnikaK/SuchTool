@@ -52,13 +52,18 @@
 \BOOKMARK [2][-]{subsection.7.3.1}{Schritt 1}{section.7.3}% 52
 \BOOKMARK [2][-]{subsection.7.3.2}{Schritt 2}{section.7.3}% 53
 \BOOKMARK [1][-]{section.7.4}{Freitextsuche}{chapter.7}% 54
-\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 55
-\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 56
-\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 59
-\BOOKMARK [1][-]{section.8.5}{Ergebnis}{chapter.8}% 60
-\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 61
-\BOOKMARK [0][-]{chapter*.22}{Literaturverzeichnis}{}% 62
-\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 63
-\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 64
+\BOOKMARK [2][-]{subsection.7.4.1}{Umsetzung des Vektorraummodells}{section.7.4}% 55
+\BOOKMARK [1][-]{section.7.5}{Verkn\374pfung der Verfahren}{chapter.7}% 56
+\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 57
+\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 60
+\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 61
+\BOOKMARK [2][-]{subsection.8.4.1}{Zusammenstellung der Teilanfrage}{section.8.4}% 62
+\BOOKMARK [2][-]{subsection.8.4.2}{Beispiel}{section.8.4}% 63
+\BOOKMARK [1][-]{section.8.5}{Gesamtanfrage}{chapter.8}% 64
+\BOOKMARK [1][-]{section.8.6}{Ergebnis}{chapter.8}% 65
+\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 66
+\BOOKMARK [0][-]{chapter*.25}{Literaturverzeichnis}{}% 67
+\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 68
+\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 69
