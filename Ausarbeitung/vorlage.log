@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  25 JUN 2017 18:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  27 JUN 2017 19:27
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -1118,7 +1118,7 @@ Package pdftex.def Info: images/vector_space.png used on input line 207.
 (pdftex.def)             Requested size: 209.12683pt x 194.40503pt.
  [21]) (chapters/PrecisionAndRecall.tex [22 <./images/vector_space.png>]
 Kapitel 6.
-) (chapters/Implementierung.tex [23
+) (chapters/Implementierung2.tex [23
 
 
 ]
@@ -1132,18 +1132,17 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 
 
 ] [25]
-<images/mil.png, id=721, 1190.94937pt x 389.20406pt>
+<images/mil.png, id=717, 1190.94937pt x 389.20406pt>
 File: images/mil.png Graphic file (type png)
  <use images/mil.png>
-Package pdftex.def Info: images/mil.png used on input line 99.
+Package pdftex.def Info: images/mil.png used on input line 92.
 (pdftex.def)             Requested size: 418.25368pt x 136.68668pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
-[26] [27 <./images/mil.png>]) (chapters/BenutzeroberflaecheUndBedienung.tex
-[28]
+[26 <./images/mil.png>]) (chapters/BenutzeroberflaecheUndBedienung.tex [27]
 Kapitel 8.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1161,13 +1160,13 @@ Overfull \hbox (2.5727pt too wide) in paragraph at lines 24--25
  we-nig nach-den-ken m[]ussen 
  []
 
-<images/overview.png, id=749, 873.2625pt x 651.93562pt>
+<images/overview.png, id=735, 873.2625pt x 651.93562pt>
 File: images/overview.png Graphic file (type png)
 
 <use images/overview.png>
 Package pdftex.def Info: images/overview.png used on input line 38.
 (pdftex.def)             Requested size: 418.25368pt x 312.24908pt.
- [29
+ [28
 
 
 ]
@@ -1175,8 +1174,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[30 <./images/overview.png>]
-<images/Select.png, id=774, 870.25125pt x 281.55188pt>
+[29 <./images/overview.png>]
+<images/Select.png, id=760, 870.25125pt x 281.55188pt>
 File: images/Select.png Graphic file (type png)
  <use images/Select.png>
 Package pdftex.def Info: images/Select.png used on input line 58.
@@ -1191,7 +1190,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
-[31 <./images/Select.png>] <images/a.png, id=784, 846.91406pt x 207.02344pt>
+[30 <./images/Select.png>] <images/a.png, id=770, 846.91406pt x 207.02344pt>
 File: images/a.png Graphic file (type png)
 
 <use images/a.png>
@@ -1202,7 +1201,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 84--85
  [][] 
  []
 
-<images/b2.png, id=787, 851.43094pt x 188.95593pt>
+<images/b2.png, id=773, 851.43094pt x 188.95593pt>
 File: images/b2.png Graphic file (type png)
  <use images/b2.png>
 Package pdftex.def Info: images/b2.png used on input line 97.
@@ -1217,7 +1216,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--109
 
  []
 
-[32 <./images/a.png>] <images/b.png, id=796, 699.36281pt x 116.68594pt>
+[31 <./images/a.png>] <images/b.png, id=782, 699.36281pt x 116.68594pt>
 File: images/b.png Graphic file (type png)
 
 <use images/b.png>
@@ -1228,7 +1227,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 113--114
  [][] 
  []
 
-<images/c.png, id=799, 840.89156pt x 340.27126pt>
+<images/c.png, id=785, 840.89156pt x 340.27126pt>
 File: images/c.png Graphic file (type png)
  <use images/c.png>
 Package pdftex.def Info: images/c.png used on input line 130.
@@ -1238,8 +1237,8 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 130--131
  [][] 
  []
 
-[33 <./images/b2.png> <./images/b.png>]
-<images/results.png, id=806, 765.6103pt x 424.58624pt>
+[32 <./images/b2.png> <./images/b.png>]
+<images/results.png, id=792, 765.6103pt x 424.58624pt>
 File: images/results.png Graphic file (type png)
 
 <use images/results.png>
@@ -1250,10 +1249,10 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 139--140
  [][] 
  []
 
-) (chapters/ZusammenfassungAusblick.tex [34 <./images/c.png> <./images/results.
+) (chapters/ZusammenfassungAusblick.tex [33 <./images/c.png> <./images/results.
 png>]
 Kapitel 9.
-) [35
+) [34
 
 
 ] (vorlage.bbl
@@ -1298,7 +1297,7 @@ n Re-trie-val - Im-ple-men-ting and
 
 )
 No file vorlage.ind.
-[36
+[35
 
 
 
@@ -1311,7 +1310,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--133
 
  []
 
-[37
+[36
 
 
 
@@ -1333,7 +1332,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) [38
+) [37
 
 
 
@@ -1346,7 +1345,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 5E08EB82B2FD05ACEE1C059351EB59A6;4670.
+(rerunfilecheck)             Checksum: 93AF52290FD1FBE2171745CCB4A35D5A;4699.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  )
 (\end occurred inside a group at level 1)
@@ -1354,9 +1353,9 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11679 strings out of 493634
- 166270 string characters out of 3143744
- 319523 words of memory out of 3000000
+ 11674 strings out of 493634
+ 166231 string characters out of 3143744
+ 319570 words of memory out of 3000000
  14557 multiletter control sequences out of 15000+200000
  13315 words of font info for 51 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
@@ -1379,9 +1378,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (46 pages, 578166 bytes).
+Output written on vorlage.pdf (45 pages, 572338 bytes).
 PDF statistics:
- 955 PDF objects out of 1000 (max. 8388607)
- 245 named destinations out of 1000 (max. 500000)
+ 941 PDF objects out of 1000 (max. 8388607)
+ 240 named destinations out of 1000 (max. 500000)
  613 words of extra memory for PDF output out of 10000 (max. 10000000)
 

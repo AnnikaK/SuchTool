@@ -112,6 +112,12 @@ Außerdem muss dem Nutzer durch Ranking angezeigt werden, wie hoch der Ähnlichkei
  
 
  \subsection{Umsetzung des Vektorraummodells}
+ Für das Vektorraummodell werden gleich mehrere Hash-Tables benötigt:
+ \begin{enumerate}
+ 	\item Verwaltung des Vokabulars
+ 	\item 
+ \end{enumerate}
+ 
   \subsubsection{Indexierung}
  Um das Vektorraummodell zu realisieren, muss im ersten Schritt zunächst der Freitext indexiert werden, d.h.
 der Text muss erst in Terme zerlegt werden, um ihn verarbeiten zu können.\\
@@ -120,12 +126,17 @@ Da jedem Term ein einmaligen Index zugeordnet werden soll, erfolgt die Verwaltun
 So kann für jeden Term des Vokabulars schnell dessen Index abgefragt werden. Dies wird später für die Erstellung der Vektoren notwendig sein, da der Index die Postion im Vektor bestimmt. 
 
  \subsubsection{Invertierte Dokumenthäufigkeit}
- Zur Bestimmung der Dokumentvektoren werden die idf-Werte benötigt (\ref{idf}). Hierzu wird während der Indexierung gezählt, wie häufig die Terme vorkommen und dies neben dem Index in derselben Hash-Table gespeichert. Hier wurde erneut ein Struct zum Zusammenfassen der Inhalte verwendet. \\
+ Zur Bestimmung der Dokumentvektoren werden die idf-Werte benötigt (\ref{idf}). Hierzu werden bereits während der Indexierung die Dokumenthäufigkeiten bestimmt und diese neben dem Index in derselben Hash-Table gespeichert. Hier wurde erneut ein Struct zum Zusammenfassen der Inhalte verwendet. \\
  An dieser Stelle enthalten die Struct-Einträge noch die Dokumenthäufigkeiten. Um hieraus den idf-Wert zu ermitteln, muss nach der abgeschlossenen Indexierung zu jedem Term die invertierte Dokumenthäufigkeit nach Formel \ref{idfb} berechnet werden.
  
  \subsubsection{Dokumentvektoren mit invertierten Listen}
- Würde man die Dokumentvektoren vollständig anlegen, d.h. mit einem Eintrag pro Term, ergäbe sich eine Matrix mit den \textit{docID}s als Zeilen und den\textit{ Termindizes} als Spalten. Dies würde zum gleichen Problem wie bei der Term-Inzidenz-Matrix führen: Viele Gewichte sind 0, weil die Terme gar nicht vorkommen, was immens Speicher verschwendet. \\
-Stattdessen wurden auch für das Vektorraummodell invertierte Listen verwendet: Nur die Einträge ungleich null werden gespeichert. Bei der Berechnung der Ähnlichkeiten wird ein fehlender Eintrag einfach mit 0 gleichgesetzt.
+ Würde man die Dokumentvektoren vollständig anlegen, d.h. mit einem Eintrag pro Term, ergäbe sich eine Matrix mit den \textit{docID}s als Zeilen und den\textit{ Termindizes} als Spalten. Dies würde zum gleichen Problem wie bei einer Term-Inzidenz-Matrix führen: Viele Gewichte sind 0, weil die Terme gar nicht vorkommen, was zu viel Speicher verbraucht. \\
+Stattdessen wurden auch für das Vektorraummodell invertierte Listen verwendet: Nur die Einträge ungleich null werden gespeichert. \\
+Hierzu wird, wie auch schon bei den modifizierten invertierten Listen für die Keywordsuche, eine Hash-Table verwendet.
+
+
+\subsubsection{Berechnung des Cosinus-Maßes}
+Da alle Vektoren in 
  
  
 \section{Verknüpfung der Verfahren}

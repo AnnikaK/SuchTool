@@ -1,0 +1,128 @@
+\chapter{Implementierung}
+
+In diesem Kapitel wird beschrieben, auf welche Weise das Information Retrieval System dieser Arbeit in der Programmiersprache Lisp realisiert wurde.
+
+\section{Teilweise strukturierte Dokumente}
+Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}). \\
+Dies bedeutet, dass zwei unterschiedliche Teilprobleme zu lösen sind: Zum einen die Keywordsuche, welche sich auf die Suche in strukturierten Metadaten bezieht und zum anderen die Freitextsuche. Es liegt nahe, beides getrennt zu lösen, da die Suchen unterschiedliche Anforderungen besitzen.\\
+Bevor erklärt wird, wie die beiden Verfahren jeweils realisiert wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt.
+\begin{lstlisting}[language=lisp, caption={Beispieldokument}
+\label{example},
+language=lisp]
+
+
+(absender ("<MaxMuster@muster-mail.de>"))
+(Betreff (" Umfrage"))
+(datum ("Wed, 22 Jun 2017 07:47:51 +0200"))
+(anzahlAnhaenge 0)
+(Termin nil)
+(ABSENDER "Max_Muster")
+
+(ABSENDER-MAIL-ADRESSE "MaxMuster@muster-mail.de")
+(EMPFAENGER ("doe>> John Doe"))
+(EMPFAENGER-MAIL-ADRESSEN ("johnd@muster-mail.de"))
+(BETREFF "Umfrage")
+(EMAIL-TYP "sent")
+(QUELLBOXART "SENT")
+
+Hallo John,
+
+ich werde dir die Umfragenformulare schnellstmöglich per Post 
+zukommen lassen.
+
+
+Viele Grüße
+Max Muster
+
+\end{lstlisting}
+
+In der Praxis enthalten die Dokumente oft weitaus mehr Keywords, deren Inhalt sich auch über mehrere Zeilen erstrecken kann, sowie Kommentare, welche vom System als Freitext interpretiert werden. \\
+In diesem Beispiel handelt es sich zwar um eine E-Mail, die Keywords können jedoch inhaltlich vollkommen unterschiedlich ausfallen. Allen Dokumenten gemeinsam ist die 
+grundlegende Struktur aus \ref{struct}.
+
+\begin{lstlisting}[language=lisp, caption=Dokumentstruktur,label={struct}]
+(Keywordname_1 Inhalt)
+....
+(Keywordname_n Inhalt)
+
+Freitext
+
+\end{lstlisting}
+
+
+
+\section{Vorverarbeitung}
+\subsection{Erstellen des Dokument-Dictionaries}
+Zunächst wird das Dokument-Dictionary des Archivs erstellt: \\
+ Zu jedem Dokument werden die folgenden Punkte erfasst und in einer Hash-Table gespeichert:
+\begin{itemize}
+	\item \textit{docID}: Jedes Dokument erhält eine einmalige ID in Form eines fortlaufenden Integer-Wertes. Diese ID ist der Key für dieses Dokument in der Hash-Table.
+	\item Dateipfad
+	\item Dokumentvektor (zu Beginn noch nicht initialisiert). Dateipfad und Dokumentvektor bilden in Form eines Structs den Hasheintrag zur \textit{docID}
+\end{itemize}
+
+\subsection{Verarbeiten der Dokumente}
+Anschließend wird über alle Dokument-Einträge iteriert, um die folgenden Schritte auszuführen:
+\begin{itemize}
+	\item Aufteilen in Keywords und Freitext
+	\item Verarbeiten der Keywords
+	\item Verarbeiten des Freitextes
+\end{itemize}
+
+Es stellt sich die Frage, was in den letzten beiden Punkten geschieht.
+
+\subsubsection{Verarbeiten der Keywords}
+Für die Keywords bietet sich boolesches Retrieval an, da ein Keyword entweder auftreten kann oder nicht. \\
+Allerdings muss zusätzlich noch geprüft werden, ob der Inhalt des Keywords mit der Anfrage übereinstimmt. \\
+Um dies zu lösen, wurde sich für eine modifizierte Form invertierter Listen entschieden. Eine Term-Inzidenz-Matrix wurde hierbei sofort aufgrund des zu großen Speicherbedarfs ausgeschlossen.\\
+ Was in diesem Verarbeitungsschritt geschieht ist das Erstellen einer Hash-Table, welche die Keywordnamen als Keys besitzt und dazu, zusammengefasst in einem Struct, die folgenden Inhalte besitzt:
+\begin{itemize}
+	\item docID: Dies ist der Index des Dokuments, welches das Keyword enthält und gehört zur standardmäßigen invertierten Liste.
+	\item Typ: Dieser Eintrag gibt an, von welchem Typ der Inhalt ist, da dies über die Suche darin entscheidet.
+	\item Inhalt: Enthält den Keywordinhalt. Dieser ist in der Regel so klein, dass er problemlos darin gespeichert werden kann und im Gegensatz zum Freitext keine weitere Verarbeitung erfordert. Dies würde nur unnötig Speicher belegen.
+\end{itemize}
+
+Zur Veranschaulichung der modifizierten invertierten Liste zeigt Abbildung \ref{m} diese anhand einiger Beispiel-Keywords. \\
+Das Speichern der Informationen in einem Struct bietet den Vorteil, dass auf diese gezielt zugegriffen werden kann, ohne über Listen iterieren zu müssen. 
+
+%TO EDIT
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{images/mil.png}
+	\caption{Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (Inhalt, docID, Typ) (Eigene Abbildung).}
+	\label{m}
+	
+\end{figure}
+
+\subsubsection{Verarbeiten des Freitextes}
+Für das Vokabular wird eine Hash-Table angelegt, das mit Einträgen in der Form (Index, Dokumenthäufigkeit) gefüllt werden soll. \\
+Beim Iterieren über die Freitexte werden folgende Schritte ausgeführt: \\
+\begin{itemize}
+	\item Für jedes Dokument wird ein Dokumentvektor in Form einer Hash-Table angelegt.
+	\item Wird ein neuer Term gefunden, wird dieser dem Vokabular hinzugefügt und die Dokumentäufigkeit auf 1 gesetzt.
+	\item Tritt ein Term zum ersten Mal im Dokument auf, wird der Eintrag im Vektor auf die Termhäufigkeit 1 gesetzt.
+	\item Für jedes erneute Auftreten im Dokument wird die Termhäufigkeit um 1 erhöht.
+	\item Der bereits angelegte Eintrag im Dokument-Dictionary für den Dokumentvektor kann an dieser Stelle mit jenem initialisiert werden.
+\end{itemize}
+
+Nach Feststehen der Dokumenthäufigkeiten werden diese zum idf-Wert mittels Formel \ref{idfb} umgerechnet. \\
+Anschließend können die Tf-Werte in den Dokumentvektoren durch die aussagekräftigeren tf-idf-Werte ersetzt werden (siehe Formel \ref{tfidfc}). \\
+Nun stehen die Dokumentvektoren fest und können zur Verrechnung mit dem Anfragevektor verwendet werden. \\
+Durch das Realisieren der Vektoren als Hash-Tables gibt es keine leeren Einträge. Ein fehlender Eintrag wird als Gewicht 0 interpretiert, sodass dies kein Problem bei der Berechnung der Ähnlichkeiten darstellt.
+
+
+\section{Die Suche}
+
+\subsection{Keywordsuche}
+Lautet die Anfrage beispielsweise $Absender=klaus$, wird auf das Keyword-Dictionary über den Hash-Key $Absender$ zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
+\begin{enumerate}
+	\item \textbf{String}: Der Keywordinhalt wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle im Keyword auftaucht.
+	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage (die stets als String übergeben wird) wenn möglich zum Datentyp Number konvertiert. Hierbei sind ausgeschriebene Zahlen von null bis zwölf auch konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
+	\item \textbf{Liste}: Eine Liste (Datentyp Cons in Lisp) wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen, d.h. darin enthaltene Strings, Zahlen und Unterlisten.
+\end{enumerate}
+Liegt ein Treffer vor, wird die\textit{docID} als Resultat der Ergebnisliste hinzugefügt.
+
+\subsection{Freitextsuche}
+
+\section{Verrechnung der Suchergebnisse}

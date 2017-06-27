@@ -48,12 +48,12 @@
 \BOOKMARK [0][-]{chapter.7}{Implementierung}{}% 48
 \BOOKMARK [1][-]{section.7.1}{Teilweise strukturierte Dokumente}{chapter.7}% 49
 \BOOKMARK [1][-]{section.7.2}{Vorverarbeitung}{chapter.7}% 50
-\BOOKMARK [1][-]{section.7.3}{Keywordsuche}{chapter.7}% 51
-\BOOKMARK [2][-]{subsection.7.3.1}{Schritt 1}{section.7.3}% 52
-\BOOKMARK [2][-]{subsection.7.3.2}{Schritt 2}{section.7.3}% 53
-\BOOKMARK [1][-]{section.7.4}{Freitextsuche}{chapter.7}% 54
-\BOOKMARK [2][-]{subsection.7.4.1}{Umsetzung des Vektorraummodells}{section.7.4}% 55
-\BOOKMARK [1][-]{section.7.5}{Verkn\374pfung der Verfahren}{chapter.7}% 56
+\BOOKMARK [2][-]{subsection.7.2.1}{Erstellen des Dokument-Dictionaries}{section.7.2}% 51
+\BOOKMARK [2][-]{subsection.7.2.2}{Verarbeiten der Dokumente}{section.7.2}% 52
+\BOOKMARK [1][-]{section.7.3}{Die Suche}{chapter.7}% 53
+\BOOKMARK [2][-]{subsection.7.3.1}{Keywordsuche}{section.7.3}% 54
+\BOOKMARK [2][-]{subsection.7.3.2}{Freitextsuche}{section.7.3}% 55
+\BOOKMARK [1][-]{section.7.4}{Verrechnung der Suchergebnisse}{chapter.7}% 56
 \BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 57
 \BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 58
 \BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 59
@@ -64,6 +64,6 @@
 \BOOKMARK [1][-]{section.8.5}{Gesamtanfrage}{chapter.8}% 64
 \BOOKMARK [1][-]{section.8.6}{Ergebnis}{chapter.8}% 65
 \BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 66
-\BOOKMARK [0][-]{chapter*.25}{Literaturverzeichnis}{}% 67
+\BOOKMARK [0][-]{chapter*.23}{Literaturverzeichnis}{}% 67
 \BOOKMARK [0][-]{appendix.A}{Glossar}{}% 68
 \BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 69
