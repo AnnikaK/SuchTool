@@ -43,27 +43,32 @@
 \BOOKMARK [2][-]{subsection.5.6.1}{Euklidischer Abstand}{section.5.6}% 43
 \BOOKMARK [2][-]{subsection.5.6.2}{Cosinus-Ma\337}{section.5.6}% 44
 \BOOKMARK [0][-]{chapter.6}{Bewertung eines Information Retrieval Systems}{}% 45
-\BOOKMARK [1][-]{section.6.1}{Precisison}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.2}{Recall}{chapter.6}% 47
-\BOOKMARK [0][-]{chapter.7}{Implementierung}{}% 48
-\BOOKMARK [1][-]{section.7.1}{Teilweise strukturierte Dokumente}{chapter.7}% 49
-\BOOKMARK [1][-]{section.7.2}{Vorverarbeitung}{chapter.7}% 50
-\BOOKMARK [2][-]{subsection.7.2.1}{Erstellen des Dokument-Dictionaries}{section.7.2}% 51
-\BOOKMARK [2][-]{subsection.7.2.2}{Verarbeiten der Dokumente}{section.7.2}% 52
-\BOOKMARK [1][-]{section.7.3}{Die Suche}{chapter.7}% 53
-\BOOKMARK [2][-]{subsection.7.3.1}{Keywordsuche}{section.7.3}% 54
-\BOOKMARK [2][-]{subsection.7.3.2}{Freitextsuche}{section.7.3}% 55
-\BOOKMARK [1][-]{section.7.4}{Verrechnung der Suchergebnisse}{chapter.7}% 56
-\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 57
-\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 59
-\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 60
-\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 61
-\BOOKMARK [2][-]{subsection.8.4.1}{Zusammenstellung der Teilanfrage}{section.8.4}% 62
-\BOOKMARK [2][-]{subsection.8.4.2}{Beispiel}{section.8.4}% 63
-\BOOKMARK [1][-]{section.8.5}{Gesamtanfrage}{chapter.8}% 64
-\BOOKMARK [1][-]{section.8.6}{Ergebnis}{chapter.8}% 65
-\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 66
-\BOOKMARK [0][-]{chapter*.23}{Literaturverzeichnis}{}% 67
-\BOOKMARK [0][-]{appendix.A}{Glossar}{}% 68
-\BOOKMARK [0][-]{appendix.B}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 69
+\BOOKMARK [1][-]{section.6.1}{Problem Relevanz}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.2}{Precision und Recall}{chapter.6}% 47
+\BOOKMARK [2][-]{subsection.6.2.1}{Precisison}{section.6.2}% 48
+\BOOKMARK [2][-]{subsection.6.2.2}{Recall}{section.6.2}% 49
+\BOOKMARK [2][-]{subsection.6.2.3}{Veranschaulichung}{section.6.2}% 50
+\BOOKMARK [1][-]{section.6.3}{Zwei Evaluierungsma\337e}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.4}{Durchf\374hrung}{chapter.6}% 52
+\BOOKMARK [0][-]{chapter.7}{Implementierung}{}% 53
+\BOOKMARK [1][-]{section.7.1}{Teilweise strukturierte Dokumente}{chapter.7}% 54
+\BOOKMARK [1][-]{section.7.2}{Vorverarbeitung}{chapter.7}% 55
+\BOOKMARK [2][-]{subsection.7.2.1}{Erstellen des Dokument-Dictionaries}{section.7.2}% 56
+\BOOKMARK [2][-]{subsection.7.2.2}{Verarbeiten der Dokumente}{section.7.2}% 57
+\BOOKMARK [1][-]{section.7.3}{Die Suche}{chapter.7}% 58
+\BOOKMARK [2][-]{subsection.7.3.1}{Keywordsuche}{section.7.3}% 59
+\BOOKMARK [2][-]{subsection.7.3.2}{Freitextsuche}{section.7.3}% 60
+\BOOKMARK [2][-]{subsection.7.3.3}{Erstellen des Query-Vektors}{section.7.3}% 61
+\BOOKMARK [1][-]{section.7.4}{Verrechnung der Suchergebnisse}{chapter.7}% 62
+\BOOKMARK [0][-]{chapter.8}{Die Benutzeroberfl\344che}{}% 63
+\BOOKMARK [1][-]{section.8.1}{Anforderungen}{chapter.8}% 64
+\BOOKMARK [1][-]{section.8.2}{Grundaufbau der Oberfl\344che}{chapter.8}% 65
+\BOOKMARK [1][-]{section.8.3}{Verzeichnisauswahl}{chapter.8}% 66
+\BOOKMARK [1][-]{section.8.4}{Suchanfrage}{chapter.8}% 67
+\BOOKMARK [2][-]{subsection.8.4.1}{Zusammenstellung der Teilanfrage}{section.8.4}% 68
+\BOOKMARK [2][-]{subsection.8.4.2}{Beispiel}{section.8.4}% 69
+\BOOKMARK [1][-]{section.8.5}{Gesamtanfrage}{chapter.8}% 70
+\BOOKMARK [1][-]{section.8.6}{Ergebnis}{chapter.8}% 71
+\BOOKMARK [0][-]{chapter.9}{Zusammenfassung und Ausblick}{}% 72
+\BOOKMARK [0][-]{chapter*.23}{Literaturverzeichnis}{}% 73
+\BOOKMARK [0][-]{appendix.A}{Erkl\344rung der Kandidatin / des Kandidaten}{}% 74

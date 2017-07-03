@@ -10,15 +10,17 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren und dem Anfragevektor. Das Cosinus-Ma\IeC {\ss } liefert als \"ahnlichstes Dokument $d_2$ (Eigene Abbildung, basierend auf \cite {Buettcher:10}, S.55).}}{22}{figure.5.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (Inhalt, docID, Typ) (Eigene Abbildung).}}{26}{figure.7.1}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Struktur f\"ur einen Eintrag im Dokument-Dictionary. Die Eintr\"age Datum und Absender k\"onnen, falls nicht existent, auch leer bleiben. Im rot markierten Bereich werden sp\"ater die Dokumentvektoren eingetragen. (Eigene Abbildung).}}{28}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung).}}{29}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Struktur f\"ur einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung).}}{29}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Beispiel f\"ur Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}}{32}{figure.7.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{29}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{30}{figure.8.2}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{31}{figure.8.3}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Bereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}}{32}{figure.8.4}
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{32}{figure.8.5}
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster (eigene Abbildung)}}{33}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{33}{figure.8.7}
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{34}{figure.8.1}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{35}{figure.8.2}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{36}{figure.8.3}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Bereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}}{37}{figure.8.4}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{37}{figure.8.5}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster (eigene Abbildung)}}{38}{figure.8.6}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{38}{figure.8.7}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

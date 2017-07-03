@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  27 JUN 2017 19:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  3 JUL 2017 17:57
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -611,8 +611,7 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 
 
 Writing index file vorlage.idx
-(vorlage.aux (chapters/Glossar.aux) (chapters/Selbststaendigkeitserklaerung.aux
-))
+(vorlage.aux (chapters/Selbststaendigkeitserklaerung.aux))
 \openout1 = `vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
@@ -631,7 +630,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -720,7 +720,7 @@ to.pdf>
 (epstopdf)             \includegraphics on input line 99.
 Package epstopdf Info: Output file is already uptodate.
 
-<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=279, 812.03375pt x 157.58
+<Logo_Hauptcampus_Informatik-eps-converted-to.pdf, id=299, 812.03375pt x 157.58
 875pt>
 File: Logo_Hauptcampus_Informatik-eps-converted-to.pdf Graphic file (type pdf)
  <use Logo_Hauptcampus_Informatik-eps-converted-to.pdf>
@@ -730,7 +730,7 @@ on input line 99.
  [1
 
 {C:/Users/kreme/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Logo_Haup
-tcampus_Informatik-eps-converted-to.pdf>] (chapters/Vorwort.tex
+tcampus_Informatik-eps-converted-to.pdf>] (chapters/Kurzfassung.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
@@ -740,38 +740,35 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
-(chapters/Kurzfassung.tex [2
+)) [2
 
 
 
 
-]) [3
+] (vorlage.toc
+[3
 
 
-] (vorlage.toc [4
-
-
-] [5])
+] [4])
 \tf@toc=\write5
 \openout5 = `vorlage.toc'.
 
- [6] (vorlage.lof)
+ [5] (vorlage.lof [6
+
+
+])
 \tf@lof=\write6
 \openout6 = `vorlage.lof'.
 
-
-[7
-
-
-] (vorlage.lot)
+ [7] (vorlage.lot)
 \tf@lot=\write7
 \openout7 = `vorlage.lot'.
 
  [8
 
 
-] (chapters/EinleitungProblemstellung.tex
+]
+(chapters/EinleitungProblemstellung.tex
 Kapitel 1.
 [1
 
@@ -907,7 +904,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[10] <images/matrix.png, id=535, 389.20406pt x 76.03406pt>
+[10] <images/matrix.png, id=576, 389.20406pt x 76.03406pt>
 File: images/matrix.png Graphic file (type png)
 
 <use images/matrix.png>
@@ -939,7 +936,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--103
  []
 
 [11 <./images/matrix.png>]
-<images/inverted_list.png, id=547, 846.16125pt x 318.43968pt>
+<images/inverted_list.png, id=588, 846.16125pt x 318.43968pt>
 File: images/inverted_list.png Graphic file (type png)
 
 <use images/inverted_list.png>
@@ -1110,7 +1107,7 @@ Overfull \hbox (9.17244pt too wide) in paragraph at lines 166--169
 ig-ne-ten []Ahnlichkeitsfunktion. 
  []
 
-[20] <images/vector_space.png, id=646, 470.50781pt x 437.38406pt>
+[20] <images/vector_space.png, id=687, 470.50781pt x 437.38406pt>
 File: images/vector_space.png Graphic file (type png)
 
 <use images/vector_space.png>
@@ -1118,31 +1115,95 @@ Package pdftex.def Info: images/vector_space.png used on input line 207.
 (pdftex.def)             Requested size: 209.12683pt x 194.40503pt.
  [21]) (chapters/PrecisionAndRecall.tex [22 <./images/vector_space.png>]
 Kapitel 6.
-) (chapters/Implementierung2.tex [23
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--16
+
+ []
+
+[23
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+) (chapters/Implementierung2.tex [25]
 Kapitel 7.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
 File: lstlang2.sty 2015/06/04 1.6 listings language file
-) [24
+) [26
 
 
-] [25]
-<images/mil.png, id=717, 1190.94937pt x 389.20406pt>
+]
+<images/docDict.png, id=773, 820.56563pt x 193.47281pt>
+File: images/docDict.png Graphic file (type png)
+
+<use images/docDict.png>
+Package pdftex.def Info: images/docDict.png used on input line 71.
+(pdftex.def)             Requested size: 418.25368pt x 98.61372pt.
+ [27]
+<images/mil.png, id=787, 1190.94937pt x 389.20406pt>
 File: images/mil.png Graphic file (type png)
  <use images/mil.png>
-Package pdftex.def Info: images/mil.png used on input line 92.
+Package pdftex.def Info: images/mil.png used on input line 105.
 (pdftex.def)             Requested size: 418.25368pt x 136.68668pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
+[28 <./images/docDict.png>]
+<images/termDict.png, id=796, 383.18156pt x 134.00063pt>
+File: images/termDict.png Graphic file (type png)
+
+<use images/termDict.png>
+Package pdftex.def Info: images/termDict.png used on input line 134.
+(pdftex.def)             Requested size: 209.12683pt x 73.13417pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-[26 <./images/mil.png>]) (chapters/BenutzeroberflaecheUndBedienung.tex [27]
+[29 <./images/mil.png> <./images/termDict.png>] [30]
+Overfull \hbox (11.5377pt too wide) in paragraph at lines 171--175
+\OT1/cmr/m/n/12 durch den idf-Wert di-vi-diert, so-dass der Query-Vektor die fi
+-na-len tf-idf-Gewichtungen
+ []
+
+<images/Umwandlung.png, id=817, 623.32875pt x 475.02469pt>
+File: images/Umwandlung.png Graphic file (type png)
+
+<use images/Umwandlung.png>
+Package pdftex.def Info: images/Umwandlung.png used on input line 188.
+(pdftex.def)             Requested size: 209.12683pt x 159.368pt.
+
+Overfull \hbox (9.17157pt too wide) in paragraph at lines 200--201
+[]\OT1/cmr/m/n/12 Ist $\OML/cmm/m/it/12 AND$ \OT1/cmr/m/n/12 aus-gew[]ahlt, wir
+d der Durch-schnitt bei-der Su-chen ge-bil-det und Keyword-
+ []
+
+[31]) (chapters/BenutzeroberflaecheUndBedienung.tex [32 <./images/Umwandlung.pn
+g>]
 Kapitel 8.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1160,13 +1221,13 @@ Overfull \hbox (2.5727pt too wide) in paragraph at lines 24--25
  we-nig nach-den-ken m[]ussen 
  []
 
-<images/overview.png, id=735, 873.2625pt x 651.93562pt>
+<images/overview.png, id=830, 873.2625pt x 651.93562pt>
 File: images/overview.png Graphic file (type png)
 
 <use images/overview.png>
 Package pdftex.def Info: images/overview.png used on input line 38.
 (pdftex.def)             Requested size: 418.25368pt x 312.24908pt.
- [28
+ [33
 
 
 ]
@@ -1174,8 +1235,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[29 <./images/overview.png>]
-<images/Select.png, id=760, 870.25125pt x 281.55188pt>
+[34 <./images/overview.png>]
+<images/Select.png, id=854, 870.25125pt x 281.55188pt>
 File: images/Select.png Graphic file (type png)
  <use images/Select.png>
 Package pdftex.def Info: images/Select.png used on input line 58.
@@ -1190,7 +1251,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
-[30 <./images/Select.png>] <images/a.png, id=770, 846.91406pt x 207.02344pt>
+[35 <./images/Select.png>] <images/a.png, id=865, 846.91406pt x 207.02344pt>
 File: images/a.png Graphic file (type png)
 
 <use images/a.png>
@@ -1201,7 +1262,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 84--85
  [][] 
  []
 
-<images/b2.png, id=773, 851.43094pt x 188.95593pt>
+<images/b2.png, id=868, 851.43094pt x 188.95593pt>
 File: images/b2.png Graphic file (type png)
  <use images/b2.png>
 Package pdftex.def Info: images/b2.png used on input line 97.
@@ -1216,7 +1277,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--109
 
  []
 
-[31 <./images/a.png>] <images/b.png, id=782, 699.36281pt x 116.68594pt>
+[36 <./images/a.png>] <images/b.png, id=877, 699.36281pt x 116.68594pt>
 File: images/b.png Graphic file (type png)
 
 <use images/b.png>
@@ -1227,7 +1288,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 113--114
  [][] 
  []
 
-<images/c.png, id=785, 840.89156pt x 340.27126pt>
+<images/c.png, id=880, 840.89156pt x 340.27126pt>
 File: images/c.png Graphic file (type png)
  <use images/c.png>
 Package pdftex.def Info: images/c.png used on input line 130.
@@ -1237,8 +1298,8 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 130--131
  [][] 
  []
 
-[32 <./images/b2.png> <./images/b.png>]
-<images/results.png, id=792, 765.6103pt x 424.58624pt>
+[37 <./images/b2.png> <./images/b.png>]
+<images/results.png, id=887, 765.6103pt x 424.58624pt>
 File: images/results.png Graphic file (type png)
 
 <use images/results.png>
@@ -1249,10 +1310,10 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 139--140
  [][] 
  []
 
-) (chapters/ZusammenfassungAusblick.tex [33 <./images/c.png> <./images/results.
+) (chapters/ZusammenfassungAusblick.tex [38 <./images/c.png> <./images/results.
 png>]
 Kapitel 9.
-) [34
+) [39
 
 
 ] (vorlage.bbl
@@ -1267,54 +1328,47 @@ Underfull \hbox (badness 4217) in paragraph at lines 10--13
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--25
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
+[]$\OT1/cmtt/m/n/12 http : / / www . crashkurs-[]statistik . de /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--31
 []$\OT1/cmtt/m/n/12 https : / / www . uni-[]bamberg . de / fileadmin / uni / fa
 kultaeten / wiai _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--25
+Underfull \hbox (badness 10000) in paragraph at lines 26--31
 $\OT1/cmtt/m/n/12 lehrstuehle / medieninformatik / Dateien / Publikationen / 20
 08 /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--35
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
 []$\OT1/cmtt/m/n/12 https : / / github . com / sharplispers / split-[]sequence 
 / blob /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--57
+Underfull \hbox (badness 10000) in paragraph at lines 60--63
 []\OT1/cmr/m/sc/12 Stefan B[]uttcher, Charles L.A.Clarke, Gor-
  []
 
 
-Underfull \hbox (badness 5119) in paragraph at lines 54--57
+Underfull \hbox (badness 5119) in paragraph at lines 60--63
 \OT1/cmr/m/sc/12 don V.Cormack\OT1/cmr/m/n/12 : \OT1/cmr/m/it/12 In-for-ma-ti-o
 n Re-trie-val - Im-ple-men-ting and
  []
 
-)
+[40
+
+
+
+
+])
 No file vorlage.ind.
-[35
-
-
-
-
-]
-\openout2 = `chapters/Glossar.aux'.
-
- (chapters/Glossar.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 3--133
-
- []
-
-[36
-
-
-
-]
+[41]
 \openout2 = `chapters/Selbststaendigkeitserklaerung.aux'.
 
  (chapters/Selbststaendigkeitserklaerung.tex
@@ -1332,20 +1386,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) [37
-
+) [42
 
 
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
- (vorlage.aux (chapters/Glossar.aux)
-(chapters/Selbststaendigkeitserklaerung.aux))
+ (vorlage.aux (chapters/Selbststaendigkeitserklaerung.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 93AF52290FD1FBE2171745CCB4A35D5A;4699.
+(rerunfilecheck)             Checksum: 6206AF448165D25F14683B91BB01569F;5089.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  )
 (\end occurred inside a group at level 1)
@@ -1353,10 +1405,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11674 strings out of 493634
- 166231 string characters out of 3143744
- 319570 words of memory out of 3000000
- 14557 multiletter control sequences out of 15000+200000
+ 11712 strings out of 493634
+ 166763 string characters out of 3143744
+ 321506 words of memory out of 3000000
+ 14581 multiletter control sequences out of 15000+200000
  13315 words of font info for 51 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
  42i,14n,42p,638b,4201s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1378,9 +1430,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (45 pages, 572338 bytes).
+Output written on vorlage.pdf (50 pages, 646253 bytes).
 PDF statistics:
- 941 PDF objects out of 1000 (max. 8388607)
- 240 named destinations out of 1000 (max. 500000)
- 613 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1041 PDF objects out of 1200 (max. 8388607)
+ 261 named destinations out of 1000 (max. 500000)
+ 668 words of extra memory for PDF output out of 10000 (max. 10000000)
 

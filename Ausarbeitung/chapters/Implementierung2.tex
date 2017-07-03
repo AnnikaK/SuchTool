@@ -53,13 +53,26 @@ Freitext
 
 \section{Vorverarbeitung}
 \subsection{Erstellen des Dokument-Dictionaries}
-Zunächst wird das Dokument-Dictionary des Archivs erstellt: \\
+Zunächst wird das Dokument-Dictionary\footnote{Auch wenn hier semantisch von einem Dictionary gesprochen wird, ist die zugrundeliegende Datenstruktur in Lisp eine Hash-Table.} des Archivs erstellt: \\
  Zu jedem Dokument werden die folgenden Punkte erfasst und in einer Hash-Table gespeichert:
 \begin{itemize}
 	\item \textit{docID}: Jedes Dokument erhält eine einmalige ID in Form eines fortlaufenden Integer-Wertes. Diese ID ist der Key für dieses Dokument in der Hash-Table.
 	\item Dateipfad
 	\item Dokumentvektor (zu Beginn noch nicht initialisiert). Dateipfad und Dokumentvektor bilden in Form eines Structs den Hasheintrag zur \textit{docID}
+	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient
+	\item Absender: ebenfalls optionale Information.
 \end{itemize}
+
+Die  letzten beiden Punkte können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde flexibel gehalten, um auch andere Dateien verarbeiten zu können. \\
+Abbildung \ref{docs} zeigt den Aufbau eines Hash-Eintrags für das Dokument-Dictionary.
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{images/docDict.png}
+	\caption{Struktur für einen Eintrag im Dokument-Dictionary. Die Einträge Datum und Absender können, falls nicht existent, auch leer bleiben. Im rot markierten Bereich werden später die Dokumentvektoren eingetragen. (Eigene Abbildung).}
+	\label{docs}
+	
+\end{figure}
 
 \subsection{Verarbeiten der Dokumente}
 Anschließend wird über alle Dokument-Einträge iteriert, um die folgenden Schritte auszuführen:
@@ -75,7 +88,7 @@ Es stellt sich die Frage, was in den letzten beiden Punkten geschieht.
 Für die Keywords bietet sich boolesches Retrieval an, da ein Keyword entweder auftreten kann oder nicht. \\
 Allerdings muss zusätzlich noch geprüft werden, ob der Inhalt des Keywords mit der Anfrage übereinstimmt. \\
 Um dies zu lösen, wurde sich für eine modifizierte Form invertierter Listen entschieden. Eine Term-Inzidenz-Matrix wurde hierbei sofort aufgrund des zu großen Speicherbedarfs ausgeschlossen.\\
- Was in diesem Verarbeitungsschritt geschieht ist das Erstellen einer Hash-Table, welche die Keywordnamen als Keys besitzt und dazu, zusammengefasst in einem Struct, die folgenden Inhalte besitzt:
+ Was in diesem Verarbeitungsschritt geschieht ist das Erstellen einer Hash-Table, welche die Keywordnamen als Keys besitzt und dazu, zusammengefasst in einem Struct\footnote{Element der Programmiersprache Lisp, mit dem mehrere zusammengehörige Objekte zu einem zusammengefasst werden können}, die folgenden Inhalte besitzt:
 \begin{itemize}
 	\item docID: Dies ist der Index des Dokuments, welches das Keyword enthält und gehört zur standardmäßigen invertierten Liste.
 	\item Typ: Dieser Eintrag gibt an, von welchem Typ der Inhalt ist, da dies über die Suche darin entscheidet.
@@ -83,33 +96,60 @@ Um dies zu lösen, wurde sich für eine modifizierte Form invertierter Listen ents
 \end{itemize}
 
 Zur Veranschaulichung der modifizierten invertierten Liste zeigt Abbildung \ref{m} diese anhand einiger Beispiel-Keywords. \\
-Das Speichern der Informationen in einem Struct bietet den Vorteil, dass auf diese gezielt zugegriffen werden kann, ohne über Listen iterieren zu müssen. 
+Das Speichern der Informationen in einem Struct bietet den Vorteil, dass auf diese über den Slot-Value gezielt zugegriffen werden kann, ohne über Listen iterieren zu müssen. 
 
-%TO EDIT
+
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/mil.png}
-	\caption{Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (Inhalt, docID, Typ) (Eigene Abbildung).}
+	\caption{Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung).}
 	\label{m}
 	
 \end{figure}
 
 \subsubsection{Verarbeiten des Freitextes}
-Für das Vokabular wird eine Hash-Table angelegt, das mit Einträgen in der Form (Index, Dokumenthäufigkeit) gefüllt werden soll. \\
-Beim Iterieren über die Freitexte werden folgende Schritte ausgeführt: \\
+Für die Freitextsuche wurde das Vektorraummodell gewählt, da dieses Teiltreffer sowie ein Ranking der Ergebnisse ermöglicht.  
+
+Hierfür muss zunächst das Vokabular bestimmt werden, was wie folgt abläuft:
+
+
+
 \begin{itemize}
-	\item Für jedes Dokument wird ein Dokumentvektor in Form einer Hash-Table angelegt.
-	\item Wird ein neuer Term gefunden, wird dieser dem Vokabular hinzugefügt und die Dokumentäufigkeit auf 1 gesetzt.
-	\item Tritt ein Term zum ersten Mal im Dokument auf, wird der Eintrag im Vektor auf die Termhäufigkeit 1 gesetzt.
-	\item Für jedes erneute Auftreten im Dokument wird die Termhäufigkeit um 1 erhöht.
-	\item Der bereits angelegte Eintrag im Dokument-Dictionary für den Dokumentvektor kann an dieser Stelle mit jenem initialisiert werden.
+	\item Es wird über eine Liste aller Freitexte iteriert.
+	\item Jeder Freitext wird in seine Terme zerlegt. Hierbei wurde auf eine Lemmatisierung verzichtet, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwenedet (\cite{Ionescu:16}).
+	\item Für jeden Term wird geprüft, ob er schon bekannt ist oder nicht. Falls nicht, wird er der Vokabularliste hinzugefügt.
 \end{itemize}
 
-Nach Feststehen der Dokumenthäufigkeiten werden diese zum idf-Wert mittels Formel \ref{idfb} umgerechnet. \\
-Anschließend können die Tf-Werte in den Dokumentvektoren durch die aussagekräftigeren tf-idf-Werte ersetzt werden (siehe Formel \ref{tfidfc}). \\
+Nachdem alle Terme bekannt sind, werden diese indexiert:
+
+\begin{itemize}
+	\item Es wird ein Term-Dictionary in Form einer Hash-Table angelegt.
+	\item Für jeden Term der Vokabularliste wird ein Eintrag der Form (Index,idf=0) angelegt, wobei der Index ein fortlaufeneder Integer-Wert ist und der idf-Wert noch zu berechnen ist.
+\end{itemize}
+
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/termDict.png}
+	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung).}
+	\label{terms}
+\end{figure}
+
+Nun kann das Term-Dictionary mit Einträgen der in Abbildung \ref{terms} gezeigten Struktur gefüllt werden, wobei  die folgenden Schritte beim Iterieren über die Freitexte ausgeführt werden: \\
+\begin{itemize}
+	\item Anlegen eines Dokumentvektors pro Dokument, realisiert mittels Hash-Table, welche die Term-Indizes als Keys und deren tf-idf-Gewichte als Werte besitzt.
+	\item Tritt ein Term zum ersten Mal in der Sammlung, wird der idf-Slot im Term-Dictionary auf 1 gesetzt.
+	\item Tritt ein Term zum ersten Mal im Dokument auf und existiert bereits in der Sammlung, wird der idf-Wert im Term-Dictionary um 1 erhöht.
+	\item Beim ersten Auftreten im Dokument wird der Eintrag im Dokumentvektor auf die Termhäufigkeit 1 gesetzt. Die Position im Vektor ist durch Zugriff auf den Index des Terms bekannt.
+	\item Für jedes erneute Auftreten im Dokument wird die Termhäufigkeit um 1 erhöht.
+	\item Der bereits angelegte Eintrag im Dokument-Dictionary  kann an dieser Stelle mit dem Dokumentvektor initialisiert werden.
+\end{itemize}
+Noch enthalten die idf-Slots im Term-Dictionary die Dokumenthäufigkeiten statt der idf-Werte.
+Nun erfolgt deren Umrechnung in den idf-Wert nach Formel \ref{idfb}.\\
+Anschließend können die tf-idf-Werte berechnet werden (siehe Formel \ref{tfidfc}) und in die Dokumentvektoren, welche bisher nur die Termhäufigkeiten enthielten, eingetragen werden. \\
 Nun stehen die Dokumentvektoren fest und können zur Verrechnung mit dem Anfragevektor verwendet werden. \\
-Durch das Realisieren der Vektoren als Hash-Tables gibt es keine leeren Einträge. Ein fehlender Eintrag wird als Gewicht 0 interpretiert, sodass dies kein Problem bei der Berechnung der Ähnlichkeiten darstellt.
+Durch das Realisieren der Vektoren als Hash-Tables gibt es keine leeren Einträge. Ein fehlender Eintrag wird als Gewicht 0 interpretiert, sodass dies kein Problem bei der Ähnlichkeitsberechnung darstellt. 
 
 
 \section{Die Suche}
@@ -121,8 +161,46 @@ Lautet die Anfrage beispielsweise $Absender=klaus$, wird auf das Keyword-Diction
 	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage (die stets als String übergeben wird) wenn möglich zum Datentyp Number konvertiert. Hierbei sind ausgeschriebene Zahlen von null bis zwölf auch konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
 	\item \textbf{Liste}: Eine Liste (Datentyp Cons in Lisp) wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen, d.h. darin enthaltene Strings, Zahlen und Unterlisten.
 \end{enumerate}
-Liegt ein Treffer vor, wird die\textit{docID} als Resultat der Ergebnisliste hinzugefügt.
+Liegt ein Treffer vor, wird die\textit{docID} als Resultat der Ergebnisliste hinzugefügt. \\
+Hierbei kann es sein, dass pro Teilanfrage mehrere Keywordsuchen durchgeführt werden, da der Nutzer die Anfrage für verschiedene Keywords gleichzeitig stellt. \\
+Dann hat jedes Keyword seine eigene Ergebnisliste, die gemäß booleschem Retrieval mit Mengenoperationen verrechnet werden: Ist $AND$ ausgewählt, wird aus den Listen der Durchschnitt gebildet, bei $OR$ die Vereinigung. \\
+Nun liegt das finale Ergebnis für die Keywordsuche der Teilanfrage vor - es sei denn, der Nutzer hat $NOT$ ausgewählt. Dann wird die Differenz zwischen den Dokumenten des Archivs und dem ermittelten Ergebnis zurückgegeben.
 
 \subsection{Freitextsuche}
+\subsection{Erstellen des Query-Vektors}
+Für die Freitextsuche muss die Anfrage erst in einen Vektor umgewandelt werden. Auch hier wird eine Hash-Table für das Anlegen des Query-Vektors verwendet. \\
+Für jeden Term wird dessen Index im Term-Dictionary abgefragt. Vorausgesetzt, der Term existiert im Vokabular, wird dieser Index zum Key und die Termhäufigkeit in der Anfrage zum Wert. Anschließend wird die Termhäufigkeit durch den idf-Wert dividiert, sodass der Query-Vektor die finalen tf-idf-Gewichtungen enthält.\\
+Damit wird die Anfrage genau wie ein Dokument behandelt, mit dem einzigen Unterschied dass bestimmte Terme eventuell nicht im Vektor eingetragen und gewichtet werden, da diese im Archiv nicht vorkommen und darum für die Suche irrelevant sind.\\
+Abbildung \ref{query} veranschaulicht das Erstellen eines Query-Vektors anhand eines Beispiels.
+\subsubsection{Finden der Resultate}
+Das Bestimmen der Suchergebnisse für die Freitextsuche läuft wie folgt ab:
+
+\begin{itemize}
+	\item Es wird über alle Dokumente im Dokument-Dictionary iteriert und auf deren Dokument-Vektoren zugegriffen
+	\item Es wird das Cosinus-Maß (siehe Formel \ref{cos}) zur Berechnung der Ähnlichkeit zwischen Dokument- und Query-Vektor verwendet
+	\item Das Ergebnis ist der Score, welcher gemeinsam mit der \textit{docID} der Ergebnisliste hinzugefügt wird.
+	\item Diese wird basierend auf dem Score sortiert, sodass sich die ähnlichsten Dokumente vorne befinden.
+\end{itemize}
+
+\begin{figure} [http]
+	
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/Umwandlung.png}
+	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}
+	\label{query}
+\end{figure}
+
+
 
 \section{Verrechnung der Suchergebnisse}
+Die Resultate der Keywordsuche und der Freitextsuche müssen miteinander kombiniert werden, wobei der Score problematisch ist, da die Freitextergebnisse einen besitzen, die Keyword-Resultate jedoch nicht. \\
+Das Kombinieren von beiden Suchen wurde wie folgt realisiert:
+\begin{itemize}
+	\item Jedes Dokument in der Keyword-Ergebnisliste erhält den Score 1.
+	\item Ist $AND$ ausgewählt, wird der Durchschnitt beider Suchen gebildet und Keyword-Score sowie Freitextscore werden addiert.
+	\item Ist $OR$ ausgewählt, wird die Vereinigung beider Suchen gebildet und Keyword-Score sowie Freitextscore der Dokumente, die in beiden Ergebnislisten vorkommen, werden addiert.
+\end{itemize}
+Da die Anfrage beliebig tief geschachtelt werden kann, ist es möglich, dass sich der Score eines Dokuments weiter erhöht: \\
+Das Gesamtergebnis wird mit jeder neuen Teilanfrage auf dieselbe Weise verrechnet, wie es soeben beschrieben wurde. \\
+Demnach erhält ein Dokument, dass für 5 Teilanfragen einen Treffer in der Keywordsuche lieferte, den Score 5. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. 5,27, kamen noch Treffer in der Freitextsuche hinzu. \\
+Aufgrund des Rankings kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und auch, auf welche Weise der Treffer zustande kam.
