@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  3 JUL 2017 17:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  24 JUL 2017 15:26
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -740,13 +740,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)) [2
+)
+Overfull \hbox (9.75162pt too wide) in paragraph at lines 11--17
+\OT1/cmr/m/n/12 In-for-ma-ti-on Re-trie-val im All-ge-mei-nen vor-ge-stellt, um
+ dem dem Le-ser einen []Uberblick
+ []
+
+) [2
 
 
 
 
-] (vorlage.toc
-[3
+] (vorlage.toc [3
 
 
 ] [4])
@@ -1407,11 +1412,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 Here is how much of TeX's memory you used:
  11712 strings out of 493634
  166763 string characters out of 3143744
- 321506 words of memory out of 3000000
+ 321507 words of memory out of 3000000
  14581 multiletter control sequences out of 15000+200000
  13315 words of font info for 51 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
- 42i,14n,42p,638b,4201s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,14n,42p,634b,4201s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\kreme\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
@@ -1430,7 +1435,7 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (50 pages, 646253 bytes).
+Output written on vorlage.pdf (50 pages, 646893 bytes).
 PDF statistics:
  1041 PDF objects out of 1200 (max. 8388607)
  261 named destinations out of 1000 (max. 500000)
