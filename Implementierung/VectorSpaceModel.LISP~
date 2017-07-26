@@ -108,24 +108,21 @@
 
 
 (defun create-query-vector (user-query)
- (let ((words) (max 1) (tf-idf 0))
-  (setq words (process-string user-query))
-  (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
-  (mapcar (lambda (word)  ;get term frequencies 
-            (setq current-term (gethash word *terms*))
-            (cond ((not (equal nil current-term))
-                   (setq wortindex (term-index current-term))
-                   (if (gethash wortindex *query-vector*) (setf (gethash wortindex *query-vector*) (+ 1 (gethash wortindex *query-vector*)))
-                     (setf (gethash wortindex *query-vector*) 1))))) words)
-  (loop for key being the hash-key of *query-vector* do  ;find maximum term-frequency in query 
-        (setq tf (gethash key *query-vector*))
-        (cond ((> tf max) (setq max tf))))
-  (loop for key being the hash-key of *query-vector* do
-        (setq current-term (gethash key *terms*))
-        (cond ((not (equal nil current-term))  
-               (setq idf (term-idf current-term))
-               (setq tf-idf (* (/ (gethash key *query-vector*) max) idf)) ;FORMEL http://www.site.uottawa.ca/~diana/csi4107/cosine_tf_idf_example.pdf
-               (setf (gethash key *query-vector*) tf-idf))))))
+ (let ((words) (current-term) (wortindex) (idf 0) (tf-idf 0))
+   (setq words (process-string user-query))
+   (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
+   (mapcar (lambda (word)  ;get term frequencies 
+             (setq current-term (gethash word *terms*))
+             (cond ((not (equal nil current-term))
+                    (setq wortindex (term-index current-term))
+                    (if (gethash wortindex *query-vector*) (setf (gethash wortindex *query-vector*) (+ 1 (gethash wortindex *query-vector*)))
+                      (setf (gethash wortindex *query-vector*) 1))))) words)
+   (loop for key being the hash-key of *query-vector* do
+         (setq current-term (gethash key *terms*))
+         (cond ((not (equal nil current-term))  
+                (setq idf (term-idf current-term))
+                (setq tf-idf (* (gethash key *query-vector*) idf))
+                (setf (gethash key *query-vector*) tf-idf))))))
 
 
 
@@ -138,8 +135,6 @@
     (sqrt laenge)))
         
         
-
-
 
 (defun cosine-similarity (document-vector)
  (let ((dot-product 0) (weight-doc) (weight-query) (doc-vector-length (vector-length document-vector)) (res))

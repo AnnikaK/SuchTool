@@ -88,5 +88,7 @@
 \contentsline {section}{\numberline {8.5}Gesamtanfrage}{36}{section.8.5}
 \contentsline {section}{\numberline {8.6}Ergebnis}{37}{section.8.6}
 \contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{39}{chapter.9}
-\contentsline {chapter}{Literaturverzeichnis}{40}{chapter*.23}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{42}{appendix.A}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{39}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ausblick: W\"unschenswerte Erweiterungen}{39}{section.9.2}
+\contentsline {chapter}{Literaturverzeichnis}{41}{chapter*.23}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{43}{appendix.A}
