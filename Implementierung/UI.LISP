@@ -15,7 +15,7 @@
                             :text "C:\\"
                             :min-width 900
                             :max-width 900))
-       (make-instance 'capi:button 
+       (setq select-button (make-instance 'capi:button 
                       :text "select" 
                       :callback #'(lambda (&rest args)
                                     (let (antwort)
@@ -26,7 +26,7 @@
                                              (setf (capi:display-pane-text path-text) antwort)
                                              (setq itemList (onSelected antwort))
 
-                                             (setf (capi:collection-items keyword-panel) itemList))))))))
+                                             (setf (capi:collection-items keyword-panel) itemList)))))))))
      "Query:"
 
      (make-instance 

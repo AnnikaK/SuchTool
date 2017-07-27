@@ -44,7 +44,7 @@
 
 
 (defun string-search (text content)
-  (search text content))
+  (search text content :test 'equalp))
 
 
 

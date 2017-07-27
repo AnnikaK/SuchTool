@@ -48,7 +48,7 @@
 
 
 
-;TODO : convert
+
 (defun num-search (text content)
   (let ((num (ignore-errors (read-from-string text))))
     (cond ((numberp num) (= num content))
@@ -61,7 +61,10 @@
                    ((equalp text "sechs") (setq num 6))
                    ((equalp text "sieben") (setq num 7))
                    ((equalp text "acht") (setq num 8))
-                   ((equalp text "neun") (setq num 9)))
+                   ((equalp text "neun") (setq num 9))
+                   ((equalp text "zehn") (setq num 10))
+                   ((equalp text "elf") (setq num 11))
+                   ((equalp text "zwölf") (setq num 12)))
              (if (numberp num) (= num content))))))
 
 
