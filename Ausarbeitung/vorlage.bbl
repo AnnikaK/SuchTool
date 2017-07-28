@@ -51,6 +51,11 @@
 \newblock \Btxnumberlong{}~34 \btxinserieslong{}\ {\em Integrated Series in
   Information Systems}. Springer Verlag, 2014.
 
+\bibitem[Koh]{Kohlfuerst}
+{\sc Kohlf\"urst, Michael}: {\em {Online Marketing Blog von PromoMasters SEO
+  und SEA}}.
+\newblock \\ {\url{http://www.promomasters.at/blog/stop-words/}}.
+
 \bibitem[PDVC06]{Claus:06}
 {\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden -
   Informatik A-Z, Fachlexikon für Studium, Ausbildung und Beruf}}.
@@ -60,5 +65,9 @@
 {\sc Stefan~B\"uttcher, Charles~L.A.Clarke, Gordon~V.Cormack}: {\em
   {Information Retrieval - Implementing and Evaluating Search Engines}}.
 \newblock The MIT Press - Massachusetts Institute of Technology, 2010.
+
+\bibitem[web13]{webtools:13}
+{\em {99webTools - List of English Stop words}}, 2013.
+\newblock \\ {\url{http://99webtools.com/blog/list-of-english-stop-words/}}.
 
 \end{thebibliography}

@@ -11,6 +11,7 @@ Damit Dokumente eines Archivs von Information Retrieval Modellen verarbeitet wer
 Zudem müssen auch die Dokumente selbst mit einem Index versehen werden, genannt \textit{docID} (kurz für \textit{document identification}), um auf deren enthaltende Einheiten schnell zugreifen zu können. Dabei handelt es sich meist um einen ganzzahligen Wert (\cite{Manning:08}, S.7).\\
 Dieses Vorgehen wird als Indexierung bezeichnet und ist unabdingbar, da ansonsten für jede Anfrage erneut über die gesamten Dokumentinhalte iteriert werden müsste, was ineffizient und für den Nutzer unzumutbar langsam wäre (\cite{Manning:08}, S.3). \\
 
+\label{lemmatisierung}
 \subsection{Term und Vokabular}
 Die indizierten Einheiten, in welche die Dokumente zerlegt werden, sind unter dem Begriff Term bekannt (\cite{Manning:08}, S.3).\\
 Terme sind im häufigsten Fall einfach Wörter eines Textes, dies muss jedoch nicht zwangsläufig der Fall sein.\\
@@ -21,6 +22,7 @@ Manche Systeme reduzieren Wörter beispielsweise auf deren Stammformen, um ähnlic
 
 
 \subsection{Stopwords}
+\label{stop}
 Nicht jedes Wort wird bei der Indexierung zu einem Term: Handelt es sich um sehr häufig auftretende und zum Sinn des Textes wenig beitragende Wörter, wie z.B. \glqq und\grqq{} oder \glqq dann\grqq{}, können diese wegfallen, um Speicherplatz zu sparen (\cite{Ferber:03}, S.37). Außerdem kommen durch ignorieren unwichtiger Terme weniger Dokumente infrage, was die Suche beschleunigt.\\
 
 

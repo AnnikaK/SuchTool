@@ -71,9 +71,11 @@
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Anfrage}{7}{section.3.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Indexierung}{7}{section.3.2}}
+\newlabel{lemmatisierung}{{3.2}{7}{Indexierung}{section.3.2}{}}
 \citation{Ferber:03}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Term und Vokabular}{8}{subsection.3.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Stopwords}{8}{subsection.3.2.2}}
+\newlabel{stop}{{3.2.2}{8}{Stopwords}{subsection.3.2.2}{}}
 \citation{Ferber:03}
 \citation{Manning:08}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Boolesches Retrieval}{9}{chapter.4}}
@@ -209,57 +211,59 @@
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {7.2}Dokumentstruktur}{27}{lstlisting.7.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {7.2}Vorverarbeitung}{27}{section.7.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Erstellen des Dokument-Dictionaries}{27}{subsection.7.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{27}{subsection.7.2.2}}
-\citation{Ionescu:16}
 \@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Struktur f\"ur einen Eintrag im Dokument-Dictionary. Die Eintr\"age Datum und Absender k\"onnen, falls nicht existent, auch leer bleiben. Im rot markierten Bereich werden sp\"ater die Dokumentvektoren eingetragen. (Eigene Abbildung).}}{28}{figure.7.1}}
 \newlabel{docs}{{7.1}{28}{Struktur für einen Eintrag im Dokument-Dictionary. Die Einträge Datum und Absender können, falls nicht existent, auch leer bleiben. Im rot markierten Bereich werden später die Dokumentvektoren eingetragen. (Eigene Abbildung)}{figure.7.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Verarbeiten der Keywords}{28}{section*.20}}
-\@writefile{toc}{\contentsline {subsubsection}{Verarbeiten des Freitextes}{28}{section*.21}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung).}}{29}{figure.7.2}}
-\newlabel{m}{{7.2}{29}{Modifizierte invertierte Liste zur Realisierung der Keywordsuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung)}{figure.7.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Struktur f\"ur einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung).}}{29}{figure.7.3}}
-\newlabel{terms}{{7.3}{29}{Struktur für einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung)}{figure.7.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Die Suche}{30}{section.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Keywordsuche}{30}{subsection.7.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{31}{subsection.7.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{31}{subsection.7.3.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Finden der Resultate}{31}{section*.22}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{31}{section.7.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Beispiel f\"ur Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}}{32}{figure.7.4}}
-\newlabel{query}{{7.4}{32}{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung)}{figure.7.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{28}{subsection.7.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Verarbeiten der Metadaten}{28}{section*.20}}
+\citation{Ionescu:16}
+\citation{webtools:13}
+\citation{Kohlfuerst}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Metadatensuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung).}}{29}{figure.7.2}}
+\newlabel{m}{{7.2}{29}{Modifizierte invertierte Liste zur Realisierung der Metadatensuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung)}{figure.7.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Verarbeiten des Freitextes}{29}{section*.21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Struktur f\"ur einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung).}}{30}{figure.7.3}}
+\newlabel{terms}{{7.3}{30}{Struktur für einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung)}{figure.7.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Die Suche}{31}{section.7.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{31}{subsection.7.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{32}{subsection.7.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{32}{subsection.7.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Finden der Resultate}{32}{section*.22}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{32}{section.7.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Beispiel f\"ur Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}}{33}{figure.7.4}}
+\newlabel{query}{{7.4}{33}{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung)}{figure.7.4}{}}
 \citation{Hofer:17}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{33}{chapter.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{34}{chapter.8}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Anforderungen}{33}{section.8.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{33}{section.8.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit  {a} beinhaltet die Verzeichnisauswahl, Teil \textit  {b} die gesamte Suchanfrage und Teil\textit  {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{34}{figure.8.1}}
-\newlabel{overview}{{8.1}{34}{Gliederung der Benutzeroberfläche. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung)}{figure.8.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{34}{section.8.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{35}{figure.8.2}}
-\newlabel{select}{{8.2}{35}{Verzeichnisauswahl (Eigene Abbildung)}{figure.8.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}Suchanfrage}{35}{section.8.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{35}{subsection.8.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Beispiel}{36}{subsection.8.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{36}{figure.8.3}}
-\newlabel{a}{{8.3}{36}{Keywords auswählen und intern verknüpfen, hier OR (eigene Abbildung)}{figure.8.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Gesamtanfrage}{36}{section.8.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Bereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}}{37}{figure.8.4}}
-\newlabel{b}{{8.4}{37}{Freitextauswahl. Da nur ein Bereich ausgewählt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}{figure.8.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{37}{figure.8.5}}
-\newlabel{c}{{8.5}{37}{Display (eigene Abbildung)}{figure.8.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.6}Ergebnis}{37}{section.8.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster (eigene Abbildung)}}{38}{figure.8.6}}
-\newlabel{d}{{8.6}{38}{Resultatfenster (eigene Abbildung)}{figure.8.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{38}{figure.8.7}}
-\newlabel{res}{{8.7}{38}{Scrollbare Anzeige für viele Treffer (eigene Abbildung)}{figure.8.7}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{39}{chapter.9}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Anforderungen}{34}{section.8.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{34}{section.8.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit  {a} beinhaltet die Verzeichnisauswahl, Teil \textit  {b} die gesamte Suchanfrage und Teil\textit  {c} die Eingabe der Teilanfrage (Eigene Abbildung).}}{35}{figure.8.1}}
+\newlabel{overview}{{8.1}{35}{Gliederung der Benutzeroberfläche. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Eingabe der Teilanfrage (Eigene Abbildung)}{figure.8.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{35}{section.8.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{36}{figure.8.2}}
+\newlabel{select}{{8.2}{36}{Verzeichnisauswahl (Eigene Abbildung)}{figure.8.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Suchanfrage}{36}{section.8.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{36}{subsection.8.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Beispiel}{37}{subsection.8.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Keywords ausw\"ahlen und intern verkn\"upfen, hier OR (eigene Abbildung)}}{37}{figure.8.3}}
+\newlabel{a}{{8.3}{37}{Keywords auswählen und intern verknüpfen, hier OR (eigene Abbildung)}{figure.8.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Gesamtanfrage}{37}{section.8.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Bereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}}{38}{figure.8.4}}
+\newlabel{b}{{8.4}{38}{Freitextauswahl. Da nur ein Bereich ausgewählt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung)}{figure.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.5}{\ignorespaces Display (eigene Abbildung)}}{38}{figure.8.5}}
+\newlabel{c}{{8.5}{38}{Display (eigene Abbildung)}{figure.8.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Ergebnis}{38}{section.8.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.6}{\ignorespaces Resultatfenster (eigene Abbildung)}}{39}{figure.8.6}}
+\newlabel{d}{{8.6}{39}{Resultatfenster (eigene Abbildung)}{figure.8.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige f\"ur viele Treffer (eigene Abbildung)}}{39}{figure.8.7}}
+\newlabel{res}{{8.7}{39}{Scrollbare Anzeige für viele Treffer (eigene Abbildung)}{figure.8.7}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{40}{chapter.9}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {9.1}Zusammenfassung}{39}{section.9.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}Ausblick: W\"unschenswerte Erweiterungen}{39}{section.9.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Zusammenfassung}{40}{section.9.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Ausblick: W\"unschenswerte Erweiterungen}{40}{section.9.2}}
 \bibstyle{geralpha}
 \bibdata{literatur}
 \bibcite{Academic:17}{Aca}
@@ -271,7 +275,9 @@
 \bibcite{Ionescu:16}{Ion16}
 \bibcite{Jaenich:84}{J\"an84}
 \bibcite{Bryson:14}{KMOB14}
+\bibcite{Kohlfuerst}{Koh}
 \bibcite{Claus:06}{PDVC06}
+\@writefile{toc}{\contentsline {chapter}{Literaturverzeichnis}{42}{chapter*.23}}
 \bibcite{Buettcher:10}{SB10}
-\@writefile{toc}{\contentsline {chapter}{Literaturverzeichnis}{41}{chapter*.23}}
+\bibcite{webtools:13}{web13}
 \@input{chapters/Selbststaendigkeitserklaerung.aux}

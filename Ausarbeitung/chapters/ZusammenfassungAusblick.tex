@@ -15,9 +15,10 @@ da der Anwender sein Informationsbedürfnis auf möglichst unkomplizierte Art ausd
 
 
  \section{Ausblick: Wünschenswerte Erweiterungen}
-Dieser Abschnitt liefert einen Ausblick, welche Erweiterungen für die Implementierung wünschenswert wären, im Rahmen dieser Arbeit jedoch aus zeitlichen Gründen nicht behandelt werden konnten. \\
-Eine sehr vorteilhafte Erweiterung stellt die Lemmatisierung dar, d.h. das Zurückführen der Wörter auf deren Wortstämme, sodass die Anzahl der zu speichernden Terme deutlich reduziert wird. Gerade bei größeren Archiven ist dies unabdingbar, da der Speicherplatz limitiert ist. Außerdem erhöht dies die Anzahl möglicher Treffer, da auch zum Suchbegriff verwandte Wörter gefunden werden. \\
-Zudem möglich wäre das Ergänzen von Spelling Correction: Vertippt der Nutzer sich, so soll nicht gleich nichts zurückgeliefert werden, sondern die Meldung, ob nicht eventuell ein anderes Wort gemeint war, inklusive einer Liste von auswählbaren Vorschlägen. Dies würde das System fehlertoleranter und nutzerfreundlicher machen. \\
+Einige Erweiterungen konnten aus zeitlichen Gründen in der Implementierung nicht umgesetzt werden, sind jedoch wünschenswert. \\
+Die Im Kapitel Grundbegriffe beschriebene Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) würde eine große Verbesserung hinsichtlich des Speicherbedarfs bedeuten, da weniger Terme gespeichert werden müssen. Zudem würde das Ergänzen um Lemmatisierung auch die Suche verbessern, da auch Dokumente mit zum Suchbegriff verwandten Wörtern als Treffer gewertet werden. \\
+Weiterhin wünschenswert ist die Ergänzung um Spelling Correction, d.h. um eine Rechtschreibkorrektur die ähnliche Suchbegriffe vorschlägt, falls der Anwender sich bei der Eingabe vertippt hat. Dies würde die Anwenderfreundlichkeit des Systems erheblich steigern, insbesondere in Fällen in welchen der Anwender seinen Tippfehler nicht bemerkt und unerwartet keine Resultate erhält. Da Nutzer in der Regel Spelling Correction aus der alltäglichen Websuche gewöhnt sind, ist es wünschenswert auch dieses Information Retrieval System damit auszustatten.
+
 
 %-Stopwords \\
 %-Lemmatisierung \\
