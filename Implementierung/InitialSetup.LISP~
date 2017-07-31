@@ -144,6 +144,7 @@
 ;has to do all init steps, called when directory selected
 (defun onSelected (directory-name)
   (let ((current-doc))
+    (setf (capi:button-enabled select-button) nil)
     (setq *results* '()) ;reset results because new directory
     (createDocumentDictionary directory-name)
     (loop for docID being the hash-key of *documents* do 

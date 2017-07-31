@@ -90,7 +90,6 @@
     or-res))
     
 
-;only one list because and/or operation before negation
 (defun negate (result)
   (let ((all-docs '()))
     (loop for id being the hash-key of *documents* do
@@ -102,15 +101,3 @@
                         
                                
 
-;(negate '(1 2 3))
-;(connect-or '((1 2 3 4 7) (2 3 4)))
-;(connect-and '((1 2 3) (4 2 8 3)))
-
-
-
-        
-
-;(recursive-list-search "drei" '("sdfkj" '(bla kansdfj "sjdfblaskdjfkd" "dredf") jfsdof 3 '(2 '('("drei")))))
-
-;(num-search "drei" 3)
-;(symbol-search "blacvbfdg" 'bla)

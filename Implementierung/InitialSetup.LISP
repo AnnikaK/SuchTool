@@ -92,7 +92,7 @@
 
 
 
-;form: dictionary mit keywords mit dem keyword-namen [symbol] als key und entries in der form (docID type content)
+;form: dictionary of keywords with keyword-name [symbol] as key and entries in form of (docID type content)
 (defun process-keyword-list (keyword-list docID)
   (let ((current) (key) (entry) (type) (content))
     (do* ((k-list keyword-list (cdr k-list))
@@ -117,7 +117,7 @@
              :keyword-type type 
              :content content)) 
       (if (gethash key *keyword-dict*)
-          (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing ;HIER sortiert einfuegen
+          (setf (gethash key *keyword-dict*) (cons entry (gethash key *keyword-dict*))) ;already existing 
         (setf (gethash key *keyword-dict*) (list entry)))))) ;new entry for keyword
 
 
@@ -145,7 +145,7 @@
 (defun onSelected (directory-name)
   (let ((current-doc))
     (setf (capi:button-enabled select-button) nil)
-    (setq *results* '()) ;reset results because new directory
+    (setq *results* '()) 
     (createDocumentDictionary directory-name)
     (loop for docID being the hash-key of *documents* do 
           (setq current-doc (split (readFileInLines (document-path (gethash docID *documents*)))))

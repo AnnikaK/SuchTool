@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {1.3.1}Dynamisches einlesen der Metadaten}{2}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}Unterscheidung Metadaten und Freitext}{2}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Metadatensuche}{2}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Freitextsuche}{2}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.4}Freitextsuche}{3}{subsection.1.3.4}
 \contentsline {subsection}{\numberline {1.3.5}Verkn\"upfung mit UND/ODER}{3}{subsection.1.3.5}
 \contentsline {subsection}{\numberline {1.3.6}Benutzeroberfl\"ache}{3}{subsection.1.3.6}
 \contentsline {chapter}{\numberline {2}Information Retrieval}{4}{chapter.2}

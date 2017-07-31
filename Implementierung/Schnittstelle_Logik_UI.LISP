@@ -71,7 +71,7 @@
 
 
 
-;TODO : pretty-print und editor-pane? Nice to have
+
  
 
 (defun display-query (selection-list text)
@@ -242,25 +242,3 @@
 
 (defun datei-oeffnen  (arg)
   (sys:call-system (concatenate 'string "\"" arg "\"")))
-
-
-
-
-
-;;;testing----------------------------------------------------------
-
-
-;(connect-and-total '(((0.2 15) (0.3 2)) ((0.2 4) (0.3 2))))
-;(connect-or-total '(((0.2 15) (0.3 2)) ((0.2 4) (0.3 2))))
-
-
-
-;(merge-and '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
-;(merge-or '((1 23) (1 234) (1 5)) '((0.2 23) (0.3 234) (0.23 13234)))
-
-
-
-; (dir "C:\\testdatei.txt")
-
-; (datei-oeffnen "C:\\testdatei.txt")
-

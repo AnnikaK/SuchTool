@@ -1,5 +1,4 @@
 (defvar *terms* (make-hash-table)) ;key is term, value is tuple (vector-index document-frequency)
-(defvar *special-characters* '(#\# #\' #\" #\/ #\\ #\; #\- #\( #\) #\[ #\]))
 (defvar *vocabulary* '())
 (defvar *query-vector*)
 (defvar *query-vector-length*)
@@ -61,7 +60,6 @@
   (let ((index 0) (term))
     (setq *terms* (make-hash-table :test 'equalp))
     (mapcar (lambda (x)
-              ;(setq term (ignore-errors (read-from-string (delete-if (lambda (c) (member c *special-characters*)) x))))
                      (setq term x) 
                      (setf (gethash term *terms*) (make-term :index index :idf 0))
                      (setq index (+ 1 index)))
@@ -73,7 +71,7 @@
 (defun create-document-vectors (free-text)
  (let ((size (length free-text)) (current-element) (docID) (text-content) (doc-vector) (alreadySet) (words) (current-term) (wordindex)) 
    (loop for x from 0 to size do
-         (setq current-element (car free-text)) ;(docID text-content) , text-content ist liste mit line-strings
+         (setq current-element (car free-text)) ;(docID text-content) , text-content is list of line-strings
          (setq free-text (cdr free-text)) 
          (setq docID (first current-element))
          (setq text-content (second current-element))
@@ -88,7 +86,7 @@
                                            (setq wortindex (term-index current-term))
                                            (if (gethash wortindex doc-vector) (setf (gethash wortindex doc-vector) (+ 1 (gethash wortindex doc-vector))) ;increase term frequency
                                              (setf (gethash wortindex doc-vector) 1))
-                                           (cond ((equal (gethash wortindex alreadySet) nil) ;increase doc-freuency (has to be transformed to idf later!!!)
+                                           (cond ((equal (gethash wortindex alreadySet) nil) ;increase doc-freuency (later transformed to idf)
                                                   (setf (gethash wortindex alreadySet) t)
                                                   (setf (term-idf current-term) (+ 1 (term-idf current-term)))))))) words))
                         text-content)
@@ -106,7 +104,7 @@
           (setq current-term (gethash key *terms*))
           (cond ((not (equal nil current-term))
                  (setq df(term-idf current-term))
-                 (setq idf (log (/ number-of-documents df) 10)) ;idf FORMEL S.108
+                 (setq idf (log (/ number-of-documents df) 10)) 
                  (setf (term-idf current-term) idf))))))
                  
                  
@@ -206,41 +204,3 @@
 
 
 
-
-
-
-
-
-        
-       
-
-;;;;----------------------------------------------------------------------------------------TESTING 
-
-
-
-(defun printDocuments () 
-  (loop for key being the hash-key of *documents* do 
-        (setq docID key)
-        (printDict (document-document-vector (gethash docID *documents*)))))
-        
-(defun printTerms () 
-  (loop for key being the hash-key of *terms* do 
-        (print key)
-        (setq value (gethash key *terms*))
-        (print (term-index value))
-        (print (term-idf value))))
-
-;(printTerms)
-
-;(printDict *documents*)
-;(printDict *query-vector*)
-
-
-;(printDict (document-document-vector (gethash 2 *documents*)))
-
-
-;(gethash "DFKI" *terms*)
-
-
-
-;(create-query-vector "grillen im Mai") 

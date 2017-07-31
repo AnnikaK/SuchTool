@@ -9,7 +9,7 @@ Gelöst werden kann das Problem durch ein Information Retrieval System, mit dem b
 Ein solches System liefert idealerweise eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. 
 In diesem Fall könnte die Person beispielsweise nach $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ suchen. \\
 Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die Beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
-Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner , d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
+Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
 
 
 
@@ -18,7 +18,7 @@ Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner , d.h. Po
 \section{Problemstellung}
 \label {Problemstellung}
 Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche (engl. Information Retrieval System) in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält.\\
-Dies bedeutet, dass sie sowohl gewöhnlichen Freitext als auch Metadaten enthalten. Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar $OR$ (engl. oder) verknüpfbar sein. \\
+Dies bedeutet, dass sie sowohl gewöhnlichen Freitext als auch Metadaten enthalten. Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Die gewählten Suchkriterien sollen beliebig mit den logischen Operatoren $AND$ (engl. und), $OR$ (engl. oder), $NOT$ (engl. nicht) verknüpfbar sein und die sich ergebenden logischen Ausdrücke sollen beliebig tief geschachtelt werden können.\\
 Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postausgang, allerdings soll das System so flexibel sein, dass es auch auf andere Archive mit teilweise strukturierten Dokumenten anwendbar ist. 
 
 
@@ -40,7 +40,7 @@ Für das dynamische Einlesen der Metadaten müssen die folgenden Punkte erfüllt se
 
 \subsection{Metadatensuche}
 Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
-Im Gegensatz zur Freitextsuche muss hier zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort überhaupt darin auftritt.
+Im Gegensatz zur Freitextsuche muss hier zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort, z.B. der Name Datum, überhaupt darin auftritt.
 
 \subsection{Freitextsuche}
 Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche. Daraus resultieren zwei Probleme:
@@ -49,15 +49,15 @@ Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche
 \item Wie kann die Suche bei begrenztem Speicher bewältigt werden?
 \end{enumerate}
 
-Zudem stellt sich die Frage nach einem geeigneten Verfahren, welches bei komplexeren Anfragen auch teilweise passende Ergebnisse liefert und die Resultate nach Übereinstimmungsgrad mit der Nutzeranfrage bewerten und ordnen kann.
+Zudem stellt sich die Frage nach einem geeigneten Verfahren, welches bei komplexeren Anfragen auch teilweise passende Ergebnisse liefert und die Resultate hinsichtlich des Übereinstimmungsgrads mit der Nutzeranfrage bewerten und entsprechend ordnen kann.
 
 
 \subsection{Verknüpfung mit UND/ODER}
 Alle Anfragen sollen beliebig mit den logischen Operatoren $AND$, $OR$ sowie $NOT$ verknüpfbar sein. Dies beinhaltet die folgenden Problemstellungen:
 \begin{enumerate}
 \item Sind in der Metadatensuche mehrere Metadaten als Suchfelder ausgewählt, müssen die Teilergebnisse zu jedem Suchfeld zu einem Gesamtergebnis für die Metadatensuche zusammengefasst werden, wobei die Art des Zusammenfassens vom selektierten logischen Operator abhängt.
-\item Resultate der Metadatensuche und der Freitextsuche müssen miteinander zu einem Gesamtergebnis für die Anfrage verknüpft werden. Auch hier bedingt der logische Operator die Art der Verknüpfung.
-\item Stellt der Nutzer mehrere Teilanfragen, müssen die Ergebnisse der einzelnen Anfragen logisch verknüpft werden. Die Verknüpfung mehrerer Teilanfragen muss ebenfalls einstellbar sein.
+\item Resultate der Metadatensuche und der Freitextsuche müssen miteinander zu einem Gesamtergebnis für die aktuelle Anfrage verknüpft werden. Auch hier bedingt der logische Operator die Art der Verknüpfung.
+\item Stellt der Nutzer mehrere Teilanfragen, müssen die Ergebnisse der einzelnen Anfragen logisch verknüpft werden. Die Art der Verknüpfung mehrerer Teilanfragen muss ebenfalls einstellbar sein.
 \end{enumerate}
 
 
