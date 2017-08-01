@@ -220,14 +220,14 @@
                    ((equalp text "zwei") (setq num 2))
                    ((equalp text "drei") (setq num 3))
                    ((equalp text "vier") (setq num 4))
-                   ((equalp text "fünf") (setq num 5))
+                   ((equalp text "f�nf") (setq num 5))
                    ((equalp text "sechs") (setq num 6))
                    ((equalp text "sieben") (setq num 7))
                    ((equalp text "acht") (setq num 8))
                    ((equalp text "neun") (setq num 9))
                    ((equalp text "zehn") (setq num 10))
                    ((equalp text "elf") (setq num 11))
-                   ((equalp text "zwölf") (setq num 12)))
+                   ((equalp text "zw�lf") (setq num 12)))
              (if (numberp num) (= num content))))))
 
 
@@ -438,7 +438,7 @@ stopped."
 (defvar *query-vector*)
 (defvar *query-vector-length*)
 (defvar *score-list*)
-(defvar *german-stopwords* '(ab aber aehnlich ähnlich alle allein allem allen aller alles allg allgemein als also am an and ander andere anderem anderen anderer anderes anderm andern anderr anders auch auf aus außer author autor been bei beim bereits besonders besser bevor bietet bin bis bist böden boeden bzw ca da dabei dadurch dafuer daher damit daneben dann daran darauf daraus darum das dass daß dasselbe davon davor dazu dein deine deinem deinen deiner deines dem demselben den denen denn dennoch denselben der derem deren derer derselbe derselben des deshalb desselben dessen dich die dies diese dieselbe dieselben diesem diesen dieser dieses dinge dir doch dort du dunklen durch eben eher eigenen eigenes eigentlich ein eine einem einen einer eines einfach einig einige einigem einigen einiger einiges einmal er erst erste erster es etc etwa etwas euch euer eure eurem euren eurer eures fall finden for für ganz ganze ganzem ganzen ganzer ganzes gar geben gegen geht gewesen ggf gibt gleich gute guten hab habe haben hat hatte hatten hattest hattet hier hin hinter hinterher ich ihm ihn ihnen ihr ihre ihrem ihren ihrer ihres im immer in indem information ins ist ja je jede jedem jeden jeder jedes jedoch jene jenem jenen jener jenes jetzt kann kannst kein keine keinem keinen keiner keines koennen koennt kommen kommt können könnt konnte könnte langsam lassen leicht leider lesen lichten liest machen mag man manche manchem manchen mancher manches mehr mehrere mein meine meinem meinen meiner meines meist mich mir mit möchte moechte moeglich möglich muß müssen mußt müßt musste müsste nach nachdem nachher natürlich ncht neben nein neu neue neuem neuen neuer neues nicht nichts noch nun nur nutzung ob oder off ohne online per schnell schon schwierig sehen sehr sehrwohl seid sein seine seinem seinen seiner seines seit seite seiten selber selbst sich sie sieht sind so sodaß solch solche solchem solchen solcher solches soll sollen sollst sollt sollte sollten solltest sondern sonst soviel soweit sowie sowohl spielen statt steht suchen titel über um und uns unse unsem unsen unser unsere unseren unseres unter version viel viele vieles vom von vor vorher wachen während wann war waren warst warum was weg weil weiter weitere welche welchem welchen welcher welches wenig wenige weniger wenn wer werde werden werdet weshalb wie wieder wieso wieviel will wir wird wirklich wirst wo woher wohin wohl wollen wollte wurde würde wurden würden zu zum zur zwar zwischen))
+(defvar *german-stopwords* '(ab aber aehnlich ähnlich alle allein allem allen aller alles allg allgemein als also am an and ander andere anderem anderen anderer anderes anderm andern anderr anders auch auf aus außer author autor been bei beim bereits besonders besser bevor bietet bin bis bist böden boeden bzw ca da dabei dadurch dafuer daher damit daneben dann daran darauf daraus darum das dass daß dasselbe davon davor dazu dein deine deinem deinen deiner deines dem demselben den denen denn dennoch denselben der derem deren derer derselbe derselben des deshalb desselben dessen dich die dies diese dieselbe dieselben diesem diesen dieser dieses dinge dir doch dort du dunklen durch eben eher eigenen eigenes eigentlich ein eine einem einen einer eines einfach einig einige einigem einigen einiger einiges einmal er erst erste erster es etc etwa etwas euch euer eure eurem euren eurer eures fall finden for f�r ganz ganze ganzem ganzen ganzer ganzes gar geben gegen geht gewesen ggf gibt gleich gute guten hab habe haben hat hatte hatten hattest hattet hier hin hinter hinterher ich ihm ihn ihnen ihr ihre ihrem ihren ihrer ihres im immer in indem information ins ist ja je jede jedem jeden jeder jedes jedoch jene jenem jenen jener jenes jetzt kann kannst kein keine keinem keinen keiner keines koennen koennt kommen kommt können könnt konnte könnte langsam lassen leicht leider lesen lichten liest machen mag man manche manchem manchen mancher manches mehr mehrere mein meine meinem meinen meiner meines meist mich mir mit möchte moechte moeglich möglich muß müssen mußt müßt musste müsste nach nachdem nachher nat�rlich ncht neben nein neu neue neuem neuen neuer neues nicht nichts noch nun nur nutzung ob oder off ohne online per schnell schon schwierig sehen sehr sehrwohl seid sein seine seinem seinen seiner seines seit seite seiten selber selbst sich sie sieht sind so sodass solch solche solchem solchen solcher solches soll sollen sollst sollt sollte sollten solltest sondern sonst soviel soweit sowie sowohl spielen statt steht suchen titel über um und uns unse unsem unsen unser unsere unseren unseres unter version viel viele vieles vom von vor vorher wachen während wann war waren warst warum was weg weil weiter weitere welche welchem welchen welcher welches wenig wenige weniger wenn wer werde werden werdet weshalb wie wieder wieso wieviel will wir wird wirklich wirst wo woher wohin wohl wollen wollte wurde würde wurden würden zu zum zur zwar zwischen))
 
 
 (defvar *english-stopwords* '(a able about across after all almost also am among an and any are as at be because been but by can cannot could dear did do does either else ever every for from get got had has have he her hers him his how however i if in into is it its just least let like likely may me might most must my neither no nor not of off often on only or other our own rather said say says she should since so some than that the their them then there these they this tis to too twas us wants was we were what when where which while who whom why will with would yet you your ain't aren't can't could've couldn't didn't doesn't don't hasn't he'd he'll he's how'd how'll how's i'd i'll i'm i've isn't it's might've mightn't must've mustn't shan't she'd she'll she's should've shouldn't that'll that's there's they'd they'll they're they've wasn't we'd we'll we're weren't what'd what's when'd when'll when's where'd where'll where's who'd who'll who's why'd why'll why's won't would've wouldn't you'd you'll you're you've))
@@ -459,8 +459,6 @@ stopped."
             (setf (gethash word *stopword-dict-engl*) t))
           *english-stopwords*)
   (setq *english-stopwords* nil))
-
-
 
 
 
@@ -572,6 +570,8 @@ stopped."
    (setq words (process-string user-query))
    (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
    (mapcar (lambda (word)  ;get term frequencies 
+             (cond ((or (gethash (ignore-errors (read-from-string word)) *stopword-dict-ger*) (gethash (ignore-errors (read-from-string word)) *stopword-dict-engl*))
+                    (show-stopword-occured word)))
              (setq current-term (gethash word *terms*))
              (cond ((not (equal nil current-term))
                     (setq wortindex (term-index current-term))
@@ -583,6 +583,7 @@ stopped."
                 (setq idf (term-idf current-term))
                 (setq tf-idf (* (gethash key *query-vector*) idf))
                 (setf (gethash key *query-vector*) tf-idf))))))
+
 
 
 
@@ -858,6 +859,29 @@ stopped."
                     (make-instance 
                      'capi:row-layout :description 
                      (list "Please select at least one keyword!" ""))
+                    (make-instance
+                     'capi:push-button
+                     :text "OK"  
+                     :callback-type :data
+                     :callback 
+                     #'(lambda (arg)  
+                         (capi:exit-dialog arg))))
+                   :min-width 200
+                   :background  :white))))
+
+
+(defun show-stopword-occured (word)
+  (capi:display-dialog  
+   (capi:make-container
+    (make-instance 'capi:column-layout
+                   :x-adjust  :center
+                   :width 200
+                   :description
+                   (list 
+                     
+                    (make-instance 
+                     'capi:row-layout :description 
+                     (list "" word "is a stopword, cannot be searched!" ""))
                     (make-instance
                      'capi:push-button
                      :text "OK"  

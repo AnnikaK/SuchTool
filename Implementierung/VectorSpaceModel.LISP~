@@ -71,7 +71,7 @@
 (defun create-document-vectors (free-text)
  (let ((size (length free-text)) (current-element) (docID) (text-content) (doc-vector) (alreadySet) (words) (current-term) (wordindex)) 
    (loop for x from 0 to size do
-         (setq current-element (car free-text)) ;(docID text-content) , text-content is listof line-strings
+         (setq current-element (car free-text)) ;(docID text-content) , text-content is list of line-strings
          (setq free-text (cdr free-text)) 
          (setq docID (first current-element))
          (setq text-content (second current-element))
@@ -204,41 +204,3 @@
 
 
 
-
-
-
-
-
-        
-       
-
-;;;;----------------------------------------------------------------------------------------TESTING 
-
-
-
-(defun printDocuments () 
-  (loop for key being the hash-key of *documents* do 
-        (setq docID key)
-        (printDict (document-document-vector (gethash docID *documents*)))))
-        
-(defun printTerms () 
-  (loop for key being the hash-key of *terms* do 
-        (print key)
-        (setq value (gethash key *terms*))
-        (print (term-index value))
-        (print (term-idf value))))
-
-;(printTerms)
-
-;(printDict *documents*)
-;(printDict *query-vector*)
-
-
-;(printDict (document-document-vector (gethash 2 *documents*)))
-
-
-;(gethash "DFKI" *terms*)
-
-
-
-;(create-query-vector "grillen im Mai") 

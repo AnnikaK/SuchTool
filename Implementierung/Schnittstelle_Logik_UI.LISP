@@ -230,6 +230,29 @@
                    :background  :white))))
 
 
+(defun show-stopword-occured (word)
+  (capi:display-dialog  
+   (capi:make-container
+    (make-instance 'capi:column-layout
+                   :x-adjust  :center
+                   :width 200
+                   :description
+                   (list 
+                     
+                    (make-instance 
+                     'capi:row-layout :description 
+                     (list "" word "is a stopword, cannot be searched!" ""))
+                    (make-instance
+                     'capi:push-button
+                     :text "OK"  
+                     :callback-type :data
+                     :callback 
+                     #'(lambda (arg)  
+                         (capi:exit-dialog arg))))
+                   :min-width 200
+                   :background  :white))))
+
+
 (defun result-selected (&rest args)
   (let* ((selected (car args)) (path (fifth selected))) 
     (cond ((equal (capi:choice-selected-item open-mode-panel) dir-button)

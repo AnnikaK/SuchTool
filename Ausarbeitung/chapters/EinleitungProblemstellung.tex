@@ -2,13 +2,13 @@
 
 \section{Einleitung}
 
-Nahezu jeder nutzt heutzutage tagtäglich E-Mail-Dienste und kennt die Problematik, dass der Posteingang sich unter der Flut eintreffender Nachrichten stetig füllt, bis der Ordner so voll ist, dass es jede Übersicht verloren geht. \\
+Nahezu jeder nutzt heutzutage täglich E-Mail-Dienste und kennt das Phänomen, dass der Posteingang sich unter der Flut eintreffender Nachrichten stetig füllt, bis der Ordner so voll ist, dass es jede Übersicht verloren geht. \\
 Sobald eine bestimmte E-Mail darin wiedergefunden werden soll, beispielsweise weil sie eine bestimmte Kontaktadresse enthält, wird dies zu einem Problem: 
- Wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Eine manuelle Suche ist hier oft aus schieren Zeitgründen unmöglich. \\
+ Wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Eine manuelle Suche ist hier oft aus Zeitgründen unmöglich. \\
 Gelöst werden kann das Problem durch ein Information Retrieval System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können. 
 Ein solches System liefert idealerweise eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. 
 In diesem Fall könnte die Person beispielsweise nach $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ suchen. \\
-Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die Beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
+Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
 Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
 
 
@@ -17,8 +17,10 @@ Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Pos
 
 \section{Problemstellung}
 \label {Problemstellung}
-Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche (engl. Information Retrieval System) in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält.\\
-Dies bedeutet, dass sie sowohl gewöhnlichen Freitext als auch Metadaten enthalten. Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Die gewählten Suchkriterien sollen beliebig mit den logischen Operatoren $AND$ (engl. und), $OR$ (engl. oder), $NOT$ (engl. nicht) verknüpfbar sein und die sich ergebenden logischen Ausdrücke sollen beliebig tief geschachtelt werden können.\\
+Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche (engl. Information Retrieval System, kurz IR-System) in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält.\\
+Dies bedeutet, dass diese sowohl gewöhnlichen Freitext als auch Metadaten enthalten. 
+Metadaten oder auch Metainformationen sind Daten, die andere Daten beschreiben, d.h. sie enthalten Informationen über das eigentliche Dokument (\cite{meta:16}). Im Falle von E-Mails sind  Datum, Absender, Betreff etc. typische Metadaten. \\
+ Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Die gewählten Suchkriterien sollen beliebig mit den logischen Operatoren $AND$ (engl. und), $OR$ (engl. oder), $NOT$ (engl. nicht) verknüpfbar sein und die sich ergebenden logischen Ausdrücke sollen beliebig tief geschachtelt werden können.\\
 Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postausgang, allerdings soll das System so flexibel sein, dass es auch auf andere Archive mit teilweise strukturierten Dokumenten anwendbar ist. 
 
 
@@ -27,7 +29,7 @@ Aus der Aufgabenstellung ergeben sich die im Folgenden beschriebenen Teilproblem
 
 
 \subsection{Dynamisches einlesen der Metadaten}
-Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das IR-System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
+Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das Information Retrieval System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
 
 \subsection{Unterscheidung Metadaten und Freitext}
 Für das dynamische Einlesen der Metadaten müssen die folgenden Punkte erfüllt sein:
@@ -71,7 +73,7 @@ Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht
 	\item Auswählbares Suchverzeichnis, d.h. das Dokumentenarchiv in welchem die Suche erfolgen soll, muss selektiert werden können
 	\item Übersichtliche Anzeige und Auswahlmöglichkeit aller möglichen Suchfelder, d.h. die Namen aller im Archiv vorkommenden Metadaten sowie der Freitext
 	\item Eingabemöglichkeit für den Suchtext
-	\item Selektierbare Logische Operatoren ($AND,OR,NOT$) zur internen Verknüpfung einer Anfrage sowie zur externen Verknüpfung mehrerer Teilanfragen
+	\item Selektierbare logische Operatoren ($AND,OR,NOT$) zur internen Verknüpfung einer Anfrage sowie zur externen Verknüpfung mehrerer Teilanfragen
 	\item Benutzerfreundlichkeit, d.h. die Oberfläche muss so verständlich und intuitiv bedienbar sein wie möglich
 	
 	
