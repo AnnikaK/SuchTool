@@ -20,14 +20,14 @@
 \BOOKMARK [1][-]{section.3.1}{Anfrage}{chapter.3}% 20
 \BOOKMARK [1][-]{section.3.2}{Indexierung}{chapter.3}% 21
 \BOOKMARK [2][-]{subsection.3.2.1}{Term und Vokabular}{section.3.2}% 22
-\BOOKMARK [2][-]{subsection.3.2.2}{Stopwords}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{Stoppw\366rter}{section.3.2}% 23
 \BOOKMARK [0][-]{chapter.4}{Boolesches Retrieval}{}% 24
 \BOOKMARK [1][-]{section.4.1}{Eigenschaften des Verfahrens}{chapter.4}% 25
 \BOOKMARK [1][-]{section.4.2}{Funktionsprinzip}{chapter.4}% 26
 \BOOKMARK [2][-]{subsection.4.2.1}{Attribut}{section.4.2}% 27
 \BOOKMARK [2][-]{subsection.4.2.2}{Anfragen}{section.4.2}% 28
 \BOOKMARK [1][-]{section.4.3}{Implementierungsans\344tze}{chapter.4}% 29
-\BOOKMARK [2][-]{subsection.4.3.1}{Term-Inzidenz-Matrix}{section.4.3}% 30
+\BOOKMARK [2][-]{subsection.4.3.1}{Term-Dokument Inzidenz Matrix}{section.4.3}% 30
 \BOOKMARK [2][-]{subsection.4.3.2}{Invertierte Liste}{section.4.3}% 31
 \BOOKMARK [0][-]{chapter.5}{Das Vektorraummodell}{}% 32
 \BOOKMARK [1][-]{section.5.1}{Funktionsprinzip}{chapter.5}% 33

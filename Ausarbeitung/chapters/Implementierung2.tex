@@ -103,6 +103,7 @@ Zur Veranschaulichung der modifizierten invertierten Liste zeigt Abbildung \ref{
 Das Speichern der Informationen in einem Struct bietet den Vorteil, dass auf diese über den Slot-Value gezielt zugegriffen werden kann, anstatt über Listen iterieren zu müssen, was Effizienzeinbußen zufolge hätte. \\
 Hierbei sei noch angemerkt, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender \grqq und \glqq ABSENDER \grqq wird nur ein Hash-Key angelegt. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei verschiedene Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als relevante Treffer zu erkennen.
 
+%MERGE!!!
 
 \begin{figure} [http]
 	

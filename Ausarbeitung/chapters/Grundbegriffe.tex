@@ -1,29 +1,29 @@
 \chapter{Grundbegriffe}
-Unabhängig vom jeweiligen Modell gibt es einige Grundbegriffe, welche im Zusammenhang mit Information Retrieval Verfahren immer wieder auftauchen und die darum vorab vorgestellt werden sollen. 
+Unabhängig vom jeweiligen Modell gibt es einige Grundbegriffe, welche im Zusammenhang mit Information Retrieval Verfahren immer wieder auftauchen und die darum vorab vorgestellt werden.
 
 \section{Anfrage}
-Eine Anfrage (engl. query) ist das, was der Anwender in den Computer eingibt, um sein Informationsbedürfnis zu befriedigen (\cite{Manning:08}, S.5). \\
-Anfragen können je nach Information Retrieval System vollkommen unterschiedlich strukturiert sein. Wichtig ist, dass der Nutzer weiß wie er seine Anfrage stellen muss, um mehr über das gewünschte Thema zu erfahren, was bei booleschen Modellen (siehe Kapitel \ref{bool}) recht komplex werden kann. \\
+Eine Anfrage (engl. query) ist das, was der Anwender in den Computer eingibt, um sein Informationsbedürfnis zu befriedigen (\cite{Manning:08}, S.5). 
+Anfragen können je nach Information Retrieval System vollkommen unterschiedlich strukturiert sein. Wichtig ist, dass der Nutzer weiß wie er seine Anfrage syntaktisch korrekt stellen muss, um mehr über das gewünschte Thema zu erfahren, was bei booleschen Modellen (siehe Kapitel \ref{bool}) recht komplex werden kann. 
 
 
 \section{Indexierung}
-Damit Dokumente eines Archivs von Information Retrieval Modellen verarbeitet werden können, müssen diese in einzelne Einheiten zerlegt werden, wobei jede Einheit mit einem eindeutigen Index versehen sein muss, um hinterher mit einem schnellen Zugriff abrufbar zu sein. \\
-Zudem müssen auch die Dokumente selbst mit einem Index versehen werden, genannt \textit{docID} (kurz für \textit{document identification}), um auf deren enthaltende Einheiten schnell zugreifen zu können. Dabei handelt es sich meist um einen ganzzahligen Wert (\cite{Manning:08}, S.7).\\
-Dieses Vorgehen wird als Indexierung bezeichnet und ist unabdingbar, da ansonsten für jede Anfrage erneut über die gesamten Dokumentinhalte iteriert werden müsste, was ineffizient und für den Nutzer unzumutbar langsam wäre (\cite{Manning:08}, S.3). \\
+Damit Dokumente eines Archivs von Information Retrieval Systemen verarbeitet werden können, müssen diese mit einem eindeutigen Index, der \textit{docID} (kurz für \textit{document identification}), versehen werden, sodass schnell darauf zugegriffen werden kann. Bei der \textit{docID} handelt es sich meist um einen ganzzahligen Wert (\cite{Manning:08}, S.7). Zudem müssen die Dokumentinhalte indexiert werden: Hierzu werden die Texte in einzelne, mit einem eindeutigen Index versehene Einheiten zerlegt, sodass auch hierauf effiziente Zugriffe erfolgen können.
+Dieses Vorgehen wird als Indexierung bezeichnet und ist unabdingbar, da ansonsten für jede Anfrage erneut über die gesamten Dokumentinhalte iteriert werden müsste, was ineffizient und für den Nutzer unzumutbar langsam wäre (\cite{Manning:08}, S.3). 
 
-\label{lemmatisierung}
+
 \subsection{Term und Vokabular}
-Die indizierten Einheiten, in welche die Dokumente zerlegt werden, sind unter dem Begriff Term bekannt (\cite{Manning:08}, S.3).\\
+\label{lemmatisierung}
+Die indexierten Einheiten, in welche die Dokumente zerlegt werden, sind unter dem Begriff Terme bekannt (\cite{Manning:08}, S.3).
 Terme sind im häufigsten Fall einfach Wörter eines Textes, dies muss jedoch nicht zwangsläufig der Fall sein.\\
-Manche Systeme reduzieren Wörter beispielsweise auf deren Stammformen, um ähnliche Wörter zu einem einzigen Term zusammenzufassen. Alternativ lassen sich Wörter neben dem Wortstamm auch auf ihre grammatikalische Grundform reduzieren. Das Reduzieren der Wörter wird allgemein als Lemmatisierung oder Stemming bezeichnet.\\ Auf diese Weise müssen weniger Terme verwaltet werden, was den Speicherbedarf reduziert. Außerdem können leichter ähnliche Dokumente gefunden werden, da auch zum Suchbegriff verwandte Wörter zu einem Treffer führen (\cite{Ferber:03}, S.40-41). \\
- Die Menge aller unterschiedlichen Terme eines Archivs wird als Vokabular bezeichnet (\cite{Manning:08}, S.6). \\
+Manche Systeme reduzieren Wörter beispielsweise auf deren Stammformen, um ähnliche Wörter zu einem einzigen Term zusammenzufassen. Alternativ lassen sie sich neben dem Wortstamm auch auf ihre grammatikalische Grundform reduzieren. Die Reduktion der Wörter auf Wortstamm bzw. Grundform wird als Lemmatisierung oder Stemming bezeichnet. Auf diese Weise müssen weniger Terme verwaltet werden, was den Speicherbedarf reduziert. Außerdem können leichter ähnliche Dokumente gefunden werden, da auch zum Suchbegriff verwandte Wörter zu einem Treffer führen (\cite{Ferber:03}, S.40-41). \\
+ Die Menge aller Terme eines Archivs wird als Vokabular bezeichnet (\cite{Manning:08}, S.6). \\
 
 
 
 
-\subsection{Stopwords}
+\subsection{Stoppwörter}
 \label{stop}
-Nicht jedes Wort wird bei der Indexierung zu einem Term: Handelt es sich um sehr häufig auftretende und zum Sinn des Textes wenig beitragende Wörter, wie z.B. \glqq und\grqq{} oder \glqq dann\grqq{}, können diese wegfallen, um Speicherplatz zu sparen (\cite{Ferber:03}, S.37). Außerdem kommen durch ignorieren unwichtiger Terme weniger Dokumente infrage, was die Suche beschleunigt.\\
+Nicht jedes Wort wird bei der Indexierung zu einem Term: Handelt es sich um sehr häufig auftretende und zum Sinn des Textes wenig beitragende Wörter, wie z.B. \glqq und\grqq{} oder \glqq dann\grqq{}, können diese wegfallen, um Speicherplatz zu sparen (\cite{Ferber:03}, S.37). Außerdem kommen durch Ignorieren unwichtiger Terme weniger Dokumente als Ergebnis infrage, sollte die Suchanfrage Stoppwörter beinhalten, was die Suche in solchen Fällen erheblich beschleunigt.\\
 
 
 

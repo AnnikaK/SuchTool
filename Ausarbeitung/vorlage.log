@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  31 JUL 2017 21:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  4 AUG 2017 11:50
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -778,13 +778,18 @@ Kapitel 1.
 ] [2]) (chapters/InformationRetrieval.tex [3]
 Kapitel 2.
 
-Overfull \hbox (34.1348pt too wide) in paragraph at lines 6--8
+Overfull \hbox (34.1348pt too wide) in paragraph at lines 8--10
 \OT1/cmr/m/n/12 Der eng-li-sche Be-griff []In-for-ma-ti-on Re-trie-val \ l[]ass
 t sich mit []In-for-ma-ti-onsr[]uckgewinnung\
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--8
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
 
  []
 
@@ -792,58 +797,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
+Underfull \hbox (badness 10000) in paragraph at lines 32--35
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--37
-
- []
-
-
-Overfull \hbox (4.00723pt too wide) in paragraph at lines 47--54
-\OT1/cmr/m/n/12 HTML- oder pdf-Format) auf-ge-fun-den wer-den sol-len, um das I
-n-for-ma-ti-ons-bed[]urfnis
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--54
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 58--61
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--67
+Underfull \hbox (badness 10000) in paragraph at lines 65--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 ) (chapters/Grundbegriffe.tex [6]
 Kapitel 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--13
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 16--20
 
@@ -866,11 +845,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--13
 
  []
 
@@ -919,7 +893,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--103
  []
 
 [11 <./images/matrix.png>]
-<images/inverted_list.png, id=605, 846.16125pt x 318.43968pt>
+<images/inverted_list.png, id=606, 846.16125pt x 318.43968pt>
 File: images/inverted_list.png Graphic file (type png)
 
 <use images/inverted_list.png>
@@ -930,52 +904,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-[12 <./images/inverted_list.png>]
-Overfull \hbox (6.51363pt too wide) in paragraph at lines 129--132
-\OT1/cmr/m/n/12 Da man auf des-sen Vor-kom-men pr[]uft, gel-ten f[]ur den Wer-t
-e-be-reich $\OML/cmm/m/it/12 T \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/i
-t/12 true; false\OMS/cmsy/m/n/12 g$
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--145
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
-
- []
-
-
-Overfull \hbox (35.42761pt too wide) in paragraph at lines 150--153
-[]\OT1/cmr/m/n/12 Im Fal-le von meh-re-ren $\OML/cmm/m/it/12 AND$\OT1/cmr/m/n/1
-2 -Operatoren, wie et-wa in der Suchan-fra-ge $\OML/cmm/m/it/12 Kontaktadresse$
-
+Overfull \hbox (64.42477pt too wide) in paragraph at lines 139--143
+\OT1/cmr/m/n/12 geb-nis-men-ge f[]ur das Bei-spiel $\OML/cmm/m/it/12 Kontaktadr
+esse$ $OR$ $Seminar$ $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3\OML/cmm/m/it/12 ; \OT1/cmr/m
+/n/12 5\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 7\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 9
+\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 11\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 15\OML/
+cmm/m/it/12 ; \OT1/cmr/m/n/12 22\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 25\OML/cmm/m
+/it/12 ; \OT1/cmr/m/n/12 30\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 32\OMS/cmsy/m/n/1
+2 g$\OT1/cmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--153
+Underfull \hbox (badness 10000) in paragraph at lines 148--152
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
-
+[13 <./images/inverted_list.png>]
+Overfull \hbox (20.42761pt too wide) in paragraph at lines 155--163
+\OT1/cmr/m/n/12 Im Fal-le von meh-re-ren $\OML/cmm/m/it/12 AND$\OT1/cmr/m/n/12 
+-Operatoren, wie et-wa in der Suchan-fra-ge $\OML/cmm/m/it/12 Kontaktadresse$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
 
  []
 
@@ -1090,7 +1053,7 @@ Overfull \hbox (9.17244pt too wide) in paragraph at lines 166--169
 ig-ne-ten []Ahnlichkeitsfunktion. 
  []
 
-[20] <images/vector_space.png, id=704, 470.50781pt x 437.38406pt>
+[20] <images/vector_space.png, id=706, 470.50781pt x 437.38406pt>
 File: images/vector_space.png Graphic file (type png)
 
 <use images/vector_space.png>
@@ -1147,45 +1110,45 @@ Overfull \hbox (11.07642pt too wide) in paragraph at lines 61--62
 ist der Hash-Key f[]ur die-ses Do-ku-ment im Dokument-
  []
 
-<images/docDict.png, id=783, 820.56563pt x 193.47281pt>
+<images/docDict.png, id=785, 820.56563pt x 193.47281pt>
 File: images/docDict.png Graphic file (type png)
 
 <use images/docDict.png>
 Package pdftex.def Info: images/docDict.png used on input line 73.
 (pdftex.def)             Requested size: 418.25368pt x 98.61372pt.
  [27] [28 <./images/docDict.png>]
-<images/mil.png, id=812, 1190.94937pt x 389.20406pt>
+<images/mil.png, id=814, 1190.94937pt x 389.20406pt>
 File: images/mil.png Graphic file (type png)
  <use images/mil.png>
-Package pdftex.def Info: images/mil.png used on input line 110.
+Package pdftex.def Info: images/mil.png used on input line 111.
 (pdftex.def)             Requested size: 418.25368pt x 136.68668pt.
 
 [29 <./images/mil.png>]
-<images/termDict.png, id=826, 383.18156pt x 134.00063pt>
+<images/termDict.png, id=828, 383.18156pt x 134.00063pt>
 File: images/termDict.png Graphic file (type png)
 
 <use images/termDict.png>
-Package pdftex.def Info: images/termDict.png used on input line 140.
+Package pdftex.def Info: images/termDict.png used on input line 141.
 (pdftex.def)             Requested size: 209.12683pt x 73.13417pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
 [30 <./images/termDict.png>]
-Overfull \hbox (11.5377pt too wide) in paragraph at lines 178--182
+Overfull \hbox (11.5377pt too wide) in paragraph at lines 179--183
 \OT1/cmr/m/n/12 durch den idf-Wert di-vi-diert, so-dass der Query-Vektor die fi
 -na-len tf-idf-Gewichtungen
  []
 
-[31] <images/Umwandlung.png, id=846, 623.32875pt x 475.02469pt>
+[31] <images/Umwandlung.png, id=848, 623.32875pt x 475.02469pt>
 File: images/Umwandlung.png Graphic file (type png)
 
 <use images/Umwandlung.png>
-Package pdftex.def Info: images/Umwandlung.png used on input line 195.
+Package pdftex.def Info: images/Umwandlung.png used on input line 196.
 (pdftex.def)             Requested size: 209.12683pt x 159.368pt.
 
-Overfull \hbox (18.63675pt too wide) in paragraph at lines 207--208
+Overfull \hbox (18.63675pt too wide) in paragraph at lines 208--209
 []\OT1/cmr/m/n/12 Ist $\OML/cmm/m/it/12 AND$ \OT1/cmr/m/n/12 aus-gew[]ahlt, wir
 d der Durch-schnitt bei-der Su-chen ge-bil-det und Metadaten-
  []
@@ -1209,7 +1172,7 @@ Overfull \hbox (2.5727pt too wide) in paragraph at lines 24--25
  we-nig nach-den-ken m[]ussen 
  []
 
-<images/overview.png, id=859, 873.2625pt x 651.93562pt>
+<images/overview.png, id=861, 873.2625pt x 651.93562pt>
 File: images/overview.png Graphic file (type png)
 
 <use images/overview.png>
@@ -1224,7 +1187,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--47
  []
 
 [35 <./images/overview.png>]
-<images/Select.png, id=884, 870.25125pt x 281.55188pt>
+<images/Select.png, id=886, 870.25125pt x 281.55188pt>
 File: images/Select.png Graphic file (type png)
  <use images/Select.png>
 Package pdftex.def Info: images/Select.png used on input line 58.
@@ -1239,7 +1202,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
-[36 <./images/Select.png>] <images/a.png, id=894, 846.91406pt x 207.02344pt>
+[36 <./images/Select.png>] <images/a.png, id=896, 846.91406pt x 207.02344pt>
 File: images/a.png Graphic file (type png)
 
 <use images/a.png>
@@ -1250,7 +1213,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 84--85
  [][] 
  []
 
-<images/b2.png, id=897, 851.43094pt x 188.95593pt>
+<images/b2.png, id=899, 851.43094pt x 188.95593pt>
 File: images/b2.png Graphic file (type png)
  <use images/b2.png>
 Package pdftex.def Info: images/b2.png used on input line 97.
@@ -1261,45 +1224,44 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 97--98
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--109
+Underfull \hbox (badness 10000) in paragraph at lines 104--108
 
  []
 
-[37 <./images/a.png>] <images/b.png, id=906, 699.36281pt x 116.68594pt>
+[37 <./images/a.png>] <images/b.png, id=908, 699.36281pt x 116.68594pt>
 File: images/b.png Graphic file (type png)
 
 <use images/b.png>
-Package pdftex.def Info: images/b.png used on input line 113.
+Package pdftex.def Info: images/b.png used on input line 112.
 (pdftex.def)             Requested size: 460.08159pt x 76.76367pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 113--114
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 112--113
  [][] 
  []
 
-<images/c.png, id=909, 840.89156pt x 340.27126pt>
+<images/c.png, id=911, 840.89156pt x 340.27126pt>
 File: images/c.png Graphic file (type png)
  <use images/c.png>
-Package pdftex.def Info: images/c.png used on input line 130.
+Package pdftex.def Info: images/c.png used on input line 129.
 (pdftex.def)             Requested size: 460.08159pt x 186.17365pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 130--131
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 129--130
  [][] 
  []
 
-[38 <./images/b2.png> <./images/b.png>]
-<images/results.png, id=916, 765.6103pt x 424.58624pt>
+<images/results.png, id=912, 765.6103pt x 424.58624pt>
 File: images/results.png Graphic file (type png)
 
 <use images/results.png>
-Package pdftex.def Info: images/results.png used on input line 139.
+Package pdftex.def Info: images/results.png used on input line 138.
 (pdftex.def)             Requested size: 460.08159pt x 255.14891pt.
 
-Overfull \hbox (41.82791pt too wide) in paragraph at lines 139--140
+Overfull \hbox (41.82791pt too wide) in paragraph at lines 138--139
  [][] 
  []
 
-) (chapters/ZusammenfassungAusblick.tex [39 <./images/c.png> <./images/results.
-png>]
+) (chapters/ZusammenfassungAusblick.tex [38 <./images/b2.png> <./images/b.png>]
+[39 <./images/c.png> <./images/results.png>]
 Kapitel 9.
 [40
 
@@ -1385,7 +1347,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 602DE2C83CAB49EDB5A835425F4EF6D4;5243.
+(rerunfilecheck)             Checksum: 0411984602A6853E71E0333B1EA56D9A;5257.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  )
 (\end occurred inside a group at level 1)
@@ -1395,7 +1357,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 Here is how much of TeX's memory you used:
  11737 strings out of 493634
  167065 string characters out of 3143744
- 320085 words of memory out of 3000000
+ 320285 words of memory out of 3000000
  14596 multiletter control sequences out of 15000+200000
  13315 words of font info for 51 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
@@ -1418,9 +1380,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (53 pages, 660414 bytes).
+Output written on vorlage.pdf (53 pages, 663737 bytes).
 PDF statistics:
- 1080 PDF objects out of 1200 (max. 8388607)
+ 1082 PDF objects out of 1200 (max. 8388607)
  271 named destinations out of 1000 (max. 500000)
  684 words of extra memory for PDF output out of 10000 (max. 10000000)
 

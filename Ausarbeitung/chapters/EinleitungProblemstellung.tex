@@ -2,12 +2,11 @@
 
 \section{Einleitung}
 
-Nahezu jeder nutzt heutzutage täglich E-Mail-Dienste und kennt das Phänomen, dass der Posteingang sich unter der Flut eintreffender Nachrichten stetig füllt, bis der Ordner so voll ist, dass es jede Übersicht verloren geht. \\
+Nahezu jeder nutzt heutzutage täglich E-Mail-Dienste und kennt das Phänomen, dass der Posteingang sich unter der Flut eintreffender Nachrichten stetig füllt, bis der Ordner so voll ist, dass jede Übersicht verloren geht. \\
 Sobald eine bestimmte E-Mail darin wiedergefunden werden soll, beispielsweise weil sie eine bestimmte Kontaktadresse enthält, wird dies zu einem Problem: 
  Wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Eine manuelle Suche ist hier oft aus Zeitgründen unmöglich. \\
-Gelöst werden kann das Problem durch ein Information Retrieval System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können. 
-Ein solches System liefert idealerweise eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. 
-In diesem Fall könnte die Person beispielsweise nach $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ suchen. \\
+Ein Information Retrieval System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können, löst dieses Problem. Eine mögliche Suchanfrage könnte  $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ lauten, woraufhin das System 
+bei erfolgreicher Suche eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage liefert, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. \\
 Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
 Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
 
@@ -41,8 +40,8 @@ Für das dynamische Einlesen der Metadaten müssen die folgenden Punkte erfüllt se
 
 
 \subsection{Metadatensuche}
-Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
-Im Gegensatz zur Freitextsuche muss hier zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort, z.B. der Name Datum, überhaupt darin auftritt.
+Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen Bereichen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
+Im Gegensatz zur Freitextsuche muss hier zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort, z.B. der Name \glqq Datum\grqq{}, überhaupt darin auftritt.
 
 \subsection{Freitextsuche}
 Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche. Daraus resultieren zwei Probleme:

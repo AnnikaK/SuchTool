@@ -21,8 +21,8 @@
 \contentsline {chapter}{\numberline {3}Grundbegriffe}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Anfrage}{7}{section.3.1}
 \contentsline {section}{\numberline {3.2}Indexierung}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Term und Vokabular}{8}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Stopwords}{8}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.1}Term und Vokabular}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Stoppw\"orter}{8}{subsection.3.2.2}
 \contentsline {chapter}{\numberline {4}Boolesches Retrieval}{9}{chapter.4}
 \contentsline {section}{\numberline {4.1}Eigenschaften des Verfahrens}{9}{section.4.1}
 \contentsline {section}{\numberline {4.2}Funktionsprinzip}{9}{section.4.2}
@@ -31,15 +31,15 @@
 \contentsline {subsubsection}{Elementare boolesche Anfrage}{10}{section*.7}
 \contentsline {subsubsection}{Verkn\"upfung}{10}{section*.8}
 \contentsline {section}{\numberline {4.3}Implementierungsans\"atze}{11}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Term-Inzidenz-Matrix}{11}{subsection.4.3.1}
-\contentsline {subsubsection}{Verarbeitung einer Anfrage}{11}{section*.9}
+\contentsline {subsection}{\numberline {4.3.1}Term-Dokument Inzidenz Matrix}{11}{subsection.4.3.1}
+\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels Matrix}{11}{section*.9}
 \contentsline {subsection}{\numberline {4.3.2}Invertierte Liste}{12}{subsection.4.3.2}
-\contentsline {subsubsection}{Verarbeitung einer Anfrage}{13}{section*.10}
-\contentsline {paragraph}{Elementare Anfrage}{13}{section*.11}
+\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels invertierter Liste}{12}{section*.10}
+\contentsline {paragraph}{Elementare Anfrage}{12}{section*.11}
 \contentsline {paragraph}{AND-Verkn\"upfungen}{13}{section*.12}
 \contentsline {paragraph}{OR-Verkn\"upfungen}{13}{section*.13}
 \contentsline {paragraph}{AND NOT-Verkn\"upfung}{14}{section*.14}
-\contentsline {paragraph}{Komplexe Ausdr\"ucke}{14}{section*.15}
+\contentsline {paragraph}{Komplex geschachtelte Ausdr\"ucke}{14}{section*.15}
 \contentsline {paragraph}{Die Verarbeitung mehrerer W\"orter}{15}{section*.16}
 \contentsline {chapter}{\numberline {5}Das Vektorraummodell}{16}{chapter.5}
 \contentsline {section}{\numberline {5.1}Funktionsprinzip}{16}{section.5.1}
