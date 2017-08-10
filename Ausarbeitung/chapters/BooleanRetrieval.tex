@@ -1,6 +1,6 @@
 \chapter{Boolesches Retrieval}
 \label{bool}
-Dieses Kapitel stellt das klassische Information Retrieval Verfahren boolesches Retrieval (engl. boolean retrieval) vor. \\
+Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren boolesches Retrieval (engl. boolean retrieval) vor. \\
 
 \section{Eigenschaften des Verfahrens}
 Boolesches Retrieval überprüft Dokumente auf das Zutreffen einer bestimmten Bedingung. 
@@ -146,7 +146,7 @@ Bei beiden Listenoperationen werden die Indizes in den Ergebnislisten sortiert u
 
 \paragraph{AND NOT-Verknüpfung}
 Da es sich bei $NOT$ um einen unären Operator handelt, könnte dieser theoretisch alleine auftreten. 
-Eine Anfrage der Form $NOT$ $Seminar$ kann jedoch sehr viel Laufzeit kosten, wenn das Archiv viele Dokumente enthält: Es muss über die gesamte Sammlung iteriert und für jedes Dokument geprüft werden, ob es in der invertierten Liste für den Term Seminar auftaucht. Der alleinstehende $NOT$-Operator ist aufgrund dessen so ineffizient, dass er bei den meisten booleschen Retrieval Systemen nur im Zusammenhang mit einem binären Operator zugelassen ist.
+Eine Anfrage der Form $NOT$ $Seminar$ kann jedoch sehr viel Laufzeit kosten, wenn das Archiv viele Dokumente enthält: Es muss über die gesamte Sammlung iteriert und für jedes Dokument geprüft werden, ob es in der invertierten Liste für den Term Seminar auftaucht. Der alleinstehende $NOT$-Operator ist aufgrund dessen so ineffizient, dass er bei den meisten booleschen Information-Retrieval-Systemen nur im Zusammenhang mit einem binären Operator zugelassen ist.
 Da die Kombination $OR$ $NOT$ keinen Sinn macht, wenn ein Term ausgeschlossen werden soll, ist dieser Operator in der Regel ausschließlich $AND$. \\
 Hierbei wird aus den beiden Listen die Differenz gebildet. Lautet die Anfrage beispielsweise $Kontaktadresse$ $AND$ $NOT$ $Seminar$, so werden aus der Ergebnisliste für Kontaktadresse alle Elemente entfernt, die in der Liste für Seminar enthalten sind (\cite{Henrich:08}, S.174). Ergebnismenge wäre demnach $\{2,7,9,15,22,25,30\}$, d.h. die Dokumente 3 und 11 wurden ausgeschlossen.\\
 
@@ -164,7 +164,7 @@ Ist die Anfrage hingegen gemischt, wie etwa in dem Beispiel
 
 \paragraph{Die Verarbeitung mehrerer Wörter}
 Boolesches Retrieval kann auch mehrere zusammengehörige Wörter verarbeiten. 
-Über die interne Verarbeitung hat der Nutzer jedoch keinerlei Einblick: Das Information Retrieval System kann so realisiert sein, dass es die aus den Wörtern der Anfrage isolierten Terme mit $OR$ verknüpft, es kann diese jedoch genauso gut mit $AND$ verbinden (\cite{Henrich:08}, S.171).\\
+Über die interne Verarbeitung hat der Nutzer jedoch keinerlei Einblick: Das Information-Retrieval-System kann so realisiert sein, dass es die aus den Wörtern der Anfrage isolierten Terme mit $OR$ verknüpft, es kann diese jedoch genauso gut mit $AND$ verbinden (\cite{Henrich:08}, S.171).\\
 
 
 

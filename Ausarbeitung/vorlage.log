@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  4 AUG 2017 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.5.25)  8 AUG 2017 21:49
 entering extended mode
 **./vorlage.tex
 (vorlage.tex
@@ -861,7 +861,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[10] <images/matrix.png, id=594, 389.20406pt x 76.03406pt>
+[10] <images/matrix.png, id=595, 389.20406pt x 76.03406pt>
 File: images/matrix.png Graphic file (type png)
 
 <use images/matrix.png>
@@ -893,7 +893,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--103
  []
 
 [11 <./images/matrix.png>]
-<images/inverted_list.png, id=606, 846.16125pt x 318.43968pt>
+<images/inverted_list.png, id=607, 846.16125pt x 318.43968pt>
 File: images/inverted_list.png Graphic file (type png)
 
 <use images/inverted_list.png>
@@ -958,108 +958,143 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--12
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 20--38
+Underfull \hbox (badness 10000) in paragraph at lines 20--29
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--68
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
 
  []
 
 
-Overfull \hbox (6.53497pt too wide) in paragraph at lines 85--88
+Overfull \hbox (6.53497pt too wide) in paragraph at lines 88--91
 \OT1/cmr/m/n/12 Termh[]aufigkeit (engl. term fre-quen-cy) be-zeich-net. Dem-nac
 h wird die Termh[]aufigkeit
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--88
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--93
+Underfull \hbox (badness 10000) in paragraph at lines 88--91
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+Underfull \hbox (badness 10000) in paragraph at lines 93--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 
-Overfull \hbox (22.32788pt too wide) in paragraph at lines 104--107
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+
+Overfull \hbox (22.32788pt too wide) in paragraph at lines 107--110
 \OT1/cmr/m/n/12 Formel []5.2[] zeigt ein Bei-spiel f[]ur ei-ne sol-che mo-di-fi
 -zier-te in-ver-tier-te Do-ku-menth[]aufigkeit.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Overfull \hbox (12.87798pt too wide) in paragraph at lines 117--119
+Overfull \hbox (12.87798pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/12 Die vollst[]andige Me-tho-de zur Ge-wich-tung ein-zel-ner Ter-m
 e kom-bi-niert Termh[]aufigkeit
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--119
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
 
  []
 
 [19]
-Overfull \hbox (33.4208pt too wide) in paragraph at lines 141--146
+Overfull \hbox (33.4208pt too wide) in paragraph at lines 144--149
 \OT1/cmr/m/n/12 Da f[]ur je-den Term ein an-de-rer []Ahnlichkeitswert er-zielt 
 wird, wer-den die []Ahnlichkeitswerte
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
-
-Overfull \hbox (6.8919pt too wide) in paragraph at lines 166--169
+[20]
+Overfull \hbox (6.8919pt too wide) in paragraph at lines 169--172
 \OT1/cmr/m/n/12 Ter-me et-wa gleich ver-teilt sind, den-noch voll-kom-men ver-s
 chie-de-ne []Ahnlichkeitswerte
  []
 
 
-Overfull \hbox (9.17244pt too wide) in paragraph at lines 166--169
+Overfull \hbox (9.17244pt too wide) in paragraph at lines 169--172
 \OT1/cmr/m/n/12 er-zie-len macht den eu-kli-di-schen Ab-stand zu ei-ner un-ge-e
 ig-ne-ten []Ahnlichkeitsfunktion. 
  []
 
-[20] <images/vector_space.png, id=706, 470.50781pt x 437.38406pt>
+[21] <images/vector_space.png, id=726, 470.50781pt x 437.38406pt>
 File: images/vector_space.png Graphic file (type png)
 
 <use images/vector_space.png>
-Package pdftex.def Info: images/vector_space.png used on input line 207.
+Package pdftex.def Info: images/vector_space.png used on input line 210.
 (pdftex.def)             Requested size: 209.12683pt x 194.40503pt.
- [21]) (chapters/PrecisionAndRecall.tex [22 <./images/vector_space.png>]
+) (chapters/PrecisionAndRecall.tex [22 <./images/vector_space.png>]
 Kapitel 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1085,23 +1120,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--16
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-) (chapters/Implementierung2.tex [25]
+) (chapters/Implementierung2.tex [25] [26]
 Kapitel 7.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
 File: lstlang2.sty 2015/06/04 1.6 listings language file
-) [26
+) [27
 
 
 ]
@@ -1110,21 +1145,21 @@ Overfull \hbox (11.07642pt too wide) in paragraph at lines 61--62
 ist der Hash-Key f[]ur die-ses Do-ku-ment im Dokument-
  []
 
-<images/docDict.png, id=785, 820.56563pt x 193.47281pt>
+<images/docDict.png, id=803, 820.56563pt x 193.47281pt>
 File: images/docDict.png Graphic file (type png)
 
 <use images/docDict.png>
 Package pdftex.def Info: images/docDict.png used on input line 73.
 (pdftex.def)             Requested size: 418.25368pt x 98.61372pt.
- [27] [28 <./images/docDict.png>]
-<images/mil.png, id=814, 1190.94937pt x 389.20406pt>
+ [28] [29 <./images/docDict.png>]
+<images/mil.png, id=832, 1190.94937pt x 389.20406pt>
 File: images/mil.png Graphic file (type png)
  <use images/mil.png>
 Package pdftex.def Info: images/mil.png used on input line 111.
 (pdftex.def)             Requested size: 418.25368pt x 136.68668pt.
 
-[29 <./images/mil.png>]
-<images/termDict.png, id=828, 383.18156pt x 134.00063pt>
+[30 <./images/mil.png>]
+<images/termDict.png, id=846, 383.18156pt x 134.00063pt>
 File: images/termDict.png Graphic file (type png)
 
 <use images/termDict.png>
@@ -1135,13 +1170,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
-[30 <./images/termDict.png>]
+[31 <./images/termDict.png>]
 Overfull \hbox (11.5377pt too wide) in paragraph at lines 179--183
 \OT1/cmr/m/n/12 durch den idf-Wert di-vi-diert, so-dass der Query-Vektor die fi
 -na-len tf-idf-Gewichtungen
  []
 
-[31] <images/Umwandlung.png, id=848, 623.32875pt x 475.02469pt>
+[32] <images/Umwandlung.png, id=866, 623.32875pt x 475.02469pt>
 File: images/Umwandlung.png Graphic file (type png)
 
 <use images/Umwandlung.png>
@@ -1153,7 +1188,7 @@ Overfull \hbox (18.63675pt too wide) in paragraph at lines 208--209
 d der Durch-schnitt bei-der Su-chen ge-bil-det und Metadaten-
  []
 
-[32]) (chapters/BenutzeroberflaecheUndBedienung.tex [33 <./images/Umwandlung.pn
+[33]) (chapters/BenutzeroberflaecheUndBedienung.tex [34 <./images/Umwandlung.pn
 g>]
 Kapitel 8.
 
@@ -1172,13 +1207,13 @@ Overfull \hbox (2.5727pt too wide) in paragraph at lines 24--25
  we-nig nach-den-ken m[]ussen 
  []
 
-<images/overview.png, id=861, 873.2625pt x 651.93562pt>
+<images/overview.png, id=880, 873.2625pt x 651.93562pt>
 File: images/overview.png Graphic file (type png)
 
 <use images/overview.png>
 Package pdftex.def Info: images/overview.png used on input line 38.
 (pdftex.def)             Requested size: 418.25368pt x 312.24908pt.
- [34
+ [35
 
 
 ]
@@ -1186,8 +1221,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[35 <./images/overview.png>]
-<images/Select.png, id=886, 870.25125pt x 281.55188pt>
+[36 <./images/overview.png>]
+<images/Select.png, id=904, 870.25125pt x 281.55188pt>
 File: images/Select.png Graphic file (type png)
  <use images/Select.png>
 Package pdftex.def Info: images/Select.png used on input line 58.
@@ -1202,7 +1237,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--76
 
  []
 
-[36 <./images/Select.png>] <images/a.png, id=896, 846.91406pt x 207.02344pt>
+[37 <./images/Select.png>] <images/a.png, id=914, 846.91406pt x 207.02344pt>
 File: images/a.png Graphic file (type png)
 
 <use images/a.png>
@@ -1213,7 +1248,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 84--85
  [][] 
  []
 
-<images/b2.png, id=899, 851.43094pt x 188.95593pt>
+<images/b2.png, id=917, 851.43094pt x 188.95593pt>
 File: images/b2.png Graphic file (type png)
  <use images/b2.png>
 Package pdftex.def Info: images/b2.png used on input line 97.
@@ -1228,7 +1263,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--108
 
  []
 
-[37 <./images/a.png>] <images/b.png, id=908, 699.36281pt x 116.68594pt>
+[38 <./images/a.png>] <images/b.png, id=926, 699.36281pt x 116.68594pt>
 File: images/b.png Graphic file (type png)
 
 <use images/b.png>
@@ -1239,7 +1274,7 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 112--113
  [][] 
  []
 
-<images/c.png, id=911, 840.89156pt x 340.27126pt>
+<images/c.png, id=929, 840.89156pt x 340.27126pt>
 File: images/c.png Graphic file (type png)
  <use images/c.png>
 Package pdftex.def Info: images/c.png used on input line 129.
@@ -1249,7 +1284,8 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 129--130
  [][] 
  []
 
-<images/results.png, id=912, 765.6103pt x 424.58624pt>
+[39 <./images/b2.png> <./images/b.png>]
+<images/results.png, id=936, 765.6103pt x 424.58624pt>
 File: images/results.png Graphic file (type png)
 
 <use images/results.png>
@@ -1260,65 +1296,54 @@ Overfull \hbox (41.82791pt too wide) in paragraph at lines 138--139
  [][] 
  []
 
-) (chapters/ZusammenfassungAusblick.tex [38 <./images/b2.png> <./images/b.png>]
-[39 <./images/c.png> <./images/results.png>]
+) (chapters/ZusammenfassungAusblick.tex [40 <./images/c.png> <./images/results.
+png>]
 Kapitel 9.
-[40
+[41
 
 
-]) [41] (vorlage.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 4--8
+]) [42] (vorlage.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []$\OT1/cmtt/m/n/12 http : / / universal _ lexikon . deacademic . com / 253489 
 /$
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 10--13
+Underfull \hbox (badness 4217) in paragraph at lines 9--12
 []\OT1/cmr/m/sc/12 Christopher D. Man-ning, Prab-ha-kar Rag-ha-van, Hin-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--19
+Underfull \hbox (badness 10000) in paragraph at lines 14--18
 []$\OT1/cmtt/m/n/12 http : / / www . crashkurs-[]statistik . de /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--31
+Underfull \hbox (badness 10000) in paragraph at lines 25--30
 []$\OT1/cmtt/m/n/12 https : / / www . uni-[]bamberg . de / fileadmin / uni / fa
 kultaeten / wiai _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--31
+Underfull \hbox (badness 10000) in paragraph at lines 25--30
 $\OT1/cmtt/m/n/12 lehrstuehle / medieninformatik / Dateien / Publikationen / 20
 08 /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--41
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
 []$\OT1/cmtt/m/n/12 https : / / github . com / sharplispers / split-[]sequence 
 / blob /$
  []
 
-[42
+[43
 
 
 
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 69--72
-[]\OT1/cmr/m/sc/12 Stefan B[]uttcher, Charles L.A.Clarke, Gor-
- []
-
-
-Underfull \hbox (badness 5119) in paragraph at lines 69--72
-\OT1/cmr/m/sc/12 don V.Cormack\OT1/cmr/m/n/12 : \OT1/cmr/m/it/12 In-for-ma-ti-o
-n Re-trie-val - Im-ple-men-ting and
- []
-
-)
+])
 No file vorlage.ind.
-[43]
+[44]
 \openout2 = `chapters/Selbststaendigkeitserklaerung.aux'.
 
  (chapters/Selbststaendigkeitserklaerung.tex
@@ -1336,7 +1361,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
-) [44
+) [45
 
 
 
@@ -1347,7 +1372,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
-(rerunfilecheck)             Checksum: 0411984602A6853E71E0333B1EA56D9A;5257.
+(rerunfilecheck)             Checksum: 2EA43BE84F0F5C336CD53BFECD8FA59D;5257.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  )
 (\end occurred inside a group at level 1)
@@ -1355,13 +1380,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11737 strings out of 493634
- 167065 string characters out of 3143744
- 320285 words of memory out of 3000000
+ 11746 strings out of 493634
+ 167134 string characters out of 3143744
+ 320415 words of memory out of 3000000
  14596 multiletter control sequences out of 15000+200000
  13315 words of font info for 51 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
- 42i,14n,42p,777b,4936s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,14n,42p,780b,4936s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\kreme\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\tcrm1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
@@ -1380,9 +1405,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (53 pages, 663737 bytes).
+Output written on vorlage.pdf (54 pages, 668102 bytes).
 PDF statistics:
- 1082 PDF objects out of 1200 (max. 8388607)
- 271 named destinations out of 1000 (max. 500000)
+ 1101 PDF objects out of 1200 (max. 8388607)
+ 280 named destinations out of 1000 (max. 500000)
  684 words of extra memory for PDF output out of 10000 (max. 10000000)
 

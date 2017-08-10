@@ -5,7 +5,7 @@ Dieses Kapitel soll dem Leser einen Überblick über die Bedeutung des Begriffs \g
 \section{Bedeutung}
 
 
-Der englische Begriff \glqq Information Retrieval \grqq{} lässt sich mit \glqq Informationsrückgewinnung\grqq{} ins Deutsche übersetzen (\cite{Academic:17}). Hierbei wird explizit von \textit{Rück}gewinnung gesprochen, da keine neuen Informationen erzeugt werden, sondern auf bereits existierende zugegriffen wird. 
+Der englische Begriff \glqq Information Retrieval \grqq{} lässt sich mit \glqq Informationsrückgewinnung\grqq{} ins Deutsche übersetzen (\cite{Academic:12}). Hierbei wird explizit von \textit{Rück}gewinnung gesprochen, da keine neuen Informationen erzeugt werden, sondern auf bereits existierende zugegriffen wird. 
 Bevor auf die genaue Bedeutung eingegangen wird,  erfolgt zunächst die hierfür notwendige Klärung des im Ausdruck enthaltenen Teilbegriffs \glqq Information\grqq{}.\\
 
  
@@ -39,24 +39,24 @@ Mit unstrukturierten Materialien sind hierbei meist Dokumente in Textform gemein
 \subsection{Unterschied zur Datenbankensuche}
 Zum Besseren Verständnis hilft eine Abgrenzung zur Datenbanksuche, bei der im Gegensatz zu Definition \ref{Def} die Daten  strukturiert in Form von Werttupeln bekannten Datentyps vorliegen.
 Ein wesentliches Unterscheidungsmerkmal ist, dass bei der Datenbankensuche nicht mit vagen Anfragen umgegangen werden kann: In der Datenbank kann  zwar nach $(Miete < 300)$ gesucht werden, aber mit \textit{\glqq günstige Miete\grqq{}} wäre das System überfordert: Wie ist günstig zu interpretieren (\cite{Ferber:03}, S.10)? 
-Ein Information Retrieval System kann hingegen solche Anfragen mit unklarer Bedeutung verarbeiten.
+Ein Information-Retrieval-System kann hingegen solche Anfragen mit unklarer Bedeutung verarbeiten.
 
 
 \section{Beispiel Websuche}
 An dieser Stelle soll ein Beispiel zur Veranschaulichung gegeben werden. 
 Nahezu jeder benutzt im Alltag Web-Suchmaschinen.
 Websuche stellt einen typischen Fall von Information Retrieval dar, was durch die Anwendung der Definition deutlich wird: Hier sollen Freitext beinhaltende, d.h. unstrukturierte Dokumente (z.B. im HTML- oder pdf-Format) innerhalb des World Wide Webs aufgefunden werden, um das Informationsbedürfnis des Internetnutzers zu befriedigen (\cite{Ferber:03}, S.6).
-Relevante Suchergebnisse sind demnach Dokumente, welche die gesuchte Information beinhalten. Diese lässt sich, wie oben beschrieben, in drei Teile zerlegen, wobei der semantische Teil die Herausforderung für das Information Retrieval System darstellt. \\
+Relevante Suchergebnisse sind demnach Dokumente, welche die gesuchte Information beinhalten. Diese lässt sich, wie oben beschrieben, in drei Teile zerlegen, wobei der semantische Teil die Herausforderung für das Information-Retrieval-System darstellt. \\
 Hierzu ein spezifisches Beispiel:
 Möchte der Nutzer demnächst seinen Urlaub in Kreta verbringen, könnte seine Suchanfrage \textit{\glqq Hotel günstig Kreta\grqq{} }lauten.
 Der pragmatische Teil besteht demnach darin, den Urlaub zu planen. Der syntaktische Teil ist ebenfalls leicht zu bestimmen: Die gesuchten Begriffe oder hierzu verwandte Wörter müssen in den Dokumenten auftauchen.
-Als schwierig gestaltet sich hingegen der semantische Teil: Die inhaltliche Bedeutung der Resultate muss mit der ursprünglichen Intention des Nutzers übereinstimmen. Diese ist allerdings vage formuliert: Der Begriff \glqq günstig\grqq{} ist nicht genau definiert. Nur ein Teil der Hotels, welche in der Ergebnisliste erscheinen, werden mit den Ansprüchen des Nutzers übereinstimmen, vielleicht auch gar keine. Ein gutes Information Retrieval System zeichnet sich durch einen möglichst hohen Anteil relevanter Resultate unter allen zurückgelieferten Dokumenten aus. \\
+Als schwierig gestaltet sich hingegen der semantische Teil: Die inhaltliche Bedeutung der Resultate muss mit der ursprünglichen Intention des Nutzers übereinstimmen. Diese ist allerdings vage formuliert: Der Begriff \glqq günstig\grqq{} ist nicht genau definiert. Nur ein Teil der Hotels, welche in der Ergebnisliste erscheinen, werden mit den Ansprüchen des Nutzers übereinstimmen, vielleicht auch gar keine. Ein gutes Information-Retrieval-System zeichnet sich durch einen möglichst hohen Anteil relevanter Resultate unter allen zurückgelieferten Dokumenten aus. \\
 Häufig passiert es, dass zwar der syntaktische Teil erfüllt ist, d.h. die Suchbegriffe tauchen im Dokument auf, allerdings stimmt der Kontext nicht mit dem Informationsbedürfnis des Nutzers überein. Dieses Problem tritt bei der Datenbanksuche, wo es keinerlei Interpretationsfreiraum gibt, gar nicht erst auf. 
 
 
 
 \section{Bezug zur Problemstellung}
-Dieser Abschnitt soll erklären, inwiefern es sich bei der gegebenen Problemstellung um ein Information Retrieval Problem handelt.
+Dieser Abschnitt soll erklären, inwiefern es sich bei der gegebenen Problemstellung um ein Information-Retrieval-Problem handelt.
 Die Aufgabe besteht kurz gefasst darin, nach vom Nutzer auswählbaren, logisch verknüpften Kriterien innerhalb eines Dokumentenarchivs zu suchen (siehe Abschnitt \ref{Problemstellung}). 
 Damit ist die Definition \ref{Def} erfüllt, da hier Materialien innerhalb einer Sammlung, dem Dokumentenarchiv, aufgefunden werden sollen, um ein Informationsbedürfnis zu befriedigen. \\
 Dieses Bedürfnis unterscheidet sich natürlich von Anfrage zu Anfrage, besteht aber allgemein gefasst darin, Dokumente wiederzufinden, z.B. eine bestimmte E-Mail. \\
@@ -68,10 +68,10 @@ Anders sieht es bei den Metadaten aus, welche alle die folgende Syntax und damit
 
 (Name Inhalt)\\
 
-Es liegt dennoch ein Information Retrieval Problem vor, da der Begriff auch die Suche in teilweise strukturierten oder semistrukturierten (engl. semistructured) Dokumenten einschließt (\cite{Manning:08}, S.1-2). 
+Es liegt dennoch ein Information-Retrieval-Problem vor, da der Begriff auch die Suche in teilweise strukturierten oder semistrukturierten (engl. semistructured) Dokumenten einschließt (\cite{Manning:08}, S.1-2). 
 Hierbei sei angemerkt, dass selbst die Metadaten nicht vollkommen strukturiert sind: Der Datentyp des Inhalts ist offen gelassen und es gibt keinerlei Vorgaben, welche Metadaten in den Dokumenten auftreten müssen.  \\
-In den folgenden Kapiteln wird beschrieben, auf welche Weise ein Information Retrieval System konzipiert und realisiert werden kann, welches die gegebene Problemstellung löst.
- Hierzu werden zunächst die hierfür benötigten Kenntnisse über die beiden klassischen Information Retrieval Verfahren boolesches Retrieval (siehe Kapitel \ref{bool}) und Vektorraummodell (siehe Kapitel \ref{vector}) vermittelt.
+In den folgenden Kapiteln wird beschrieben, auf welche Weise ein Information-Retrieval-System konzipiert und realisiert werden kann, welches die gegebene Problemstellung löst.
+ Hierzu werden zunächst die hierfür benötigten Kenntnisse über die beiden klassischen Information-Retrieval-Verfahren boolesches Retrieval (siehe Kapitel \ref{bool}) und Vektorraummodell (siehe Kapitel \ref{vector}) vermittelt.
  
 
 

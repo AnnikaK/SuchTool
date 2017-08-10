@@ -1,10 +1,9 @@
 \begin{thebibliography}{KMOB14}
 
-\bibitem[Aca]{Academic:17}
-{\em {Academic - Academic dictionaries and encyclopedias, Universal Lexikon}}.
+\bibitem[Aca12]{Academic:12}
+{\em {Academic - Universal-Lexikon}}, 2012.
 \newblock \\
-  {\url{http://universal_lexikon.deacademic.com/253489/Informationsr%C3%BCckgewinnung},
-  letzter Zugriff am 05.06.2017}.
+  {\url{http://universal_lexikon.deacademic.com/253489/Informationsr%C3%BCckgewinnung}}.
 
 \bibitem[CDM08]{Manning:08}
 {\sc Christopher D.~Manning, Prabhakar~Raghavan, Hinrich~Schütze}: {\em
@@ -12,13 +11,13 @@
 \newblock Cambridge University Press, 2008.
 
 \bibitem[Eng14]{Engelhardt:14}
-{\sc Engelhardt, Alexander}: {\em {Kreuztabellen / Kontingenztafeln}}, 2014.
+{\sc Engelhardt, Alexander}: {\em {Crashkurs Statistik - Kreuztabellen /
+  Kontingenztafeln}}, 2014.
 \newblock \\
-  {\url{http://www.crashkurs-statistik.de/kreuztabellen-kontingenztafeln/},
-  letzter Zugriff am 03.07.2017}.
+  {\url{http://www.crashkurs-statistik.de/kreuztabellen-kontingenztafeln/}}.
 
 \bibitem[Fer03]{Ferber:03}
-{\sc Ferber, Reginald}: {\em {Information Retrieval, Suchmodelle und
+{\sc Ferber, Reginald}: {\em {Information Retrieval - Suchmodelle und
   Data-Mining-Verfahren für Textsammlungen und das Web}}.
 \newblock dpunkt.verlag, 2003.
 
@@ -26,8 +25,8 @@
 {\sc Henrich, Andreas}: {\em {Information Retrieval 1 -Grundlagen, Modelle und
   Anwendungen}}, 2008.
 \newblock \\
-  {\url{https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/medieninformatik/Dateien/Publikationen/2008/henrich-ir1-1.2.pdf},
-  letzter Zugriff am 10.06.2017 }.
+  {\url{https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/medieninformatik/Dateien/Publikationen/2008/henrich-ir1-1.2.pdf}
+  }.
 
 \bibitem[Hof17]{Hofer:17}
 {\sc Hofer, Andreas}: {\em {User-Interface-Design WS 2016/17 - 2 Gestalten}}.
@@ -36,8 +35,7 @@
 \bibitem[Ion16]{Ionescu:16}
 {\sc Ionescu, Stelian}: {\em {split-sequence Package}}, 2016.
 \newblock \\
-  {\url{https://github.com/sharplispers/split-sequence/blob/master/split-sequence.lisp},
-  letzter Zugriff am 23.06.2017}.
+  {\url{https://github.com/sharplispers/split-sequence/blob/master/split-sequence.lisp}}.
 
 \bibitem[Jän84]{Jaenich:84}
 {\sc Jänich, Klaus}: {\em {Lineare Algebra - Ein Skriptum für das erste
@@ -51,9 +49,9 @@
 \newblock \Btxnumberlong{}~34 \btxinserieslong{}\ {\em Integrated Series in
   Information Systems}. Springer Verlag, 2014.
 
-\bibitem[Koh]{Kohlfuerst}
-{\sc Kohlf\"urst, Michael}: {\em {Online Marketing Blog von PromoMasters SEO
-  und SEA}}.
+\bibitem[Koh09]{Kohlfuerst:09}
+{\sc Kohlfürst, Michael}: {\em {PromoMasters Online Marketing - Deutsche
+  StopWords Liste}}, 2009.
 \newblock \\ {\url{http://www.promomasters.at/blog/stop-words/}}.
 
 \bibitem[met16]{meta:16}
@@ -61,14 +59,14 @@
 \newblock \\ {\url{http://www.itwissen.info/Metadaten-meta-data.html}}.
 
 \bibitem[PDVC06]{Claus:06}
-{\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden -
-  Informatik A-Z, Fachlexikon für Studium, Ausbildung und Beruf}}.
+{\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden Informatik
+  A-Z: Fachlexikon für Studium, Ausbildung und Beruf}}.
 \newblock Dudenverlag, 2006.
 
 \bibitem[SB10]{Buettcher:10}
-{\sc Stefan~B\"uttcher, Charles~L.A.Clarke, Gordon~V.Cormack}: {\em
+{\sc Stefan~Büttcher, Charles L.A.~Clarke, Gordon V.~Cormack}: {\em
   {Information Retrieval - Implementing and Evaluating Search Engines}}.
-\newblock The MIT Press - Massachusetts Institute of Technology, 2010.
+\newblock The MIT Press, 2010.
 
 \bibitem[web13]{webtools:13}
 {\em {99webTools - List of English Stop words}}, 2013.

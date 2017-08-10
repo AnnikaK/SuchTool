@@ -5,7 +5,7 @@
 Nahezu jeder nutzt heutzutage täglich E-Mail-Dienste und kennt das Phänomen, dass der Posteingang sich unter der Flut eintreffender Nachrichten stetig füllt, bis der Ordner so voll ist, dass jede Übersicht verloren geht. \\
 Sobald eine bestimmte E-Mail darin wiedergefunden werden soll, beispielsweise weil sie eine bestimmte Kontaktadresse enthält, wird dies zu einem Problem: 
  Wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Eine manuelle Suche ist hier oft aus Zeitgründen unmöglich. \\
-Ein Information Retrieval System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können, löst dieses Problem. Eine mögliche Suchanfrage könnte  $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ lauten, woraufhin das System 
+Ein Information-Retrieval-System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können, löst dieses Problem. Eine mögliche Suchanfrage könnte  $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ lauten, woraufhin das System 
 bei erfolgreicher Suche eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage liefert, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. \\
 Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
 Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
@@ -16,8 +16,8 @@ Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Pos
 
 \section{Problemstellung}
 \label {Problemstellung}
-Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche (engl. Information Retrieval System, kurz IR-System) in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält.\\
-Dies bedeutet, dass diese sowohl gewöhnlichen Freitext als auch Metadaten enthalten. 
+Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält. Im Englischen wird ein solches System \textit{information retrieval system} genannt, der deutsche Begriff hierfür lautet Information-Retrieval-System oder kurz IR-System.\\
+Semistrukturiert oder teilweise strukturiert bedeutet, dass die Dokumente sowohl gewöhnlichen Freitext als auch Metadaten enthalten. 
 Metadaten oder auch Metainformationen sind Daten, die andere Daten beschreiben, d.h. sie enthalten Informationen über das eigentliche Dokument (\cite{meta:16}). Im Falle von E-Mails sind  Datum, Absender, Betreff etc. typische Metadaten. \\
  Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Die gewählten Suchkriterien sollen beliebig mit den logischen Operatoren $AND$ (engl. und), $OR$ (engl. oder), $NOT$ (engl. nicht) verknüpfbar sein und die sich ergebenden logischen Ausdrücke sollen beliebig tief geschachtelt werden können.\\
 Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postausgang, allerdings soll das System so flexibel sein, dass es auch auf andere Archive mit teilweise strukturierten Dokumenten anwendbar ist. 
@@ -28,7 +28,7 @@ Aus der Aufgabenstellung ergeben sich die im Folgenden beschriebenen Teilproblem
 
 
 \subsection{Dynamisches einlesen der Metadaten}
-Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das Information Retrieval System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
+Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das Information-Retrieval-System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
 
 \subsection{Unterscheidung Metadaten und Freitext}
 Für das dynamische Einlesen der Metadaten müssen die folgenden Punkte erfüllt sein:

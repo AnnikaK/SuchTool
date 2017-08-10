@@ -1,6 +1,6 @@
 \chapter{Das Vektorraummodell}
 \label{vector}
-Dieses Kapitel stellt ein weiteres klassisches Information Retrieval Verfahren, das Vektorraummodell, vor. \\
+Dieses Kapitel stellt ein weiteres klassisches Information-Retrieval-Verfahren, das Vektorraummodell, vor. \\
 
 \section{Funktionsprinzip}
 Zunächst werden alle Dokumente in Terme zerlegt und indexiert, wie es auch beim booleschen Retrieval der Fall ist. Die Ermittlung des Vokabulars ist Grundvoraussetzung für alle weiteren Schritte. \\
@@ -20,21 +20,24 @@ Ein solcher Vektorraum lässt sich wie in Definition \ref{vectorraum} (\cite{Jaen
 \begin{definition}(Vektorraum)  \\
 	\label{vectorraum}
 	Ein Tripel $(V,+,\cdot)$, bestehend aus einer Menge $V$, einer Abbildung (genannt Addition) \\	
-		$+ : V \times V \rightarrow V$ \\
-		    $(x,y) \rightarrow x + y$\\
+		 $	+ : V \times V \rightarrow V$ \\
+    $(x,y) \rightarrow x + y$\\
 		    und einer Abbildung (genannt skalare Multiplikation) \\
 		    $\cdot : \mathbb{R} \times V \rightarrow  V$ \\
 		    $(\lambda,x) \rightarrow \lambda x$ \\
 		    heißt \emph{reeller Vektorraum}, wenn für die Abbildungen $+$ und $\cdot$ die folgenden acht Axiome gelten: \\
-		    $(1)\hspace{10pt}  (x + y) + y = x + (y + z) \hspace{10pt}\forall x,y,z \in V$ \\
-		    $(2)\hspace{10pt} x + y = y + x \hspace{70pt}\forall x,y,z \in V$ \\
-		    $(3)$\hspace{10pt}  Es gibt ein Element $0 \in V$ (genannt \glqq Null{} \grqq oder\glqq  Nullvektor \grqq ) mit\\
-		    \hspace{10pt} $x + 0 = x \hspace{116pt} \forall x \in V$ \\
-		    $(4)\hspace{10pt}$ Zu jedem $x \in V$ gibt es  ein Element $-x \in V$ mit $x + (-x) = 0 $ \\
-		    $(5)\hspace{10pt}  \lambda (\mu x) = (\lambda \mu) x \hspace{67pt}\forall \lambda, \mu \in \mathbb{R}, x\in V$ \\
-		    $(6)\hspace{10pt}  1x = x \hspace{108pt} \forall x \in V$  \\
-		    $(7)\hspace{10pt}  \lambda (x + y) =  \lambda x + \lambda y \hspace{43pt}\forall \lambda \in \mathbb{R}, x,y \in V$ \\
-		    $(8)\hspace{10pt}  (\lambda + \mu)x =  \lambda x + \mu x \hspace{43pt}\forall \lambda, \mu \in \mathbb{R}, x \in V$ \\
+		    \begin{enumerate}
+		    \item  $ (x + y) + z = x + (y + z) $\hspace{13pt}$\forall x,y,z \in V$ \\
+			\item  $x + y = y + x$ \hspace{70pt}$\forall x,y \in V$ \\
+		    \item Es gibt ein Element $0 \in V$ (genannt \glqq Null{} \grqq oder\glqq  Nullvektor \grqq ) mit\\
+			 $x + 0 = x \hspace{97pt} \forall x \in V$ \\
+		    \item Zu jedem $x \in V$ gibt es  ein Element $-x \in V$ mit $x + (-x) = 0 $ \\
+		    \item $\lambda (\mu x) = (\lambda \mu) x \hspace{78pt}\forall \lambda, \mu \in \mathbb{R}, x\in V$ \\
+		    \item  $ 1x = x \hspace{112pt} \forall x \in V$  \\
+		    \item $  \lambda (x + y) =  \lambda x + \lambda y \hspace{48pt}\forall \lambda \in \mathbb{R}, x,y \in V$ \\
+		    \item $  (\lambda + \mu)x =  \lambda x + \mu x \hspace{48pt}\forall \lambda, \mu \in \mathbb{R}, x \in V$ \\
+		    \end{enumerate}
+		    
 
 \end{definition}
 
@@ -62,14 +65,14 @@ Zwei Vektoren mit unterschiedlich vielen Elementen, z.B. $\overrightarrow{v_1}=(
 
 
 \section{Definition Vektorraummodell}
-Das soeben beschriebene Funktionsprinzip lässt sich mathematisch mithilfe von Attributen beschreiben. \\
-Attribute stellen im Vektorraummodell eine Abbildung der Dokumentenmenge $D$ auf die reellen Zahlen $\mathbb{R}$ dar. Damit ist der Wertebereich der Attribute im Gegensatz zum booleschen Retrieval eindeutig festgelegt.\\
-Die Definition lautet somit wie folgt: \\
+Das soeben beschriebene Funktionsprinzip lässt sich mathematisch mithilfe von Attributen beschreiben. 
+Attribute stellen im Vektorraummodell eine Abbildung der Dokumentenmenge $D$ auf die reellen Zahlen $\mathbb{R}$ dar, weshalb der Wertebereich der Attribute im Gegensatz zum booleschen Retrieval eindeutig festgelegt ist.
+Das Vektorraum lässt sich mittels Attributen wie folgt definieren (\cite{Ferber:03}, S.63):
 
 
 \begin{definition}\textit{(Vektorraummodell mit Attributen)} \\
 	
-Sei $D = {d_1,...,d_n}$ eine Menge von Dokumenten oder Objekten und $A = {A_1,...,A_n}$ eine Menge von Attributen $A_j: D \rightarrow R$ auf diesen Objekten. Die Attributwerte $A_j(d_i) =:w_i,_j$ des Dokuments $d_i$ lassen sich als Gewichte auffassen und zu einem Vektor $w_i = (w_i,_1,...,w_i,_n) \in \mathbb{R}^{n}$ zusammenfassen. Dieser Vektor beschreibt das Dokument im Vektorraummodell: Er ist seine Repräsentation und wird Dokumentvektor genannt. \\
+Sei $D = {d_1,...,d_m}$ eine Menge von Dokumenten oder Objekten und $A = {A_1,...,A_n}$ eine Menge von Attributen $A_j: D \rightarrow \mathbb{R}$ auf diesen Objekten. Die Attributwerte $A_j(d_i) =:w_i,_j$ des Dokuments $d_i$ lassen sich als Gewichte auffassen und zu einem Vektor $w_i = (w_i,_1,...,w_i,_n) \in \mathbb{R}^{n}$ zusammenfassen. Dieser Vektor beschreibt das Dokument im Vektorraummodell: Er ist seine Repräsentation und wird Dokumentvektor genannt. \\
 Eine Anfrage wird durch einen Vektor $q \in \mathbb{R}^{n}$ mit Attributwerten, den Anfragevektor oder Query-Vektor, dargestellt. \\
 Eine Ähnlichkeitsfunktion $s:\mathbb{R}^{n} \times \mathbb{R}^{n} \rightarrow \mathbb{R}$ definiere für je zwei Vektoren $x,y \in \mathbb{R}^{n}$ einen reellen Ähnlichkeitswert $s(x,y)$.
 \end{definition} 
@@ -120,12 +123,12 @@ Das Gewicht für Term $t$ in Dokument $d$ berechnet sich somit wie in Formel \ref
 
 \begin{equation}
 \label{tfidfa}
-	tf-idf_t,_d = tf_t,_d \times idf_t,
+	tf-idf_t,_d = tf_t,_d \times idf_t
 \end{equation}
 Verwendet man für die invertierte Dokumenthäufigkeit den unmodifizierten Wert \ref{idfa}, so ergibt sich hieraus die Berechnung:
 \begin{equation}
 \label{tfidfb}
-tf-idf_t,_d = \frac{tf_t,_d}{ df_t}
+tf-idf_t,_d = \frac{tf_t,_d}{df_t}
 \end{equation}
 
 Für die modifizierte Formel \ref{idfb} lautet die TF-IDF-Gewichtung wie folgt:
@@ -175,7 +178,7 @@ Das Cosinus-Maß ist das Skalarprodukt der normalisierten Vektoren (\cite{Manning
 Zur Berechnung des Cosinus-Maßes müssen somit sowohl das Skalarprodukt als auch die Längenberechnung eines Vektors bekannt sein, darum werden beide an dieser Stelle erklärt.
 
 \subsubsection{Euklidische Länge}
-Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Formel \ref{length} angegeben berechnet.
+Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Formel \ref{length} angegeben berechnet (\cite{Manning:08}, S.111).
 
 \begin{equation}
 \label{length}
@@ -185,7 +188,7 @@ Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Fo
 
 
 \subsubsection{Skalarprodukt}
-Das Skalarprodukt zweier Vektoren $\overrightarrow{x}$ und $\overrightarrow{y}$ wird wie in Formel \ref{dot} gezeigt berechnet.
+Das Skalarprodukt zweier Vektoren $\overrightarrow{x}$ und $\overrightarrow{y}$ wird wie in Formel \ref{dot} gezeigt berechnet (\cite{Manning:08}, S.111).
 
 \begin{equation}
 \label{dot}

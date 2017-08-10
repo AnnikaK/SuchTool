@@ -1,15 +1,17 @@
 \chapter{Zusammenfassung und Ausblick}
+In diesem Kapitel werden die wesentlichen Ergebnisse der Arbeit zusammengefasst sowie mögliche zukünftige Verbesserungen vorgestellt.
 
 %In diesem Kapitel soll die Arbeit noch einmal kurz zusammengefasst werden. Insbesondere sollen die wesentlichen Ergebnisse Ihrer Arbeit herausgehoben werden. Erfahrungen, die z.B. Benutzer mit der Mensch-Maschine-Schnittstelle gemacht haben oder Ergebnisse von Leistungsmessungen sollen an dieser Stelle präsentiert werden. Sie können in diesem Kapitel auch die Ergebnisse oder das Arbeitsumfeld Ihrer Arbeit kritisch bewerten. Wünschenswerte Erweiterungen sollen als Hinweise auf weiterführende Arbeiten erwähnt werden.
 
+%UNBEDINGT ABRUFDATUM BEI INTERNETSEITEN DAZU!!!!!!!!!!!!!!!!!!
 
 \section{Zusammenfassung}
 
 Im Kapitel Einleitung und Problemstellung wurde die Aufgabenstellung erläutert, wobei sich bereits zeigte dass diese aufgrund des semistrukturierten Aufbaus der zu durchsuchenden Dokumente eine sehr spezifische Lösung erfordern würde. Die Unterteilung in Metadaten und Freitext sowie das logische Verknüpfen der Suchbedingungen stellen die wesentlichen Herausforderungen dar.
-Anschließend wurden die notwendigen theoretischen Kenntnisse vermittelt. Die Bedeutung des Begriffs Information Retrieval wurde erklärt und es zeigte sich, dass diese sehr weit gefasst ist,  weshalb diese Arbeit die ausgesprochen umfangreiche Thematik nur ansatzweise behandeln kann. Es wurden die beiden bekanntesten klassichen Information Retrieval  Verfahren vorgestellt; das boolesche Retrieval und das Vektorraummodell, sowie Methoden, anhand derer sich solche Modelle im Hinblick auf Qualität bewerten und Vergleichen lassen. Hierbei zeigte sich, dass eine solche Bewertung im Rahmen dieser Arbeit aufgrund des Aufwands leider nicht durchführbar ist. \\
+Anschließend wurden die notwendigen theoretischen Kenntnisse vermittelt. Die Bedeutung des Begriffs Information Retrieval wurde erklärt und es zeigte sich, dass diese sehr weit gefasst ist,  weshalb diese Arbeit die ausgesprochen umfangreiche Thematik nur ansatzweise behandeln kann. Es wurden die beiden bekanntesten klassichen Information-Retrieval-Verfahren vorgestellt; das boolesche Retrieval und das Vektorraummodell, sowie Methoden, anhand derer sich solche Modelle im Hinblick auf Qualität bewerten und Vergleichen lassen. Hierbei zeigte sich, dass eine solche Bewertung im Rahmen dieser Arbeit aufgrund des Aufwands leider nicht durchführbar ist. \\
 Im Implementierungskapitel wurde deutlich, dass die Verwendung eines der beiden klassischen Verfahren nicht ausreicht, die Kombination aus booleschen Retrieval und Vektorraummodell jedoch hervorragend passt. Das boolesche Retrieval musste allerdings geringfügig modifiziert werden, indem nicht nur das Vorkommen der Attribute in den Dokumenten vermerkt wird, sondern auch deren Inhalt inklusive Datentyp. Beim Vektorraummodell zeigte sich, dass sich Speicher sparen lässt, indem alle Elemente des Vektors, welche eine 0 enthalten, nicht eingetragen werden. \\
 Zuletzt zeigte sich, dass die Benutzeroberfläche eine nicht zu unterschätzende Herausforderung darstellt,
-da der Anwender sein Informationsbedürfnis auf möglichst unkomplizierte Art ausdrücken können soll. Ein Information Retrieval System muss vom Nutzer auch verstanden werden. Es wurde sich dafür entschieden, möglichst einfache UI-Elemente wie CheckBoxes zu wählen sowie die Oberfläche in drei thematische Bereiche zu gliedern, um die notwendige Übersicht zu bieten.
+da der Anwender sein Informationsbedürfnis auf möglichst unkomplizierte Art ausdrücken können soll. Ein Information-Retrieval-System muss vom Nutzer auch verstanden werden. Es wurde sich dafür entschieden, möglichst einfache UI-Elemente wie CheckBoxes zu wählen sowie die Oberfläche in drei thematische Bereiche zu gliedern, um die notwendige Übersicht zu bieten.
 
 
 
@@ -17,7 +19,7 @@ da der Anwender sein Informationsbedürfnis auf möglichst unkomplizierte Art ausd
  \section{Ausblick: Wünschenswerte Erweiterungen}
 Einige Erweiterungen konnten aus zeitlichen Gründen in der Implementierung nicht umgesetzt werden, sind jedoch wünschenswert. \\
 Die Im Kapitel Grundbegriffe beschriebene Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) würde eine große Verbesserung hinsichtlich des Speicherbedarfs bedeuten, da weniger Terme gespeichert werden müssen. Zudem würde das Ergänzen um Lemmatisierung auch die Suche verbessern, da auch Dokumente mit zum Suchbegriff verwandten Wörtern als Treffer gewertet werden. \\
-Weiterhin wünschenswert ist die Ergänzung um Spelling Correction, d.h. um eine Rechtschreibkorrektur die ähnliche Suchbegriffe vorschlägt, falls der Anwender sich bei der Eingabe vertippt hat. Dies würde die Anwenderfreundlichkeit des Systems erheblich steigern, insbesondere in Fällen in welchen der Anwender seinen Tippfehler nicht bemerkt und unerwartet keine Resultate erhält. Da Nutzer in der Regel Spelling Correction aus der alltäglichen Websuche gewöhnt sind, ist es wünschenswert auch dieses Information Retrieval System damit auszustatten.
+Weiterhin wünschenswert ist die Ergänzung um Spelling Correction, d.h. um eine Rechtschreibkorrektur die ähnliche Suchbegriffe vorschlägt, falls der Anwender sich bei der Eingabe vertippt hat. Dies würde die Anwenderfreundlichkeit des Systems erheblich steigern, insbesondere in Fällen in welchen der Anwender seinen Tippfehler nicht bemerkt und unerwartet keine Resultate erhält. Da Nutzer in der Regel Spelling Correction aus der alltäglichen Websuche gewöhnt sind, ist es wünschenswert auch dieses Information-Retrieval-System damit auszustatten.
 
 
 %-Stopwords \\
