@@ -51,44 +51,44 @@
 \contentsline {subsection}{\numberline {5.4.3}Invertierte Dokumenth\"aufigkeit}{19}{subsection.5.4.3}
 \contentsline {subsection}{\numberline {5.4.4}TF-IDF-Gewichtung}{20}{subsection.5.4.4}
 \contentsline {section}{\numberline {5.5}Anfragen}{20}{section.5.5}
-\contentsline {section}{\numberline {5.6}\"Ahnlichkeitsfunktion}{20}{section.5.6}
+\contentsline {section}{\numberline {5.6}\"Ahnlichkeitsfunktion}{21}{section.5.6}
 \contentsline {subsection}{\numberline {5.6.1}Euklidischer Abstand}{21}{subsection.5.6.1}
 \contentsline {subsection}{\numberline {5.6.2}Cosinus-Ma\IeC {\ss }}{21}{subsection.5.6.2}
 \contentsline {subsubsection}{Euklidische L\"ange}{21}{section*.17}
-\contentsline {subsubsection}{Skalarprodukt}{21}{section*.18}
+\contentsline {subsubsection}{Skalarprodukt}{22}{section*.18}
 \contentsline {subsubsection}{Funktion}{22}{section*.19}
-\contentsline {chapter}{\numberline {6}Bewertung eines Information-Retrieval-Systems}{23}{chapter.6}
-\contentsline {section}{\numberline {6.1}Problem Relevanz}{23}{section.6.1}
-\contentsline {section}{\numberline {6.2}Precision und Recall}{24}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Precisison}{24}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Recall}{24}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Veranschaulichung}{24}{subsection.6.2.3}
-\contentsline {section}{\numberline {6.3}Zwei Evaluierungsma\IeC {\ss }e}{25}{section.6.3}
-\contentsline {section}{\numberline {6.4}Durchf\"uhrung}{25}{section.6.4}
-\contentsline {chapter}{\numberline {7}Implementierung}{27}{chapter.7}
-\contentsline {section}{\numberline {7.1}Teilweise strukturierte Dokumente}{27}{section.7.1}
-\contentsline {section}{\numberline {7.2}Vorverarbeitung}{28}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Erstellen des Dokument-Dictionaries}{28}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{29}{subsection.7.2.2}
-\contentsline {subsubsection}{Verarbeiten der Metadaten}{29}{section*.20}
-\contentsline {subsubsection}{Verarbeiten des Freitextes}{30}{section*.21}
-\contentsline {section}{\numberline {7.3}Die Suche}{32}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{32}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{33}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{33}{subsection.7.3.3}
-\contentsline {subsubsection}{Finden der Resultate}{33}{section*.22}
-\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{33}{section.7.4}
-\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{35}{chapter.8}
-\contentsline {section}{\numberline {8.1}Anforderungen}{35}{section.8.1}
-\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{35}{section.8.2}
-\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{36}{section.8.3}
-\contentsline {section}{\numberline {8.4}Suchanfrage}{37}{section.8.4}
-\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{37}{subsection.8.4.1}
-\contentsline {subsection}{\numberline {8.4.2}Beispiel}{38}{subsection.8.4.2}
-\contentsline {section}{\numberline {8.5}Gesamtanfrage}{38}{section.8.5}
-\contentsline {section}{\numberline {8.6}Ergebnis}{39}{section.8.6}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{41}{chapter.9}
-\contentsline {section}{\numberline {9.1}Zusammenfassung}{41}{section.9.1}
-\contentsline {section}{\numberline {9.2}Ausblick: W\"unschenswerte Erweiterungen}{42}{section.9.2}
-\contentsline {chapter}{Literaturverzeichnis}{43}{chapter*.23}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{45}{appendix.A}
+\contentsline {chapter}{\numberline {6}Bewertung eines Information-Retrieval-Systems}{24}{chapter.6}
+\contentsline {section}{\numberline {6.1}Problem Relevanz}{24}{section.6.1}
+\contentsline {section}{\numberline {6.2}Precision und Recall}{25}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Precisison}{25}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Recall}{25}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Veranschaulichung}{25}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Zwei Evaluierungsma\IeC {\ss }e}{26}{section.6.3}
+\contentsline {section}{\numberline {6.4}Durchf\"uhrung}{26}{section.6.4}
+\contentsline {chapter}{\numberline {7}Implementierung}{28}{chapter.7}
+\contentsline {section}{\numberline {7.1}Teilweise strukturierte Dokumente}{28}{section.7.1}
+\contentsline {section}{\numberline {7.2}Vorverarbeitung}{29}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Erstellen des Dokument-Dictionaries}{29}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{30}{subsection.7.2.2}
+\contentsline {subsubsection}{Verarbeiten der Metadaten}{30}{section*.20}
+\contentsline {subsubsection}{Verarbeiten des Freitextes}{31}{section*.21}
+\contentsline {section}{\numberline {7.3}Die Suche}{33}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{33}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{34}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{34}{subsection.7.3.3}
+\contentsline {subsubsection}{Finden der Resultate}{34}{section*.22}
+\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{34}{section.7.4}
+\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{36}{chapter.8}
+\contentsline {section}{\numberline {8.1}Anforderungen}{36}{section.8.1}
+\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{36}{section.8.2}
+\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{37}{section.8.3}
+\contentsline {section}{\numberline {8.4}Suchanfrage}{38}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{38}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Beispiel}{39}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Gesamtanfrage}{39}{section.8.5}
+\contentsline {section}{\numberline {8.6}Ergebnis}{40}{section.8.6}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{42}{chapter.9}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{42}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ausblick: W\"unschenswerte Erweiterungen}{43}{section.9.2}
+\contentsline {chapter}{Literaturverzeichnis}{44}{chapter*.23}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{46}{appendix.A}
