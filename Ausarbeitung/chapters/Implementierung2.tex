@@ -116,103 +116,97 @@ Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinsc
 \end{figure}
 
 \subsubsection{Verarbeiten des Freitextes}
-Für die Freitextsuche wurde das Vektorraummodell (siehe Kapitel \ref{vector}) gewählt, da dieses Teiltreffer sowie ein Ranking der Ergebnisse ermöglicht.  
-
-Hierfür muss zunächst das Vokabular bestimmt werden, was wie folgt abläuft:
-
-
-
+Für die Freitextsuche wurde das Vektorraummodell (siehe Kapitel \ref{vector}) gewählt, da dieses Teiltreffer sowie ein Ranking der Ergebnisse ermöglicht. Grundvoraussetzung für das Verfahren ist die Bestimmung des Vokabulars. Da jedes Dokument bereits in Metadaten und Freitext aufgeteilt wurde, liegen die Freitexte der Sammlung bereits isoliert vor. Es wird über diese Liste iteriert und pro Freitext werden jeweils die folgenden Schritte ausgeführt:
 \begin{itemize}
-	\item Es wird über eine Liste aller Freitexte iteriert.
-	\item Jeder Freitext wird in seine Terme zerlegt. Hierbei wurde auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwendet (\cite{Ionescu:16}).
-	\item Für jeden Term wird geprüft, ob er schon bekannt ist oder nicht. Falls nicht, wird er der Vokabularliste hinzugefügt, vorausgesetzt es handelt sich nicht um ein deutsches oder englisches Stoppwort.
+	\item Zerlegung des Textes in Terme, wobei auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet wurde, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwendet (\cite{Ionescu:16}).
+	\item Zu jedem Term wird geprüft, ob dieser bereits im Vokabular enthalten ist. Falls nicht, wird er hinzugefügt, vorausgesetzt es handelt sich nicht um ein deutsches oder englisches Stoppwort.
 \end{itemize}
 
-Stoppwörter (siehe Abschnitt \ref{stop}) wurden bewusst aus dem Vokabular entfernt, um Speicherplatz zu sparen und die Suche zu beschleunigen. Andernfalls können Anfragen wie \textit{ Freitext = \glqq summary of the first chapters \grqq{}} aufgrund des \glqq of the \grqq{} zu erheblichen Problemen führen, da hierbei meistens alle Dokumente infrage kommen. Die englischen Stoppwörter, welche in der Implementierung verwendet wurden, stammen von der Website \cite{webtools:13}. Die verwendete deutsche Stoppwortliste stammt aus \cite{Kohlfuerst:09} und enthält analog deutsche Begriffe wie \glqq der, die, das, und\grqq{} etc., welche nichts über den Textinhalt aussagen und darum ignoriert werden können. \\
-Nachdem alle Terme bekannt sind, werden diese indexiert:
+Stoppwörter (siehe Abschnitt \ref{stop}) wurden bewusst aus dem Vokabular entfernt, um Speicherplatz zu sparen und die Suche zu beschleunigen, denn je kleiner die Dokument- und Anfragevektoren ausfallen, desto schneller erfolgt die Berechnung der Ähnlichkeitswerte. Die englischen Stoppwörter stammen aus \cite{webtools:13},  die deutsche Stoppwortliste aus \cite{Kohlfuerst:09}.
 
-\begin{itemize}
-	\item Es wird ein Term-Dictionary, realsiert durch eine Hash-Table, angelegt.
-	\item Für jeden Term der Vokabularliste wird ein Eintrag der Form (Index,idf=0) angelegt, wobei der Index ein fortlaufeneder Integer-Wert ist und der idf-Wert noch zu berechnen ist.
-\end{itemize}
+Nachdem das Vokabular vollständig bestimmt wurde, werden die darin vorkommenden Terme indexiert. Hierfür wird zunächst ein Term-Dictionary angelegt, wobei auch hier die zugrunde liegende Datenstruktur eine Hash-Table ist. Anschließend wird über das Vokabular iteriert und pro Term ein Eintrag in der Form (Index, idf=0) angelegt. Der Index ist hierbei ein fortlaufender Integer-Wert, der den Term eindeutig identifiziert und dessen Position im Dokument- oder Anfragevektor bestimmt. Der idf-Wert muss erst noch ermittelt werden, darum wird dieser mit 0 initialisiert. Abbildung \ref{terms} zeigt den Aufbau eines Eintrags.
+
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/termDict.png}
-	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Index gibt die Position im Dokumentvektor an (Eigene Abbildung).}
+	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (Eigene Abbildung).}
 	\label{terms}
 \end{figure}
 
-Nach dem abgeschlossenen Anlegen kann das Term-Dictionary mit Einträgen in der in Abbildung \ref{terms} gezeigten Struktur gefüllt werden. Beim Befüllen wird über alle Freitexte iteriert und es werden pro Freitext, d.h. pro Dokument, die folgenden Schritte ausgeführt: \\
+Anschließend muss das Term-Dictionary mit idf-Werten gefüllt werden, weshalb über alle Freitexte iteriert wird und jeweils folgende Schritte ausgeführt werden:
 \begin{itemize}
-	\item Anlegen eines Dokumentvektors, realisiert mittels Hash-Table, welcher die Term-Indizes als Keys und deren tf-idf-Gewichte als Werte besitzt.
-	\item Tritt ein Term zum ersten Mal in der Sammlung, wird der idf-Slot im Term-Dictionary auf 1 gesetzt.
-	\item Tritt ein Term zum ersten Mal im Dokument auf und existiert bereits in der Sammlung, wird der idf-Wert im Term-Dictionary um 1 erhöht.
-	\item Beim ersten Auftreten im Dokument wird der Eintrag im Dokumentvektor auf die Termhäufigkeit 1 gesetzt. Die Position im Vektor ist durch Zugriff auf den Index des Terms (gespeichert im Term-Dictionary) bekannt.
+	\item Anlegen eines Dokumentvektors, realisiert mittels Hash-Table, welcher die Term-Indizes als Hash-Keys und deren noch zu bestimmende tf-idf-Gewichte als Hash-Values besitzt. 
+	\item Tritt ein Term zum ersten Mal in der Sammlung, wird der zuvor mit 0 initialisierte idf-Slot im Term-Dictionary auf 1 gesetzt.
+	\item Tritt ein Term zum ersten Mal im Dokument auf und existiert bereits in der Sammlung, wird der idf-Wert um 1 erhöht.
+	\item Beim ersten Auftreten im Dokument wird der entsprechende Eintrag im Dokumentvektor auf die Termhäufigkeit 1 gesetzt. Die Position im Vektor wird durch den Index des Terms (gespeichert im Term-Dictionary) vorgegeben.
 	\item Für jedes erneute Auftreten im Dokument wird die Termhäufigkeit im Dokumentvektor um 1 erhöht.
-	\item Ist der Freitext des aktuellen Dokuments vollständig verarbeitet, kann der bereits angelegte Eintrag an der entsprechenden Stelle im Dokument-Dictionary (d.h. der Slot \glqq Dokumentvektor\grqq{} im Hash-Eintrag mit der passenden \textit{docID})) mit dem hier erstellten Dokumentvektor initialisiert werden.
+	\item Ist der Freitext des aktuellen Dokuments vollständig verarbeitet, kann der bereits angelegte Eintrag an der entsprechenden Stelle im Dokument-Dictionary (rot markiert in Abbildung \ref{docs}) mit dem hier erstellten Dokumentvektor initialisiert werden.
 \end{itemize}
-Noch enthalten die idf-Slots im Term-Dictionary die Dokumenthäufigkeiten statt der tatsächlichen idf-Werte.
-Nun erfolgt deren Umrechnung in den idf-Wert nach Formel \ref{idfb}.\\
-Da die idf-Werte jetzt feststehen können die  Termäuhfigkeiten in den Dokumentvektoren in die entsprechenden tf-idf-Werte nach Formel \ref{tfidfc} umgerechnet werden. 
-An dieser Stelle stehen die Dokumentvektoren fest und können zur Verrechnung mit dem Anfragevektor verwendet werden. \\
-Durch das Realisieren der Vektoren als Hash-Tables entfallen leere Einträge, die nur unnötig Speicher belegen. Ein fehlender Eintrag wird als Gewicht 0 interpretiert, sodass dies kein Problem bei der Ähnlichkeitsberechnung darstellt. 
+
+Bei der Datenstruktur für die Dokumentvektoren wurde sich bewusst für eine Hash-Table entschieden, um das Problem der leeren Einträge zu vermeiden und damit Speicher zu sparen. Fehlt ein Term in der Hash-Table, so wird dies bei der Berechnung des Cosinus-Maßes als Gewicht 0 interpretiert.\\
+Noch enthalten die idf-Slots im Term-Dictionary die Dokumenthäufigkeiten statt der idf-Werte.
+Deshalb werden diese nach Formel \ref{idfb} in den idf-Wert umgerechnet. Es wurde sich für die Formel mit Logarithmus entschieden, um die Werte seltener Terme abzuschwächen. 
+Mit den idf-Werten können nun auch die tf-idf-Werte bestimmt werden, weshalb die Termhäufigkeiten in den Dokumentvektoren nach Formel \ref{tfidfc} umgerechnet werden. 
+Die Vektoren stehen jetzt fest und können zur Verrechnung mit dem Anfragevektor verwendet werden. \\
 
 
-\section{Die Suche}
-Nachdem die Initialisierungsschritte ausgeführt wurden, kann der Nutzer die Suche starten. Er sieht auf der Benutzeroberfläche, welche Attribute ihm als Suchbereiche zur Verfügung stehen. Das Attribut \glqq Freitext \grqq{} ist hierbei immer vorhanden. In diesem Abschnitt wird die interne Realisierung der Suche erklärt. 
+
+\section{Suche}
+Nachdem die Initialisierungsschritte ausgeführt wurden, kann der Nutzer die Suche starten. Er sieht auf der Benutzeroberfläche, welche Attribute ihm als Bereiche, in denen gesucht werden kann, zur Verfügung stehen. Das Attribut \glqq Freitext\grqq{} ist hierbei immer vorhanden. 
+Metadatensuche und Freitextsuche wurden intern unterschiedlich realisiert, darum werden sie getrennt erklärt.
 
 \subsection{Metadatensuche}
-Lautet die Anfrage beispielsweise $Absender=klaus$, wird auf die modifizierte invertierte Liste über den Hash-Key $Absender$ zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
+Die Metadatensuche verwendet boolesches Retrieval.
+Lautet die Anfrage beispielsweise \textit{Absender=\glqq Klaus\grqq{}}, wird auf die modifizierte invertierte Liste über den Hash-Key \textit{Absender} zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
 \begin{enumerate}
-	\item \textbf{String}: Der Attributwert wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle im Attributwert auftaucht.
-	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage (die stets als String übergeben wird) wenn möglich zum Datentyp Number konvertiert. Hierbei sind ausgeschriebene Zahlen von null bis zwölf auch konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
-	\item \textbf{Liste}: Eine Liste (Datentyp Cons in Lisp) wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen, d.h. darin enthaltene Strings, Zahlen und Unterlisten.
+	\item \textbf{String}: Der Attributwert wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle darin als Substring auftaucht.
+	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage, welche stets als String übergeben wird, wenn möglich zum Datentyp Number konvertiert. Hierbei sind auch als Wort ausgeschriebene Zahlen von null bis zwölf konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
+	\item \textbf{Liste}: Eine Liste entspricht dem Datentyp \textit{cons} in Lisp und wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen. Dies können Strings, Zahlen oder Unterlisten sein.
 \end{enumerate}
-Liegt ein Treffer vor, wird die\textit{docID} als Resultat der Ergebnisliste hinzugefügt. \\
-Hierbei kann es sein, dass pro Teilanfrage mehrere Metadatensuchen durchgeführt werden, da der Nutzer die Anfrage für verschiedene Attribute gleichzeitig stellt. \\
-Dann hat jedes Attribut seine eigene Ergebnisliste, die gemäß booleschem Retrieval mit Mengenoperationen verrechnet werden: Ist $AND$ ausgewählt, wird aus den Listen der Durchschnitt gebildet, bei $OR$ die Vereinigung. \\
-Nun liegt das finale Ergebnis für die Metadatensuche der Teilanfrage vor - es sei denn, der Nutzer hat $NOT$ ausgewählt. Dann wird die Differenz zwischen den Dokumenten des Archivs und dem ermittelten Ergebnis zurückgegeben.
+Liegt ein Treffer vor, wird die \textit{docID} des Dokuments der Ergebnisliste hinzugefügt. 
+Hierbei kann es sein, dass pro Teilanfrage mehrere Metadatensuchen durchgeführt werden, da der Nutzer die Anfrage für verschiedene Attribute gleichzeitig stellen kann.
+Dann hat jedes Attribut seine eigene Ergebnisliste, die gemäß booleschem Retrieval mit Mengenoperationen verrechnet werden: Ist $AND$ ausgewählt, wird aus den Listen der Durchschnitt gebildet, bei $OR$ die Vereinigung. Hierzu werden die in Lisp vordefinierten Funktionen \textit{intersection} und \textit{union} verwendet.\\
+Nun liegt das finale Ergebnis für die Metadatensuche der Teilanfrage vor - es sei denn, der Nutzer hat $NOT$ ausgewählt, dann wird die Differenz zwischen den Dokumenten des Archivs und dem ermittelten Ergebnis zurückgegeben. Hierzu wurde die vordefinierte Funktion \textit{set-difference} verwendet.
 
 \subsection{Freitextsuche}
 \subsection{Erstellen des Query-Vektors}
-Für die Freitextsuche muss die Anfrage erst in einen Vektor umgewandelt werden. Auch hier wird eine Hash-Table für das Anlegen des Query-Vektors verwendet. \\
-Für jeden Term wird dessen Index im Term-Dictionary abgefragt. Vorausgesetzt, der Term existiert im Vokabular, wird dieser Index zum Key und die Termhäufigkeit in der Anfrage zum Wert. Anschließend wird die Termhäufigkeit durch den idf-Wert dividiert, sodass der Query-Vektor die finalen tf-idf-Gewichtungen enthält.\\
+Die Freitextsuche verwendet das Vektorraummodell, darum muss eine Anfrage erst in einen Vektor umgewandelt werden. Wie beim Dokumentvektor wird auch hier eine Hash-Table als Datenstruktur verwendet. 
+Für jeden Term wird dessen Index im Term-Dictionary abgefragt. Vorausgesetzt, der Term existiert im Vokabular, wird dieser Index zum Hash-Key und die Termhäufigkeit in der Anfrage zum Wert. Ausnahme sind Stoppwörter, die bei der Suche ignoriert werden. Der Nutzer erhält in diesem Fall eine Warnmeldung. Anschließend wird die Termhäufigkeit mit dem idf-Wert multipliziert, sodass der Query-Vektor die finalen tf-idf-Gewichtungen enthält.\\
 Damit wird die Anfrage genau wie ein Dokument behandelt, mit dem einzigen Unterschied dass bestimmte Terme eventuell nicht im Vektor eingetragen und gewichtet werden, da diese im Archiv nicht vorkommen und darum für die Suche irrelevant sind.\\
 Abbildung \ref{query} veranschaulicht das Erstellen eines Query-Vektors anhand eines Beispiels.
 \subsubsection{Finden der Resultate}
-Das Bestimmen der Suchergebnisse für die Freitextsuche läuft wie folgt ab:
+Zum Bestimmen der Suchergebnisse für die Freitextsuche wird über alle Dokumente iteriert, um folgende Schritte auszuführen:
 
 \begin{itemize}
-	\item Es wird über alle Dokumente im Dokument-Dictionary iteriert und auf deren Dokument-Vektoren zugegriffen
-	\item Es wird das Cosinus-Maß (siehe Formel \ref{cos}) zur Berechnung der Ähnlichkeit zwischen Dokument- und Query-Vektor verwendet
-	\item Das Ergebnis ist der Score, welcher gemeinsam mit der \textit{docID} der Ergebnisliste hinzugefügt wird.
-	\item Diese wird basierend auf dem Score sortiert, sodass sich die ähnlichsten Dokumente vorne befinden.
+	\item Zugriff auf den Dokumentvektor
+	\item Berechnung des Cosinus-Maßes (siehe Formel \ref{cos}) zur Bestimmung der Ähnlichkeit zwischen Dokument- und Query-Vektor
+	\item Hinzufügen des Ähnlichkeitswertes (Score) inklusive \textit{docID} zur Ergebnisliste 
+	\item Sortieren der Liste, damit sich die ähnlichsten Dokumente vorne befinden
 \end{itemize}
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/Umwandlung.png}
-	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term nicht vermerkt. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}
+	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}
 	\label{query}
 \end{figure}
 
 
 
 \section{Verrechnung der Suchergebnisse}
-Die Resultate der Metadatensuche und der Freitextsuche müssen miteinander kombiniert werden, wobei der Score problematisch ist, da die Freitextergebnisse einen besitzen, die Metadaten-Resultate jedoch nicht. \\
-Das Kombinieren von beiden Suchen wurde wie folgt realisiert:
+Die Resultate beider Suchverfahren müssen miteinander kombiniert werden, wobei der Score problematisch ist, da die Freitextergebnisse einen besitzen, die Metadaten-Resultate jedoch nicht. Gelöst wurde dies wie folgt:
 \begin{itemize}
 	\item Jedes Dokument in der Metadaten-Ergebnisliste erhält den Score 1.
-	\item Ist $AND$ ausgewählt, wird der Durchschnitt beider Suchen gebildet und Metadaten-Score sowie Freitextscore werden addiert.
+	\item Ist $AND$ ausgewählt, wird der Durchschnitt der Ergebnislisten beider Suchverfahren gebildet und Metadaten-Score sowie Freitextscore werden addiert.
 	\item Ist $OR$ ausgewählt, wird die Vereinigung beider Suchen gebildet und Metadaten-Score sowie Freitextscore der Dokumente, die in beiden Ergebnislisten vorkommen, werden addiert.
 \end{itemize}
-Da die Anfrage beliebig tief geschachtelt werden kann, ist es möglich, dass sich der Score eines Dokuments weiter erhöht: \\
-Das Gesamtergebnis wird mit jeder neuen Teilanfrage auf dieselbe Weise verrechnet, wie es soeben beschrieben wurde. \\
+Da die Anfrage beliebig tief geschachtelt vorliegen kann, ist es möglich, dass sich der Score eines Dokuments mit weiteren Teilanfragen erhöht: 
+Das Gesamtergebnis wird mit jeder neuen Teilanfrage auf dieselbe Weise wie soeben beschrieben verrechnet, d.h. je nach selektiertem Operator ($AND$ oder $OR$) wird der Durchschnitt oder die Vereinigung aus Gesamt- und Teilanfrage mit entsprechender Addition der Scores durchgeführt.
 Demnach erhält ein Dokument, dass für 5 Teilanfragen einen Treffer in der Metadatensuche lieferte, den Score 5. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. 5,27, kamen noch Treffer in der Freitextsuche hinzu. \\
-Aufgrund des Rankings kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und auch, auf welche Weise der Treffer zustande kam.
+Aufgrund des Scores kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und anhand des Zahlenwertes - ganzzahlig oder nicht - auch, auf welche Weise der Treffer zustande kam.
 
 
 

@@ -72,12 +72,12 @@
 \contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{30}{subsection.7.2.2}
 \contentsline {subsubsection}{Verarbeiten der Metadaten}{30}{section*.20}
 \contentsline {subsubsection}{Verarbeiten des Freitextes}{31}{section*.21}
-\contentsline {section}{\numberline {7.3}Die Suche}{33}{section.7.3}
+\contentsline {section}{\numberline {7.3}Suche}{33}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{33}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{34}{subsection.7.3.2}
 \contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{34}{subsection.7.3.3}
 \contentsline {subsubsection}{Finden der Resultate}{34}{section*.22}
-\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{34}{section.7.4}
+\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{35}{section.7.4}
 \contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{36}{chapter.8}
 \contentsline {section}{\numberline {8.1}Anforderungen}{36}{section.8.1}
 \contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{36}{section.8.2}
