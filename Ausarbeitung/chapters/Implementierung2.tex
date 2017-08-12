@@ -1,12 +1,13 @@
 \chapter{Implementierung}
 
-In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informationssuche in einem Dokumentenarchiv basierend auf Textinhalt sowie Metadaten durch Kombination von booleschem Retrieval und dem Vektorraummodell in der Programmiersprache Lisp realsisiert wurde.
+In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informationssuche in einem Dokumentenarchiv basierend auf Textinhalt sowie Metadaten in der Programmiersprache Lisp realisiert wurde.
 
 \section{Teilweise strukturierte Dokumente}
 Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}). 
-Dies erfordert das Lösen zweier Teilprobleme: Zum einen die Metadatensuche und zum anderen die Freitextsuche. Beides wurde getrennt gelöst, da die Suchen unterschiedliche Anforderungen besitzen.\\
-Bevor erklärt wird, wie die beiden Verfahren jeweils realisiert wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt. Dieses zeigt, dass jedes Dokument spezifische Eigenschaften besitzt, die durch Attributnamen und Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} ein Attributwert. \\
+Dies erfordert das Lösen zweier Teilprobleme: Zum einen das Realisieren der Metadatensuche und zum anderen das Realisieren der Freitextsuche. Beides wurde mit unterschiedlichen Verfahren gelöst, da die Suchen unterschiedliche Anforderungen besitzen. Im Falle der Metadatensuche wurde sich für boolesches Retrieval entschieden, bei der Freitextsuche hingegen für das Vektorraummodell.\\
+Bevor erklärt wird, aus welchen Gründen diese Entscheidung getroffen wurde, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt. Hier wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. \\
  Die Gesamtheit aller Attribute eines Dokuments bildet den Metadatenteil. Darauf folgt der unstrukturierte Freitextpart.
+ 
 \begin{lstlisting}[language=lisp, caption={Beispieldokument}
 \label{example},
 language=lisp]
@@ -37,9 +38,8 @@ Max Muster
 
 \end{lstlisting}
 
-In der Praxis enthalten die Dokumente oft weitaus mehr Attribute, deren Inhalt sich auch über mehrere Zeilen erstrecken kann, sowie Kommentare, welche vom System als Freitext interpretiert werden. 
-Bei diesem Beispiel handelt es sich zwar um eine E-Mail, die Attribute können jedoch inhaltlich vollkommen unterschiedlich ausfallen. Allen Dokumenten gemeinsam ist jedoch die 
-grundlegende Struktur aus \ref{struct}.
+In der Regel enthalten die Dokumente weitaus mehr Attribute als in diesem Beispiel, zudem kann sich deren Inhalt auch über mehrere Zeilen erstrecken. Zusätzlich enthalten die Dokumente oft Kommentare, die vom System als Freitext interpretiert werden. \\
+Bei Beispiel \ref{example} handelt es sich zwar um eine E-Mail, dies muss jedoch nicht der Fall sein. Die Attribute können inhaltlich vollkommen abweichend ausfallen, abhängig davon welches Archiv durchsucht wird. Vorausgesetzt, die Dokumente sind semistrukturiert, ist jede Art von Dokumentsammlung denkbar. Einzige Bedingung für die korrekte Funktionsweise des Systems ist, dass die im Archiv enthaltenen Dokumente die in \ref{struct} vorgegebene Struktur erfüllen.
 
 \begin{lstlisting}[language=lisp, caption=Dokumentstruktur,label={struct}]
 (Attrubutename_1 Attributwert_1)
@@ -52,56 +52,57 @@ Freitext
 
 
 
-\section{Vorverarbeitung}
-Beim Starten des Programms werden einige Schritte Initialisierungsschritte ausgeführt, die im folgenden Abschnitt beschrieben werden.
+\section{Initialisierungsschritte}
+Beim Starten des Programms werden zunächst einige Initialisierungsschritte ausgeführt, die im folgenden Abschnitt beschrieben werden.
 
 \subsection{Erstellen des Dokument-Dictionaries}
-Zunächst wird das Dokument-Dictionary, welches intern durch eine Hash-Table realisiert wurde, da dies in Lisp einem Dictionary am nächsten kommt, erstellt, indem zu jedem Dokument die folgenden Punkte erfasst werden:
+Zunächst wird das Dokument-Dictionary angelegt. Dieses wird intern durch eine Hash-Table realisiert, da dies in Lisp einem Dictionary am nächsten kommt. Zu jedem Dokument werden darin die folgenden Punkte erfasst:
 \begin{itemize}
-	\item \textit{docID}: Das Zuweisen einer einmaligen \textit{doc-ID} in Form eines fortlaufenden Integer-Wertes. Diese \textit{doc-ID} ist der Hash-Key für dieses Dokument im Dokument-Dictionary.
+	\item \textit{docID}: Das Zuweisen einer einmaligen \textit{docID} in Form eines fortlaufenden Integer-Wertes. Die \textit{docID} bildet den Hash-Key des Dokuments.
 	\item Dateipfad
-	\item Dokumentvektor (zu Beginn noch nicht initialisiert). Dateipfad und Dokumentvektor bilden in einem Struct zusammengefasst den Wert zur \textit{docID}.
+	\item Dokumentvektor (zu Beginn noch nicht initialisiert). 
 	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient.
 	\item Absender: ebenfalls optionale Information, die nur der Ergebnisanzeige dient.
 \end{itemize}
 
-Die  letzten beiden Punkte können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst flexibel gehalten, um auch andere Dateien verarbeiten zu können. \\
-Abbildung \ref{docs} zeigt den Aufbau eines Eintrags im Dokument-Dictionary.
+Dateipfad, Dokumentvektor, Datum und Absender werden in einem Struct zusammengefasst. Ein Struct ist eine Datenstruktur in Lisp, die aus selbst definierten und mit Werten belegbaren Slots besteht und die sich darum ideal eignet, um zusammengehörige Werte kompakt und schnell abrufbar zu speichern. Das Struct bildet den Hash-Value des Dokuments. \\ 
+Die  letzten beiden Punkte können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst so flexibel wie möglich gehalten, um auch andere Dateien verarbeiten zu können. Zur Veranschaulichung zeigt Abbildung \ref{docs} den Aufbau eines Eintrags im Dokument-Dictionary.
+
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/docDict.png}
-	\caption{Struktur für einen Eintrag im Dokument-Dictionary. Die Einträge Datum und Absender können, falls nicht existent, auch leer bleiben. Im rot markierten Bereich werden später die Dokumentvektoren eingetragen. (Eigene Abbildung).}
+	\caption{Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender können, falls nicht existent, auch leer bleiben. Im rot markierten Bereich wird später der Dokumentvektor eingetragen (Eigene Abbildung).}
 	\label{docs}
 	
 \end{figure}
 
 \subsection{Verarbeiten der Dokumente}
-Anschließend wird über alle Dokument-Einträge iteriert, um die folgenden Schritte auszuführen:
+Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die folgenden Schritte auszuführen:
 \begin{enumerate}
 	\item Aufteilen in Metadaten und Freitext
 	\item Verarbeiten der Metadaten
 	\item Verarbeiten des Freitextes
 \end{enumerate}
 
-Es stellt sich die Frage, was in den letzten beiden Punkten geschieht.
+
 
 \subsubsection{Verarbeiten der Metadaten}
-Die Metadaten werden zunächst in Attributname und Attributwert zerlegt, um sie weiterverarbeiten zu können. \\
-Für die Metadatensuche wurde boolesches Retrieval (siehe Kapitel \ref{bool}) eingesetzt, da ein Attribut in einem Dokument entweder auftritt oder nicht, d.h. hier liegen klar definierbare Bedingungen vor. \\
-Allerdings muss zusätzlich zum Auftreten noch geprüft werden, ob der Attributwert mit der Suchanfrage übereinstimmt bzw. Teile der Anfrage beinhaltet. \\
-Um dies zu lösen, wurde auf eine modifizierte Form des klassischen Implementierungsansatzes für boolesches Retrieval, der invertierten Liste (siehe Abschnitt \ref{inverted}), zurückgegriffen, wobei eine Term-Inzidenz-Matrix als Datenstruktur von vornherein aufgrund des zu hohen Speicherbedarfs ausgeschlossen wurde. \\
-In diesem Verarbeitungsschritt wird eine Hash-Table erstellt, welche die
-Attributnamen als Keys und als Wert die folgenden Elemente, zusammengefasst in einem Struct, besitzt:
+Die Metadaten werden zunächst in Attributname und Attributwert zerlegt, um sie weiterverarbeiten zu können. 
+Für die Metadatensuche wurde boolesches Retrieval (siehe Kapitel \ref{bool}) eingesetzt, da eine klare Bedingung definiert werden kann: Der gesuchte Attributname muss im Dokument auftreten, d.h. jedes Dokument wird auf den Wertebereich $\{true, false\}$ abgebildet.
+Allerdings muss zusätzlich zum Auftreten noch geprüft werden, ob der Attributwert inhaltlich mit der Suchanfrage übereinstimmt bzw. ob darin Teile der Anfrage auftauchen.
+Um dies zu lösen, wurde auf eine modifizierte Form der invertierten Liste (siehe Abschnitt \ref{inverted}) zurückgegriffen. Eine Term-Dokument Inzidenz Matrix wurde hingegen von vornherein aufgrund des zu hohen Speicherbedarfs ausgeschlossen. \\
+Zum Verarbeiten der Metadaten wird eine Hash-Table mit den Attributname als Hash-Keys erstellt, in der die folgenden Punkte, zusammengefasst in einem Struct, erfasst werden:
+
 \begin{itemize}
 	\item \textit{docID}: Eindeutiger Index des Dokuments, in dem das Attribut auftritt. Dieser gehört standardmäßig in die invertierte Liste.
-	\item Typ: Dieser Eintrag gibt an, von welchem Typ der Attributwert ist, da dies über die Art der Suche darin entscheidet.
-	\item Inhalt: Enthält den Attributwert. Dieser ist in der Regel so klein, dass er problemlos darin gespeichert werden kann und im Gegensatz zum Freitext keine weitere Verarbeitung erfordert. Dies würde nur unnötig Speicher belegen.
+	\item Typ: Dieser Eintrag gibt an, von welchem Datentyp der Attributwert ist, da dies über die Art der Suche darin entscheidet.
+	\item Inhalt: Enthält den Attributwert. Dieser ist in der Regel so klein, dass er problemlos darin gespeichert werden kann und im Gegensatz zum Freitext keine weitere Verarbeitung erfordert. Durch das Unterlassen einer Indexierung der Attributwerte wird zudem Speicher gespart.
 \end{itemize}
 
-Zur Veranschaulichung der modifizierten invertierten Liste zeigt Abbildung \ref{m} diese anhand einiger Beispiel-Attribute. \\
-Das Speichern der Informationen in einem Struct bietet den Vorteil, dass auf diese über den Slot-Value gezielt zugegriffen werden kann, anstatt über Listen iterieren zu müssen, was Effizienzeinbußen zufolge hätte. \\
-Hierbei sei noch angemerkt, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender \grqq und \glqq ABSENDER \grqq wird nur ein Hash-Key angelegt. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei verschiedene Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als relevante Treffer zu erkennen.
+
+Abbildung \ref{m} zeigt die modifizierte invertierte Liste anhand einiger Beispiel-Attribute. 
+Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender \grqq und \glqq ABSENDER \grqq wird nur ein einziger Hash-Key angelegt. Mit dem Wort Keywords wird ausgedrückt, dass beide Begriffe sich auf ein und dasselbe Attribut beziehen, auch wenn die Namen unterschiedlich ausfallen. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem Information Retrieval System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als relevante Treffer zu erkennen.
 
 %MERGE!!!
 
@@ -109,7 +110,7 @@ Hierbei sei noch angemerkt, dass beim Speichern der Attributnamen Groß- und Klei
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/mil.png}
-	\caption{Modifizierte invertierte Liste zur Realisierung der Metadatensuche mittels Structs der Form (docID, Typ, Inhalt) (Eigene Abbildung).}
+	\caption{Modifizierte invertierte Liste zur Realisierung der Metadatensuche. Statt der \textit{docID}s, wie es bei invertierten Listen üblich ist, werden Structs der Form (docID, Typ, Inhalt) gespeichert(Eigene Abbildung).}
 	\label{m}
 	
 \end{figure}
@@ -123,7 +124,7 @@ Hierfür muss zunächst das Vokabular bestimmt werden, was wie folgt abläuft:
 
 \begin{itemize}
 	\item Es wird über eine Liste aller Freitexte iteriert.
-	\item Jeder Freitext wird in seine Terme zerlegt. Hierbei wurde auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwenedet (\cite{Ionescu:16}).
+	\item Jeder Freitext wird in seine Terme zerlegt. Hierbei wurde auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwendet (\cite{Ionescu:16}).
 	\item Für jeden Term wird geprüft, ob er schon bekannt ist oder nicht. Falls nicht, wird er der Vokabularliste hinzugefügt, vorausgesetzt es handelt sich nicht um ein deutsches oder englisches Stoppwort.
 \end{itemize}
 

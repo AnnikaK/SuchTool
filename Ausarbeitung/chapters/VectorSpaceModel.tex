@@ -171,15 +171,15 @@ Eine typische Distanzfunktion für Vektoren ist der euklidische Abstand, welcher 
 \end{equation}
 
 Allerdings besitzt der euklidische Abstand den gravierenden Nachteil, dass die Länge der Vektoren eine Rolle spielt. 
-Liegen zwei Dokumente $d1$ und $d2$ vor und $d2$ besitzt den gleichen Inhalt wie $d1$, allerdings zweimal aufeinanderfolgend, so wird $d2$ als ähnlicher eingestuft, alleinig weil die Termhäufigkeit sich für jeden Term in $d2$ verdoppelt hat und $\overrightarrow{d2}$ damit länger ist als $\overrightarrow{d1}$.
-Das Problem, dass zwei unterschiedlich lange Dokumente, in denen die gesuchten Terme etwa gleich verteilt sind, dennoch vollkommen verschiedene Ähnlichkeitswerte erzielen, macht den euklidischen Abstand zu einer ungeeigneten Ähnlichkeitsfunktion.
+Reiht man beispielsweise den Inhalt eines Dokumentes $d1$ zweimal aneinander, so besitzt das entstandene Dokument $d2$ für jeden Term die doppelte Termhäufigkeit und der Dokumentvektor $\overrightarrow{d2}$ ist darum länger als $\overrightarrow{d1}$. Das resultiert darin, dass $d2$ bei einer entsprechenden Suchanfrage einen deutlich höheren Ähnlichkeitswert erzielt als $d1$, obwohl sich die Dokumente inhaltlich nicht unterscheiden.
+Das Problem, dass zwei unterschiedlich lange Dokumente, in denen die gesuchten Terme etwa gleich verteilt sind, dennoch vollkommen verschiedene Ähnlichkeitswerte erzielen, macht den euklidischen Abstand zu einer ungeeigneten Ähnlichkeitsfunktion für das Vektorraummodell.
 
 
 
 \subsection{Cosinus-Maß}
-Um den Einfluss der Vektorlänge zu eliminieren, wird in der Regel das Cosinus-Maß verwendet. 
-Dieses ist das Skalarprodukt der normalisierten Vektoren (\cite{Manning:08}, S.112). Ein normalisierter Vektor besitzt immer die Länge 1, da Ursprungsvektor durch die euklidische Länge dividiert wird.
-Zur Berechnung des Cosinus-Maßes werden deshalb sowohl das Skalarprodukt als auch die Längenberechnung eines Vektors vorausgesetzt, darum werden beide an dieser Stelle erklärt.
+Um den Einfluss der Vektorlänge zu eliminieren, wird in der Regel stattdessen das Cosinus-Maß (engl. cosine similarity) verwendet, welches den Cosinus des zwischen den Vektoren eingeschlossenen Winkels berechnet und darum von der Vektorlänge unabhängig ist.
+Das Cosinus-Maß entspricht dem Skalarprodukt der normalisierten Vektoren (\cite{Manning:08}, S.112). Ein normalisierter Vektor ist ein Vektor, der durch seine euklidische Länge dividiert wird und darum immer die Länge 1 besitzt.
+Zur Berechnung des Cosinus-Maßes werden sowohl das Skalarprodukt als auch die euklidische Länge als bekannt vorausgesetzt, darum werden beide an dieser Stelle erklärt.
 
 \subsubsection{Euklidische Länge}
 Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Formel \ref{length} angegeben berechnet (\cite{Manning:08}, S.111).
@@ -200,8 +200,9 @@ Das Skalarprodukt zweier Vektoren $\overrightarrow{x}$ und $\overrightarrow{y}$ 
 \end{equation}
 
 
-\subsubsection{Funktion}
-Das Cosinus-Maß multipliziert die Vektoren und dividiert sie durch deren Länge, sodass die Ähnlichkeitsfunktion von der Länge unbeeinflusst ist, was in Formel \ref{cos} gezeigt wird (\cite{Manning:08}, S.111).
+\subsubsection{Berechnung}
+Da das Cosinus-Maß wie bereits erwähnt das Skalarprodukt  der normalisierten Vektoren ist, lautet die Formel wie in \ref{cos} angegeben (\cite{Manning:08}, S.111). Hierbei bezieht sich \textit{sim} auf das englische Wort \textit{similarity}, was übersetzt Ähnlichkeit bedeutet.
+
 \begin{equation}
 \label{cos}
 sim(\overrightarrow{x},\overrightarrow{y}) = \frac{\overrightarrow{x} \cdot \overrightarrow{y}}{\vert \overrightarrow{x}\vert \cdot \vert \overrightarrow{y} \vert}
@@ -220,7 +221,7 @@ sim(\overrightarrow{x},\overrightarrow{y}) = \frac{\overrightarrow{x} \cdot \ove
 Um das Cosinus-Maß besser nachvollziehen zu können, hilft eine grafische Veranschaulichung. Abbildung \ref{fancy} zeigt einen Vektorraum mit zwei Termen als Achsen,  wodurch der Raum sich zweidimensional darstellen lässt. Bei mehr als zwei Termen ist dies schon nicht mehr möglich, da jeder Term eine eigene Achse im Vektorraum bildet.
 In der Realität gibt es meist weitaus mehr Achsen als in der Abbildung, da das Vokabular tausende Terme beinhalten kann. \\
 Der gezeigte Vektorraum beinhaltet insgesamt drei Dokumentvektoren $\overrightarrow{d_i}$ sowie den Anfragevektor $\overrightarrow{q}$ als Elemente, wobei alle abgebildeten Vektoren bereits normalisiert sind.
- Unter Verwendung des Cosinus-Maßes ergibt sich für $sim(\overrightarrow{d_2}, \overrightarrow{q})=cos(\alpha)$ der höchsten Wert, da $\alpha$ der kleinste aller Winkel zwischen einem Dokumentvektor $\overrightarrow{d_i}$ und $\overrightarrow{q}$ ist. Hier wird deutlich, dass lediglich der Winkel, nicht aber die Länge relevant ist.
+ Unter Verwendung des Cosinus-Maßes ergibt sich für $sim(\overrightarrow{d_2}, \overrightarrow{q})=cos(\alpha)$ der höchsten Wert, da $\alpha$ der kleinste aller Winkel zwischen einem Dokumentvektor $\overrightarrow{d_i}$ und $\overrightarrow{q}$ ist. Hier wird deutlich, dass ausschließlich der Winkel, nicht aber die Länge ausschlaggebend ist.
   Damit wird $d2$ als erstes Ergebnisdokument ausgegeben (\cite{Buettcher:10}, S.55-56).
 
 
