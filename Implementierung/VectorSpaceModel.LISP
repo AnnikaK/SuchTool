@@ -173,6 +173,9 @@
          (t 0))))
 
 
+                     (list "" word "is a stopword, will be ignored in search!" ""))
+                    (make-instance
+                     'capi:push-button
 
 
 (defun calculateScores ()

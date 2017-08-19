@@ -137,6 +137,8 @@
    (setq words (process-string user-query))
    (setq *query-vector* (make-hash-table)) ;always new initialization in case of multiple user queries
    (mapcar (lambda (word)  ;get term frequencies 
+             (cond ((or (gethash (ignore-errors (read-from-string word)) *stopword-dict-ger*) (gethash (ignore-errors (read-from-string word)) *stopword-dict-engl*))
+                    (show-stopword-occured word)))
              (setq current-term (gethash word *terms*))
              (cond ((not (equal nil current-term))
                     (setq wortindex (term-index current-term))
@@ -148,7 +150,6 @@
                 (setq idf (term-idf current-term))
                 (setq tf-idf (* (gethash key *query-vector*) idf))
                 (setf (gethash key *query-vector*) tf-idf))))))
-
 
 
 

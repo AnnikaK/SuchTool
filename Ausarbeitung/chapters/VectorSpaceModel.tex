@@ -1,18 +1,19 @@
 \chapter{Das Vektorraummodell}
 \label{vector}
-Dieses Kapitel stellt mit dem Vektorraummodell ein weiteres klassisches Information-Retrieval-Verfahren vor. \\
+Dieses Kapitel stellt mit dem Vektorraummodell (engl. \textit{vector space model}) ein weiteres klassisches Information-Retrieval-Verfahren vor. \\
 
 \section{Funktionsprinzip}
-Der erste Schritt besteht wie beim booleschen Retrieval in der Indexierung der Dokumente und Terme, denn die Ermittlung des Vokabulars der Sammlung ist Ausgangsgrundlage für das weitere Vorgehen. \\
+Wie beim booleschen Retrieval besteht der erste Schritt in der Indexierung der Dokumente und Terme, da die Ermittlung des Vokabulars Ausgangsgrundlage für das weitere Vorgehen ist. \\
 Wie der Name bereits nahelegt, basiert das Funktionsprinzip auf Vektoren.
-Die Grundidee besteht darin, sowohl für die Suchanfrage als auch für jedes Dokument einen reellen Vektor, d.h. einen Vektor bestehend aus reellen Zahlen, zu erstellen und anschließend zu ermitteln, zu welchem Dokumentvektor bzw. zu welchen Dokumentvektoren der Anfragevektor oder Query-Vektor die größte Ähnlichkeit besitzt.
+Die Grundidee besteht darin, sowohl für die Suchanfrage als auch für jedes Dokument einen aus reellen Zahlen bestehenden Vektor zu erstellen und anschließend zu ermitteln, zu welchem Dokumentvektor bzw. zu welchen Dokumentvektoren der Anfragevektor die größte Ähnlichkeit besitzt.
 Die Länge eines Vektors entspricht hierbei der Anzahl Terme im Vokabular, da im Vektor zu jedem Term dessen Gewicht eingetragen wird. Die Berechnung und Funktion des Gewichts werden in Abschnitt \ref{weights} erklärt. \\
-Im Gegensatz zum booleschen Retrieval können die Resultate des Vektorraummodells basierend auf den Ähnlichkeitswerten in eine Rangfolge gebracht werden, d.h. ein Ranking ist bei diesem Verfahren problemlos möglich (\cite{Ferber:03}, S.62-63). \\
+Im Gegensatz zum booleschen Retrieval können die Resultate des Vektorraummodells basierend auf den ermittelten Ähnlichkeitswerten in eine Rangfolge gebracht werden, d.h. mit diesem Verfahren ist Ranking möglich (\cite{Ferber:03}, S.62-63). \\
 
 
 \section{Vektor und Vektorraum}
-Da das Funktionsprinzip des Modells auf Vektoren basiert, werden in diesem Abschnitt die zum Verständnis notwendigen Begriffe Vektorraum und Vektor erklärt. 
-Vektoren stellen Elemente eines Vektorraumes dar, darum ist es notwendig letzteres zuerst zu definieren (\cite{Jaenich:84}, S.17). In dieser Definition werden die Vektoroperationen Addition und skalare Multiplikation als bekannt vorausgesetzt, darum seien sie zuvor kurz vorgestellt. Die Definitionen \ref{add} und \ref{mult} stammen beide aus \cite{Jaenich:84}, S.18.
+Da das Funktionsprinzip des Modells auf Vektoren basiert, werden in diesem Abschnitt die zum Verständnis notwendigen Begriffe \glqq Vektorraum\grqq{} und \grqq Vektor\grqq{} erklärt. 
+Vektoren stellen Elemente eines Vektorraumes dar, darum ist es notwendig Letzteres zuerst zu definieren (\cite{Jaenich:84}, S.17). Da hierbei die Vektoroperationen Addition und skalare Multiplikation als bekannt vorausgesetzt werden, seien diese zuvor kurz vorgestellt. Die Definitionen \ref{add} und \ref{mult} stammen beide aus \cite{Jaenich:84}, S.18.
+\newpage
 
 \begin{definition} (Addition) \\
 	\label{add}
@@ -29,7 +30,7 @@ Vektoren stellen Elemente eines Vektorraumes dar, darum ist es notwendig letzter
 
 
 
-Ein Vektorraum kann mithilfe der soeben gezeigten Addition und skalaren Multiplikation wie in Definition \ref{vectorraum}(\cite{Jaenich:84}, S.22) angegeben definiert werden. 
+Ein Vektorraum kann mithilfe der soeben gezeigten Vektoroperationen wie in Definition \ref{vectorraum} (\cite{Jaenich:84}, S.22) angegeben definiert werden. 
 
 
 \begin{definition}(Vektorraum)  \\
@@ -60,47 +61,46 @@ Ein Vektorraum kann mithilfe der soeben gezeigten Addition und skalaren Multipli
 
 
 
-Nachdem bekannt ist, was ein Vektorraum ist, kann nun auf Vektoren eingegangen werden.
+Nachdem Vektorräume bekannt sind, kann an dieser Stelle auf Vektoren eingegangen werden:
 Ein Vektor $\overrightarrow{v} \in V$ ist ein Element des Vektorraums $(V,+,\cdot)$, wenn Addition und skalare Multiplikation die Axiome 1. - 8. aus Definition \ref{vectorraum} erfüllen. 
-Zwei Vektoren, die unterschiedlich viele Elemente enthalten, z.B. $\overrightarrow{v_1}=(1,2)$ und $\overrightarrow{v_2}=(1,2,3)$ liegen deshalb nicht im selben Vektorraum, weil sie sich weder addieren noch multiplizieren lassen. Alle Vektoren im Vektorraummodell, d.h. alle Anfrage- und Dokumentvektoren, liegen hingegen im selben Vektorraum, da sie auf demselben Vokabular aufbauen und demnach die gleiche Länge besitzen, welche der Anzahl Terme im Vokabular entspricht.
+Zwei Vektoren, die unterschiedlich viele Elemente enthalten, z.B. $\overrightarrow{v_1} = (1,2)$ und $\overrightarrow{v_2} = (1,2,3)$ liegen nicht im selben Vektorraum, weil sie sich weder addieren noch multiplizieren lassen und darum die Axiome nicht erfüllen. Alle Anfrage- und Dokumentvektoren innerhalb eines mit Vektorraummodell realisierten Information-Retrieval-Systems liegen hingegen im selben Vektorraum, da sie auf demselben Vokabular aufbauen und damit die gleiche Länge besitzen.
 
 
 
 \section{Definition Vektorraummodell}
-Das bereits grob vorgestellte, auf Ähnlichkeiten von Vektoren basierende Funktionsprinzip, lässt sich mathematisch mithilfe von Attributen beschreiben. 
+Das bereits grob vorgestellte, auf Ähnlichkeiten zwischen Vektoren basierende Funktionsprinzip lässt sich mathematisch mithilfe von Attributen beschreiben. 
 Attribute stellen im Vektorraummodell eine Abbildung der Dokumentenmenge $D$ auf die reellen Zahlen $\mathbb{R}$ dar, weshalb der Wertebereich der Attribute im Gegensatz zum booleschen Retrieval auf die reellen Zahlen beschränkt ist.
 Das Vektorraummodell lässt sich mittels Attributen wie folgt definieren (\cite{Ferber:03}, S.63):
 
 
 \begin{definition}\textit{(Vektorraummodell mit Attributen)} 
 	
-Sei $D = {d_1,...,d_m}$ eine Menge von Dokumenten oder Objekten und $A = {A_1,...,A_n}$ eine Menge von Attributen $A_j: D \rightarrow \mathbb{R}$ auf diesen Objekten. Die Attributwerte $A_j(d_i) =:w_i,_j$ des Dokuments $d_i$ lassen sich als Gewichte auffassen und zu einem Vektor $w_i = (w_i,_1,...,w_i,_n) \in \mathbb{R}^{n}$ zusammenfassen. Dieser Vektor beschreibt das Dokument im Vektorraummodell: Er ist seine Repräsentation und wird Dokumentvektor genannt. \\
+Sei $D = \{d_1,...,d_m\}$ eine Menge von Dokumenten oder Objekten und $A = \{A_1,...,A_n\}$ eine Menge von Attributen $A_j: D \rightarrow \mathbb{R}$ auf diesen Objekten. Die Attributwerte $A_j(d_i) =: w_i,_j$ des Dokuments $d_i$ lassen sich als Gewichte auffassen und zu einem Vektor $w_i = (w_i,_1,...,w_i,_n) \in \mathbb{R}^{n}$ zusammenfassen. Dieser Vektor beschreibt das Dokument im Vektorraummodell: Er ist seine Repräsentation und wird Dokumentvektor genannt. \\
 Eine Anfrage wird durch einen Vektor $q \in \mathbb{R}^{n}$ mit Attributwerten, den Anfragevektor oder Query-Vektor, dargestellt. \\
 Eine Ähnlichkeitsfunktion $s:\mathbb{R}^{n} \times \mathbb{R}^{n} \rightarrow \mathbb{R}$ definiere für je zwei Vektoren $x,y \in \mathbb{R}^{n}$ einen reellen Ähnlichkeitswert $s(x,y)$.
 \end{definition} 
-Diese Definition ist aufgrund der Beschreibung durch Attribute sehr allgemein gehalten. Es ist nicht definiert, welche Einheiten des Dokuments gewichtet werden. Demnach sind theoretisch auch andere Dokumentformate wie etwa Bilder mit Pixeln bzw. Pixelgruppen als Attributen möglich (\cite{Ferber:03}, S.63). \\
-Praktisch gesehen machen im  Rahmen dieser Arbeit jedoch andere Formate als Texte keinen Sinn. Darum wird im Folgenden davon ausgegangen, dass ausschließlich Terme gewichtet werden. Demnach lässt sich die Attributmenge $A$ spezifisch auf die Problemstellung bezogen als Termmenge oder Vokabular $T$ auffassen.
+Diese Definition ist aufgrund der Beschreibung durch Attribute sehr allgemein gehalten. Es ist nicht definiert, welche Einheiten des Dokuments gewichtet werden, weshalb theoretisch auch andere Dokumentformate wie etwa Bilder mit Pixeln bzw. Pixelgruppen als Attributen möglich sind (\cite{Ferber:03}, S.63). \\
+Im Rahmen dieser Arbeit machen andere Formate als Texte jedoch keinen Sinn, weshalb im Folgenden davon ausgegangen wird, dass ausschließlich Terme gewichtet werden. Spezifisch auf die gegebene Problemstellung bezogen lässt sich die Attributmenge $A$ darum als Termmenge oder Vokabular $T$ auffassen.
 
 \section{Gewichte}
 \label{weights}
-In diesem Abschnitt wird erklärt, wie Terme gewichtet werden und wozu diese geschieht. \\
-Bei Gewichten handelt es sich, wie bereits beschrieben, um reelle Zahlenwerte.
-Sie geben die Wichtigkeit eines Terms basierend auf dessen statistischer Häufigkeit an (\cite{Manning:08}, S.100).
+In diesem Abschnitt wird erklärt, wie und zu welchem Zweck Terme gewichtet werden. 
+Bei Gewichten handelt es sich, wie bereits beschrieben, um reelle Zahlenwerte, welche
+die Wichtigkeit eines Terms basierend auf dessen statistischer Häufigkeit angeben (\cite{Manning:08}, S.100).
 
 \subsection{Termhäufigkeit}
-Die Häufigkeit, mit der ein Term $t$ in einem Dokument $d$ auftritt, wird als Termhäufigkeit (engl. term frequency) bezeichnet. Deshalb wird diese pro Vorkommen von $t$ in $d$ um eins erhöht (\cite{Manning:08}, S.71). \\
- Es erscheint intuitiv als logisch, dass ein Text, der das gesuchte Wort mehrmals beinhaltet, wichtiger sein muss als ein Dokument, in welchem der Begriff nur ein einziges mal auftaucht. 
-Diese Gewichtungsmethode erlaubt eine viel genauere Differenzierung als eine simple Unterscheidung zwischen true und false, d.h. zwischen Vorkommen und Fehlen eines Terms, wie es beim booleschen Retrieval der Fall ist.\\
+Die Häufigkeit, mit der ein Term $t$ in einem Dokument $d$ auftaucht, wird als Termhäufigkeit $tf_t,_d$ (engl. \textit{term frequency}) bezeichnet (\cite{Manning:08}, S.71). \\
+ Es erscheint intuitiv als logisch, dass ein Dokument, welches das gesuchte Wort mehrmals beinhaltet, wichtiger sein muss als ein Dokument, in dem der Begriff nur ein einziges Mal auftaucht. 
+Diese Gewichtungsmethode erlaubt eine viel genauere Differenzierung als eine simple Unterscheidung zwischen \textit{true} und \textit{false}, d.h. zwischen Vorkommen und Fehlen eines Terms, wie es beim booleschen Retrieval der Fall ist.\\
  
 \subsection{Dokumenthäufigkeit}
-Die Termhäufigkeit alleine stellt allerdings keine besonders zuverlässige Gewichtungsmethode dar: Eine Bewertung, die ausschließlich von der Termhäufigkeit ausgeht, lässt außer Acht, dass nicht alle Terme gleich wichtig sind. 
-Taucht ein Term beispielsweise in jedem Dokument auf, kann dieser nicht besonders aussagekräftig sein. Deshalb ist es sinnvoll, zusätzlich zur Termhäufigkeit $tf_t,_d$ auch die Dokumenthäufigkeit (engl. document frequency) $df_t$  zu bestimmen. 
-Diese entspricht der Anzahl Dokumente in $D$, welche $t$ enthalten. Um den Einfluss nicht aussagekräftiger Terme zu reduzieren, wird das Gewicht umso stärker verringert, je größer die Dokumenthäufigkeit ausfällt (\cite{Manning:08}, S.108). \\
+Die Termhäufigkeit alleine stellt keine gute Gewichtungsmethode dar: Eine Bewertung, die ausschließlich von der Termhäufigkeit ausgeht, lässt außer Acht, dass nicht alle Terme gleich wichtig sind. 
+Taucht ein Term beispielsweise in jedem Dokument auf, kann er nicht besonders aussagekräftig sein. Deshalb ist es sinnvoll, zusätzlich zur Termhäufigkeit auch die Dokumenthäufigkeit $df_t$ (engl. \textit{document frequency}) zu bestimmen. 
+Diese entspricht der Anzahl von Dokumenten in $D$, welche $t$ enthalten. Um den Einfluss nicht aussagekräftiger Terme zu reduzieren, wird das Gewicht umso stärker verringert, je größer die Dokumenthäufigkeit ausfällt (\cite{Manning:08}, S.108). \\
 
 \subsection{Invertierte Dokumenthäufigkeit}
 \label{idf}
-Um das Gewicht entsprechend der Dokumenthäufigkeit zu verringern, wird als reduzierender Faktor die
-sogenannte invertierte oder inverse Dokumenthäufigkeit (engl. inverse document frequency, kurz IDF) verwendet. Die invertierte Dokumenthäufigkeit $idf_t$ des Terms $t$ berechnet sich wie in Formel \ref{idfa} gezeigt (\cite{Ferber:03}, S.68).\\
+Um das Gewicht entsprechend der Dokumenthäufigkeit zu verringern, wird als reduzierender Faktor die sogenannte invertierte oder inverse Dokumenthäufigkeit (engl. \textit{inverse document frequency}, kurz IDF) verwendet. Die invertierte Dokumenthäufigkeit $idf_t$ des Terms $t$ wird  wie in Formel \ref{idfa} gezeigt berechnet (\cite{Ferber:03}, S.68).\\
 
 
 \begin{equation}
@@ -108,8 +108,8 @@ sogenannte invertierte oder inverse Dokumenthäufigkeit (engl. inverse document f
 idf_t =  \frac{1}{df_t}	
 \end{equation}   \\
 
-Oftmals werden modifizierte Formen verwendet, um die großen Werte seltener Terme durch den Logarithmus wieder zu dämpfen (\cite{Ferber:03}, S.68-69). 
-Formel \ref{idfb}  zeigt ein  Beispiel für eine solche modifizierte invertierte Dokumenthäufigkeit (\cite{Manning:08}, S.108).
+Oftmals werden jedoch modifizierte Formen verwendet, um große Werte seltener Terme durch den Logarithmus wieder zu dämpfen (\cite{Ferber:03}, S.68-69). 
+Formel \ref{idfb}  zeigt ein  Beispiel für eine solche modifizierte invertierte Dokumenthäufigkeit, wobei $N$ die Anzahl Dokumente in der Sammlung bezeichnet (\cite{Manning:08}, S.108). 
 In der Regel beträgt die Basis des Logarithmus 10, dies spielt aber letztendlich für das korrekte Ranking der Resultate keine Rolle (\cite{Manning:08}, S.109). 
 \begin{equation}
 \label{idfb}
@@ -121,8 +121,8 @@ idf_t = log  \frac{N}{df_t}
 
 \subsection{TF-IDF-Gewichtung}
 \label{tfidf}
-Die vollständige Gewichtungsmethode besteht darin, die Termhäufigkeit mit der invertierten Dokumenthäufigkeit zu multiplizieren. Alle Formeln dieses Typs werden als TF-IDF Gewichtung (engl. tf-idf weighting) bezeichnet (\cite{Ferber:03}, S.71, \cite{Manning:08}, S.109). 
-Das Gewicht für Term $t$ in Dokument $d$ berechnet sich somit wie in Formel \ref{tfidfa} gezeigt (\cite{Manning:08}, S.109). \\
+Die vollständige Gewichtungsmethode besteht darin, die Termhäufigkeit mit der invertierten Dokumenthäufigkeit zu multiplizieren. Alle Formeln dieses Typs werden als TF-IDF Gewichtung (engl. \textit{tf-idf weighting}) bezeichnet (\cite{Ferber:03}, S.71, \cite{Manning:08}, S.109). 
+Die Berechnung der TF-IDF-Gewichtung für Term $t$ in Dokument $d$ wird in Formel \ref{tfidfa} gezeigt (\cite{Manning:08}, S.109). \\
 
 
 \begin{equation}
@@ -142,14 +142,14 @@ Für die modifizierte Formel \ref{idfb} lautet die TF-IDF-Gewichtung wie in Forme
 tf-idf_t,_d = tf_t,_d \times (log\frac{N} {df_t})
 \end{equation}
 
-Sei $T$ die Termmenge der Sammlung oder das Vokabular, dann enthält der Gewichtsvektor $w_i$ zu einem Dokument $d_i \in D$ für jeden Term $t_j \in T$ dessen Gewicht $w_i,_j$ = $tf-idf_j,_i$, sodass $w_i=(tf-idf_1,_i,...,tf-idf_n,_i)$ gilt.
+Sei $T$ das Vokabular, dann enthält der Gewichtsvektor $w_i$ bei Verwendung der TF-IDF-Gewichtung  zu einem Dokument $d_i \in D$ für jeden Term $t_j \in T$ dessen Gewicht $w_i,_j$ = $tf-idf_j,_i$, sodass $w_i = (w_i,_1,...,w_i,_n) = (tf-idf_1,_i,...,tf-idf_n,_i)$ mit $0 < j <= n$ und $n = \#T$ gilt. Mit $\#$ wird die Kardinalität bezeichnet, d.h. die Anzahl der in einer Menge enthaltenen Elemente.
 
 \section{Anfragen}
-Beim Vektorraummodell gibt es keine booleschen Operatoren zur Verknüpfung von Termen, weshalb Anfragen in Freitextform gestellt werden. Diese Form wird auch in der Websuche verwendet und ist darum sehr bekannt. 
+Beim Vektorraummodell gibt es keine booleschen Operatoren zur Verknüpfung, weshalb Anfragen in Freitextform gestellt werden, d.h. diese können ein oder mehrere Wörter, aber auch ganze Sätze beinhalten. Diese Form wird auch in der Websuche verwendet und ist darum sehr bekannt. 
 Da die Reihenfolge von Wörtern weder bei Anfragen noch in den Dokumenten eine Rolle spielt, lassen sich Anfragen einfach als eine Menge von Wörtern bzw. als die daraus resultierende Menge von Termen betrachten.
- Ein solches Modell, das lediglich die Anzahl, nicht aber die Reihenfolge von Wörtern berücksichtigt, wird auch als \textit{bag of words model} bezeichnet. \\
-Da für jeden in der Anfrage enthaltenen Term ein anderer Ähnlichkeitswert erzielt wird, werden die Ähnlichkeitswerte addiert, sodass pro Dokument ein Gesamtwert berechnet wird (\cite{Manning:08}, S.107). \\
-Anfragetexte werden genau wie Dokumente behandelt und die Vektoren wie in Abschnitt \ref{tfidf} beschrieben bestimmt (\cite{Ferber:03}, S.82).
+Ein solches Modell, das lediglich die Anzahl, nicht aber die Reihenfolge von Wörtern berücksichtigt, wird auch als \textit{bag of words model} bezeichnet. \\
+Da für jeden in der Anfrage enthaltenen Term ein anderer Ähnlichkeitswert erzielt wird, werden die Werte addiert, sodass pro Dokument ein Gesamtwert berechnet wird (\cite{Manning:08}, S.107). \\
+Suchanfragen werden genau wie Dokumente behandelt und die Vektoren wie in Abschnitt \ref{tfidf} beschrieben erstellt(\cite{Ferber:03}, S.82).
 
 %ANPASSEN IN LISP!!!
 %-> query tf nicht durch max tf teilen
@@ -159,7 +159,7 @@ Anfragetexte werden genau wie Dokumente behandelt und die Vektoren wie in Abschn
 
 
 \section{Ähnlichkeitsfunktion}
-Grundidee des Vektorraummodells ist das Ermitteln der Ähnlichkeit zwischen Vektoren, weshalb hierfür eine geeignete Ähnlichkeitsfunktion benötigt wird. Es bietet sich an, bekannte Distanzfunktionen für Vektoren zu verwenden, da die Ähnlichkeit umso größer ist, je kleiner die Distanz ausfällt.
+Grundidee des Vektorraummodells ist das Ermitteln der Ähnlichkeit zwischen Vektoren, weshalb hierfür eine geeignete Ähnlichkeitsfunktion benötigt wird. Es bietet sich an, hierzu bekannte Distanzfunktionen für Vektoren zu verwenden, denn eine geringe Distanz impliziert eine hohe Ähnlichkeit.
 
 \subsection{Euklidischer Abstand}
 Eine typische Distanzfunktion für Vektoren ist der euklidische Abstand, welcher in Formel \ref{euklid} gezeigt ist (\cite{Manning:08}, S.121).
@@ -167,18 +167,18 @@ Eine typische Distanzfunktion für Vektoren ist der euklidische Abstand, welcher 
 
 \begin{equation}
 \label{euklid}
-|\overrightarrow{x} - \overrightarrow{y}| = \sqrt{\sum_{i=1}^{M} (x_i - y_i)^{2}}
+|\overrightarrow{x} - \overrightarrow{y}| = \sqrt{\sum_{i = 1}^{M} (x_i - y_i)^{2}}
 \end{equation}
 
-Allerdings besitzt der euklidische Abstand den gravierenden Nachteil, dass die Länge der Vektoren eine Rolle spielt. 
-Reiht man beispielsweise den Inhalt eines Dokumentes $d1$ zweimal aneinander, so besitzt das entstandene Dokument $d2$ für jeden Term die doppelte Termhäufigkeit und der Dokumentvektor $\overrightarrow{d2}$ ist darum länger als $\overrightarrow{d1}$. Das resultiert darin, dass $d2$ bei einer entsprechenden Suchanfrage einen deutlich höheren Ähnlichkeitswert erzielt als $d1$, obwohl sich die Dokumente inhaltlich nicht unterscheiden.
-Das Problem, dass zwei unterschiedlich lange Dokumente, in denen die gesuchten Terme etwa gleich verteilt sind, dennoch vollkommen verschiedene Ähnlichkeitswerte erzielen, macht den euklidischen Abstand zu einer ungeeigneten Ähnlichkeitsfunktion für das Vektorraummodell.
+Allerdings besitzt der euklidische Abstand den gravierenden Nachteil, dass die Länge der Vektoren für das Ergebnis eine Rolle spielt. 
+Reiht man beispielsweise den Inhalt eines Dokumentes $d1$ zweimal aneinander, so besitzt das entstandene Dokument $d2$ für jeden Term die doppelte Termhäufigkeit, sodass der zugehörige Dokumentvektor $\overrightarrow{d2}$ länger ist als $\overrightarrow{d1}$. Bei einer passenden Suchanfrage wird $d2$ einen deutlich höheren Ähnlichkeitswert erzielen als $d1$, obwohl sich die Dokumente inhaltlich nicht unterscheiden.
+Das Problem, dass zwei unterschiedlich lange Dokumente, bei denen die darin enthaltenen Terme etwa gleich verteilt sind, dennoch vollkommen verschiedene Ähnlichkeitswerte erzielen, macht den euklidischen Abstand zu einer ungeeigneten Ähnlichkeitsfunktion für das Vektorraummodell.
 
 
 
 \subsection{Cosinus-Maß}
-Um den Einfluss der Vektorlänge zu eliminieren, wird in der Regel stattdessen das Cosinus-Maß (engl. cosine similarity) verwendet, welches den Cosinus des zwischen den Vektoren eingeschlossenen Winkels berechnet und darum von der Vektorlänge unabhängig ist.
-Das Cosinus-Maß entspricht dem Skalarprodukt der normalisierten Vektoren (\cite{Manning:08}, S.112). Ein normalisierter Vektor ist ein Vektor, der durch seine euklidische Länge dividiert wird und darum immer die Länge 1 besitzt.
+Um den Einfluss der Vektorlänge zu eliminieren, wird in der Regel stattdessen das Cosinus-Maß (engl. \textit{cosine similarity}) verwendet, welches den Cosinus des zwischen den Vektoren eingeschlossenen Winkels berechnet. Damit ist dieses Maß von der Vektorlänge unabhängig. \\
+Es entspricht dem Skalarprodukt der normalisierten Vektoren (\cite{Manning:08}, S.112). Ein normalisierter Vektor ist ein Vektor, der durch seine euklidische Länge dividiert wird und darum immer die Länge 1 besitzt.
 Zur Berechnung des Cosinus-Maßes werden sowohl das Skalarprodukt als auch die euklidische Länge als bekannt vorausgesetzt, darum werden beide an dieser Stelle erklärt.
 
 \subsubsection{Euklidische Länge}
@@ -186,7 +186,7 @@ Sei $\overrightarrow{x}$ ein Vektor, dann wird seine euklidische Länge wie in Fo
 
 \begin{equation}
 \label{length}
-\vert \overrightarrow{x} \vert =\sqrt{\sum_{i=1}^{M}x_i^{2}}
+\vert \overrightarrow{x} \vert =\sqrt{\sum_{i = 1}^{M}x_i^{2}}
 \end{equation}
 
 
@@ -213,16 +213,16 @@ sim(\overrightarrow{x},\overrightarrow{y}) = \frac{\overrightarrow{x} \cdot \ove
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/vector_space.png}
-	\caption{Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren zu den Dokumenten $d_i$ und einem Anfragevektor zur Anfrage $q$. Das Cosinus-Maß liefert als ähnlichstes Dokument $d_2$ (Eigene Abbildung, basierend auf \cite{Buettcher:10}, S.55).}
+	\caption{Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren zu den Dokumenten $d_i$ und einem Anfragevektor zur Anfrage $q$. Das Cosinus-Maß liefert als ähnlichstes Dokument $d_2$, da $\alpha$ der kleinste eingeschlossene Winkel ist (eigene Abbildung, basierend auf \cite{Buettcher:10}, S.55).}
 	\label{fancy}
 
 \end{figure}
 
-Um das Cosinus-Maß besser nachvollziehen zu können, hilft eine grafische Veranschaulichung. Abbildung \ref{fancy} zeigt einen Vektorraum mit zwei Termen als Achsen,  wodurch der Raum sich zweidimensional darstellen lässt. Bei mehr als zwei Termen ist dies schon nicht mehr möglich, da jeder Term eine eigene Achse im Vektorraum bildet.
-In der Realität gibt es meist weitaus mehr Achsen als in der Abbildung, da das Vokabular tausende Terme beinhalten kann. \\
+Um das Cosinus-Maß besser nachvollziehen zu können, hilft eine grafische Veranschaulichung. Abbildung \ref{fancy} zeigt einen Vektorraum mit zwei Termen als Achsen,  sodass der Raum sich zweidimensional darstellen lässt. Bei mehr als zwei Termen ist dies schon nicht mehr möglich, da jeder Term eine eigene Achse im Vektorraum darstellt.
+In der Realität gibt es meist weitaus mehr Achsen, da das Vokabular tausende Terme beinhalten kann. \\
 Der gezeigte Vektorraum beinhaltet insgesamt drei Dokumentvektoren $\overrightarrow{d_i}$ sowie den Anfragevektor $\overrightarrow{q}$ als Elemente, wobei alle abgebildeten Vektoren bereits normalisiert sind.
- Unter Verwendung des Cosinus-Maßes ergibt sich für $sim(\overrightarrow{d_2}, \overrightarrow{q})=cos(\alpha)$ der höchsten Wert, da $\alpha$ der kleinste aller Winkel zwischen einem Dokumentvektor $\overrightarrow{d_i}$ und $\overrightarrow{q}$ ist. Hier wird deutlich, dass ausschließlich der Winkel, nicht aber die Länge ausschlaggebend ist.
-  Damit wird $d2$ als erstes Ergebnisdokument ausgegeben (\cite{Buettcher:10}, S.55-56).
+ Unter Verwendung des Cosinus-Maßes ergibt sich für $sim(\overrightarrow{d_2}, \overrightarrow{q}) = cos(\alpha)$ der höchsten Wert, da $\alpha$ der kleinste aller Winkel zwischen einem Dokumentvektor $\overrightarrow{d_i}$ und $\overrightarrow{q}$ ist. Hier wird deutlich, dass ausschließlich der Winkel, nicht aber die Länge ausschlaggebend ist.
+  Damit wird $d2$ als Ergebnis mit dem höchsten Ähnlichkeitswert ausgegeben (\cite{Buettcher:10}, S.55-56).
 
 
 %\subsection{Alternativen}

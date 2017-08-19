@@ -1,9 +1,9 @@
 \chapter{Die Benutzeroberfl\"ache}
-Dieses Kapitel soll die Konzeption der Oberfläche begründen und deren Bedienung erläutern.\\
+Dieses Kapitel begründet die Konzeption der Oberfläche und erläutert deren Bedienung.\\
 
 \section{Anforderungen}
 Die Benutzeroberfläche muss die folgenden, aus der Problemstellung resultierenden Funktionalitäten erfüllen:
-\begin{enumerate}
+\begin{itemize}
 	\item Wählen und Festlegen des Suchverzeichnisses
 	\item Eingabe des Suchtextes 
 	\item Auswählen der Freitextsuche
@@ -16,13 +16,13 @@ Die Benutzeroberfläche muss die folgenden, aus der Problemstellung resultierende
 	\item Anzeige der Resultate 
 
 	
-\end{enumerate}
+\end{itemize}
 
 Neben den oben genannten inhaltlichen Anforderungen sind noch weitere Punkte bezüglich Anwenderfreundlichkeit zu berücksichtigen: \\
-\begin{enumerate}
+\begin{itemize}
 \item Übersichtlichkeit
 \item Intuitive Bedienbarkeit, d.h. der Nutzer soll möglichst wenig nachdenken müssen
-\end{enumerate}
+\end{itemize}
 
 In den folgenden Abschnitt wird erläutert, auf welche Weise diese Punkte realisiert wurden.
 
@@ -44,19 +44,19 @@ Dieses besagt, dass Elemente, die nah zusammen liegen, vom Anwender als zusammen
 \section{Verzeichnisauswahl}
 Die Verzeichnisauswahl (siehe Abbildung \ref{overview} Teil a) besteht aus einem Textfeld und dem rechts daneben befindlichen Button mit der Aufschrift \glqq select\grqq{}, welcher das Auswahlmenü öffnet.
 Dieses wird in einem separaten Pop-Up-Fenster angezeigt (siehe Abbildung \ref{select}) und bietet zwei Möglichkeiten, ein Verzeichnis zu selektieren: \\
-\begin{enumerate}
+\begin{itemize}
 	\item Eintippen des Pfads in ein Textfeld
 	\item Auswahl des Verzeichnisses über ein Dropdown-Menü
-\end{enumerate}
+\end{itemize}
 
 Der Nutzer muss die Wahl anschließend mit \glqq ok\grqq{} bestätigen. Alternativ kann er den Dialog über \glqq cancel\grqq{} abbrechen. 
-Einmal gewählt, wird der Verzeichnispfad im Textfeld angezeigt und kann nachträglich nicht mehr geändert werden, weshalb der select-Button anschließend deaktiviert wird. Möchte der Nutzer in einem anderen Verzeichnis als bisher suchen, kann er das System einfach erneut starten. 
+Einmal gewählt, wird der Verzeichnispfad im Textfeld angezeigt und kann nachträglich nicht mehr geändert werden, weshalb der select-Button anschließend deaktiviert wird. Möchte der Nutzer in einem anderen Verzeichnis als bisher suchen, kann er das System erneut starten und dann dieses Verzeichnis auswählen. 
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/Select.png}
-	\caption{Verzeichnisauswahl (Eigene Abbildung)}
+	\caption{Verzeichnisauswahl (eigene Abbildung)}
 	\label{select}
 	
 \end{figure}
@@ -116,10 +116,10 @@ In dieses Display lässt sich vom Nutzer nichts eingeben, um die korrekte Anzeige
 \end{figure}
 
 \section{Ergebnis}
-Der Nutzer kann die Gesamtanfrage über den reset-Button komplett zurücksetzen oder aber über den search-Button die Suche starten. 
+Der Nutzer kann die Gesamtanfrage über den reset-Button zurücksetzen oder über den search-Button die Suche starten. 
 Das Drücken von \glqq search\grqq{} öffnet ein Pop-Up-Fenster, welches die Resultate anzeigt, was in Abbildung \ref{d} gezeigt ist. 
 In einer tabellarischen Ansicht werden die Ranking-Position, der Score des Dokuments, wenn möglich Datum und Absender sowie der Dateipfad angezeigt. 
-Die Tabelle ist vertikal scrollbar (siehe Abbildung \ref{res}), um eine beliebig große Zahl von Ergebnissen anzeigen zu können. Eine Begrenzung wurde nicht vorgenommen, da keine Resultate ausgeschlossen werden sollen. Der Nutzer kann sich an den Ranking-Positionen orientieren und selbst entscheiden, welche Resultate für ihn relevant sind und welche er aufgrund des niedrigen Scores ausschließen möchte. \\
+Die Tabelle ist vertikal scrollbar (siehe Abbildung \ref{res}), um eine beliebig große Zahl von Ergebnissen anzeigen zu können. Eine Begrenzung wurde nicht vorgenommen, da keine Resultate ausgeschlossen werden sollen. Der Nutzer kann sich an den Ranking-Positionen orientieren und selbst entscheiden, welche Resultate für ihn relevant sind und welche er aufgrund eines zu niedrigen Scores ausschließen möchte. \\
 Die Einträge der Tabelle lassen sich per Doppelklick auswählen und werden je nach ausgewähltem Modus auf verschiedene Arten geöffnet. Dieser lässt sich über zwei oben links über der Tabelle angebrachte Radio-Buttons einstellen: \glqq Open directory\grqq{} öffnet das Verzeichnis, zu dem das Dokument gehört, und markiert die Datei, \glqq Open file \grqq{} öffnet die Datei hingegen direkt.
 Das Drücken von \glqq ok\grqq{} schließt das Ergebnisfenster.
 
@@ -136,7 +136,7 @@ Das Drücken von \glqq ok\grqq{} schließt das Ergebnisfenster.
 	
 	\centering
 	\includegraphics[width=1.1\textwidth]{images/results}
-	\caption{Scrollbare Anzeige, um beliebig viele Treffer anzeigen zu können (eigene Abbildung).}
+	\caption{Scrollbare Anzeige, um beliebig viele Resultate anzeigen zu können (eigene Abbildung).}
 	\label{res}
 	
 \end{figure}

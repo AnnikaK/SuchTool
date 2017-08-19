@@ -1,17 +1,17 @@
 \chapter{Bewertung eines Information-Retrieval-Systems}
 In diesem Kapitel wird erläutert, wie sich Information-Retrieval-Systeme bewerten und vergleichen lassen. \\
  
-Nachdem mit dem booleschen Retrieval und dem Vektorraummodell bereits zwei klassische Verfahren vorgestellt wurden, mit denen sich Information-Retrieval-Systeme realisieren lassen, liegt es nahe, nach einer Methode zum Bewerten und Vergleichen solcher System zu suchen. 
-Die Bewertungsmethode muss hierbei geeignet sein, verschiedenste Systeme zu bewerten, denn diese können sich in zahlreichen Punkten wie etwa Dokumentformat, Dokumentrepräsentation, der Art und Weise, wie Anfragen formuliert und Ergebnisse präsentiert werden, unterscheiden (\cite{Ferber:03}, S.84). \\
+Nachdem mit dem booleschen Retrieval und dem Vektorraummodell bereits zwei klassische Verfahren vorgestellt wurden, mit denen sich Information-Retrieval-Systeme realisieren lassen, liegt es nahe, nach einer Methode zum Bewerten und Vergleichen solcher Systeme zu suchen. 
+Die Bewertungsmethode muss hierbei für verschiedenste Systeme geeignet sein, denn diese können sich in zahlreichen Punkten wie beispielsweise Dokumentformat, Dokumentrepräsentation oder in der Art und Weise, wie Anfragen formuliert und Ergebnisse präsentiert werden, unterscheiden (\cite{Ferber:03}, S.84). \\
 
 \section{Problem Relevanz}
 Um ein Information-Retrieval-System hinsichtlich dessen Qualität beurteilen zu können, muss die Relevanz der zurückgelieferten Ergebnisse eingestuft werden.
 Hiermit eröffnet sich das Hauptproblem: Wann ist ein Dokument relevant? Allgemein formuliert lässt sich dies so beantworten: Ein Dokument ist relevant, wenn es das in der Anfrage formulierte Informationsbedürfnis des Nutzers befriedigt (\cite{Ferber:03}, S.85). 
-Der Begriff Relevanz lässt sich zudem mathematisch wie in Definition \ref{Relevance} (\cite{Ferber:03}, S.86) angegeben definieren. \\ 
+Der Begriff lässt sich zudem mathematisch wie in Definition \ref{Relevance} angegeben definieren (\cite{Ferber:03}, S.86). \\ 
 
 \begin{definition}(Relevanz)\\
 	\label{Relevance}
-	Die Relevanz eines Dokuments für eine Anfrage ist eine Relation $r: D \times Q \rightarrow R$, wobei $D={D_1,...,d_m}$ die Menge der Dokumente, $Q$ die Menge der Anfragen und $R$ eine Menge von Wahrheitswerten, im Allgemeinen die Menge ${0,1}$, ist. (Im Folgenden wird $R=\{0,1\}$ angenommen, wenn nichts anderes gesagt wird.)\\
+	Die Relevanz eines Dokuments für eine Anfrage ist eine Relation $r: D \times Q \rightarrow R$, wobei $D= \{D_1,...,d_m\}$ die Menge der Dokumente, $Q$ die Menge der Anfragen und $R$ eine Menge von Wahrheitswerten, im Allgemeinen die Menge $\{0,1\}$, ist. (Im Folgenden wird $R=\{0,1\}$ angenommen, wenn nichts anderes gesagt wird.)\\
 	Die Relation $r$ wird im Allgemeinen durch Befragen von Experten zu konkreten Anfragen und Dokumentmengen ermittelt und als Tabelle oder in Form von Listen gespeichert. \\
 \end{definition}
 
@@ -21,11 +21,11 @@ Da zum Bestimmen der Relation die Beurteilung von Experten erforderlich ist, läs
 In diesem Abschnitt werden die beiden zur Bewertung notwendigen Evaluierungsmaße Precision und Recall vorgestellt.
 
 \subsection{Precisison}
-Precision bedeutet übersetzt Präzision und bezeichnet den Anteil relevanter Dokumente an allen zurückgelieferten Dokumenten. Formel \ref{prec} beschreibt die Berechnung, wobei $\#$ für die Kardinalität der Menge, d.h. die Anzahl der darin enthaltenen Elemente, steht.
+Precision bedeutet übersetzt Präzision und bezeichnet den Anteil relevanter Dokumente an allen zurückgelieferten Dokumenten. Formel \ref{prec} beschreibt die Berechnung, wobei $\#$ die Kardinalität bezeichnet.
 
 \begin{equation}
 \label{prec}
-Precision = \frac{\#(relevant \hspace{2mm} items \hspace{2mm} retrieved)}{\#(retrieved \hspace{2mm} items)}
+Precision = \frac{\#(relevante \hspace{2mm} \textnormal{zur"uckgewonnene} \hspace{2mm} Dokumente)}{\#(\textnormal{zur"uckgewonnene} \hspace{2mm} Dokumente)}
 \end{equation}
 
 
@@ -34,21 +34,21 @@ Recall kann mit Trefferquote übersetzt werden und beschreibt die Frage, wie viel
 
 \begin{equation}
 \label{rec}
-Recall = \frac{\#(relevant \hspace{2mm} items \hspace{2mm} retrieved)}{\#(relevant \hspace{2mm} items)}
+Recall = \frac{\#(relevante \hspace{2mm} \textnormal{zur"uckgewonnene}  \hspace{2mm} Dokumente)}{\#(relevante \hspace{2mm} Dokumente)}
 \end{equation}
 
 \subsection{Veranschaulichung}
 Die Bedeutung der Maße lässt sich leichter anhand der Kontingenztafel \ref{tabelle} nachvollziehen. 
-Kontingenztafeln sind Häufigkeitstabellen und stammen aus der Statistik. Sie  beschreiben die gemeinsame Verteilung zweier Merkmale, in diesem Fall handelt es sich hierbei um Relavanz und Rückgewinnung (\cite{Engelhardt:14}). 
+Kontingenztafeln sind Häufigkeitstabellen und stammen aus der Statistik. Sie  beschreiben die gemeinsame Verteilung zweier Merkmale, in diesem Fall handelt es sich dabei um Relevanz und Rückgewinnung (\cite{Engelhardt:14}). 
 
  \begin{table}
 	\caption{Kontingenztafel (\cite{Manning:08}, S.143)}
 	\begin{tabular}{l|l|l}
 		\space & relevant & irrelevant \\
 		\hline
-		zurückgeliefert & true positives (tp) & false positives (fp) \\
+		zurückgewonnen & true positives (tp) & false positives (fp) \\
 		\hline
-		nicht zurückgeliefert & false negatives (fn) & true negatives (tn)
+		nicht zurückgewonnen & false negatives (fn) & true negatives (tn)
 	\end{tabular}
 	\label{tabelle}
 \end{table}
@@ -72,7 +72,7 @@ Für die Bestimmung des Recalls werden die \textit{true positives}, d.h. alle vom
 
 
 \section{Zwei Evaluierungsmaße}
-Um ein System aussagekräftig bewerten zu können, reicht eines der Maße nicht aus. 
+Um ein System aussagekräftig bewerten zu können, reicht eines der beiden Maße nicht aus. 
 Beispielsweise könnte ein System einen Recall von $100\%$ erreichen, indem es einfach alle Dokumente zurückliefert. 
 Umgekehrt lässt sich auch eine Precision von $100\%$ erzielen, wenn nur ein einziges Dokument gefunden wurde und dieses ein Treffer war. Vielleicht wurden hier allerdings eine ganze Reihe weiterer relevanter Dokumente nicht gefunden.
 Deshalb werden stets beide Maße für eine qualitative Einschätzung eines Information-Retrieval-Systems benötigt.
@@ -83,9 +83,9 @@ Eine Bewertung anhand der oben aufgeführten Evaluierungsmaße kann durchgeführt w
 \begin{itemize}
 	\item Vorgegebene Dokumentsammlung
 	\item Feste Menge von Test-Anfragen
-	\item Eine Relation $r$, die jedem Anfragen-Dokument Paar einen Wert $\in \{0,1\}$ für relevant bzw. irrelevant zuordnet.
+	\item Eine Relation $r$, die jedem Anfragen-Dokument Paar einen Wert $\in \{0,1\}$ für relevant bzw. irrelevant zuordnet
 \end{itemize}
 Leider sind für diese Arbeit jedoch die oben gelisteten Voraussetzungen nicht gegeben.
  Die Erzeugung einer repräsentativen Test-Dokumentsammlung ist für die Problemstellung nicht möglich, da die Art des Dokumentarchivs offen gehalten wurde. 
-Auch mit Beschränkung auf den Anwendungsfall E-Mails wäre in jedem Fall die zu erzeugende Anfragenmenge zu groß, um sie im Rahmen dieser Arbeit bewältigen zu können, da Anfragen aus beliebigen Wörtern bestehen und zudem beliebig tief geschachtelt werden können. 
-Aufgrund dieser Punkte musste auf eine Bewertung des Systems anhand von Precision und Recall in dieser Arbeit verzichtet werden.
+Selbst mit Beschränkung auf den Anwendungsfall E-Mails wäre in jedem Fall die zu erzeugende Anfragenmenge zu groß, um sie im Rahmen dieser Arbeit bewältigen zu können, da Anfragen aus beliebigen Wörtern bestehen und zudem beliebig tief geschachtelt werden können. 
+Aufgrund dieser Punkte musste auf eine Bewertung des Systems anhand von Precision und Recall verzichtet werden.

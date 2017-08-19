@@ -1,17 +1,17 @@
 \chapter{Boolesches Retrieval}
 \label{bool}
-Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren boolesches Retrieval (engl. boolean retrieval) vor. \\
+Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren \glqq boolesches Retrieval\grqq{} (engl. \textit{boolean retrieval}) vor. \\
 
 \section{Eigenschaften des Verfahrens}
 Boolesches Retrieval überprüft Dokumente auf das Zutreffen einer bestimmten Bedingung. 
-Somit erfolgt lediglich die Unterteilung in passende Dokumente und jene, welche diese Bedingung nicht erfüllen. Eine darüber hinausgehende Bewertung der Ergebnisse findet nicht statt, was zu einer ungeordneten Ergebnismenge führt, die in keine Rangfolge gebracht werden kann (\cite{Ferber:03}, S.33). Das fehlende Ranking ist ein häufiger Kritikpunkt des Verfahrens.\\
+Somit erfolgt lediglich die Unterteilung in Dokumente, welche die Bedingung erfüllen, und jene, die dies nicht tun. Eine darüber hinausgehende Bewertung der Ergebnisse findet nicht statt, was zu einer ungeordneten Ergebnismenge führt, die in keine Rangfolge gebracht werden kann (\cite{Ferber:03}, S.33). Das fehlende Ranking ist ein häufiger Kritikpunkt des Verfahrens.\\
  
  
 \section{Funktionsprinzip}
-Boolesches Retrieval basiert auf Mengenoperationen, weshalb den Dokumenten Mengen zugeordnet werden, die jeweils durch bestimmte Attribute charakterisiert sind. Wenn von Dokumenten gesprochen wird, ist hiermit die Einheit gemeint, auf der das Retrieval stattfindet. Es kann sich hierbei um kleine Textmemos, aber auch um ganze Buchkapitel handeln (\cite{Manning:08}, S.4).
+Boolesches Retrieval basiert auf Mengenoperationen, weshalb den Dokumenten Mengen zugeordnet werden, die jeweils durch bestimmte Attribute charakterisiert sind. Wenn von Dokumenten gesprochen wird, ist hiermit die Einheit gemeint, auf der das Retrieval stattfindet. Es kann sich hierbei um kurze Textmemos, aber auch um ganze Buchkapitel handeln (\cite{Manning:08}, S.4).
 
 \subsection{Attribut}
-Ein Attribut ist eine Abbildung, welche jedem Dokument einen Wert für dieses Attribut zuordnet. Die Abbildung erzeugt somit Attribut-Wert-Paare, was in Formel \ref{attr} gezeigt wird. 
+Ein Attribut ist eine Abbildung, welche jedem Dokument einen Wert für dieses Attribut zuordnet. Die Abbildung erzeugt somit Attribut-Wert-Paare, was in Formel \ref{attr} gezeigt wird (\cite{Ferber:03}, S.34). 
 
 \begin{equation}
 \label{attr}
@@ -19,8 +19,10 @@ t: D \rightarrow T, t(d) = t_i
 \end{equation}
 
 
-Hierbei bezeichnet $t$ die Abbildung (d.h. das Attribut), $D$ die Menge aller Dokumente und $T$ den Wertebereich des Attributs $t$. \\
- Der Attributwert $t_i$ mit $t_i \in T$ und $i \in \mathbb{N}$ wird durch die Abbildung $t$ dem Dokument $d \in D$ zugeordnet. \\
+Hierbei bezeichnet $t$ die Abbildung oder das Attribut, $D$ die Menge aller Dokumente und $T$ den Wertebereich des Attributs $t$. 
+Die Abbildung ordnet einem Dokument $d \in D$ einen Attributwert $t_i$ mit $t_i \in T$ und $i \in \mathbb{N}$  zu.
+
+
 
 \subsection{Anfragen}
  \label{formelzeugs}
@@ -74,15 +76,13 @@ Eine mögliche Implementierung des booleschen Retrieval stellt die Umsetzung mitt
 In den Zeilen einer solchen Matrix werden die Terme eingetragen und in den Spalten die Dokumente bzw. deren \textit{docID}s. 
 Tritt Term $t$ in Dokument $d$ auf, so lautet der Eintrag für $(t,d)$ in der Matrix 1. Alle Einträge für nicht vorkommende Terme sind hingegen mit einer 0 versehen. 
 Abbildung \ref{abb0} zeigt ein Beispiel, wobei zu beachten ist dass die tatsächliche Anzahl an Termen und Dokumenten in einer Sammlung weitaus größer ausfällt. \\
-Eine Term-Dokument Inzidenz Matrix besitzt den gravierenden Nachteil, dass sie unnötig Speicherplatz verbraucht, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dieser Implementierungsansatz aufgrund des limitierten Speicherplatzes nicht realisierbar.
-
 
 
 
 \begin{figure} [hbtp]
 	\centering
 	\includegraphics[width=1\textwidth]{images/matrix.png}
-	\caption{Term-Dokument Inzidenz Matrix. Die Zeilen enthalten die Terme, die Spalten die \textit{docIDs} der Dokumente. Alle Einträge mit einer 0 sind leere Einträge (Eigene Abbildung).}
+	\caption{Term-Dokument Inzidenz Matrix. Die Zeilen enthalten die Terme, die Spalten die \textit{docIDs} der Dokumente. Alle Einträge mit einer 0 sind leere Einträge (eigene Abbildung, basierend auf \cite{Manning:08}, S.4).}
 	\label{abb0}
 \end{figure}
 
@@ -94,20 +94,23 @@ Um eine Anfrage wie $Kontaktadresse$ $AND$ $Seminar$ $AND$ $Termin$ mithilfe ein
 1110000\\
 ----------- \\
 0010000 \\\\
-Demnach wird das Dokument mit der \textit{docID} 3 zurückgegeben. Analog funktioniert  die \textit{OR}-Verknüpfung: \\\\
+Demnach wird das Dokument mit der \textit{docID} 3 zurückgegeben. 
+
+Analog funktioniert  die \textit{OR}-Verknüpfung: \\\\
 0110001 OR \\
 1010100 OR\\
 1110000\\
 ----------- \\
-1110101 \\\\
+1110101 \\
 
-Dieses Beispiel führt zur Ergebnismenge $\{1,2,3,5,7\}$ (\cite{Manning:08}, S.4).
+Dieses Beispiel führt zur Ergebnismenge $\{1,2,3,5,7\}$ (\cite{Manning:08}, S.4).\\
+Eine Term-Dokument Inzidenz Matrix besitzt den gravierenden Nachteil, dass sie unnötig Speicherplatz verbraucht, da sehr viele Einträge der Matrix eine 0 enthalten. Gerade bei sehr großen Sammlungen bzw. Dokumenten ist dieser Implementierungsansatz aufgrund des limitierten Speicherplatzes nicht realisierbar.
 
 
 
 \subsection{Invertierte Liste}
 \label{inverted}
-In der Regel werden zur Implementierung des booleschen Retrieval invertierte Listen (engl. inverted lists) verwendet (\cite{Ferber:03}, S.36). 
+In der Regel werden zur Implementierung des booleschen Retrieval stattdessen invertierte Listen (engl. inverted lists) verwendet (\cite{Ferber:03}, S.36). 
 Der Name basiert auf den darin gespeicherten invertierten Indizes, die deshalb als invertiert bezeichnet werden, weil sie vom Term zurück auf die Postion, in welcher der Term aufgetreten ist, schließen lassen.\\
 In einer geeigneten Speicherstruktur, zum Beispiel einem Dictionary, werden zu jedem Term alle Dokumente gespeichert, in denen der Term auftritt, d.h. deren Indizes oder \textit{docIDs}. Hierbei ist anzumerken, dass hierfür tatsächlich jede geeignete Speicherstruktur verwendet werden kann, denn trotz des Namens muss es sich nicht um Listen handeln.
 Abbildung \ref{abb1} zeigt ein Beispiel einer solchen invertierten Liste.
@@ -118,7 +121,7 @@ Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv
 \begin{figure} [hbtp]
 	\centering
 	\includegraphics[width=1\textwidth]{images/inverted_list.png}
-	\caption{Invertierte Listen zu drei Beispieltermen. Jede invertierte Liste enthält die Dokumentindizes oder auch \textit{docID}s der Dokumente, in denen der jeweilige Term vorkommt (Eigene Abbildung).}
+	\caption{Invertierte Listen zu drei Beispieltermen. Jede invertierte Liste enthält die Dokumentindizes oder auch \textit{docID}s der Dokumente, in denen der jeweilige Term vorkommt (eigene Abbildung, basierend auf \cite{Manning:08}, S.6).}
 	\label{abb1}
 \end{figure}
 
@@ -126,12 +129,12 @@ Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv
 \subsubsection{Verarbeitung einer Anfrage mittels invertierter Liste}
 Es stellt sich die Frage, wie eine boolesche Anfrage wie in Abschnitt \ref{formelzeugs} beschrieben mithilfe invertierter Listen umgesetzt werden kann. \\
 \paragraph{Elementare Anfrage}
-Angenommen, es liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor. Ist nach dem Vorkommen eines bestimmten Wortes gefragt, entspricht das Attribut $t$ dem Term des gesuchten Wortes, da  Term und Wort nicht zwangsläufig äquivalent sind (siehe Abschnitt \ref{lemmatisierung}). Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
+Liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor und es ist nach dem Vorkommen eines bestimmten Wortes gefragt, entspricht das Attribut $t$ dem Term des gesuchten Wortes, da  Term und Wort nicht zwangsläufig äquivalent sind (siehe Abschnitt \ref{lemmatisierung}). Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
 Die Verarbeitung einer solchen elementaren Anfrage geht relativ einfach: Über den Termindex kann auf den Term schnell zugegriffen werden, vorausgesetzt dieser ist im Vokabular enthalten. Trifft dies zu, kann die zugehörige invertierte Liste als Resultat ausgegeben werden, da für alle darin enthaltenen Dokumente $t_1 = true$ gilt. \\
 \paragraph{AND-Verknüpfungen}
-Wie sieht nun die Verarbeitung aus, wenn mehrere elementare Anfragen miteinander verknüpft werden? Um dies zu beantworten, wird zunächst der $AND$-Operator betrachtet. Eine zusammengesetzte Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa in dem Beispiel $Kontaktadresse$ $AND$ $Seminar$, bei dem $t=Kontaktadresse, t_1=true$ sowie $s=Seminar, s_1=true$ gelten.
+Wie sieht nun die Verarbeitung aus, wenn mehrere elementare Anfragen miteinander verknüpft werden? Um dies zu beantworten, wird zunächst der $AND$-Operator betrachtet. Eine zusammengesetzte Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa in dem Beispiel $Kontaktadresse$ $AND$ $Seminar$, bei dem $t = Kontaktadresse, t_1 = true$ sowie $s = Seminar, s_1 = true$ gelten.
 Dies bedeutet, dass alle Dokumente gesucht sind, in denen beide Terme auftauchen. \\
-Hierzu wird der Durchschnitt aus den Ergebnismengen beider elementarer Anfragen gebildet, d.h. der Durchschnitt aus beiden invertierten Listen. Betrachtet man die Abbildung \ref{abb1}, so ist der Durchschnitt für $Kontaktadresse \cap Seminar$ gleich der Ergebnisliste $\{3,11\}$. \\
+Hierzu wird der Durchschnitt aus den Ergebnismengen beider elementarer Anfragen gebildet, d.h. der Durchschnitt aus beiden invertierten Listen. Betrachtet man die Abbildung \ref{abb1}, so ist der Durchschnitt für $Kontaktadresse \cap Seminar$ gleich der Ergebnisliste $\{3,11\}$ (\cite{Manning:08}, S.10). \\
 
 
 
@@ -159,7 +162,7 @@ Auf diese Weise werden die Listen, über die iteriert wird, möglichst klein gehal
 Bei mehreren $OR$-Operatoren werden die Ausdrücke analog von links nach rechts verarbeitet, wobei die Sortierung nach Länge hierbei keinen Vorteil bietet, da bei der Vereinigung zweier Listen ohnehin über alle Elemente iteriert werden muss. Die Verarbeitungsreihenfolge entspricht der folgenden Klammerung:
 $(Kontaktadresse$ $OR$ $Seminar)$ $OR$ $Termin$ \\
 Ist die Anfrage hingegen gemischt, wie etwa in dem Beispiel
-($Kontaktadresse$ $OR$ $Seminar$) $AND$ ($Termin$ $OR$ $Seminar$), werden erst die inneren Ausdrücke ausgewertet und dann aus deren Ergebnislisten der Durchschnitt gebildet (\cite{Manning:08}, S.11).
+($Kontaktadresse$ $OR$ $Seminar$) $AND$ ($Termin$ $OR$ $Seminar$), werden erst die inneren Ausdrücke ausgewertet und aus den entstandenen Ergebnislisten in aufsteigend nach Länge sortierter Reihenfolge der Durchschnitt gebildet (\cite{Manning:08}, S.11).
 
 
 \paragraph{Die Verarbeitung mehrerer Wörter}

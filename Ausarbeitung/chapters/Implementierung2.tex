@@ -1,11 +1,11 @@
 \chapter{Implementierung}
 
-In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informationssuche in einem Dokumentenarchiv basierend auf Textinhalt sowie Metadaten in der Programmiersprache Lisp realisiert wurde.
+In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informationssuche in einem Dokumentenarchiv basierend auf Textinhalt sowie Metadaten unter Verwendung der Programmiersprache Lisp realisiert wurde.
 
 \section{Teilweise strukturierte Dokumente}
 Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}). 
 Dies erfordert das Lösen zweier Teilprobleme: Zum einen das Realisieren der Metadatensuche und zum anderen das Realisieren der Freitextsuche. Beides wurde mit unterschiedlichen Verfahren gelöst, da die Suchen unterschiedliche Anforderungen besitzen. Im Falle der Metadatensuche wurde sich für boolesches Retrieval entschieden, bei der Freitextsuche hingegen für das Vektorraummodell.\\
-Bevor erklärt wird, aus welchen Gründen diese Entscheidung getroffen wurde, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt. Hier wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. \\
+Bevor erklärt wird, aus welchen Gründen diese Entscheidungen getroffen wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt. Hier wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. Es können auch mehrere sehr ähnliche Attributnamen auftauchen, die sich lediglich durch Groß- und Kleinschreibung unterscheiden, z.B. \glqq Betreff\grqq{} und \glqq BETREFF\grqq{}. Das System behandelt diese dann wie einen einzigen Attributnamen. \\
  Die Gesamtheit aller Attribute eines Dokuments bildet den Metadatenteil. Darauf folgt der unstrukturierte Freitextpart.
  
 \begin{lstlisting}[language=lisp, caption={Beispieldokument}
@@ -13,16 +13,16 @@ Bevor erklärt wird, aus welchen Gründen diese Entscheidung getroffen wurde, ist 
 language=lisp]
 
 
-(absender ("<MaxMuster@muster-mail.de>"))
-(Betreff (" Umfrage"))
+(absender ("<maximilianSchuster@mail.de>"))
+(Betreff ("Umfrage"))
 (datum ("Wed, 22 Jun 2017 07:47:51 +0200"))
 (anzahlAnhaenge 0)
 (Termin nil)
 
-(ABSENDER-NAME "Max_Muster")
-(ABSENDER-MAIL-ADRESSE "MaxMuster@muster-mail.de")
-(EMPFAENGER ("doe>> John Doe"))
-(EMPFAENGER-MAIL-ADRESSEN ("johnd@muster-mail.de"))
+(ABSENDER-NAME "Maximilian Schuster")
+(ABSENDER-MAIL-ADRESSE "maximilianSchuster@mail.de")
+(EMPFAENGER ("John Schmitz"))
+(EMPFAENGER-MAIL-ADRESSEN ("johnSchmitz@mail.de"))
 (BETREFF "Umfrage")
 (EMAIL-TYP "sent")
 (QUELLBOXART "SENT")
@@ -34,7 +34,7 @@ zukommen lassen.
 
 
 Viele Grüße
-Max Muster
+Maximilian Schuster
 
 \end{lstlisting}
 
@@ -57,28 +57,28 @@ Beim Starten des Programms werden zunächst einige Initialisierungsschritte ausge
 
 \subsection{Erstellen des Dokument-Dictionaries}
 Zunächst wird das Dokument-Dictionary angelegt. Dieses wird intern durch eine Hash-Table realisiert, da dies in Lisp einem Dictionary am nächsten kommt. Zu jedem Dokument werden darin die folgenden Punkte erfasst:
-\begin{itemize}
+\begin{enumerate}
 	\item \textit{docID}: Das Zuweisen einer einmaligen \textit{docID} in Form eines fortlaufenden Integer-Wertes. Die \textit{docID} bildet den Hash-Key des Dokuments.
 	\item Dateipfad
-	\item Dokumentvektor (zu Beginn noch nicht initialisiert). 
-	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient.
-	\item Absender: ebenfalls optionale Information, die nur der Ergebnisanzeige dient.
-\end{itemize}
+	\item Dokumentvektor (zu Beginn noch nicht initialisiert)
+	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient
+	\item Absender: ebenfalls optionale Information, die nur der Ergebnisanzeige dient
+\end{enumerate}
 
 Dateipfad, Dokumentvektor, Datum und Absender werden in einem Struct zusammengefasst. Ein Struct ist eine Datenstruktur in Lisp, die aus selbst definierten und mit Werten belegbaren Slots besteht und die sich darum ideal eignet, um zusammengehörige Werte kompakt und schnell abrufbar zu speichern. Das Struct bildet den Hash-Value des Dokuments. \\ 
-Die  letzten beiden Punkte können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst so flexibel wie möglich gehalten, um auch andere Dateien verarbeiten zu können. Zur Veranschaulichung zeigt Abbildung \ref{docs} den Aufbau eines Eintrags im Dokument-Dictionary.
+Die  Punkte 4 und 5 können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst so flexibel wie möglich gehalten, um auch andere Dateien verarbeiten zu können. Zur Veranschaulichung zeigt Abbildung \ref{docs} den Aufbau eines Eintrags im Dokument-Dictionary.
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/docDict.png}
-	\caption{Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender können, falls nicht existent, auch leer bleiben. Im rot markierten Bereich wird später der Dokumentvektor eingetragen (Eigene Abbildung).}
+	\caption{Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender können bei Fehlen dieser Metadaten leer bleiben. Im rot markierten Bereich wird später der Dokumentvektor eingetragen (eigene Abbildung).}
 	\label{docs}
 	
 \end{figure}
 
 \subsection{Verarbeiten der Dokumente}
-Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die folgenden Schritte auszuführen:
+Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die folgenden Schritte in der gezeigten Reihenfolge auszuführen:
 \begin{enumerate}
 	\item Aufteilen in Metadaten und Freitext
 	\item Verarbeiten der Metadaten
@@ -88,7 +88,7 @@ Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die fo
 
 
 \subsubsection{Verarbeiten der Metadaten}
-Die Metadaten werden zunächst in Attributname und Attributwert zerlegt, um sie weiterverarbeiten zu können. 
+Die Metadaten werden zunächst in Attributnamen und Attributwert zerlegt, um sie anschließend weiterverarbeiten zu können. 
 Für die Metadatensuche wurde boolesches Retrieval (siehe Kapitel \ref{bool}) eingesetzt, da eine klare Bedingung definiert werden kann: Der gesuchte Attributname muss im Dokument auftreten, d.h. jedes Dokument wird auf den Wertebereich $\{true, false\}$ abgebildet.
 Allerdings muss zusätzlich zum Auftreten noch geprüft werden, ob der Attributwert inhaltlich mit der Suchanfrage übereinstimmt bzw. ob darin Teile der Anfrage auftauchen.
 Um dies zu lösen, wurde auf eine modifizierte Form der invertierten Liste (siehe Abschnitt \ref{inverted}) zurückgegriffen. Eine Term-Dokument Inzidenz Matrix wurde hingegen von vornherein aufgrund des zu hohen Speicherbedarfs ausgeschlossen. \\
@@ -102,7 +102,7 @@ Zum Verarbeiten der Metadaten wird eine Hash-Table mit den Attributname als Hash
 
 
 Abbildung \ref{m} zeigt die modifizierte invertierte Liste anhand einiger Beispiel-Attribute. 
-Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender \grqq und \glqq ABSENDER \grqq wird nur ein einziger Hash-Key angelegt. Mit dem Wort Keywords wird ausgedrückt, dass beide Begriffe sich auf ein und dasselbe Attribut beziehen, auch wenn die Namen unterschiedlich ausfallen. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem Information Retrieval System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als relevante Treffer zu erkennen.
+Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender\grqq{} und \glqq ABSENDER\grqq{} wird nur ein einziger Hash-Key angelegt. Mit dem Wort \glqq Keyword\grqq{} wird ausgedrückt, dass beide Begriffe sich auf ein und dasselbe Attribut beziehen, auch wenn die Namen unterschiedlich ausfallen. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem Information-Retrieval-System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als übereinstimmend zu erkennen.
 
 %MERGE!!!
 
@@ -110,7 +110,7 @@ Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinsc
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/mil.png}
-	\caption{Modifizierte invertierte Liste zur Realisierung der Metadatensuche. Statt der \textit{docID}s, wie es bei invertierten Listen üblich ist, werden Structs der Form (docID, Typ, Inhalt) gespeichert(Eigene Abbildung).}
+	\caption{Modifizierte invertierte Liste zur Realisierung der Metadatensuche. Anstatt der \textit{docID}s werden Structs der Form (\textit{docID}, Typ, Inhalt) gespeichert (eigene Abbildung).}
 	\label{m}
 	
 \end{figure}
@@ -131,7 +131,7 @@ Nachdem das Vokabular vollständig bestimmt wurde, werden die darin vorkommenden 
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/termDict.png}
-	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (Eigene Abbildung).}
+	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}
 	\label{terms}
 \end{figure}
 
@@ -159,7 +159,7 @@ Metadatensuche und Freitextsuche wurden intern unterschiedlich realisiert, darum
 
 \subsection{Metadatensuche}
 Die Metadatensuche verwendet boolesches Retrieval.
-Lautet die Anfrage beispielsweise \textit{Absender=\glqq Klaus\grqq{}}, wird auf die modifizierte invertierte Liste über den Hash-Key \textit{Absender} zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
+Lautet die Anfrage beispielsweise $Absender = Klaus$, wird auf die modifizierte invertierte Liste über den Hash-Key $Absender$ zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
 \begin{enumerate}
 	\item \textbf{String}: Der Attributwert wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle darin als Substring auftaucht.
 	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage, welche stets als String übergeben wird, wenn möglich zum Datentyp Number konvertiert. Hierbei sind auch als Wort ausgeschriebene Zahlen von null bis zwölf konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
@@ -190,7 +190,7 @@ Zum Bestimmen der Suchergebnisse für die Freitextsuche wird über alle Dokumente 
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/Umwandlung.png}
-	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}
+	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (eigene Abbildung).}
 	\label{query}
 \end{figure}
 

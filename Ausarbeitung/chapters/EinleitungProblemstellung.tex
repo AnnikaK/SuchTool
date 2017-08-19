@@ -6,8 +6,8 @@ Nahezu jeder nutzt heutzutage täglich E-Mail-Dienste und kennt das Phänomen, das
 Sobald eine bestimmte E-Mail darin wiedergefunden werden soll, beispielsweise weil sie eine bestimmte Kontaktadresse enthält, wird dies zu einem Problem: 
  Wie war nochmal der Absender? Längst vergessen. Das genaue Datum? Leider ist nur noch der Monat bekannt. Eine manuelle Suche ist hier oft aus Zeitgründen unmöglich. \\
 Ein Information-Retrieval-System, mit dem bestimmte Suchkriterien eingegeben und beliebig miteinander kombiniert werden können, löst dieses Problem. Eine mögliche Suchanfrage könnte  $Freitext = Kontaktadresse$ $AND$ $Datum = Juni$ lauten, woraufhin das System 
-bei erfolgreicher Suche eine Reihe passender Resultate aufsteigend geordnet nach Übereinstimmung mit der Suchanfrage liefert, sodass der Anwender sich nicht selbst durch hunderte von Mails durcharbeiten muss. \\
-Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die beides zutrifft, wie es im obigen Beispiel der Fall ist, oder ob es bereits reicht, wenn eines der Kriterien erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
+bei erfolgreicher Suche eine Reihe passender Resultate liefert, die nach Übereinstimmungsgrad mit der Anfrage geordnet sind. Auf diese Weise muss sich der Anwender nicht selbst durch hunderte von Mails durcharbeiten. \\
+Besonderheit ist das beliebige logische Verknüpfen: Der Anwender kann entscheiden, ob er nur Resultate akzeptiert, auf die beide Kriterien zutreffen, wie es im obigen Beispiel der Fall ist, oder ob es bereits ausreicht, wenn ein Kriterium erfüllt ist. Zudem können die Suchkriterien auch negiert werden, um bestimmte Dokumente auszuschließen. Da die logischen Ausdrücke beliebig tief geschachtelt werden können, erlaubt dies eine sehr individuelle, auf die Informationsbedürfnisse des Nutzers zugeschnittene Suche.  \\
 Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Posteingang, Postausgang etc. wünschenswert: Es lässt sich auch auf jede andere Art von Dokumentenarchiv, dessen Dokumente sowohl Freitext als auch Metadaten beinhalten, anwenden. 
 
 
@@ -16,9 +16,9 @@ Ein solches System ist nicht nur für das Alltagsbeispiel E-Mail-Ordner, d.h. Pos
 
 \section{Problemstellung}
 \label {Problemstellung}
-Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält. Im Englischen wird ein solches System \textit{information retrieval system} genannt, der deutsche Begriff hierfür lautet Information-Retrieval-System oder kurz IR-System.\\
+Ziel der Arbeit ist die Konzeption und Realisierung eines Systems zur Informationssuche in einem Dokumentenarchiv, welches semistrukturierte Dokumente enthält. Der Begriff für ein solches System lautet \glqq Information-Retrieval-System\grqq{} (engl. \textit{information retrieval system}) oder kurz \glqq IR-System\grqq.\\
 Semistrukturiert oder teilweise strukturiert bedeutet, dass die Dokumente sowohl gewöhnlichen Freitext als auch Metadaten enthalten. 
-Metadaten oder auch Metainformationen sind Daten, die andere Daten beschreiben, d.h. sie enthalten Informationen über das eigentliche Dokument (\cite{meta:16}). Im Falle von E-Mails sind  Datum, Absender, Betreff etc. typische Metadaten. \\
+Metadaten oder auch Metainformationen sind Daten, die andere Daten beschreiben, d.h. sie enthalten Informationen über das eigentliche Dokument (\cite{meta:16}). Im Falle von E-Mails sind die Informationen Datum, Absender, Betreff etc. typische Beispiele für Metadaten. \\
  Der Nutzer soll spezifizieren können, in welchen Metadaten er suchen möchte, zudem soll die Freitextsuche auswählbar sein. Die gewählten Suchkriterien sollen beliebig mit den logischen Operatoren $AND$ (engl. und), $OR$ (engl. oder), $NOT$ (engl. nicht) verknüpfbar sein und die sich ergebenden logischen Ausdrücke sollen beliebig tief geschachtelt werden können.\\
 Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postausgang, allerdings soll das System so flexibel sein, dass es auch auf andere Archive mit teilweise strukturierten Dokumenten anwendbar ist. 
 
@@ -27,39 +27,39 @@ Hauptanwendungszweck des Systems sind E-Mail-Archive wie Posteingang und Postaus
 Aus der Aufgabenstellung ergeben sich die im Folgenden beschriebenen Teilprobleme.
 
 
-\subsection{Dynamisches einlesen der Metadaten}
-Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das Information-Retrieval-System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer auf der grafischen Oberfläche anzeigen.
+\subsection{Dynamisches Einlesen der Metadaten}
+Die genauen Metadaten sind, da das System flexibel sein soll, vor dem Ausführen des Systems noch nicht bekannt. Demnach muss das Information-Retrieval-System die Namen der Metadaten beim Starten des Programms dynamisch einlesen und diese dem Nutzer anschließend auf der grafischen Oberfläche anzeigen.
 
 \subsection{Unterscheidung Metadaten und Freitext}
 Für das dynamische Einlesen der Metadaten müssen die folgenden Punkte erfüllt sein:
-\begin{enumerate}
+\begin{itemize}
 	\item Das System muss zwischen Metadaten und Freitext unterscheiden können.
 	\item Metadaten setzen sich aus Name und Inhalt zusammen, weshalb beides erkannt und voneinander abgegrenzt werden muss. 
-	\item Der Inhalt kann unterschiedlichen Datentyps sein, z.B. String oder Liste, weshalb dieser bestimmt werden muss.
-\end{enumerate}
+	\item Der Inhalt kann unterschiedlichen Datentyps sein, z.B. String (engl. Zeichenkette) oder Liste, weshalb dieser bestimmt werden muss.
+\end{itemize}
 
 
 \subsection{Metadatensuche}
-Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen Bereichen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. \\
-Im Gegensatz zur Freitextsuche muss hier zu jedem Dokument vor der Suche zunächst geprüft werden, ob das entsprechende Schlüsselwort, z.B. der Name \glqq Datum\grqq{}, überhaupt darin auftritt.
+Es muss erkannt werden, welche Metadaten der Nutzer ausgewählt hat und in genau diesen Bereichen muss, unter Berücksichtigung des jeweiligen Datentyps der Inhalte, gesucht werden. 
+Im Gegensatz zur Freitextsuche muss hier zunächst zu jedem Dokument geprüft werden, ob das entsprechende Schlüsselwort, z.B. der Name \glqq Datum\grqq{}, darin auftaucht, da die Dokumente unterschiedliche Metadaten besitzen. Erst bei Erfüllen dieser Bedingung kann die Suche erfolgen.
 
 \subsection{Freitextsuche}
 Bei der Freitextsuche ist die Wortzahl weitaus größer als bei der Metadatensuche. Daraus resultieren zwei Probleme:
-\begin {enumerate}
+\begin {itemize}
 \item Wie kann effizient in großen Wortmengen gesucht werden?
 \item Wie kann die Suche bei begrenztem Speicher bewältigt werden?
-\end{enumerate}
+\end{itemize}
 
-Zudem stellt sich die Frage nach einem geeigneten Verfahren, welches bei komplexeren Anfragen auch teilweise passende Ergebnisse liefert und die Resultate hinsichtlich des Übereinstimmungsgrads mit der Nutzeranfrage bewerten und entsprechend ordnen kann.
+Zudem stellt sich die Frage nach einem geeigneten Verfahren, welches bei komplexeren Anfragen auch teilweise passende Ergebnisse liefern und die Resultate hinsichtlich des Übereinstimmungsgrads mit der Nutzeranfrage bewerten und entsprechend ordnen kann.
 
 
-\subsection{Verknüpfung mit UND/ODER}
+\subsection{Verknüpfung mit AND, OR und NOT}
 Alle Anfragen sollen beliebig mit den logischen Operatoren $AND$, $OR$ sowie $NOT$ verknüpfbar sein. Dies beinhaltet die folgenden Problemstellungen:
-\begin{enumerate}
+\begin{itemize}
 \item Sind in der Metadatensuche mehrere Metadaten als Suchfelder ausgewählt, müssen die Teilergebnisse zu jedem Suchfeld zu einem Gesamtergebnis für die Metadatensuche zusammengefasst werden, wobei die Art des Zusammenfassens vom selektierten logischen Operator abhängt.
 \item Resultate der Metadatensuche und der Freitextsuche müssen miteinander zu einem Gesamtergebnis für die aktuelle Anfrage verknüpft werden. Auch hier bedingt der logische Operator die Art der Verknüpfung.
 \item Stellt der Nutzer mehrere Teilanfragen, müssen die Ergebnisse der einzelnen Anfragen logisch verknüpft werden. Die Art der Verknüpfung mehrerer Teilanfragen muss ebenfalls einstellbar sein.
-\end{enumerate}
+\end{itemize}
 
 
 
@@ -67,13 +67,12 @@ Alle Anfragen sollen beliebig mit den logischen Operatoren $AND$, $OR$ sowie $NO
 
 
 \subsection{Benutzeroberfläche}
-Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht, seine Suchanfragen seinen Bedürfnissen entsprechend zusammenzustellen. Hierzu muss die Oberfläche folgende grundlegenden Funktionalitäten aufweisen:
-\begin{enumerate}
-	\item Auswählbares Suchverzeichnis, d.h. das Dokumentenarchiv in welchem die Suche erfolgen soll, muss selektiert werden können
-	\item Übersichtliche Anzeige und Auswahlmöglichkeit aller möglichen Suchfelder, d.h. die Namen aller im Archiv vorkommenden Metadaten sowie der Freitext
-	\item Eingabemöglichkeit für den Suchtext
-	\item Selektierbare logische Operatoren ($AND,OR,NOT$) zur internen Verknüpfung einer Anfrage sowie zur externen Verknüpfung mehrerer Teilanfragen
-	\item Benutzerfreundlichkeit, d.h. die Oberfläche muss so verständlich und intuitiv bedienbar sein wie möglich
+Der Nutzer benötigt eine verständliche Benutzeroberfläche, die es ihm ermöglicht, Suchanfragen seinen Bedürfnissen entsprechend zusammenzustellen. Hierzu muss die Oberfläche folgende grundlegenden Funktionalitäten aufweisen:
+\begin{itemize}
+	\item Auswählbares Suchverzeichnis, d.h. das Dokumentenarchiv, in welchem die Suche erfolgen soll, muss selektiert werden können.
+	\item Übersichtliche Anzeige und Auswahlmöglichkeit aller möglichen Suchfelder, d.h. die Namen aller im Archiv vorkommenden Metadaten sowie der Freitext.
+	\item Eingabemöglichkeit für den Suchtext.
+	\item Selektierbare logische Operatoren zur internen Verknüpfung einer Anfrage und zur externen Verknüpfung mehrerer Anfragen.
+	\item Benutzerfreundlichkeit, d.h. die Oberfläche muss verständlich aufgebaut und intuitiv bedienbar sein.
 	
-	
-\end{enumerate}
+\end{itemize}

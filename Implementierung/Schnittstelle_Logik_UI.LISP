@@ -235,7 +235,7 @@
    (capi:make-container
     (make-instance 'capi:column-layout
                    :x-adjust  :center
-                   :width 200
+                   :width 220
                    :description
                    (list 
                      
@@ -249,7 +249,7 @@
                      :callback 
                      #'(lambda (arg)  
                          (capi:exit-dialog arg))))
-                   :min-width 200
+                   :min-width 220
                    :background  :white))))
 
 

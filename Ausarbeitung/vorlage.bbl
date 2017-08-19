@@ -1,4 +1,4 @@
-\begin{thebibliography}{KMOB14}
+\begin{thebibliography}{PDVC06}
 
 \bibitem[Aca12]{Academic:12}
 {\em {Academic - Universal-Lexikon}}, 2012.
@@ -42,13 +42,6 @@
   Semester}}.
 \newblock Springer-Verlag, 1984.
 
-\bibitem[KMOB14]{Bryson:14}
-{\sc Kweku-Muata Osei-Bryson, Ojelanki~Ngwenyama}: {\em {Advances in Research
-  Methods for Information Systems Research - Data Mining, Data Envelopment
-  Analysis, Value Focused Thinking}}.
-\newblock \Btxnumberlong{}~34 \btxinserieslong{}\ {\em Integrated Series in
-  Information Systems}. Springer Verlag, 2014.
-
 \bibitem[Koh09]{Kohlfuerst:09}
 {\sc Kohlfürst, Michael}: {\em {PromoMasters Online Marketing - Deutsche
   StopWords Liste}}, 2009.
@@ -57,6 +50,10 @@
 \bibitem[met16]{meta:16}
 {\em {ITWissen.info - Metadaten}}, 2016.
 \newblock \\ {\url{http://www.itwissen.info/Metadaten-meta-data.html}}.
+
+\bibitem[Nor16]{norvig:16}
+{\sc Norvig, Peter}: {\em {How to Write a Spelling Corrector}}, 2016.
+\newblock \\ {\url{http://norvig.com/spell-correct.html}}.
 
 \bibitem[PDVC06]{Claus:06}
 {\sc Prof. Dr. Volker~Claus, Prof. Dr. Andreas~Schwill}: {\em {Duden Informatik

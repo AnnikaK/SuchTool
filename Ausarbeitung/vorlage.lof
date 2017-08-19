@@ -4,23 +4,23 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Term-Dokument Inzidenz Matrix. Die Zeilen enthalten die Terme, die Spalten die \textit {docIDs} der Dokumente. Alle Eintr\"age mit einer 0 sind leere Eintr\"age (Eigene Abbildung).}}{11}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Invertierte Listen zu drei Beispieltermen. Jede invertierte Liste enth\"alt die Dokumentindizes oder auch \textit {docID}s der Dokumente, in denen der jeweilige Term vorkommt (Eigene Abbildung).}}{13}{figure.4.2}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Term-Dokument Inzidenz Matrix. Die Zeilen enthalten die Terme, die Spalten die \textit {docIDs} der Dokumente. Alle Eintr\"age mit einer 0 sind leere Eintr\"age (eigene Abbildung, basierend auf \cite {Manning:08}, S.4).}}{12}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Invertierte Listen zu drei Beispieltermen. Jede invertierte Liste enth\"alt die Dokumentindizes oder auch \textit {docID}s der Dokumente, in denen der jeweilige Term vorkommt (eigene Abbildung, basierend auf \cite {Manning:08}, S.6).}}{13}{figure.4.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren zu den Dokumenten $d_i$ und einem Anfragevektor zur Anfrage $q$. Das Cosinus-Ma\IeC {\ss } liefert als \"ahnlichstes Dokument $d_2$ (Eigene Abbildung, basierend auf \cite {Buettcher:10}, S.55).}}{22}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Vektorraum mit den Termen $T1$ und $T2$ als Achsen, drei Dokumentvektoren zu den Dokumenten $d_i$ und einem Anfragevektor zur Anfrage $q$. Das Cosinus-Ma\IeC {\ss } liefert als \"ahnlichstes Dokument $d_2$, da $\alpha $ der kleinste eingeschlossene Winkel ist (eigene Abbildung, basierend auf \cite {Buettcher:10}, S.55).}}{23}{figure.5.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender k\"onnen, falls nicht existent, auch leer bleiben. Im rot markierten Bereich wird sp\"ater der Dokumentvektor eingetragen (Eigene Abbildung).}}{30}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Metadatensuche. Statt der \textit {docID}s, wie es bei invertierten Listen \"ublich ist, werden Structs der Form (docID, Typ, Inhalt) gespeichert(Eigene Abbildung).}}{31}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Struktur f\"ur einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (Eigene Abbildung).}}{32}{figure.7.3}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Beispiel f\"ur Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (Eigene Abbildung).}}{35}{figure.7.4}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender k\"onnen bei Fehlen dieser Metadaten leer bleiben. Im rot markierten Bereich wird sp\"ater der Dokumentvektor eingetragen (eigene Abbildung).}}{30}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierte invertierte Liste zur Realisierung der Metadatensuche. Anstatt der \textit {docID}s werden Structs der Form (\textit {docID}, Typ, Inhalt) gespeichert (eigene Abbildung).}}{31}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Struktur f\"ur einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}}{32}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Beispiel f\"ur Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq {} hat den Index 3, \glqq Seminar\grqq {} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (eigene Abbildung).}}{35}{figure.7.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Gliederung der Benutzeroberfl\"ache. Teil \textit {a} beinhaltet die Verzeichnisauswahl, Teil \textit {b} die gesamte Suchanfrage und Teil\textit {c} die Erstellung der Teilanfrage (Eigene Abbildung).}}{37}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (Eigene Abbildung)}}{38}{figure.8.2}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Verzeichnisauswahl (eigene Abbildung)}}{38}{figure.8.2}
 \contentsline {figure}{\numberline {8.3}{\ignorespaces Attributnamen ausw\"ahlen und intern verkn\"upfen, hier mit dem $OR$-Operator (eigene Abbildung).}}{39}{figure.8.3}
 \contentsline {figure}{\numberline {8.4}{\ignorespaces Freitextauswahl. Da nur ein Suchbereich ausgew\"ahlt ist, bleibt der selektierte $OR$-Operator ohne Wirkung (eigene Abbildung).}}{40}{figure.8.4}
 \contentsline {figure}{\numberline {8.5}{\ignorespaces Anzeige der Gesamtanfrage auf dem oberen Display, das sich in Bereich b befindet (eigene Abbildung).}}{40}{figure.8.5}
 \contentsline {figure}{\numberline {8.6}{\ignorespaces Pop-Up Fenster zur Anzeige der Resultate (eigene Abbildung).}}{41}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige, um beliebig viele Treffer anzeigen zu k\"onnen (eigene Abbildung).}}{41}{figure.8.7}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Scrollbare Anzeige, um beliebig viele Resultate anzeigen zu k\"onnen (eigene Abbildung).}}{41}{figure.8.7}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
