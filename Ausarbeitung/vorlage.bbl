@@ -16,6 +16,12 @@
 \newblock \\
   {\url{http://www.crashkurs-statistik.de/kreuztabellen-kontingenztafeln/}}.
 
+\bibitem[Esp12]{Esponda:12}
+{\sc Esponda, Prof. Dr.~Margarita}: {\em {Analyse von Algorithmen - Die
+  O-Notation}}, 2012.
+\newblock \\
+  {\url{http://www.inf.fu-berlin.de/lehre/SS12/ALP2/slides/V6_Rekursion_vs_Iteration_ALP2.pdf}}.
+
 \bibitem[Fer03]{Ferber:03}
 {\sc Ferber, Reginald}: {\em {Information Retrieval - Suchmodelle und
   Data-Mining-Verfahren für Textsammlungen und das Web}}.
@@ -37,6 +43,10 @@
 \newblock \\
   {\url{https://github.com/sharplispers/split-sequence/blob/master/split-sequence.lisp}}.
 
+\bibitem[ITW13]{ITWissen:13}
+{\em {ITWissen.info - Hashtabelle}}, 2013.
+\newblock \\ {\url{http://www.itwissen.info/Hashtabelle-hash-table.html}}.
+
 \bibitem[Jän84]{Jaenich:84}
 {\sc Jänich, Klaus}: {\em {Lineare Algebra - Ein Skriptum für das erste
   Semester}}.
@@ -47,9 +57,20 @@
   StopWords Liste}}, 2009.
 \newblock \\ {\url{http://www.promomasters.at/blog/stop-words/}}.
 
+\bibitem[Lux14]{Lux:14}
+{\sc Lux, Prof. Dr.~Andreas}: {\em {Datenstrukturen und Algorithmen, Kapitel 5
+  Mengen Hashing}}.
+\newblock Vorlesungsskript, FH-Trier, 2014.
+
 \bibitem[met16]{meta:16}
 {\em {ITWissen.info - Metadaten}}, 2016.
 \newblock \\ {\url{http://www.itwissen.info/Metadaten-meta-data.html}}.
+
+\bibitem[Neb13]{Nebel:13}
+{\sc Nebel, Bernhard}: {\em {Informatik I - 11. Dictionaries und Mengen}},
+  2013.
+\newblock \\
+  {\url{http://gki.informatik.uni-freiburg.de/teaching/ws1314/info1/infoI11-handout4.pdf}}.
 
 \bibitem[Nor16]{norvig:16}
 {\sc Norvig, Peter}: {\em {How to Write a Spelling Corrector}}, 2016.

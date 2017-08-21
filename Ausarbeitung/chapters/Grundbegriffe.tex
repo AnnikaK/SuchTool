@@ -1,9 +1,13 @@
 \chapter{Grundbegriffe}
 Unabhängig vom jeweiligen Modell gibt es einige Grundbegriffe, welche im Zusammenhang mit Information-Retrieval-Verfahren immer wieder auftauchen und die darum vorab vorgestellt werden.
 
+\section{Dokument}
+ Wenn von Dokumenten gesprochen wird, ist hiermit die Einheit gemeint, auf der das Retrieval stattfindet. Findet es beispielsweise auf einem Buch statt, stellt die Unterteilung in Kapitel eine mögliche Einheit da. Andererseits kann es für den Nutzer unbefriedigend sein, ganze Kapitel als Ergebnis zu erhalten, darum stellen einzelne Seiten eine feinere Einheit dar. Selbst kurze Textmemos sind gültige Einheiten, d.h. die Größe der Dokumente unterliegt keiner Beschränkung (\cite{Manning:08}, S.4). \\
+ Im Falle der gegebenen Problemstellung (siehe Abschnitt \ref{Problemstellung}) entspricht ein Dokument einem semistrukturierten Textdokument des zu durchsuchenden Archivs, wobei dessen Länge stark variieren kann. Bei Einschränkung auf den Anwendungsfall E-Mail-Archiv kann ein Dokument auch als E-Mail betrachtet werden.
+
 \section{Anfrage}
 Eine Anfrage (engl. \textit{query}) wird vom Anwender in den Computer eingegeben, um sein Informationsbedürfnis zu befriedigen (\cite{Manning:08}, S.5). 
-Anfragen können je nach Information-Retrieval-System vollkommen unterschiedlich strukturiert sein. Wichtig ist, dass der Nutzer weiß, wie er seine Anfrage syntaktisch korrekt stellen muss, um mehr über das gewünschte Thema zu erfahren, was insbesondere bei booleschen Information-Retrieval-Systemen (siehe Kapitel \ref{bool}) sehr komplex werden kann.
+Anfragen können je nach Information-Retrieval-System vollkommen unterschiedlich strukturiert sein. Wichtig ist, dass der Nutzer weiß, wie er seine Anfrage syntaktisch korrekt stellen muss, um mehr über das gewünschte Thema zu erfahren, was insbesondere bei booleschen Information-Retrieval-Systemen (siehe Kapitel \ref{bool}) komplex werden kann.
 
 
 \section{Indexierung}
@@ -15,7 +19,7 @@ Dieses Vorgehen wird als Indexierung bezeichnet und ist unabdingbar, da ansonste
 \label{lemmatisierung}
 Die indexierten Einheiten, in welche die Dokumente zerlegt werden, sind unter dem Begriff Terme bekannt (\cite{Manning:08}, S.3).
 Terme sind im häufigsten und einfachsten Fall Wörter eines Textes, dies muss jedoch nicht zwangsläufig zutreffen.\\
-Manche Systeme reduzieren Wörter beispielsweise auf deren Stammformen, um ähnliche Wörter zu einem einzigen Term zusammenzufassen. Alternativ lassen sie sich neben dem Wortstamm auch auf ihre grammatikalische Grundform reduzieren. Die Reduktion der Wörter auf Wortstamm bzw. Grundform wird als Lemmatisierung oder Stemming bezeichnet. Auf diese Weise müssen weniger Terme verwaltet werden, was den Speicherbedarf reduziert. Außerdem können leichter ähnliche Dokumente gefunden werden, da auch zum Suchbegriff verwandte Wörter zu einem Treffer führen (\cite{Ferber:03}, S.40-41). \\
+Manche Systeme reduzieren Wörter beispielsweise auf deren Stammformen, um ähnliche Wörter zu einem einzigen Term zusammenzufassen. Alternativ lassen sie sich neben dem Wortstamm auch auf ihre grammatikalische Grundform reduzieren. Die Reduktion der Wörter auf Wortstamm bzw. Grundform wird als Lemmatisierung oder Stemming bezeichnet. Auf diese Weise müssen weniger Terme verwaltet werden, was den Speicherbedarf reduziert. Außerdem werden mehr relevante Dokumente gefunden, da auch zum Suchbegriff verwandte Wörter zu einem Treffer führen (\cite{Ferber:03}, S.40-41). \\
  Die Menge aller Terme eines Archivs wird als Vokabular bezeichnet (\cite{Manning:08}, S.6). \\
 
 

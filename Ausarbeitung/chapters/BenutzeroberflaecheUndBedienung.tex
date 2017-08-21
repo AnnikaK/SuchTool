@@ -1,19 +1,19 @@
-\chapter{Die Benutzeroberfl\"ache}
+\chapter{Die Benutzeroberfläche}
 Dieses Kapitel begründet die Konzeption der Oberfläche und erläutert deren Bedienung.\\
 
 \section{Anforderungen}
 Die Benutzeroberfläche muss die folgenden, aus der Problemstellung resultierenden Funktionalitäten erfüllen:
 \begin{itemize}
-	\item Wählen und Festlegen des Suchverzeichnisses
-	\item Eingabe des Suchtextes 
-	\item Auswählen der Freitextsuche
-	\item Auswählen der Attributnamen für die Metadatensuche
-	\item Logische Operatoren  zur internen Verknüpfung mehrerer Suchkriterien
-	\item Logische Operatoren zur externen Verknüpfung mehrerer Teilanfragen 
-	\item Anzeigen der Anfrage
-	\item Zurücksetzen der Anfrage
-	\item Starten der Suche
-	\item Anzeige der Resultate 
+	\item Wählen und Festlegen des Suchverzeichnisses.
+	\item Eingabe des Suchtextes.
+	\item Auswählen der Freitextsuche.
+	\item Auswählen der Attributnamen für die Metadatensuche.
+	\item Auswahl von logischen Operatoren zur internen Verknüpfung mehrerer Suchkriterien.
+	\item Auswahl von logischen Operatoren zur externen Verknüpfung mehrerer Teilanfragen. 
+	\item Anzeigen der Anfrage.
+	\item Zurücksetzen der Anfrage.
+	\item Starten der Suche.
+	\item Anzeige der Resultate.
 
 	
 \end{itemize}
@@ -21,7 +21,7 @@ Die Benutzeroberfläche muss die folgenden, aus der Problemstellung resultierende
 Neben den oben genannten inhaltlichen Anforderungen sind noch weitere Punkte bezüglich Anwenderfreundlichkeit zu berücksichtigen: \\
 \begin{itemize}
 \item Übersichtlichkeit
-\item Intuitive Bedienbarkeit, d.h. der Nutzer soll möglichst wenig nachdenken müssen
+\item Intuitive Bedienbarkeit, d.h. der Nutzer soll möglichst wenig über die Bedienung nachdenken müssen
 \end{itemize}
 
 In den folgenden Abschnitt wird erläutert, auf welche Weise diese Punkte realisiert wurden.
@@ -30,8 +30,8 @@ In den folgenden Abschnitt wird erläutert, auf welche Weise diese Punkte realisi
 Die Oberfläche wurde, um dem Nutzer genügend Übersichtlichkeit zu bieten, in drei Bereiche gegliedert, die in Abbildung \ref{overview} gezeigt sind. \\
 Der oberste Bereich beinhaltet die Verzeichnisauswahl, da dies der erste vom Anwender auszuführende Schritt ist.
 In der Mitte befindet sich die Anzeige der Gesamtanfrage, weil sie sich dort sofort im Blickfeld des Nutzers befindet. 
-Die Erstellung der Teilanfragen wurde im unteren Teil der Oberfläche untergebracht, da sich hier die meisten Bedienungselemente befinden, weshalb jede andere Position unweigerlich Einbußen  bezüglich Übersichtlichkeit zur Folge hätte. \\
-Funktional zusammengehörige Elemente wurden stets nah beieinander angeordnet, was dem Gesetz der Nähe entspricht. 
+Die Erstellung der Teilanfragen wurde im unteren Teil der Oberfläche untergebracht, da sich hier die meisten Bedienungselemente befinden und eine andere Position unweigerlich Einbußen  bezüglich Übersichtlichkeit zur Folge gehabt hätte. \\
+Funktional zusammengehörige Elemente wurden stets nah beieinander angeordnet, um das Gesetz der Nähe zu berücksichtigen.
 Dieses besagt, dass Elemente, die nah zusammen liegen, vom Anwender als zusammengehörig wahrgenommen werden (\cite{Hofer:17}, S.17).
 \begin{figure} [http]
 	\centering
@@ -43,14 +43,14 @@ Dieses besagt, dass Elemente, die nah zusammen liegen, vom Anwender als zusammen
 
 \section{Verzeichnisauswahl}
 Die Verzeichnisauswahl (siehe Abbildung \ref{overview} Teil a) besteht aus einem Textfeld und dem rechts daneben befindlichen Button mit der Aufschrift \glqq select\grqq{}, welcher das Auswahlmenü öffnet.
-Dieses wird in einem separaten Pop-Up-Fenster angezeigt (siehe Abbildung \ref{select}) und bietet zwei Möglichkeiten, ein Verzeichnis zu selektieren: \\
+Das Menü wird in einem separaten Pop-Up-Fenster angezeigt (siehe Abbildung \ref{select}) und bietet zwei Möglichkeiten, ein Verzeichnis zu selektieren: \\
 \begin{itemize}
 	\item Eintippen des Pfads in ein Textfeld
 	\item Auswahl des Verzeichnisses über ein Dropdown-Menü
 \end{itemize}
 
 Der Nutzer muss die Wahl anschließend mit \glqq ok\grqq{} bestätigen. Alternativ kann er den Dialog über \glqq cancel\grqq{} abbrechen. 
-Einmal gewählt, wird der Verzeichnispfad im Textfeld angezeigt und kann nachträglich nicht mehr geändert werden, weshalb der select-Button anschließend deaktiviert wird. Möchte der Nutzer in einem anderen Verzeichnis als bisher suchen, kann er das System erneut starten und dann dieses Verzeichnis auswählen. 
+Einmal gewählt, wird der Verzeichnispfad im obersten Textfeld angezeigt und kann nachträglich nicht mehr geändert werden, weshalb der select-Button anschließend deaktiviert wird. Möchte der Nutzer in einem anderen Verzeichnis als bisher suchen, muss er das System erneut starten und dann dieses Verzeichnis auswählen. 
 
 \begin{figure} [http]
 	
@@ -65,14 +65,14 @@ Einmal gewählt, wird der Verzeichnispfad im Textfeld angezeigt und kann nachträg
 Im unteren Teil der Benutzeroberfläche (siehe Abbildung \ref{overview} Teil c) befinden sich die Attributnamen. 
 Diese wurden als auswählbare Checkboxen realisiert, welche sich auf einem vertikal scrollbaren Panel befinden. Auf diese Weise ist sichergestellt, dass eine beliebig große Anzahl von Attributnamen angezeigt werden kann. 
 Die Freitextsuche ist über die oberste Checkbox mit der Beschriftung \glqq Freitext\grqq{} auswählbar, womit diese wie ein zusätzlicher Attributname behandelt wird und sich damit in die Benutzeroberfläche einfügt. 
-Dies ist gewollt, denn der Anwender soll nicht mitbekommen, dass die Implementierung der Freitextsuche intern anders realisiert wurde als die übrigen Auswahlmöglichkeiten. \\
+Dies ist gewollt, denn der Anwender soll nicht mitbekommen, dass die Freitextsuche intern anders realisiert wurde als die übrigen Auswahlmöglichkeiten. \\
 
 \subsection{Zusammenstellung der Teilanfrage}
-Im Textdisplay wird die Teilanfrage vom Nutzer eingegeben und lässt sich über den reset-Button bequem zurücksetzen. 
+Im Textdisplay wird die Teilanfrage vom Nutzer eingegeben und lässt sich über den reset-Button zurücksetzen. 
 Die ausgewählten Checkboxen bestimmen darüber, in welchen Bereichen nach dem eingegebenen Text gesucht werden soll, wobei beliebig viele auf einmal selektierbar sind. \\
 Im Falle mehrerer ausgewählter Bereiche lassen sich die Teilergebnisse mit $AND$ sowie $OR$ verknüpfen. Der Operator lässt sich über zwei Radio-Buttons einstellen, die sich rechts neben dem Texteingabefeld befinden, wobei $AND$ die Standardauswahl ist.
-Zusätzlich lässt sich die Anfrage durch das Auswählen der unterhalb der Radio-Buttons befindlichen Checkbox $NOT$ negieren. Der Operator bezieht sich hierbei auf das Gesamtergebnis der erstellten Teilanfrage, d.h. wenn die Verknüpfung der Treffer für die selektierten Attributnamen bzw. für die Freitextsuche bereits erfolgt ist. Möchte man Bereiche einzeln negieren, müssen die Teilanfragen getrennt eingegeben werden.\\
-Das Drücken von \glqq add\grqq{} fügt die soeben erstellte Teilanfrage der Gesamtanfrage hinzu. Eine einzelne Teilanfrage ist somit das, was der Nutzer mit dem Betätigen des add-Buttons der Gesamtanfrage, die im oberen Display angezeigt wird, hinzufügt (siehe Abbildung \ref{overview} Teil b).\\
+Zusätzlich lässt sich die Anfrage durch das Auswählen der unterhalb der Radio-Buttons befindlichen Checkbox $NOT$ negieren. Der Operator bezieht sich hierbei auf das Gesamtergebnis der erstellten Teilanfrage, d.h. wenn die Verknüpfung der Treffer für die selektierten Attributnamen bzw. für die Freitextsuche bereits erfolgt ist. Sollen Suchkriterien einzeln negiert werden, müssen die Teilanfragen getrennt eingegeben werden.\\
+Das Drücken von \glqq add\grqq{} fügt die soeben erstellte Teilanfrage der Gesamtanfrage hinzu. Eine Teilanfrage entspricht somit dem, was der Nutzer mit dem Betätigen des add-Buttons der im mittleren Textfeld angezeigten Gesamtanfrage hinzufügt (siehe Abbildung \ref{overview} Teil b).\\
 
 \subsection{Beispiel}
 Ein anhand von Grafiken erläutertes Beispiel hilft, die einzelnen Schritte besser nachvollziehen zu können.
@@ -103,14 +103,14 @@ Abbildung \ref{b} zeigt, wie der Suchbegriff \glqq dfki\grqq{}\footnote{DFKI = D
 \section{Gesamtanfrage}
  Das externe Verknüpfen mehrerer Teilanfragen mit $AND$ bzw. $OR$ wird durch zwei Radio-Buttons unter dem oberen Textdisplay (siehe Abbildung \ref{overview}, Teil b) geregelt, wobei die Standardauswahl auch hier $AND$ ist. 
 Wenn stattdessen $OR$ erwünscht ist, muss diese Auswahl vor dem Hinzufügen einer weiteren Teilanfrage erfolgen, da eine Änderung des Operators im Nachhinein nicht mehr möglich ist! 
-Abbildung \ref{c} zeigt, wie die im Display angezeigte Gesamtanfrage für das Beispiel mit dem Operator $AND$ aussieht. 
-In dieses Display lässt sich vom Nutzer nichts eingeben, um die korrekte Anzeige der intern gespeicherten Anfrage sicherzustellen. \\
+Abbildung \ref{c} zeigt, wie die im Textfeld angezeigte Gesamtanfrage für das Beispiel mit dem Operator $AND$ aussieht. 
+In dieses Feld lässt sich vom Nutzer nichts eingeben, um die korrekte Anzeige der intern gespeicherten Anfrage sicherzustellen. \\
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1.1\textwidth]{images/b}
-	\caption{Anzeige der Gesamtanfrage auf dem oberen Display, das sich in Bereich b befindet (eigene Abbildung).}
+	\caption{Anzeige der Gesamtanfrage auf dem mittleren Textfeld (siehe Abbildung \ref{overview} Teil b) (eigene Abbildung).}
 	\label{c}
 	
 \end{figure}
@@ -120,7 +120,7 @@ Der Nutzer kann die Gesamtanfrage über den reset-Button zurücksetzen oder über d
 Das Drücken von \glqq search\grqq{} öffnet ein Pop-Up-Fenster, welches die Resultate anzeigt, was in Abbildung \ref{d} gezeigt ist. 
 In einer tabellarischen Ansicht werden die Ranking-Position, der Score des Dokuments, wenn möglich Datum und Absender sowie der Dateipfad angezeigt. 
 Die Tabelle ist vertikal scrollbar (siehe Abbildung \ref{res}), um eine beliebig große Zahl von Ergebnissen anzeigen zu können. Eine Begrenzung wurde nicht vorgenommen, da keine Resultate ausgeschlossen werden sollen. Der Nutzer kann sich an den Ranking-Positionen orientieren und selbst entscheiden, welche Resultate für ihn relevant sind und welche er aufgrund eines zu niedrigen Scores ausschließen möchte. \\
-Die Einträge der Tabelle lassen sich per Doppelklick auswählen und werden je nach ausgewähltem Modus auf verschiedene Arten geöffnet. Dieser lässt sich über zwei oben links über der Tabelle angebrachte Radio-Buttons einstellen: \glqq Open directory\grqq{} öffnet das Verzeichnis, zu dem das Dokument gehört, und markiert die Datei, \glqq Open file \grqq{} öffnet die Datei hingegen direkt.
+Die Einträge der Tabelle lassen sich per Doppelklick auswählen und werden je nach ausgewähltem Modus auf verschiedene Arten geöffnet. Der Modus lässt sich über zwei oben links über der Tabelle angebrachte Radio-Buttons einstellen: \glqq Open directory\grqq{} öffnet das Verzeichnis, zu dem das Dokument gehört, und markiert die Datei, \glqq Open file \grqq{} öffnet die Datei hingegen direkt.
 Das Drücken von \glqq ok\grqq{} schließt das Ergebnisfenster.
 
 \begin{figure} [http]

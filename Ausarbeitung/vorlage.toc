@@ -5,90 +5,91 @@
 \contentsline {section}{\numberline {1.2}Problemstellung}{1}{section.1.2}
 \contentsline {section}{\numberline {1.3}Teilprobleme}{2}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Dynamisches Einlesen der Metadaten}{2}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Unterscheidung Metadaten und Freitext}{2}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.2}Unterscheidung zwischen Metadaten und Freitext}{2}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Metadatensuche}{2}{subsection.1.3.3}
 \contentsline {subsection}{\numberline {1.3.4}Freitextsuche}{3}{subsection.1.3.4}
 \contentsline {subsection}{\numberline {1.3.5}Verkn\"upfung mit AND, OR und NOT}{3}{subsection.1.3.5}
 \contentsline {subsection}{\numberline {1.3.6}Benutzeroberfl\"ache}{3}{subsection.1.3.6}
-\contentsline {chapter}{\numberline {2}Information Retrieval}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Bedeutung}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Information}{4}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Begriffsdefinition}{5}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Unterschied zur Datenbankensuche}{5}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Beispiel Websuche}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Bezug zur Problemstellung}{6}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Teilweise strukturierte Daten}{6}{subsection.2.3.1}
-\contentsline {chapter}{\numberline {3}Grundbegriffe}{8}{chapter.3}
-\contentsline {section}{\numberline {3.1}Anfrage}{8}{section.3.1}
-\contentsline {section}{\numberline {3.2}Indexierung}{8}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Term und Vokabular}{8}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Stoppw\"orter}{9}{subsection.3.2.2}
-\contentsline {chapter}{\numberline {4}Boolesches Retrieval}{10}{chapter.4}
-\contentsline {section}{\numberline {4.1}Eigenschaften des Verfahrens}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Funktionsprinzip}{10}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Attribut}{10}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Anfragen}{11}{subsection.4.2.2}
-\contentsline {subsubsection}{Elementare boolesche Anfrage}{11}{section*.6}
-\contentsline {subsubsection}{Verkn\"upfung}{11}{section*.7}
-\contentsline {section}{\numberline {4.3}Implementierungsans\"atze}{11}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Term-Dokument Inzidenz Matrix}{12}{subsection.4.3.1}
-\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels Matrix}{12}{section*.8}
-\contentsline {subsection}{\numberline {4.3.2}Invertierte Liste}{13}{subsection.4.3.2}
-\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels invertierter Liste}{14}{section*.9}
-\contentsline {paragraph}{Elementare Anfrage}{14}{section*.10}
-\contentsline {paragraph}{AND-Verkn\"upfungen}{14}{section*.11}
-\contentsline {paragraph}{OR-Verkn\"upfungen}{14}{section*.12}
-\contentsline {paragraph}{AND NOT-Verkn\"upfung}{15}{section*.13}
-\contentsline {paragraph}{Komplex geschachtelte Ausdr\"ucke}{15}{section*.14}
-\contentsline {paragraph}{Die Verarbeitung mehrerer W\"orter}{16}{section*.15}
-\contentsline {chapter}{\numberline {5}Das Vektorraummodell}{17}{chapter.5}
-\contentsline {section}{\numberline {5.1}Funktionsprinzip}{17}{section.5.1}
-\contentsline {section}{\numberline {5.2}Vektor und Vektorraum}{17}{section.5.2}
-\contentsline {section}{\numberline {5.3}Definition Vektorraummodell}{19}{section.5.3}
-\contentsline {section}{\numberline {5.4}Gewichte}{19}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Termh\"aufigkeit}{20}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Dokumenth\"aufigkeit}{20}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Invertierte Dokumenth\"aufigkeit}{20}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}TF-IDF-Gewichtung}{21}{subsection.5.4.4}
-\contentsline {section}{\numberline {5.5}Anfragen}{21}{section.5.5}
-\contentsline {section}{\numberline {5.6}\"Ahnlichkeitsfunktion}{22}{section.5.6}
-\contentsline {subsection}{\numberline {5.6.1}Euklidischer Abstand}{22}{subsection.5.6.1}
-\contentsline {subsection}{\numberline {5.6.2}Cosinus-Ma\IeC {\ss }}{22}{subsection.5.6.2}
-\contentsline {subsubsection}{Euklidische L\"ange}{22}{section*.16}
-\contentsline {subsubsection}{Skalarprodukt}{23}{section*.17}
-\contentsline {subsubsection}{Berechnung}{23}{section*.18}
-\contentsline {chapter}{\numberline {6}Bewertung eines Information-Retrieval-Systems}{25}{chapter.6}
-\contentsline {section}{\numberline {6.1}Problem Relevanz}{25}{section.6.1}
-\contentsline {section}{\numberline {6.2}Precision und Recall}{26}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Precisison}{26}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Recall}{26}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Veranschaulichung}{26}{subsection.6.2.3}
-\contentsline {section}{\numberline {6.3}Zwei Evaluierungsma\IeC {\ss }e}{27}{section.6.3}
-\contentsline {section}{\numberline {6.4}Durchf\"uhrung}{27}{section.6.4}
-\contentsline {chapter}{\numberline {7}Implementierung}{28}{chapter.7}
-\contentsline {section}{\numberline {7.1}Teilweise strukturierte Dokumente}{28}{section.7.1}
-\contentsline {section}{\numberline {7.2}Initialisierungsschritte}{29}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Erstellen des Dokument-Dictionaries}{29}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{30}{subsection.7.2.2}
-\contentsline {subsubsection}{Verarbeiten der Metadaten}{30}{section*.19}
-\contentsline {subsubsection}{Verarbeiten des Freitextes}{31}{section*.20}
-\contentsline {section}{\numberline {7.3}Suche}{33}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{33}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{34}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Erstellen des Query-Vektors}{34}{subsection.7.3.3}
-\contentsline {subsubsection}{Finden der Resultate}{34}{section*.21}
-\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{35}{section.7.4}
-\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{36}{chapter.8}
-\contentsline {section}{\numberline {8.1}Anforderungen}{36}{section.8.1}
-\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{36}{section.8.2}
-\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{37}{section.8.3}
-\contentsline {section}{\numberline {8.4}Suchanfrage}{38}{section.8.4}
-\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{38}{subsection.8.4.1}
-\contentsline {subsection}{\numberline {8.4.2}Beispiel}{39}{subsection.8.4.2}
-\contentsline {section}{\numberline {8.5}Gesamtanfrage}{39}{section.8.5}
-\contentsline {section}{\numberline {8.6}Ergebnis}{40}{section.8.6}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{42}{chapter.9}
-\contentsline {section}{\numberline {9.1}Zusammenfassung}{42}{section.9.1}
-\contentsline {section}{\numberline {9.2}Ausblick}{43}{section.9.2}
-\contentsline {chapter}{Literaturverzeichnis}{44}{chapter*.22}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{46}{appendix.A}
+\contentsline {chapter}{\numberline {2}Information Retrieval}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Bedeutung}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Information}{5}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Begriffsdefinition}{6}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Unterschied zur Datenbankensuche}{6}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Beispiel Websuche}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Bezug zur Problemstellung}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Teilweise strukturierte Daten}{7}{subsection.2.3.1}
+\contentsline {chapter}{\numberline {3}Grundbegriffe}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Dokument}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Anfrage}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Indexierung}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Term und Vokabular}{10}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Stoppw\"orter}{10}{subsection.3.3.2}
+\contentsline {chapter}{\numberline {4}Boolesches Retrieval}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Eigenschaften des Verfahrens}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Funktionsprinzip}{11}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Attribut}{11}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Anfragen}{12}{subsection.4.2.2}
+\contentsline {subsubsection}{Elementare boolesche Anfrage}{12}{section*.6}
+\contentsline {subsubsection}{Verkn\"upfung}{12}{section*.7}
+\contentsline {section}{\numberline {4.3}Implementierungsans\"atze}{12}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Term-Dokument Inzidenz Matrix}{13}{subsection.4.3.1}
+\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels Matrix}{13}{section*.8}
+\contentsline {subsection}{\numberline {4.3.2}Invertierte Liste}{14}{subsection.4.3.2}
+\contentsline {subsubsection}{Verarbeitung einer Anfrage mittels invertierter Liste}{15}{section*.9}
+\contentsline {paragraph}{Elementare Anfrage}{15}{section*.10}
+\contentsline {paragraph}{AND-Verkn\"upfungen}{15}{section*.11}
+\contentsline {paragraph}{OR-Verkn\"upfungen}{15}{section*.12}
+\contentsline {paragraph}{AND NOT-Verkn\"upfung}{16}{section*.13}
+\contentsline {paragraph}{Komplex geschachtelte Ausdr\"ucke}{16}{section*.14}
+\contentsline {paragraph}{Die Verarbeitung mehrerer W\"orter}{17}{section*.15}
+\contentsline {chapter}{\numberline {5}Das Vektorraummodell}{18}{chapter.5}
+\contentsline {section}{\numberline {5.1}Funktionsprinzip}{18}{section.5.1}
+\contentsline {section}{\numberline {5.2}Vektor und Vektorraum}{18}{section.5.2}
+\contentsline {section}{\numberline {5.3}Definition Vektorraummodell}{20}{section.5.3}
+\contentsline {section}{\numberline {5.4}Gewichte}{20}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Termh\"aufigkeit}{21}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Dokumenth\"aufigkeit}{21}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Invertierte Dokumenth\"aufigkeit}{21}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}TF-IDF-Gewichtung}{22}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Anfragen}{22}{section.5.5}
+\contentsline {section}{\numberline {5.6}\"Ahnlichkeitsfunktion}{23}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Euklidischer Abstand}{23}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Cosinus-Ma\IeC {\ss }}{23}{subsection.5.6.2}
+\contentsline {subsubsection}{Euklidische L\"ange}{23}{section*.16}
+\contentsline {subsubsection}{Skalarprodukt}{24}{section*.17}
+\contentsline {subsubsection}{Berechnung}{24}{section*.18}
+\contentsline {chapter}{\numberline {6}Bewertung eines Information-Retrieval-Systems}{26}{chapter.6}
+\contentsline {section}{\numberline {6.1}Problem Relevanz}{26}{section.6.1}
+\contentsline {section}{\numberline {6.2}Precision und Recall}{27}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Precision}{27}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Recall}{27}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Veranschaulichung}{27}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Zwei Evaluierungsma\IeC {\ss }e}{28}{section.6.3}
+\contentsline {section}{\numberline {6.4}Durchf\"uhrung}{28}{section.6.4}
+\contentsline {chapter}{\numberline {7}Implementierung}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Teilweise strukturierte Dokumente}{29}{section.7.1}
+\contentsline {section}{\numberline {7.2}Initialisierungsschritte}{30}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Erstellen des Dokument-Dictionaries}{30}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Verarbeiten der Dokumente}{31}{subsection.7.2.2}
+\contentsline {subsubsection}{Verarbeiten der Metadaten}{32}{section*.19}
+\contentsline {subsubsection}{Verarbeiten des Freitextes}{32}{section*.20}
+\contentsline {section}{\numberline {7.3}Suche}{34}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{34}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{35}{subsection.7.3.2}
+\contentsline {subsubsection}{Erstellen des Query-Vektors}{35}{section*.21}
+\contentsline {subsubsection}{Finden der Resultate}{36}{section*.22}
+\contentsline {section}{\numberline {7.4}Verrechnung der Suchergebnisse}{36}{section.7.4}
+\contentsline {chapter}{\numberline {8}Die Benutzeroberfl\"ache}{38}{chapter.8}
+\contentsline {section}{\numberline {8.1}Anforderungen}{38}{section.8.1}
+\contentsline {section}{\numberline {8.2}Grundaufbau der Oberfl\"ache}{39}{section.8.2}
+\contentsline {section}{\numberline {8.3}Verzeichnisauswahl}{40}{section.8.3}
+\contentsline {section}{\numberline {8.4}Suchanfrage}{40}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Zusammenstellung der Teilanfrage}{41}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Beispiel}{41}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Gesamtanfrage}{42}{section.8.5}
+\contentsline {section}{\numberline {8.6}Ergebnis}{42}{section.8.6}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{45}{chapter.9}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{45}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ausblick}{46}{section.9.2}
+\contentsline {chapter}{Literaturverzeichnis}{47}{chapter*.23}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{49}{appendix.A}

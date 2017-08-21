@@ -7,7 +7,7 @@ Die Bewertungsmethode muss hierbei für verschiedenste Systeme geeignet sein, den
 \section{Problem Relevanz}
 Um ein Information-Retrieval-System hinsichtlich dessen Qualität beurteilen zu können, muss die Relevanz der zurückgelieferten Ergebnisse eingestuft werden.
 Hiermit eröffnet sich das Hauptproblem: Wann ist ein Dokument relevant? Allgemein formuliert lässt sich dies so beantworten: Ein Dokument ist relevant, wenn es das in der Anfrage formulierte Informationsbedürfnis des Nutzers befriedigt (\cite{Ferber:03}, S.85). 
-Der Begriff lässt sich zudem mathematisch wie in Definition \ref{Relevance} angegeben definieren (\cite{Ferber:03}, S.86). \\ 
+Der Begriff lässt sich zudem mathematisch wie in Definition \ref{Relevance} angegeben beschreiben (\cite{Ferber:03}, S.86). \\ 
 
 \begin{definition}(Relevanz)\\
 	\label{Relevance}
@@ -20,21 +20,21 @@ Da zum Bestimmen der Relation die Beurteilung von Experten erforderlich ist, läs
 \section{Precision und Recall}
 In diesem Abschnitt werden die beiden zur Bewertung notwendigen Evaluierungsmaße Precision und Recall vorgestellt.
 
-\subsection{Precisison}
-Precision bedeutet übersetzt Präzision und bezeichnet den Anteil relevanter Dokumente an allen zurückgelieferten Dokumenten. Formel \ref{prec} beschreibt die Berechnung, wobei $\#$ die Kardinalität bezeichnet.
+\subsection{Precision}
+Precision bedeutet übersetzt \glqq Präzision\grqq{} und bezeichnet den Anteil relevanter Dokumente an allen zurückgelieferten Dokumenten. Formel \ref{prec} beschreibt die Berechnung, wobei $\#$ der Kardinalität entspricht (\cite{Manning:08}, S.142).
 
 \begin{equation}
 \label{prec}
-Precision = \frac{\#(relevante \hspace{2mm} \textnormal{zur"uckgewonnene} \hspace{2mm} Dokumente)}{\#(\textnormal{zur"uckgewonnene} \hspace{2mm} Dokumente)}
+Precision = \frac{\#(relevante \hspace{2mm} \textnormal{\textit{zur"uckgewonnene}} \hspace{2mm} Dokumente)}{\#(\textnormal{\textit{zur"uckgewonnene}} \hspace{2mm} Dokumente)}
 \end{equation}
 
 
 \subsection{Recall}
-Recall kann mit Trefferquote übersetzt werden und beschreibt die Frage, wie viele der relevanten Dokumente tatsächlich vom System zurückgeliefert wurden, was in Formel \ref{rec} gezeigt wird (\cite{Manning:08}, S.142-143). 
+Recall kann mit \glqq Trefferquote\grqq{} übersetzt werden und beschreibt die Frage, wie viele der relevanten Dokumente tatsächlich vom System zurückgeliefert wurden, was in Formel \ref{rec} gezeigt wird (\cite{Manning:08}, S.143). 
 
 \begin{equation}
 \label{rec}
-Recall = \frac{\#(relevante \hspace{2mm} \textnormal{zur"uckgewonnene}  \hspace{2mm} Dokumente)}{\#(relevante \hspace{2mm} Dokumente)}
+Recall = \frac{\#(relevante \hspace{2mm} \textnormal{\textit{zur"uckgewonnene}}  \hspace{2mm} Dokumente)}{\#(relevante \hspace{2mm} Dokumente)}
 \end{equation}
 
 \subsection{Veranschaulichung}

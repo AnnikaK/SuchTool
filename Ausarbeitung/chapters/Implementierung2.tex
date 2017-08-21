@@ -3,15 +3,15 @@
 In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informationssuche in einem Dokumentenarchiv basierend auf Textinhalt sowie Metadaten unter Verwendung der Programmiersprache Lisp realisiert wurde.
 
 \section{Teilweise strukturierte Dokumente}
-Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe \ref{Problemstellung}). 
-Dies erfordert das Lösen zweier Teilprobleme: Zum einen das Realisieren der Metadatensuche und zum anderen das Realisieren der Freitextsuche. Beides wurde mit unterschiedlichen Verfahren gelöst, da die Suchen unterschiedliche Anforderungen besitzen. Im Falle der Metadatensuche wurde sich für boolesches Retrieval entschieden, bei der Freitextsuche hingegen für das Vektorraummodell.\\
-Bevor erklärt wird, aus welchen Gründen diese Entscheidungen getroffen wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind, weshalb Abbildung \ref{example} ein Beispiel zeigt. Hier wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. Es können auch mehrere sehr ähnliche Attributnamen auftauchen, die sich lediglich durch Groß- und Kleinschreibung unterscheiden, z.B. \glqq Betreff\grqq{} und \glqq BETREFF\grqq{}. Das System behandelt diese dann wie einen einzigen Attributnamen. \\
- Die Gesamtheit aller Attribute eines Dokuments bildet den Metadatenteil. Darauf folgt der unstrukturierte Freitextpart.
+Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe Abschnitt \ref{Problemstellung}). 
+Dies erfordert das Lösen zweier Teilprobleme: Zum einen das Realisieren der Metadatensuche und zum anderen das Realisieren der Freitextsuche. Die Probleme wurden aufgrund der unterschiedlichen Anforderungen mit verschiedenen Verfahren gelöst. Für die Metadatensuche wurde boolesches Retrieval verwendet, bei der Freitextsuche hingegen das Vektorraummodell.\\
+Bevor erklärt wird, aus welchen Gründen diese Entscheidungen getroffen wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind. Hierzu zeigt Abbildung \ref{example} ein Beispiel. Beim Betrachten wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. Es können auch mehrere sehr ähnliche Attributnamen auftauchen, die sich lediglich durch Groß- und Kleinschreibung unterscheiden, z.B. \glqq Betreff\grqq{} und \glqq BETREFF\grqq{}. Das System behandelt diese wie einen einzigen Attributnamen. \\
+ Die Gesamtheit aller Attribute eines Dokuments bildet den Metadatenteil. Darauf folgt der unstrukturierte Freitextabschnitt.
  
 \begin{lstlisting}[language=lisp, caption={Beispieldokument}
 \label{example},
 language=lisp]
-
+;Metadaten
 
 (absender ("<maximilianSchuster@mail.de>"))
 (Betreff ("Umfrage"))
@@ -27,6 +27,8 @@ language=lisp]
 (EMAIL-TYP "sent")
 (QUELLBOXART "SENT")
 
+;Freitext
+
 Hallo John,
 
 ich werde dir die Umfragenformulare schnellstmöglich per Post 
@@ -38,10 +40,10 @@ Maximilian Schuster
 
 \end{lstlisting}
 
-In der Regel enthalten die Dokumente weitaus mehr Attribute als in diesem Beispiel, zudem kann sich deren Inhalt auch über mehrere Zeilen erstrecken. Zusätzlich enthalten die Dokumente oft Kommentare, die vom System als Freitext interpretiert werden. \\
-Bei Beispiel \ref{example} handelt es sich zwar um eine E-Mail, dies muss jedoch nicht der Fall sein. Die Attribute können inhaltlich vollkommen abweichend ausfallen, abhängig davon welches Archiv durchsucht wird. Vorausgesetzt, die Dokumente sind semistrukturiert, ist jede Art von Dokumentsammlung denkbar. Einzige Bedingung für die korrekte Funktionsweise des Systems ist, dass die im Archiv enthaltenen Dokumente die in \ref{struct} vorgegebene Struktur erfüllen.
+In der Regel enthalten die Dokumente weitaus mehr Attribute als in diesem Beispiel, zudem können sich die Attributwerte auch über mehrere Zeilen erstrecken. Zusätzlich enthalten die Dokumente oft durch ein Semikolon gekennzeichnete Kommentare (siehe Abbildung \ref{example}, Z.1, Z.17), die vom System als Freitext interpretiert werden. \\
+Beim gezeigten Beispiel handelt es sich zwar um eine E-Mail, es können allerdings auch andere Dokumente vorliegen. Die einzige Bedingung für die korrekte Funktionsweise des Systems ist, dass die im Archiv enthaltenen Dokumente die in \ref{struct} vorgegebene Struktur erfüllen. Die Attribute können darum inhaltlich vollkommen abweichend ausfallen, abhängig davon welche Art von Archiv durchsucht wird.
 
-\begin{lstlisting}[language=lisp, caption=Dokumentstruktur,label={struct}]
+\begin{lstlisting}[language=lisp, caption=Dokumentstruktur,label={struct},numbers=none]
 (Attrubutename_1 Attributwert_1)
 ....
 (Attributname_n Attributwert_n)
@@ -53,26 +55,28 @@ Freitext
 
 
 \section{Initialisierungsschritte}
-Beim Starten des Programms werden zunächst einige Initialisierungsschritte ausgeführt, die im folgenden Abschnitt beschrieben werden.
+Beim Starten des Programms werden einige Initialisierungsschritte ausgeführt, die im folgenden Abschnitt beschrieben werden.
 
 \subsection{Erstellen des Dokument-Dictionaries}
-Zunächst wird das Dokument-Dictionary angelegt. Dieses wird intern durch eine Hash-Table realisiert, da dies in Lisp einem Dictionary am nächsten kommt. Zu jedem Dokument werden darin die folgenden Punkte erfasst:
+Zunächst wird das Dokument-Dictionary angelegt. Dieses wird intern durch eine Hashtabelle realisiert, da dies in Lisp einem Dictionary\footnote{engl. Wörterbuch, bezeichnet assoziative Arrays, die aus Schlüssel-Wert-Paaren bestehen (\cite{Nebel:13}, S.3)} am nächsten kommt. \\
+Eine Hashtabelle eignet sich ideal für schnelle Zugriffe und wurde aus diesem Grund gewählt. Über eine Hashfunktion wird der Schlüssel oder \textit{hash key} eines Elementes auf eine Position in der Tabelle abgebildet. Die Positionsberechnung anhand der Hashfunktion erfolgt schnell: Im Durchschnitt entspricht der Zugriff auf ein Element einem Index-Zugriff auf ein Feld, was in konstanter Laufzeit, d.h. in $O(1)$\footnote{Die O-Notation gibt die obere Komplexitätsgrenze eines Algorithmus an (\cite{Esponda:12}, S.20).}, erfolgt. Erst, wenn Kollisionen auftreten, d.h. wenn mehrere Elemente auf dieselbe Position abgebildet werden und darum an dieser Stelle eine Liste von Elementen gespeichert ist, beträgt die Laufzeit im schlimmsten Fall $O(n)$, wobei $n$ die Länge der Liste bezeichnet (\cite{ITWissen:13}, \cite{Lux:14}, S.27). \\
+  Zu jedem Dokument werden im Dokument-Dictionary die folgenden Punkte erfasst:
 \begin{enumerate}
-	\item \textit{docID}: Das Zuweisen einer einmaligen \textit{docID} in Form eines fortlaufenden Integer-Wertes. Die \textit{docID} bildet den Hash-Key des Dokuments.
-	\item Dateipfad
-	\item Dokumentvektor (zu Beginn noch nicht initialisiert)
-	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient
-	\item Absender: ebenfalls optionale Information, die nur der Ergebnisanzeige dient
+	\item \textit{docID}: Das Zuweisen einer einmaligen \textit{docID} in Form eines fortlaufenden Integer-Wertes, der den Schüssel des Dokuments darstellt.
+	\item Dateipfad.
+	\item Dokumentvektor (zu Beginn noch nicht initialisiert).
+	\item Datum: Optionale Information, die zur verbesserten Ergebnisanzeige dient.
+	\item Absender: ebenfalls optionale Information, die nur der Ergebnisanzeige dient.
 \end{enumerate}
 
-Dateipfad, Dokumentvektor, Datum und Absender werden in einem Struct zusammengefasst. Ein Struct ist eine Datenstruktur in Lisp, die aus selbst definierten und mit Werten belegbaren Slots besteht und die sich darum ideal eignet, um zusammengehörige Werte kompakt und schnell abrufbar zu speichern. Das Struct bildet den Hash-Value des Dokuments. \\ 
-Die  Punkte 4 und 5 können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst so flexibel wie möglich gehalten, um auch andere Dateien verarbeiten zu können. Zur Veranschaulichung zeigt Abbildung \ref{docs} den Aufbau eines Eintrags im Dokument-Dictionary.
+Dateipfad, Dokumentvektor, Datum und Absender werden in einem Struct zusammengefasst. Ein Struct ist eine Datenstruktur der Programmiersprache Lisp, die aus selbst definierten und mit Werten belegbaren Slots besteht und sich darum ideal eignet, um zusammengehörige Werte kompakt und schnell abrufbar zu speichern. Das Struct bildet den Wert oder \textit{hash value} des Dokuments. \\ 
+Die  Punkte 4 und 5 können entfallen, da nicht alle Dokumente diese Metadaten beinhalten, insbesondere falls es sich nicht um E-Mails handelt. Das System wurde bewusst so flexibel wie möglich gehalten, um auch andere Dateien verarbeiten zu können. Zur Veranschaulichung zeigt Abbildung \ref{docs} die Struktur eines Eintrags im Dokument-Dictionary.
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=1\textwidth]{images/docDict.png}
-	\caption{Eintrag im Dokument-Dictionary. Die Struct-Slots Datum und Absender können bei Fehlen dieser Metadaten leer bleiben. Im rot markierten Bereich wird später der Dokumentvektor eingetragen (eigene Abbildung).}
+	\caption{Eintrag für ein Dokument im Dokument-Dictionary. Die Struct-Slots Datum und Absender können bei Fehlen dieser Metadaten leer bleiben. Im rot markierten Bereich wird später der Dokumentvektor eingetragen (eigene Abbildung).}
 	\label{docs}
 	
 \end{figure}
@@ -80,9 +84,9 @@ Die  Punkte 4 und 5 können entfallen, da nicht alle Dokumente diese Metadaten be
 \subsection{Verarbeiten der Dokumente}
 Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die folgenden Schritte in der gezeigten Reihenfolge auszuführen:
 \begin{enumerate}
-	\item Aufteilen in Metadaten und Freitext
-	\item Verarbeiten der Metadaten
-	\item Verarbeiten des Freitextes
+	\item Aufteilen in Metadaten und Freitext.
+	\item Verarbeiten der Metadaten.
+	\item Verarbeiten des Freitextes.
 \end{enumerate}
 
 
@@ -90,19 +94,19 @@ Anschließend wird über alle Dokumente im Dokument-Dictionary iteriert, um die fo
 \subsubsection{Verarbeiten der Metadaten}
 Die Metadaten werden zunächst in Attributnamen und Attributwert zerlegt, um sie anschließend weiterverarbeiten zu können. 
 Für die Metadatensuche wurde boolesches Retrieval (siehe Kapitel \ref{bool}) eingesetzt, da eine klare Bedingung definiert werden kann: Der gesuchte Attributname muss im Dokument auftreten, d.h. jedes Dokument wird auf den Wertebereich $\{true, false\}$ abgebildet.
-Allerdings muss zusätzlich zum Auftreten noch geprüft werden, ob der Attributwert inhaltlich mit der Suchanfrage übereinstimmt bzw. ob darin Teile der Anfrage auftauchen.
-Um dies zu lösen, wurde auf eine modifizierte Form der invertierten Liste (siehe Abschnitt \ref{inverted}) zurückgegriffen. Eine Term-Dokument Inzidenz Matrix wurde hingegen von vornherein aufgrund des zu hohen Speicherbedarfs ausgeschlossen. \\
-Zum Verarbeiten der Metadaten wird eine Hash-Table mit den Attributname als Hash-Keys erstellt, in der die folgenden Punkte, zusammengefasst in einem Struct, erfasst werden:
+Allerdings muss zusätzlich zum Auftreten noch geprüft werden, ob der Attributwert inhaltlich mit der Suchanfrage übereinstimmt bzw. ob darin Teile der Anfrage auftauchen.\\
+Um dies zu lösen, wurde auf eine modifizierte Form der invertierten Liste (siehe Abschnitt \ref{inverted}) zurückgegriffen. Eine Term-Dokument Inzidenz Matrix wurde von vornherein aufgrund des zu hohen Speicherbedarfs ausgeschlossen. \\
+Zum Verarbeiten der Metadaten wird eine Hashtabelle mit den Attributnamen als Schlüssel erstellt, in der die folgenden Punkte, zusammengefasst in einem Struct, erfasst werden:
 
 \begin{itemize}
 	\item \textit{docID}: Eindeutiger Index des Dokuments, in dem das Attribut auftritt. Dieser gehört standardmäßig in die invertierte Liste.
 	\item Typ: Dieser Eintrag gibt an, von welchem Datentyp der Attributwert ist, da dies über die Art der Suche darin entscheidet.
-	\item Inhalt: Enthält den Attributwert. Dieser ist in der Regel so klein, dass er problemlos darin gespeichert werden kann und im Gegensatz zum Freitext keine weitere Verarbeitung erfordert. Durch das Unterlassen einer Indexierung der Attributwerte wird zudem Speicher gespart.
+	\item Inhalt: Enthält den Attributwert. Dieser ist in der Regel so klein, dass er problemlos darin gespeichert werden kann und im Gegensatz zum Freitext keine weitere Verarbeitung erfordert. Durch das Unterlassen einer Indexierung der Attributwerte wird Speicher gespart.
 \end{itemize}
 
 
 Abbildung \ref{m} zeigt die modifizierte invertierte Liste anhand einiger Beispiel-Attribute. 
-Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender\grqq{} und \glqq ABSENDER\grqq{} wird nur ein einziger Hash-Key angelegt. Mit dem Wort \glqq Keyword\grqq{} wird ausgedrückt, dass beide Begriffe sich auf ein und dasselbe Attribut beziehen, auch wenn die Namen unterschiedlich ausfallen. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Hash-Key zwei Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in diesem Information-Retrieval-System im Allgemeinen angewendet, um möglichst fehlertolerant gegenüber abweichenden Nutzereingaben zu sein bzw. um auch Wörter, die sich nur durch Groß- und Kleinschreibung vom Suchbegriff unterscheiden, als übereinstimmend zu erkennen.
+Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinschreibung keine Rolle spielt, d.h. für die Keywords \glqq absender\grqq{} und \glqq ABSENDER\grqq{} wird nur ein einziger Schlüssel angelegt. Mit dem Wort \glqq Keyword\grqq{} wird ausgedrückt, dass beide Begriffe sich auf ein und dasselbe Attribut beziehen. Kommen beide Keywords innerhalb eines Dokuments vor, gibt es unter dem entsprechenden Schlüssel zwei Einträge mit der gleichen \textit{docID}, aber unterschiedlichen Inhalten. Das Ignorieren von Groß- und Kleinschreibung wird in dieser Implementierung im Allgemeinen angewendet, um Wörter, die sich nur hierin vom Suchbegriff unterscheiden, als übereinstimmend zu erkennen. 
 
 %MERGE!!!
 
@@ -118,95 +122,95 @@ Hierbei ist zu beachten, dass beim Speichern der Attributnamen Groß- und Kleinsc
 \subsubsection{Verarbeiten des Freitextes}
 Für die Freitextsuche wurde das Vektorraummodell (siehe Kapitel \ref{vector}) gewählt, da dieses Teiltreffer sowie ein Ranking der Ergebnisse ermöglicht. Grundvoraussetzung für das Verfahren ist die Bestimmung des Vokabulars. Da jedes Dokument bereits in Metadaten und Freitext aufgeteilt wurde, liegen die Freitexte der Sammlung bereits isoliert vor. Es wird über diese Liste iteriert und pro Freitext werden jeweils die folgenden Schritte ausgeführt:
 \begin{itemize}
-	\item Zerlegung des Textes in Terme, wobei auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet wurde, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweise Zerlegung der Texte wurde das Package split-sequence verwendet (\cite{Ionescu:16}).
+	\item Zerlegung des Textes in Terme, wobei auf eine Lemmatisierung (siehe Abschnitt \ref{lemmatisierung}) verzichtet wurde, da dies den Rahmen der Arbeit sprengen würde. Zur zeilenweisen Zerlegung der Texte wurde das Package \textit{split-sequence} verwendet (\cite{Ionescu:16}).
 	\item Zu jedem Term wird geprüft, ob dieser bereits im Vokabular enthalten ist. Falls nicht, wird er hinzugefügt, vorausgesetzt es handelt sich nicht um ein deutsches oder englisches Stoppwort.
 \end{itemize}
 
-Stoppwörter (siehe Abschnitt \ref{stop}) wurden bewusst aus dem Vokabular entfernt, um Speicherplatz zu sparen und die Suche zu beschleunigen, denn je kleiner die Dokument- und Anfragevektoren ausfallen, desto schneller erfolgt die Berechnung der Ähnlichkeitswerte. Die englischen Stoppwörter stammen aus \cite{webtools:13},  die deutsche Stoppwortliste aus \cite{Kohlfuerst:09}.
+Stoppwörter (siehe Abschnitt \ref{stop}) wurden aus dem Vokabular entfernt, um Speicherplatz zu sparen und die Suche zu beschleunigen, denn je kleiner die Dokument- und Anfragevektoren ausfallen, desto schneller erfolgt die Berechnung der Ähnlichkeitswerte. Die englischen Stoppwörter stammen aus \cite{webtools:13},  die deutsche Stoppwortliste aus \cite{Kohlfuerst:09}.
 
-Nachdem das Vokabular vollständig bestimmt wurde, werden die darin vorkommenden Terme indexiert. Hierfür wird zunächst ein Term-Dictionary angelegt, wobei auch hier die zugrunde liegende Datenstruktur eine Hash-Table ist. Anschließend wird über das Vokabular iteriert und pro Term ein Eintrag in der Form (Index, idf=0) angelegt. Der Index ist hierbei ein fortlaufender Integer-Wert, der den Term eindeutig identifiziert und dessen Position im Dokument- oder Anfragevektor bestimmt. Der idf-Wert muss erst noch ermittelt werden, darum wird dieser mit 0 initialisiert. Abbildung \ref{terms} zeigt den Aufbau eines Eintrags.
+Nachdem das Vokabular vollständig bestimmt wurde, werden die darin vorkommenden Terme indexiert. Hierfür wird zunächst ein Term-Dictionary angelegt, wobei auch hier die zugrunde liegende Datenstruktur eine Hashtabelle ist. Anschließend wird über das Vokabular iteriert und pro Term ein Eintrag in der Form (Index, $idf = 0$) angelegt. Der Index ist ein fortlaufender Integer-Wert, der den Term eindeutig identifiziert und dessen Position im Dokument- bzw. Anfragevektor bestimmt. Der idf-Wert muss erst noch ermittelt werden, darum wird er mit null initialisiert. Abbildung \ref{terms} zeigt den Aufbau eines Eintrags im Term-Dictionary.
 
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/termDict.png}
-	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Hash-Key, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}
+	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Schlüssel, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}
 	\label{terms}
 \end{figure}
 
 Anschließend muss das Term-Dictionary mit idf-Werten gefüllt werden, weshalb über alle Freitexte iteriert wird und jeweils folgende Schritte ausgeführt werden:
 \begin{itemize}
-	\item Anlegen eines Dokumentvektors, realisiert mittels Hash-Table, welcher die Term-Indizes als Hash-Keys und deren noch zu bestimmende tf-idf-Gewichte als Hash-Values besitzt. 
-	\item Tritt ein Term zum ersten Mal in der Sammlung, wird der zuvor mit 0 initialisierte idf-Slot im Term-Dictionary auf 1 gesetzt.
-	\item Tritt ein Term zum ersten Mal im Dokument auf und existiert bereits in der Sammlung, wird der idf-Wert um 1 erhöht.
-	\item Beim ersten Auftreten im Dokument wird der entsprechende Eintrag im Dokumentvektor auf die Termhäufigkeit 1 gesetzt. Die Position im Vektor wird durch den Index des Terms (gespeichert im Term-Dictionary) vorgegeben.
-	\item Für jedes erneute Auftreten im Dokument wird die Termhäufigkeit im Dokumentvektor um 1 erhöht.
+	\item Anlegen des Dokumentvektors in Form einer Hashtabelle, welche die Term-Indizes als Schlüssel und deren noch zu bestimmende TF-IDF-Gewichte als Werte besitzt. 
+	\item Taucht ein Term zum ersten Mal in der Sammlung auf, wird der zuvor mit null initialisierte $idf$-Slot im Term-Dictionary auf eins gesetzt.
+	\item Kommt ein Term zum ersten Mal im Dokument vor und existiert bereits in der Sammlung, wird der $idf$-Wert um eins erhöht.
+	\item Beim ersten Auftauchen im Dokument wird der entsprechende Eintrag im Dokumentvektor auf die Termhäufigkeit eins gesetzt. Die Position im Vektor wird durch den Termindex (gespeichert im Term-Dictionary) vorgegeben.
+	\item Für jedes erneute Vorkommen im Dokument wird die Termhäufigkeit im Dokumentvektor um eins erhöht.
 	\item Ist der Freitext des aktuellen Dokuments vollständig verarbeitet, kann der bereits angelegte Eintrag an der entsprechenden Stelle im Dokument-Dictionary (rot markiert in Abbildung \ref{docs}) mit dem hier erstellten Dokumentvektor initialisiert werden.
 \end{itemize}
 
-Bei der Datenstruktur für die Dokumentvektoren wurde sich bewusst für eine Hash-Table entschieden, um das Problem der leeren Einträge zu vermeiden und damit Speicher zu sparen. Fehlt ein Term in der Hash-Table, so wird dies bei der Berechnung des Cosinus-Maßes als Gewicht 0 interpretiert.\\
-Noch enthalten die idf-Slots im Term-Dictionary die Dokumenthäufigkeiten statt der idf-Werte.
-Deshalb werden diese nach Formel \ref{idfb} in den idf-Wert umgerechnet. Es wurde sich für die Formel mit Logarithmus entschieden, um die Werte seltener Terme abzuschwächen. 
-Mit den idf-Werten können nun auch die tf-idf-Werte bestimmt werden, weshalb die Termhäufigkeiten in den Dokumentvektoren nach Formel \ref{tfidfc} umgerechnet werden. 
-Die Vektoren stehen jetzt fest und können zur Verrechnung mit dem Anfragevektor verwendet werden. \\
+In den Dokumentvektoren werden nur Terme mit einem Gewicht größer null gespeichert. Fehlt ein Term in der Hashtabelle, so wird dies bei der Berechnung des Cosinus-Maßes als Gewicht null interpretiert. Auf diese Weise wird Speicher gespart. \\
+Noch enthalten die $idf$-Slots im Term-Dictionary die Dokumenthäufigkeiten anstatt der $idf$-Werte.
+Deshalb werden diese nach Formel \ref{idfb} in den $idf$-Wert umgerechnet. Es wurde sich für die Formel mit Logarithmus entschieden, um die Werte seltener Terme zu dämpfen. 
+Mit den $idf$-Werten können nun auch die TF-IDF-Gewichtungen bestimmt werden, weshalb die Termhäufigkeiten in den Dokumentvektoren nach Formel \ref{tfidfc} umgerechnet werden. 
+Anschließend können die Vektoren zur Verrechnung mit dem Anfragevektor verwendet werden. \\
 
 
 
 \section{Suche}
-Nachdem die Initialisierungsschritte ausgeführt wurden, kann der Nutzer die Suche starten. Er sieht auf der Benutzeroberfläche, welche Attribute ihm als Bereiche, in denen gesucht werden kann, zur Verfügung stehen. Das Attribut \glqq Freitext\grqq{} ist hierbei immer vorhanden. 
-Metadatensuche und Freitextsuche wurden intern unterschiedlich realisiert, darum werden sie getrennt erklärt.
+Nachdem die Initialisierungsschritte ausgeführt wurden, kann der Nutzer die Suche starten. Er sieht auf der Benutzeroberfläche, welche Attribute ihm als Suchbereiche zur Verfügung stehen. Das Attribut \glqq Freitext\grqq{} ist hierbei immer vorhanden. 
+Aufgrund der unterschiedlichen verwendeten Information-Retrieval-Verfahren werden Metadatensuche und Freitextsuche getrennt erklärt.
 
 \subsection{Metadatensuche}
 Die Metadatensuche verwendet boolesches Retrieval.
-Lautet die Anfrage beispielsweise $Absender = Klaus$, wird auf die modifizierte invertierte Liste über den Hash-Key $Absender$ zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird. Dieser entscheidet über die Art der Suche:
+Lautet die Anfrage beispielsweise $Absender = Klaus$, wird auf die modifizierte invertierte Liste über den Schlüssel $Absender$ zugegriffen. Anschließend wird über alle darin gespeicherten Structs iteriert, wobei zunächst der Typ des Inhalts abgefragt wird, der über die Art der Suche entscheidet:
 \begin{enumerate}
-	\item \textbf{String}: Der Attributwert wird mit der vordefinierten Lisp-Funktion search durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle darin als Substring auftaucht.
-	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die Suchanfrage, welche stets als String übergeben wird, wenn möglich zum Datentyp Number konvertiert. Hierbei sind auch als Wort ausgeschriebene Zahlen von null bis zwölf konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche sofort fehl, da der Inhalt nicht zur Anfrage passen kann.
-	\item \textbf{Liste}: Eine Liste entspricht dem Datentyp \textit{cons} in Lisp und wird rekursiv durchsucht, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen. Dies können Strings, Zahlen oder Unterlisten sein.
+	\item \textbf{String}: Der Attributwert wird mit der vordefinierten Lisp-Funktion \textit{search} durchsucht. Die Suche ist erfolgreich, wenn die gesuchte Zeichenkette an einer beliebigen Stelle darin als Substring auftaucht.
+	\item \textbf{Number}: Ist der Inhalt eine Zahl, wird die als String übergebene Suchanfrage, wenn möglich, zum Datentyp \glqq Number\grqq{} konvertiert. Hierbei sind auch als Wort ausgeschriebene Zahlen von null bis zwölf konvertierbar. Ist kein Konvertieren möglich, schlägt die Suche fehl, da der Inhalt nicht zur Anfrage passen kann.
+	\item \textbf{Liste}: Eine Liste entspricht in Lisp dem Datentyp \glqq Cons\grqq{} und wird rekursiv verarbeitet, um alle darin enthaltenen Elemente typspezifisch zu durchsuchen. Diese können Strings, Zahlen oder Listen sein.
 \end{enumerate}
-Liegt ein Treffer vor, wird die \textit{docID} des Dokuments der Ergebnisliste hinzugefügt. 
-Hierbei kann es sein, dass pro Teilanfrage mehrere Metadatensuchen durchgeführt werden, da der Nutzer die Anfrage für verschiedene Attribute gleichzeitig stellen kann.
-Dann hat jedes Attribut seine eigene Ergebnisliste, die gemäß booleschem Retrieval mit Mengenoperationen verrechnet werden: Ist $AND$ ausgewählt, wird aus den Listen der Durchschnitt gebildet, bei $OR$ die Vereinigung. Hierzu werden die in Lisp vordefinierten Funktionen \textit{intersection} und \textit{union} verwendet.\\
-Nun liegt das finale Ergebnis für die Metadatensuche der Teilanfrage vor - es sei denn, der Nutzer hat $NOT$ ausgewählt, dann wird die Differenz zwischen den Dokumenten des Archivs und dem ermittelten Ergebnis zurückgegeben. Hierzu wurde die vordefinierte Funktion \textit{set-difference} verwendet.
+Liegt eine Übereinstimmung vor, wird die \textit{docID} des Dokuments der Ergebnisliste hinzugefügt. 
+Stellt der Nutzer die Anfrage für mehrere Attribute gleichzeitig, wird jedes ausgewählte Attribut nach dem Begriff durchsucht, d.h. es werden mehrere Metadatensuchen für die Anfrage ausgeführt.
+Jedes Attribut besitzt seine eigene Ergebnisliste, sodass im Fall mehrerer Ergebnislisten diese gemäß booleschem Retrieval mit Mengenoperationen verrechnet werden: Ist $AND$ ausgewählt, wird aus den Listen der Durchschnitt gebildet, bei $OR$ die Vereinigung. Hierzu werden die vordefinierten Lisp-Funktionen \textit{intersection} und \textit{union} verwendet.\\
+Nun liegt das finale Ergebnis für die Metadatensuche der Teilanfrage vor, es sei denn, der Nutzer hat $NOT$ ausgewählt, dann wird die Differenz zwischen den Dokumenten des Archivs und dem ermittelten Ergebnis zurückgegeben. Hierzu wurde die vordefinierte Funktion \textit{set-difference} verwendet.
 
 \subsection{Freitextsuche}
-\subsection{Erstellen des Query-Vektors}
-Die Freitextsuche verwendet das Vektorraummodell, darum muss eine Anfrage erst in einen Vektor umgewandelt werden. Wie beim Dokumentvektor wird auch hier eine Hash-Table als Datenstruktur verwendet. 
-Für jeden Term wird dessen Index im Term-Dictionary abgefragt. Vorausgesetzt, der Term existiert im Vokabular, wird dieser Index zum Hash-Key und die Termhäufigkeit in der Anfrage zum Wert. Ausnahme sind Stoppwörter, die bei der Suche ignoriert werden. Der Nutzer erhält in diesem Fall eine Warnmeldung. Anschließend wird die Termhäufigkeit mit dem idf-Wert multipliziert, sodass der Query-Vektor die finalen tf-idf-Gewichtungen enthält.\\
-Damit wird die Anfrage genau wie ein Dokument behandelt, mit dem einzigen Unterschied dass bestimmte Terme eventuell nicht im Vektor eingetragen und gewichtet werden, da diese im Archiv nicht vorkommen und darum für die Suche irrelevant sind.\\
-Abbildung \ref{query} veranschaulicht das Erstellen eines Query-Vektors anhand eines Beispiels.
+\subsubsection{Erstellen des Query-Vektors}
+Die Freitextsuche verwendet das Vektorraummodell, darum muss eine Anfrage erst in einen Vektor umgewandelt werden. Wie beim Dokumentvektor wird auch hier eine Hashtabelle als Datenstruktur verwendet. 
+Für jeden Term wird dessen Index im Term-Dictionary abgefragt. Vorausgesetzt, der Term existiert im Vokabular, wird dieser Index zum Schlüssel und die Termhäufigkeit in der Anfrage zum Wert. Ausnahme sind Stoppwörter, die bei der Suche ignoriert werden. Der Nutzer erhält in diesem Fall eine Warnmeldung. Anschließend wird die Termhäufigkeit mit dem $idf$-Wert multipliziert, sodass der Query-Vektor die finalen TF-IDF-Gewichtungen enthält.\\
+Damit wird die Anfrage genau wie ein Dokument behandelt, mit dem einzigen Unterschied dass bestimmte Terme nicht im Vektor eingetragen und gewichtet werden, da sie im Archiv nicht vorkommen und darum für die Suche irrelevant sind.\\
+Abbildung \ref{query} veranschaulicht das Erstellen des Query-Vektors anhand eines Beispiels.
 \subsubsection{Finden der Resultate}
 Zum Bestimmen der Suchergebnisse für die Freitextsuche wird über alle Dokumente iteriert, um folgende Schritte auszuführen:
 
 \begin{itemize}
-	\item Zugriff auf den Dokumentvektor
-	\item Berechnung des Cosinus-Maßes (siehe Formel \ref{cos}) zur Bestimmung der Ähnlichkeit zwischen Dokument- und Query-Vektor
-	\item Hinzufügen des Ähnlichkeitswertes (Score) inklusive \textit{docID} zur Ergebnisliste 
-	\item Sortieren der Liste, damit sich die ähnlichsten Dokumente vorne befinden
+	\item Zugriff auf den Dokumentvektor.
+	\item Berechnung des Cosinus-Maßes (siehe Formel \ref{cos}) zur Bestimmung der Ähnlichkeit zwischen Dokument- und Query-Vektor.
+	\item Hinzufügen des Ähnlichkeitswertes (Score) inklusive \textit{docID} zur Ergebnisliste. 
+	\item Sortieren der Ergebnisliste anhand der erzielten Scores.
 \end{itemize}
 
 \begin{figure} [http]
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/Umwandlung.png}
-	\caption{Beispiel für Umwandlung einer Anfrage in einen Query-Vektor. \glqq Kontaktadresse\grqq{} hat den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (eigene Abbildung).}
+	\caption{Umwandlung einer Anfrage in den entsprechenden Query-Vektor. \glqq Kontaktadresse\grqq{} besitzt den Index 3, \glqq Seminar\grqq{} den Index 123. Mai kommt im Archiv nicht vor, darum wird der Term ignoriert. Alle Indizes ungleich 3 und 123 sind als mit 0 gewichtet zu interpretieren (eigene Abbildung).}
 	\label{query}
 \end{figure}
 
 
 
 \section{Verrechnung der Suchergebnisse}
-Die Resultate beider Suchverfahren müssen miteinander kombiniert werden, wobei der Score problematisch ist, da die Freitextergebnisse einen besitzen, die Metadaten-Resultate jedoch nicht. Gelöst wurde dies wie folgt:
+Die Resultate beider Suchverfahren müssen miteinander kombiniert werden, wobei der Score ein Problem darstellt, da Metadaten-Resultate keinen besitzen. Gelöst wurde dies wie folgt:
 \begin{itemize}
-	\item Jedes Dokument in der Metadaten-Ergebnisliste erhält den Score 1.
-	\item Ist $AND$ ausgewählt, wird der Durchschnitt der Ergebnislisten beider Suchverfahren gebildet und Metadaten-Score sowie Freitextscore werden addiert.
-	\item Ist $OR$ ausgewählt, wird die Vereinigung beider Suchen gebildet und Metadaten-Score sowie Freitextscore der Dokumente, die in beiden Ergebnislisten vorkommen, werden addiert.
+	\item Jedes Dokument in der Metadaten-Ergebnisliste erhält den Score eins.
+	\item Ist $AND$ ausgewählt, wird der Durchschnitt der Ergebnislisten beider Suchverfahren gebildet und Metadaten-Score sowie Freitext-Score werden addiert.
+	\item Ist $OR$ ausgewählt, wird die Vereinigung beider Suchen gebildet und Metadaten-Score sowie Freitext-Score der Dokumente, die in beiden Ergebnislisten vorkommen, werden addiert.
 \end{itemize}
-Da die Anfrage beliebig tief geschachtelt vorliegen kann, ist es möglich, dass sich der Score eines Dokuments mit weiteren Teilanfragen erhöht: 
+Da die Anfrage beliebig tief geschachtelt vorliegen kann, ist es möglich, dass sich der Score eines Dokuments mit dem Stellen weiterer Teilanfragen erhöht: 
 Das Gesamtergebnis wird mit jeder neuen Teilanfrage auf dieselbe Weise wie soeben beschrieben verrechnet, d.h. je nach selektiertem Operator ($AND$ oder $OR$) wird der Durchschnitt oder die Vereinigung aus Gesamt- und Teilanfrage mit entsprechender Addition der Scores durchgeführt.
-Demnach erhält ein Dokument, dass für 5 Teilanfragen einen Treffer in der Metadatensuche lieferte, den Score 5. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. 5,27, kamen noch Treffer in der Freitextsuche hinzu. \\
-Aufgrund des Scores kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und anhand des Zahlenwertes - ganzzahlig oder nicht - auch, auf welche Weise der Treffer zustande kam.
+Demnach erhält ein Dokument, dass für 5 Teilanfragen einen Treffer in der Metadatensuche liefert, den Score 5. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. $5.27$, kamen noch Treffer in der Freitextsuche hinzu. \\
+Auf diese Weise kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und auf welche Weise das Ergebnis zustande kam, da ein nicht ganzzahliger Score nur durch eine erfolgreiche Freitextsuche entsteht.
 
 
 

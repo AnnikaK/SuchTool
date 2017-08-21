@@ -4,11 +4,11 @@ Dieses Kapitel stellt das klassische Information-Retrieval-Verfahren \glqq boole
 
 \section{Eigenschaften des Verfahrens}
 Boolesches Retrieval überprüft Dokumente auf das Zutreffen einer bestimmten Bedingung. 
-Somit erfolgt lediglich die Unterteilung in Dokumente, welche die Bedingung erfüllen, und jene, die dies nicht tun. Eine darüber hinausgehende Bewertung der Ergebnisse findet nicht statt, was zu einer ungeordneten Ergebnismenge führt, die in keine Rangfolge gebracht werden kann (\cite{Ferber:03}, S.33). Das fehlende Ranking ist ein häufiger Kritikpunkt des Verfahrens.\\
+Somit erfolgt lediglich die Unterteilung in Dokumente, welche die Bedingung erfüllen, und jene, die dies nicht tun. Eine darüber hinausgehende Bewertung der Ergebnisse findet nicht statt, was zu einer ungeordneten Ergebnismenge führt, die in keine geordnete Reihenfolge gebracht werden kann (\cite{Ferber:03}, S.33). Das fehlende Ranking ist ein häufiger Kritikpunkt des Verfahrens.\\
  
  
 \section{Funktionsprinzip}
-Boolesches Retrieval basiert auf Mengenoperationen, weshalb den Dokumenten Mengen zugeordnet werden, die jeweils durch bestimmte Attribute charakterisiert sind. Wenn von Dokumenten gesprochen wird, ist hiermit die Einheit gemeint, auf der das Retrieval stattfindet. Es kann sich hierbei um kurze Textmemos, aber auch um ganze Buchkapitel handeln (\cite{Manning:08}, S.4).
+Boolesches Retrieval basiert auf Mengenoperationen, weshalb den Dokumenten Mengen zugeordnet werden, die jeweils durch bestimmte Attribute charakterisiert sind.\\
 
 \subsection{Attribut}
 Ein Attribut ist eine Abbildung, welche jedem Dokument einen Wert für dieses Attribut zuordnet. Die Abbildung erzeugt somit Attribut-Wert-Paare, was in Formel \ref{attr} gezeigt wird (\cite{Ferber:03}, S.34). 
@@ -28,7 +28,7 @@ Die Abbildung ordnet einem Dokument $d \in D$ einen Attributwert $t_i$ mit $t_i 
  \label{formelzeugs}
 \subsubsection{Elementare boolesche Anfrage}
 Ein Attribut-Wert-Paar wird auch als elementare boolesche Anfrage bezeichnet. Bei der elementaren booleschen Anfrage  $(t,t_1)$ werden zum Beispiel alle Dokumente gesucht, deren Attribut $t$ den Wert $t_1$ annimmt. 
-Die Ergebnismenge $D_t,_{t_i}$ für eine Anfrage $(t,t_i)$ kann demnach wie in Formel \ref{ergMen} charakterisiert werden. 
+Die Ergebnismenge $D_t,_{t_i}$ für eine Anfrage $(t,t_i)$ kann demnach wie in Formel \ref{ergMen} charakterisiert werden (\cite{Ferber:03}, S.34). 
 
 \begin{equation}
 \label{ergMen}
@@ -38,7 +38,7 @@ D_t,_{t_i} =  \{d \in D | t(d) = t_i\} \\
 \subsubsection{Verknüpfung}
 Beim logischen Verknüpfen mehrerer elementarer boolescher Anfragen werden abhängig vom jeweiligen booleschen Operator bestimmte Mengenoperationen auf den Ergebnismengen der elementaren Anfragen ausgeführt. 
 Die möglichen booleschen Operatoren sind hierbei $AND$, $OR$ und $NOT$.
-$(t,t_1)$ $AND$ $(s,s_1)$ bedeutet, dass alle Dokumente gesucht sind, bei denen sowohl $t(d) = t_1$ als auch $s(d) = s_1$ gilt. Die erforderliche Mengenoperation ist deshalb der Durchschnitt aus den beiden Ergebnismengen, was in Formel \ref{intersection} gezeigt wird.
+$(t,t_1)$ $AND$ $(s,s_1)$ bedeutet, dass alle Dokumente gesucht sind, bei denen sowohl $t(d) = t_1$ als auch $s(d) = s_1$ gilt. Die erforderliche Mengenoperation ist deshalb der Durchschnitt aus den beiden Ergebnismengen, was in Formel \ref{intersection} gezeigt wird (\cite{Ferber:03}, S.34).
 
 \begin{equation}
 \label{intersection}
@@ -127,12 +127,12 @@ Das Verfahren ermöglicht sehr schnelle Zugriffe, ist allerdings speicherintensiv
 
 
 \subsubsection{Verarbeitung einer Anfrage mittels invertierter Liste}
-Es stellt sich die Frage, wie eine boolesche Anfrage wie in Abschnitt \ref{formelzeugs} beschrieben mithilfe invertierter Listen umgesetzt werden kann. \\
+Es stellt sich die Frage, wie eine boolesche Anfrage Abschnitt \ref{formelzeugs} entsprechend mithilfe invertierter Listen umgesetzt werden kann. \\
 \paragraph{Elementare Anfrage}
-Liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor und es ist nach dem Vorkommen eines bestimmten Wortes gefragt, entspricht das Attribut $t$ dem Term des gesuchten Wortes, da  Term und Wort nicht zwangsläufig äquivalent sind (siehe Abschnitt \ref{lemmatisierung}). Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
-Die Verarbeitung einer solchen elementaren Anfrage geht relativ einfach: Über den Termindex kann auf den Term schnell zugegriffen werden, vorausgesetzt dieser ist im Vokabular enthalten. Trifft dies zu, kann die zugehörige invertierte Liste als Resultat ausgegeben werden, da für alle darin enthaltenen Dokumente $t_1 = true$ gilt. \\
+Liegt eine elementare boolesche Anfrage in der Form $(t,t_1)$ vor und ist nach dem Vorkommen eines bestimmten Wortes gefragt, entspricht das Attribut $t$ dem Term des gesuchten Wortes, da  Term und Wort nicht zwangsläufig äquivalent sind (siehe Abschnitt \ref{lemmatisierung}). Da man auf dessen Vorkommen prüft, gelten für den Wertebereich $T = \{true, false\}$ und für den Attributwert $t_1 = true$. \\
+Eine solche elementare Anfrage wird wie folgt verarbeitet: Über den Termindex kann auf den Term schnell zugegriffen werden, vorausgesetzt dieser ist im Vokabular enthalten. Trifft dies zu, kann die zugehörige invertierte Liste als Resultat ausgegeben werden, da für alle darin enthaltenen Dokumente $t_1 = true$ gilt. \\
 \paragraph{AND-Verknüpfungen}
-Wie sieht nun die Verarbeitung aus, wenn mehrere elementare Anfragen miteinander verknüpft werden? Um dies zu beantworten, wird zunächst der $AND$-Operator betrachtet. Eine zusammengesetzte Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa in dem Beispiel $Kontaktadresse$ $AND$ $Seminar$, bei dem $t = Kontaktadresse, t_1 = true$ sowie $s = Seminar, s_1 = true$ gelten.
+Daraus resultiert die Frage, wie die Verarbeitung aussieht, wenn mehrere elementare Anfragen miteinander verknüpft werden. Um dies zu beantworten, wird zunächst der $AND$-Operator betrachtet. Eine zusammengesetzte Anfrage liegt dann in der Form $(t,t_1)$ $AND$ $(s,s_1)$ vor, wie etwa in dem Beispiel $Kontaktadresse$ $AND$ $Seminar$, bei dem $t = Kontaktadresse, t_1 = true$ sowie $s = Seminar, s_1 = true$ gelten.
 Dies bedeutet, dass alle Dokumente gesucht sind, in denen beide Terme auftauchen. \\
 Hierzu wird der Durchschnitt aus den Ergebnismengen beider elementarer Anfragen gebildet, d.h. der Durchschnitt aus beiden invertierten Listen. Betrachtet man die Abbildung \ref{abb1}, so ist der Durchschnitt für $Kontaktadresse \cap Seminar$ gleich der Ergebnisliste $\{3,11\}$ (\cite{Manning:08}, S.10). \\
 
@@ -141,7 +141,7 @@ Hierzu wird der Durchschnitt aus den Ergebnismengen beider elementarer Anfragen 
 \paragraph{OR-Verknüpfungen}
 Lautet die Anfrage hingegen $(t,t_1)$ $OR$ $(s,s_1)$ bzw. $Kontaktadresse$ $OR$ $Seminar$, so sind alle Dokumente gesucht, in denen entweder $t_1$, $s_1$ oder auch beide Terme vorkommen. 
 Die zu verwendende Mengenoperation ist deshalb die Vereinigung  $D_{t,t_1} \cup D_{s,s_1}$ bzw. $Kontaktadresse \cup Seminar$, was bedeutet dass die invertierten Listen, die als Ergebnis für die beiden elementaren booleschen Anfragen zurückgeliefert werden, vereinigt werden.
-Bezogen auf Abbildung \ref{abb1} lautet die Ergebnismenge für das Beispiel $Kontaktadresse$ $OR$ $Seminar$ $\{1,2,3,5,7,9,11,15,22,25,30,32\}$.
+Bezogen auf Abbildung \ref{abb1} lautet die Ergebnismenge für das Beispiel $Kontaktadresse$ $OR$ $Seminar$ $\{1,2,3,5,7,9,11,15,$ \\ $22,25,30,32\}$.
 Bei beiden Listenoperationen werden die Indizes in den Ergebnislisten sortiert und Duplikate entfernt (\cite{Manning:08}, S.11). 
 
 %Zur Vereinigung zweier sortierter Listen bietet sich der bekannte und effiziente Merge-Algorithmus an, der eine Laufzeit von $O(n log n)$ besitzt. In leicht abgewandelter Form lässt sich hiermit auch der Durchschnitt zweier sortierter Listen mit gleicher Laufzeit bilden.
@@ -149,20 +149,21 @@ Bei beiden Listenoperationen werden die Indizes in den Ergebnislisten sortiert u
 
 \paragraph{AND NOT-Verknüpfung}
 Da es sich bei $NOT$ um einen unären Operator handelt, könnte dieser theoretisch alleine auftreten. 
-Eine Anfrage der Form $NOT$ $Seminar$ kann jedoch sehr viel Laufzeit kosten, wenn das Archiv viele Dokumente enthält: Es muss über die gesamte Sammlung iteriert und für jedes Dokument geprüft werden, ob es in der invertierten Liste für den Term Seminar auftaucht. Der alleinstehende $NOT$-Operator ist aufgrund dessen so ineffizient, dass er bei den meisten booleschen Information-Retrieval-Systemen nur im Zusammenhang mit einem binären Operator zugelassen ist.
-Da die Kombination $OR$ $NOT$ keinen Sinn macht, wenn ein Term ausgeschlossen werden soll, ist dieser Operator in der Regel ausschließlich $AND$. \\
+Eine Anfrage der Form $NOT$ $Seminar$ kann jedoch zu Problemen führen, wenn das Archiv viele Dokumente enthält. Es muss für alle \textit{docID}s geprüft werden, ob sie in der invertierten Liste für den Term Seminar auftauchen. Schlimmstenfalls enthält die Sammlung tausende Dokumente, von denen nur wenige zu entfernen sind, sodass eine Ergebnisliste mit tausenden Dokumententen erstellt und zurückgegeben wird. Der alleinstehende $NOT$-Operator ist aufgrund dessen so ineffizient, dass er bei den meisten booleschen Information-Retrieval-Systemen nur im Zusammenhang mit einem binären Operator zugelassen ist.
+Da die Kombination $OR$ $NOT$ wieder zu derselben Problematik führt, ist dieser Operator in der Regel ausschließlich $AND$. \\
 Hierbei wird aus den beiden Listen die Differenz gebildet. Lautet die Anfrage beispielsweise $Kontaktadresse$ $AND$ $NOT$ $Seminar$, so werden aus der Ergebnisliste für Kontaktadresse alle Elemente entfernt, die in der Liste für Seminar enthalten sind (\cite{Henrich:08}, S.174). Ergebnismenge wäre demnach $\{2,7,9,15,22,25,30\}$, d.h. die Dokumente 3 und 11 wurden ausgeschlossen.\\
 
 
 \paragraph{Komplex geschachtelte Ausdrücke}
 Da sowohl Vereinigung als auch Durchschnitt eine neue Liste liefern, kann auf dieser wiederum jeder Operator angewandt werden, was eine beliebig tiefe Schachtelung erlaubt. Dieser Abschnitt erklärt, wie komplex geschachtelte Ausdrücke verarbeitet werden.\\
-Im Falle von mehreren $AND$-Operatoren, wie etwa in der Suchanfrage $Kontaktadresse$ $AND$ $Seminar$ $AND$ $Termin$, ist es effizient, zunächst die einzelnen invertierten Listen aufsteigend nach deren Länge zu sortieren und dann von links nach rechts zu verarbeiten. So wird das nachfolgende $AND$ auf die Ergebnisliste des vorherigen Durchschnitts angewandt, was der folgenden Klammerung entspricht: \\
-$(Seminar$ $AND$ $Termin)$ $AND$ $Kontaktadresse$ \\
+Im Falle von mehreren $AND$-Operatoren, wie etwa in der Suchanfrage $Kontakt-$\\$adresse$ $AND$ $Seminar$ $AND$ $Termin$, ist es effizient, zunächst die einzelnen invertierten Listen aufsteigend nach deren Länge zu sortieren und dann von links nach rechts zu verarbeiten. So wird das nachfolgende $AND$ auf die Ergebnisliste des vorherigen Durchschnitts angewandt, was der folgenden Klammerung entspricht: 
+$(Seminar$ $AND$ $Termin)$ $AND$ $Kontaktadresse$. \\
 Auf diese Weise werden die Listen, über die iteriert wird, möglichst klein gehalten. Besitzt die kleinste Liste beispielsweise die Länge eins, dann kann nach der ersten Iteration bereits abgebrochen werden, da zulässige Lösungen in allen drei Listen vorkommen müssen. \\
-Bei mehreren $OR$-Operatoren werden die Ausdrücke analog von links nach rechts verarbeitet, wobei die Sortierung nach Länge hierbei keinen Vorteil bietet, da bei der Vereinigung zweier Listen ohnehin über alle Elemente iteriert werden muss. Die Verarbeitungsreihenfolge entspricht der folgenden Klammerung:
-$(Kontaktadresse$ $OR$ $Seminar)$ $OR$ $Termin$ \\
-Ist die Anfrage hingegen gemischt, wie etwa in dem Beispiel
-($Kontaktadresse$ $OR$ $Seminar$) $AND$ ($Termin$ $OR$ $Seminar$), werden erst die inneren Ausdrücke ausgewertet und aus den entstandenen Ergebnislisten in aufsteigend nach Länge sortierter Reihenfolge der Durchschnitt gebildet (\cite{Manning:08}, S.11).
+Bei mehreren $OR$-Operatoren werden die Ausdrücke analog von links nach rechts verarbeitet, wobei die Sortierung nach Länge hierbei keinen Vorteil bietet, da bei der Vereinigung zweier Listen ohnehin über alle Elemente iteriert werden muss. Die Verarbeitungsreihenfolge entspricht der folgenden Klammerung: 
+$(Kontaktadresse$ $OR$ $Seminar)$ $OR$ $Termin$. \\
+Ist die Anfrage hingegen gemischt, wie etwa in dem Beispiel 
+($Kontaktadresse$ $OR$ $Seminar$) $AND$ ($Termin$ $OR$ $Seminar$), 
+werden zunächst die inneren Ausdrücke ausgewertet. Anschließend wird aus den entstandenen Ergebnislisten in aufsteigend nach Länge sortierter Reihenfolge der Durchschnitt gebildet (\cite{Manning:08}, S.11).
 
 
 \paragraph{Die Verarbeitung mehrerer Wörter}
