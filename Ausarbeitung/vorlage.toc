@@ -74,7 +74,7 @@
 \contentsline {subsubsection}{Verarbeiten der Metadaten}{32}{section*.19}
 \contentsline {subsubsection}{Verarbeiten des Freitextes}{32}{section*.20}
 \contentsline {section}{\numberline {7.3}Suche}{34}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{34}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.1}Metadatensuche}{35}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}Freitextsuche}{35}{subsection.7.3.2}
 \contentsline {subsubsection}{Erstellen des Query-Vektors}{35}{section*.21}
 \contentsline {subsubsection}{Finden der Resultate}{36}{section*.22}
@@ -88,8 +88,8 @@
 \contentsline {subsection}{\numberline {8.4.2}Beispiel}{41}{subsection.8.4.2}
 \contentsline {section}{\numberline {8.5}Gesamtanfrage}{42}{section.8.5}
 \contentsline {section}{\numberline {8.6}Ergebnis}{42}{section.8.6}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{45}{chapter.9}
-\contentsline {section}{\numberline {9.1}Zusammenfassung}{45}{section.9.1}
-\contentsline {section}{\numberline {9.2}Ausblick}{46}{section.9.2}
-\contentsline {chapter}{Literaturverzeichnis}{47}{chapter*.23}
-\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{49}{appendix.A}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{44}{chapter.9}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{44}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ausblick}{45}{section.9.2}
+\contentsline {chapter}{Literaturverzeichnis}{46}{chapter*.23}
+\contentsline {chapter}{Erkl\"arung der Kandidatin / des Kandidaten}{48}{appendix.A}

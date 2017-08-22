@@ -5,7 +5,7 @@ In diesem Kapitel wird beschrieben, auf welche Weise das System zur Informations
 \section{Teilweise strukturierte Dokumente}
 Besonderheit der Problemstellung ist das Vorliegen der Dokumente in semistrukturierter Form (siehe Abschnitt \ref{Problemstellung}). 
 Dies erfordert das Lösen zweier Teilprobleme: Zum einen das Realisieren der Metadatensuche und zum anderen das Realisieren der Freitextsuche. Die Probleme wurden aufgrund der unterschiedlichen Anforderungen mit verschiedenen Verfahren gelöst. Für die Metadatensuche wurde boolesches Retrieval verwendet, bei der Freitextsuche hingegen das Vektorraummodell.\\
-Bevor erklärt wird, aus welchen Gründen diese Entscheidungen getroffen wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind. Hierzu zeigt Abbildung \ref{example} ein Beispiel. Beim Betrachten wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. Es können auch mehrere sehr ähnliche Attributnamen auftauchen, die sich lediglich durch Groß- und Kleinschreibung unterscheiden, z.B. \glqq Betreff\grqq{} und \glqq BETREFF\grqq{}. Das System behandelt diese wie einen einzigen Attributnamen. \\
+Bevor erklärt wird, aus welchen Gründen diese Entscheidungen getroffen wurden, ist es wichtig, zunächst eine Vorstellung zu haben, wie die zu durchsuchenden Dokumente des Archivs beschaffen sind. Hierzu zeigt Listing \ref{example} ein Beispiel. Beim Betrachten wird deutlich, dass jedes Dokument spezifische Eigenschaften besitzt, die jeweils durch einen Attributnamen und den zugehörigen Attributwert dargestellt sind. Beispielsweise ist \glqq datum\grqq{} ein Attributname und \glqq("Wed, 22 Jun 2017 07:47:51 +0200")\grqq{} der zugehörige Attributwert. Es können auch mehrere sehr ähnliche Attributnamen auftauchen, die sich lediglich durch Groß- und Kleinschreibung unterscheiden, z.B. \glqq Betreff\grqq{} und \glqq BETREFF\grqq{}. Das System behandelt diese wie einen einzigen Attributnamen. \\
  Die Gesamtheit aller Attribute eines Dokuments bildet den Metadatenteil. Darauf folgt der unstrukturierte Freitextabschnitt.
  
 \begin{lstlisting}[language=lisp, caption={Beispieldokument}
@@ -40,8 +40,8 @@ Maximilian Schuster
 
 \end{lstlisting}
 
-In der Regel enthalten die Dokumente weitaus mehr Attribute als in diesem Beispiel, zudem können sich die Attributwerte auch über mehrere Zeilen erstrecken. Zusätzlich enthalten die Dokumente oft durch ein Semikolon gekennzeichnete Kommentare (siehe Abbildung \ref{example}, Z.1, Z.17), die vom System als Freitext interpretiert werden. \\
-Beim gezeigten Beispiel handelt es sich zwar um eine E-Mail, es können allerdings auch andere Dokumente vorliegen. Die einzige Bedingung für die korrekte Funktionsweise des Systems ist, dass die im Archiv enthaltenen Dokumente die in \ref{struct} vorgegebene Struktur erfüllen. Die Attribute können darum inhaltlich vollkommen abweichend ausfallen, abhängig davon welche Art von Archiv durchsucht wird.
+In der Regel enthalten die Dokumente weitaus mehr Attribute als in diesem Beispiel, zudem können sich die Attributwerte auch über mehrere Zeilen erstrecken. Zusätzlich enthalten die Dokumente oft durch ein Semikolon gekennzeichnete Kommentare (siehe Listing \ref{example}, Z.1, Z.17), die vom System als Freitext interpretiert werden. \\
+Beim gezeigten Beispiel handelt es sich zwar um eine E-Mail, es können allerdings auch andere Dokumente vorliegen. Die einzige Bedingung für die korrekte Funktionsweise des Systems ist, dass die im Archiv enthaltenen Dokumente die in Listing \ref{struct} vorgegebene Struktur erfüllen. Die Attribute können darum inhaltlich vollkommen abweichend ausfallen, abhängig davon welche Art von Archiv durchsucht wird.
 
 \begin{lstlisting}[language=lisp, caption=Dokumentstruktur,label={struct},numbers=none]
 (Attrubutename_1 Attributwert_1)
@@ -135,7 +135,7 @@ Nachdem das Vokabular vollständig bestimmt wurde, werden die darin vorkommenden 
 	
 	\centering
 	\includegraphics[width=0.5\textwidth]{images/termDict.png}
-	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Schlüssel, Index und idf sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}
+	\caption{Struktur für einen Eintrag im Term-Dictionary. Der Termname bildet den Schlüssel, Index und $idf$ sind in einem Struct zusammengefasst. Der Index gibt die Position des Terms im Dokumentvektor an (eigene Abbildung).}
 	\label{terms}
 \end{figure}
 
@@ -209,7 +209,7 @@ Die Resultate beider Suchverfahren müssen miteinander kombiniert werden, wobei d
 \end{itemize}
 Da die Anfrage beliebig tief geschachtelt vorliegen kann, ist es möglich, dass sich der Score eines Dokuments mit dem Stellen weiterer Teilanfragen erhöht: 
 Das Gesamtergebnis wird mit jeder neuen Teilanfrage auf dieselbe Weise wie soeben beschrieben verrechnet, d.h. je nach selektiertem Operator ($AND$ oder $OR$) wird der Durchschnitt oder die Vereinigung aus Gesamt- und Teilanfrage mit entsprechender Addition der Scores durchgeführt.
-Demnach erhält ein Dokument, dass für 5 Teilanfragen einen Treffer in der Metadatensuche liefert, den Score 5. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. $5.27$, kamen noch Treffer in der Freitextsuche hinzu. \\
+Demnach erhält ein Dokument, dass für fünf Teilanfragen einen Treffer in der Metadatensuche liefert, den Score fünf. Handelt es sich hingegen um einen nicht ganzzahligen Wert, z.B. $5.27$, kamen noch Treffer in der Freitextsuche hinzu. \\
 Auf diese Weise kann der Nutzer in etwa abschätzen, wie wichtig ein Dokument für seine Anfrage war und auf welche Weise das Ergebnis zustande kam, da ein nicht ganzzahliger Score nur durch eine erfolgreiche Freitextsuche entsteht.
 
 
